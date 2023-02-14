@@ -13,7 +13,16 @@ const App = () => {
   ];
 
   useEffect(() => {
-    setData(csvData[0].income * taxRate);
+    const updateData = () => {
+      const upDatedData = [...csvData];
+      console.log(upDatedData[1].income * taxRate);
+      for (let i = 0; i < upDatedData.length; i++) {
+        upDatedData[i].income = upDatedData[i].income * taxRate;
+      }
+      setData(upDatedData);
+    };
+
+    updateData();
   }, [taxRate]);
 
   if (!data && data != 0) {

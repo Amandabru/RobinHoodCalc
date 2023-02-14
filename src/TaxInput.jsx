@@ -10,7 +10,7 @@ const TaxInput = ({ onTaxChange }) => {
       <label>Level 4 Tax</label>
       <input
         type='range'
-        min='0.5'
+        min='0'
         max='1'
         step='0.1'
         onChange={(e) => {
