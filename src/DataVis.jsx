@@ -1,7 +1,6 @@
 import React from 'react';
 
 function DataVis({ data }) {
-  console.log(data);
   return (
     <>
       {data.map((d) => (
