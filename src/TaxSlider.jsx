@@ -1,6 +1,6 @@
 import React from 'react';
 
-const TaxInput = ({ onTaxChange }) => {
+const TaxSlider = ({ onTaxChange }) => {
   return (
     <div>
       <label>Level 2 Tax</label>
@@ -21,4 +21,4 @@ const TaxInput = ({ onTaxChange }) => {
   );
 };
 
-export default TaxInput;
+export default TaxSlider;
