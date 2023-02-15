@@ -1,7 +1,5 @@
 import DataVis from './DataVis';
 
-const App = () => {
-  return <DataVis />;
-};
+const App = () => {};
 
 export default App;
