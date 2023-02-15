@@ -22,7 +22,7 @@ const AreaChart = ({ data }) => {
   var layout = {
     xaxis: {
       type: 'log',
-      autorange: true,
+      range: [-3, 8],
     },
   };
 
