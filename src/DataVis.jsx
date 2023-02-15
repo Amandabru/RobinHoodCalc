@@ -12,9 +12,23 @@ const DataVis = () => {
   const [taxRate, setTaxRate] = useState(0);
   const [csvData, setCsvData] = useState(null);
 
+  const closestIndex = (arr, num) => {
+    let curr = arr[0].income,
+      diff = Math.abs(num - curr);
+    let index = 0;
+    for (let val = 0; val < arr.length; val++) {
+      let newdiff = Math.abs(num - arr[val].income);
+      if (newdiff < diff) {
+        diff = newdiff;
+        curr = arr[val].income;
+        index = val;
+      }
+    }
+    return index;
+  };
+
   const updateData = () => {
     const level4 = 65500;
-    const level1 = 2;
     var collectedTax = 0;
     const updatedData = csvData.map((data) => {
       return Object.assign({}, data);
@@ -26,21 +40,28 @@ const DataVis = () => {
         updatedData[i].income -= (csvData[i].income - level4) * taxRate;
         collectedTax +=
           (csvData[i].income - level4) * taxRate * updatedData[i].population;
+        updatedData[
+          closestIndex(updatedData, updatedData[i].income)
+        ].population = updatedData[i].population;
+        updatedData[i].population = 0;
+      }
+    }
+    // Count number of "brackets" below level 4
+    var population = 0;
+    for (let i = 0; i < updatedData.length; i++) {
+      if (updatedData[i].income < level4) {
+        population += updatedData[i].population;
       }
     }
 
-    // Count population below level 1
-    var popLevel1 = 0;
+    // Distributing tax to levels below 4
     for (let i = 0; i < updatedData.length; i++) {
-      if (updatedData[i].income < level1) {
-        popLevel1 += updatedData[i].population;
-      }
-    }
-
-    // Distributing tax to level 1
-    for (let i = 0; i < updatedData.length; i++) {
-      if (updatedData[i].income < level1) {
-        updatedData[i].income += collectedTax / popLevel1;
+      if (updatedData[i].income < level4) {
+        updatedData[i].income += collectedTax / population;
+        updatedData[
+          closestIndex(updatedData, updatedData[i].income)
+        ].population += updatedData[i].population;
+        updatedData[i].population = 0;
       }
     }
     setData(updatedData);
