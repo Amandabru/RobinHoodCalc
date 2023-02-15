@@ -1,4 +1,4 @@
-import DataVis from './DataVis';
+import React from 'react';
 
 const App = () => {
   return <DataVis />;
