@@ -12,7 +12,7 @@ const TaxSlider = ({ onTaxChange }) => {
         type='range'
         min='0'
         max='1'
-        step='0.1'
+        step='0.001'
         onChange={(e) => {
           onTaxChange(e.target.value);
         }}

@@ -13,8 +13,8 @@ const DataVis = () => {
   const [csvData, setCsvData] = useState(null);
 
   const closestIndex = (arr, num) => {
-    let curr = arr[0].income,
-      diff = Math.abs(num - curr);
+    let curr = arr[0].income;
+    let diff = Math.abs(num - curr);
     let index = 0;
     for (let val = 0; val < arr.length; val++) {
       let newdiff = Math.abs(num - arr[val].income);
@@ -28,43 +28,46 @@ const DataVis = () => {
   };
 
   const updateData = () => {
-    const level4 = 65500;
+    const level4 = 100;
     var collectedTax = 0;
-    const updatedData = csvData.map((data) => {
-      return Object.assign({}, data);
+    var newData = csvData.map((a) => {
+      return { ...a };
     });
 
     // Gathering tax from level 4
-    for (let i = 0; i < updatedData.length; i++) {
-      if (updatedData[i].income >= level4) {
-        updatedData[i].income -= (csvData[i].income - level4) * taxRate;
+    for (let i = 0; i < csvData.length; i++) {
+      if (csvData[i].income > level4) {
+        const newIncome =
+          csvData[i].income - (csvData[i].income - level4) * taxRate;
         collectedTax +=
-          (csvData[i].income - level4) * taxRate * updatedData[i].population;
-        updatedData[
-          closestIndex(updatedData, updatedData[i].income)
-        ].population = updatedData[i].population;
-        updatedData[i].population = 0;
+          (csvData[i].income - level4) * taxRate * csvData[i].population;
+        var indexNewIncome = closestIndex(csvData, newIncome);
+        if (indexNewIncome !== i) {
+          newData[indexNewIncome].population += csvData[i].population;
+          newData[i].population = 0;
+        }
       }
     }
     // Count number of "brackets" below level 4
     var population = 0;
-    for (let i = 0; i < updatedData.length; i++) {
-      if (updatedData[i].income < level4) {
-        population += updatedData[i].population;
+    for (let i = 0; i < csvData.length; i++) {
+      if (csvData[i].income <= level4) {
+        population += csvData[i].population;
       }
     }
 
     // Distributing tax to levels below 4
-    for (let i = 0; i < updatedData.length; i++) {
-      if (updatedData[i].income < level4) {
-        updatedData[i].income += collectedTax / population;
-        updatedData[
-          closestIndex(updatedData, updatedData[i].income)
-        ].population += updatedData[i].population;
-        updatedData[i].population = 0;
+    for (let i = 0; i < csvData.length; i++) {
+      if (csvData[i].income <= level4) {
+        const newIncome2 = csvData[i].income + collectedTax / population;
+        indexNewIncome = closestIndex(csvData, newIncome2);
+        if (indexNewIncome !== i) {
+          newData[indexNewIncome].population += csvData[i].population;
+          newData[i].population = 0;
+        }
       }
     }
-    setData(updatedData);
+    setData(newData);
   };
 
   useEffect(() => {
