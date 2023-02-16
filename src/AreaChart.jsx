@@ -2,8 +2,8 @@ import React from 'react';
 import Plot from 'react-plotly.js';
 
 const AreaChart = ({ data }) => {
-  const copyData = data.map((data) => {
-    return Object.assign({}, data);
+  const copyData = data.map((a) => {
+    return { ...a };
   });
   var lol = [
     {
