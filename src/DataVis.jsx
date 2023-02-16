@@ -27,48 +27,59 @@ const DataVis = () => {
   const [taxRate, setTaxRate] = useState(0);
   const [csvData, setCsvData] = useState(null);
 
-  const updateData = () => {
-    const level4 = 100;
+  const collectFromTheRich = (data, incomeMin) => {
     var collectedTax = 0;
+    for (let i = 0; i < csvData.length; i++) {
+      if (csvData[i].income > incomeMin) {
+        const newIncome =
+          csvData[i].income - (csvData[i].income - incomeMin) * taxRate;
+        collectedTax +=
+          (csvData[i].income - incomeMin) * taxRate * csvData[i].population;
+        var indexNewIncome = closestIndex(csvData, newIncome);
+        if (indexNewIncome !== i) {
+          data[indexNewIncome].population += csvData[i].population;
+          data[i].population = 0;
+        }
+      }
+    }
+    return [collectedTax, data];
+  };
+
+  const giveToThePoor = (data, incomeMax, collectedTax) => {
+    var population = 0;
+    for (let i = 0; i < csvData.length; i++) {
+      if (csvData[i].income <= incomeMax) {
+        population += csvData[i].population;
+      }
+    }
+    for (let i = 0; i < csvData.length; i++) {
+      if (csvData[i].income <= incomeMax) {
+        const newIncome2 = csvData[i].income + collectedTax / population;
+        var indexNewIncome = closestIndex(csvData, newIncome2);
+        if (indexNewIncome !== i) {
+          data[indexNewIncome].population += csvData[i].population;
+          data[i].population = 0;
+        }
+      }
+    }
+    return data;
+  };
+
+  const updateData = () => {
+    const taxBreakPoint = 100;
 
     // Copy original distributition
     var newData = csvData.map((a) => {
       return { ...a };
     });
 
-    // Gathering tax from level 4
-    for (let i = 0; i < csvData.length; i++) {
-      if (csvData[i].income > level4) {
-        const newIncome =
-          csvData[i].income - (csvData[i].income - level4) * taxRate;
-        collectedTax +=
-          (csvData[i].income - level4) * taxRate * csvData[i].population;
-        var indexNewIncome = closestIndex(csvData, newIncome);
-        if (indexNewIncome !== i) {
-          newData[indexNewIncome].population += csvData[i].population;
-          newData[i].population = 0;
-        }
-      }
-    }
-    // Count population below level 4
-    var population = 0;
-    for (let i = 0; i < csvData.length; i++) {
-      if (csvData[i].income <= level4) {
-        population += csvData[i].population;
-      }
-    }
+    // Collect tax from people above taxBreakPoint
+    var [collectedTax, newData] = collectFromTheRich(newData, taxBreakPoint);
 
-    // Distributing tax to levels below 4
-    for (let i = 0; i < csvData.length; i++) {
-      if (csvData[i].income <= level4) {
-        const newIncome2 = csvData[i].income + collectedTax / population;
-        indexNewIncome = closestIndex(csvData, newIncome2);
-        if (indexNewIncome !== i) {
-          newData[indexNewIncome].population += csvData[i].population;
-          newData[i].population = 0;
-        }
-      }
-    }
+    // Give collected tax to people below taxBreakPoint
+    newData = giveToThePoor(newData, taxBreakPoint, collectedTax);
+
+    //Update data
     setData(newData);
   };
 
