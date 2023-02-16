@@ -2,25 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { csv } from 'd3';
 import TaxSlider from './TaxSlider';
 import Table from './Table';
+import AreaChartD3 from './AreaChartD3';
 import AreaChart from './AreaChart';
 
 const csvUrl =
   'https://gist.githubusercontent.com/Amandabru/00e96eaa56143e6499d1c651bac03aa8/raw/58ce042b4504d9b660bb93693e47b966cc2eb34f/GapminderData.csv';
-
-const closestIndex = (arr, num) => {
-  let curr = arr[0].income;
-  let diff = Math.abs(num - curr);
-  let index = 0;
-  for (let val = 0; val < arr.length; val++) {
-    let newdiff = Math.abs(num - arr[val].income);
-    if (newdiff < diff) {
-      diff = newdiff;
-      curr = arr[val].income;
-      index = val;
-    }
-  }
-  return index;
-};
 
 const DataVis = () => {
   const [data, setData] = useState(null);
@@ -67,19 +53,11 @@ const DataVis = () => {
 
   const updateData = () => {
     const taxBreakPoint = 100;
-
-    // Copy original distributition
     var newData = csvData.map((a) => {
       return { ...a };
     });
-
-    // Collect tax from people above taxBreakPoint
     var [collectedTax, newData] = collectFromTheRich(newData, taxBreakPoint);
-
-    // Give collected tax to people below taxBreakPoint
     newData = giveToThePoor(newData, taxBreakPoint, collectedTax);
-
-    //Update data
     setData(newData);
   };
 
@@ -104,11 +82,26 @@ const DataVis = () => {
 
   return (
     <>
-      <AreaChart data={data ? data : csvData} />
+      <AreaChartD3 data={data ? data : csvData} />
       <TaxSlider onTaxChange={(taxRate) => setTaxRate(taxRate)} />
       <Table data={data ? data : csvData} />
     </>
   );
+};
+
+const closestIndex = (arr, num) => {
+  let curr = arr[0].income;
+  let diff = Math.abs(num - curr);
+  let index = 0;
+  for (let val = 0; val < arr.length; val++) {
+    let newdiff = Math.abs(num - arr[val].income);
+    if (newdiff < diff) {
+      diff = newdiff;
+      curr = arr[val].income;
+      index = val;
+    }
+  }
+  return index;
 };
 
 export default DataVis;
