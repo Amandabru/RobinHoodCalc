@@ -1,14 +1,14 @@
-import React, { useRef } from 'react';
+import React, { useRef, useEffect } from 'react';
 import {
   select,
   scaleLinear,
   max,
-  curveCardinal,
   min,
   scaleLog,
   area,
   axisBottom,
   axisLeft,
+  curveMonotoneX,
 } from 'd3';
 
 const AreaChartD3 = ({ data }) => {
@@ -21,6 +21,7 @@ const AreaChartD3 = ({ data }) => {
   var maxPop = max(data, (d) => d.population);
   var minPop = min(data, (d) => d.population);
 
+  useEffect(() => { 
   const svg = select(svgRef.current)
     .attr('width', w)
     .attr('height', h)
@@ -38,7 +39,7 @@ const AreaChartD3 = ({ data }) => {
     .x((d) => xScale(d.income))
     .y0(h)
     .y1((val) => yScale(val.population))
-    .curve(curveCardinal);
+    .curve(curveMonotoneX);
 
   svg
     .selectAll('.area')
@@ -74,6 +75,8 @@ const AreaChartD3 = ({ data }) => {
     .attr('cy', (value) => yScale(value.population))
     .attr('stroke', 'red')
     .attr('fill', 'black');
+
+  }, [data]);
 
   return (
     <>
