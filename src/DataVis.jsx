@@ -3,7 +3,6 @@ import { csv } from 'd3';
 import TaxSlider from './TaxSlider';
 import Table from './Table';
 import AreaChartD3 from './AreaChartD3';
-import AreaChart from './AreaChart';
 
 const csvUrl =
   'https://gist.githubusercontent.com/Amandabru/00e96eaa56143e6499d1c651bac03aa8/raw/58ce042b4504d9b660bb93693e47b966cc2eb34f/GapminderData.csv';
@@ -84,7 +83,6 @@ const DataVis = () => {
     <>
       <AreaChartD3 data={data ? data : csvData} />
       <TaxSlider onTaxChange={(taxRate) => setTaxRate(taxRate)} />
-      <Table data={data ? data : csvData} />
     </>
   );
 };
