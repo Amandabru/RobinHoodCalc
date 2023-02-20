@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { csv } from 'd3';
 import TaxSlider from './TaxSlider';
-import Table from './Table';
 import AreaChartD3 from './AreaChartD3';
 
 const csvUrl =
@@ -106,7 +105,10 @@ const DataVis = () => {
   return (
     <>
       <AreaChartD3 data={data ? data : csvData} />
-      <TaxSlider onTaxChange={(taxRate) => setTaxRate(taxRate)} />
+      <TaxSlider
+        onTaxChange={(taxRate) => setTaxRate(taxRate)}
+        taxRate={taxRate * 100}
+      />
     </>
   );
 };
