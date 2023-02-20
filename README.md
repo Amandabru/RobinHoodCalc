@@ -2,7 +2,8 @@ A Robin Hood project that aims to visualize how re-distributing wealth from the 
 
 Instructions
 
-Run npm install from \RobinHoodCalc> \n
+Run npm install from \RobinHoodCalc>
+
 Run npm start
 
 The project initilizes on port 3000.
