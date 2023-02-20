@@ -1,3 +1,35 @@
+A Robin Hood project that aims to visualize how re-distributing wealth from the richest in the world can impact those living in extreme poverty.
+
+Instructions
+
+Run npm install from \RobinHoodCalc>
+Run npm start
+
+The project initilizes on port 3000.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
