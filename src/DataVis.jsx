@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { csv } from 'd3';
 import TaxSlider from './TaxSlider';
-import Table from './Table';
 import AreaChartD3 from './AreaChartD3';
-
 
 const csvUrl =
   'https://gist.githubusercontent.com/Amandabru/00e96eaa56143e6499d1c651bac03aa8/raw/58ce042b4504d9b660bb93693e47b966cc2eb34f/GapminderData.csv';
@@ -24,7 +22,7 @@ const DataVis = () => {
         var indexNewIncome = closestIndex(csvData, newIncome);
 
         if (indexNewIncome !== i) {
-          data[indexNewIncome].population += csvData[i].population;
+          data[indexNewIncome].population += data[i].population;
           data[i].population = 0;
         }
         else{
@@ -91,6 +89,19 @@ const giveToThePoor = (data, incomeMax, collectedTax) => {
     });
     var [collectedTax, newData] = collectFromTheRich(newData, taxBreakPoint);
     newData = giveToThePoor(newData, taxBreakPoint, collectedTax);
+
+    var incomeBefore = 0;
+    for (let i = 0; i < csvData.length; i++) {
+      incomeBefore += csvData[i].income * csvData[i].population;
+    }
+    console.log(incomeBefore);
+
+    var incomeAfter = 0;
+    for (let i = 0; i < csvData.length; i++) {
+      incomeAfter += newData[i].income * newData[i].population;
+    }
+    console.log(incomeAfter);
+
     setData(newData);
     // Console logs to figure out how much money goes missing
     var incomeBefore = 0;
@@ -131,8 +142,10 @@ const giveToThePoor = (data, incomeMax, collectedTax) => {
   return (
     <>
       <AreaChartD3 data={data ? data : csvData} />
-      <TaxSlider onTaxChange={(taxRate) => setTaxRate(taxRate)} />
-      <Table data={data ? data : csvData} />
+      <TaxSlider
+        onTaxChange={(taxRate) => setTaxRate(taxRate)}
+        taxRate={taxRate * 100}
+      />
     </>
   );
 };
