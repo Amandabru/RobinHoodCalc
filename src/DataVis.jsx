@@ -2,25 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { csv } from 'd3';
 import TaxSlider from './TaxSlider';
 import Table from './Table';
-import AreaChart from './AreaChart';
+import AreaChartD3 from './AreaChartD3';
 
 const csvUrl =
   'https://gist.githubusercontent.com/Amandabru/00e96eaa56143e6499d1c651bac03aa8/raw/58ce042b4504d9b660bb93693e47b966cc2eb34f/GapminderData.csv';
-
-const closestIndex = (arr, num) => {
-  let curr = arr[0].income;
-  let diff = Math.abs(num - curr);
-  let index = 0;
-  for (let val = 0; val < arr.length; val++) {
-    let newdiff = Math.abs(num - arr[val].income);
-    if (newdiff < diff) {
-      diff = newdiff;
-      curr = arr[val].income;
-      index = val;
-    }
-  }
-  return index;
-};
 
 const DataVis = () => {
   const [data, setData] = useState(null);
@@ -36,8 +21,10 @@ const DataVis = () => {
         collectedTax +=
           (csvData[i].income - incomeMin) * taxRate * csvData[i].population;
         var indexNewIncome = closestIndex(csvData, newIncome);
+
+        // If (indexNewIncome === i) we will have added to collected tax without updating the data
         if (indexNewIncome !== i) {
-          data[indexNewIncome].population += csvData[i].population;
+          data[indexNewIncome].population += data[i].population;
           data[i].population = 0;
         }
       }
@@ -56,30 +43,44 @@ const DataVis = () => {
       if (csvData[i].income <= incomeMax) {
         const newIncome2 = csvData[i].income + collectedTax / population;
         var indexNewIncome = closestIndex(csvData, newIncome2);
+
+        // If indexNewIncome = we will not give out money that we have!!
         if (indexNewIncome !== i) {
-          data[indexNewIncome].population += csvData[i].population;
+          data[indexNewIncome].population += data[i].population;
           data[i].population = 0;
         }
       }
     }
+    let counter = 0;
+    for (let i = 0; i < csvData.length; i++) {
+      counter += csvData[i].population;
+    }
+
+    console.log(counter);
+    console.log(taxRate);
     return data;
   };
 
   const updateData = () => {
     const taxBreakPoint = 100;
-
-    // Copy original distributition
     var newData = csvData.map((a) => {
       return { ...a };
     });
-
-    // Collect tax from people above taxBreakPoint
     var [collectedTax, newData] = collectFromTheRich(newData, taxBreakPoint);
-
-    // Give collected tax to people below taxBreakPoint
     newData = giveToThePoor(newData, taxBreakPoint, collectedTax);
 
-    //Update data
+    var incomeBefore = 0;
+    for (let i = 0; i < csvData.length; i++) {
+      incomeBefore += csvData[i].income * csvData[i].population;
+    }
+    console.log(incomeBefore);
+
+    var incomeAfter = 0;
+    for (let i = 0; i < csvData.length; i++) {
+      incomeAfter += newData[i].income * newData[i].population;
+    }
+    console.log(incomeAfter);
+
     setData(newData);
   };
 
@@ -104,11 +105,25 @@ const DataVis = () => {
 
   return (
     <>
-      <AreaChart data={data ? data : csvData} />
+      <AreaChartD3 data={data ? data : csvData} />
       <TaxSlider onTaxChange={(taxRate) => setTaxRate(taxRate)} />
-      <Table data={data ? data : csvData} />
     </>
   );
+};
+
+const closestIndex = (arr, num) => {
+  let curr = arr[0].income;
+  let diff = Math.abs(num - curr);
+  let index = 0;
+  for (let val = 0; val < arr.length; val++) {
+    let newdiff = Math.abs(num - arr[val].income);
+    if (newdiff < diff) {
+      diff = newdiff;
+      curr = arr[val].income;
+      index = val;
+    }
+  }
+  return index;
 };
 
 export default DataVis;

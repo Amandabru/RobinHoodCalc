@@ -2,15 +2,12 @@ import React from 'react';
 import Plot from 'react-plotly.js';
 
 const AreaChart = ({ data }) => {
-  const copyData = data.map((a) => {
-    return { ...a };
-  });
-  var lol = [
+  var plotData = [
     {
-      x: copyData.map(function (el) {
+      x: data.map(function (el) {
         return el.income;
       }),
-      y: copyData.map(function (el) {
+      y: data.map(function (el) {
         return el.population;
       }),
       fill: 'tozeroy',
@@ -26,7 +23,7 @@ const AreaChart = ({ data }) => {
     },
   };
 
-  return <Plot data={lol} layout={layout} />;
+  return <Plot data={plotData} layout={layout} />;
 };
 
 export default AreaChart;
