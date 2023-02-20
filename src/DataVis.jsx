@@ -21,8 +21,10 @@ const DataVis = () => {
         collectedTax +=
           (csvData[i].income - incomeMin) * taxRate * csvData[i].population;
         var indexNewIncome = closestIndex(csvData, newIncome);
+
+        // If (indexNewIncome === i) we will have added to collected tax without updating the data
         if (indexNewIncome !== i) {
-          data[indexNewIncome].population += csvData[i].population;
+          data[indexNewIncome].population += data[i].population;
           data[i].population = 0;
         }
       }
@@ -41,12 +43,21 @@ const DataVis = () => {
       if (csvData[i].income <= incomeMax) {
         const newIncome2 = csvData[i].income + collectedTax / population;
         var indexNewIncome = closestIndex(csvData, newIncome2);
+
+        // If indexNewIncome = we will not give out money that we have!!
         if (indexNewIncome !== i) {
-          data[indexNewIncome].population += csvData[i].population;
+          data[indexNewIncome].population += data[i].population;
           data[i].population = 0;
         }
       }
     }
+    let counter = 0;
+    for (let i = 0; i < csvData.length; i++) {
+      counter += csvData[i].population;
+    }
+
+    console.log(counter);
+    console.log(taxRate);
     return data;
   };
 
@@ -57,6 +68,19 @@ const DataVis = () => {
     });
     var [collectedTax, newData] = collectFromTheRich(newData, taxBreakPoint);
     newData = giveToThePoor(newData, taxBreakPoint, collectedTax);
+
+    var incomeBefore = 0;
+    for (let i = 0; i < csvData.length; i++) {
+      incomeBefore += csvData[i].income * csvData[i].population;
+    }
+    console.log(incomeBefore);
+
+    var incomeAfter = 0;
+    for (let i = 0; i < csvData.length; i++) {
+      incomeAfter += newData[i].income * newData[i].population;
+    }
+    console.log(incomeAfter);
+
     setData(newData);
   };
 
