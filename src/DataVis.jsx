@@ -11,49 +11,44 @@ const DataVis = () => {
   const [taxRate, setTaxRate] = useState(0);
   const [csvData, setCsvData] = useState(null);
 
-
   // Collects money(tax) from the people above the incomeMin and moves population down the brackets accordingly
   // Returns the money and the modified data
   const collectFromTheRich = (data, incomeMin) => {
     var collectedTax = 0;
     for (let i = 0; i < csvData.length; i++) {
       if (csvData[i].income > incomeMin) {
-        const newIncome = csvData[i].income - (csvData[i].income - incomeMin) * taxRate;
-        collectedTax += (csvData[i].income - incomeMin) * taxRate * csvData[i].population;
+        const newIncome =
+          csvData[i].income - (csvData[i].income - incomeMin) * taxRate;
+        collectedTax +=
+          (csvData[i].income - incomeMin) * taxRate * csvData[i].population;
         var indexNewIncome = closestIndex(csvData, newIncome);
         if (indexNewIncome !== i) {
           data[indexNewIncome].population += data[i].population;
           data[i].population = 0;
-        } 
+        }
       }
     }
     return [collectedTax, data];
   };
 
-
   // distributes the collected money among the brackets below incomeMax and moves population accordingly
-  const giveToThePoor = (data, incomeMax, collectedTax) => {
-    var popUnderLimit = 0; // amount of pop under the tax limit(level4 (100dollars)) 
+  const giveToThePoor = (data, collectedTax) => {
     for (let i = 0; i < csvData.length; i++) {
-      if (csvData[i].income <= incomeMax) {
-        popUnderLimit += csvData[i].population;
+      var incomeDiff = data[i + 1].income - data[i].income;
+      if (collectedTax >= data[i].population * incomeDiff) {
+        collectedTax -= data[i].population * incomeDiff;
+        data[i + 1].population += data[i].population;
+        data[i].population = 0;
+      } else {
+        /*
+        data[i + 1].population += Math.floor(
+          collectedTax / (data[i + 1].income - data[i].income)
+        );
+        data[i].population -= Math.floor(
+          collectedTax / (data[i + 1].income - data[i].income)
+        );*/
+        return data;
       }
-    }
-    // Tar ut pengar per person från insamlade pengar uttdelat på alla under incomeMax
-    var popShare = collectedTax / popUnderLimit;
-    console.log("moneyShare/pop: " + popShare);
-    for (let i = csvData.length - 1; i >= 0; i--) {
-        if (csvData[i].income <= incomeMax) {
-          // beräkna ny inkomst
-          const newIncome2 = csvData[i].income + popShare;
-          //hitta närmaste index till nya inkomsten för incomeBracket
-          var indexNewIncome = closestIndex(csvData, newIncome2);
-          // om nya närmaste incomeBracket är en annan en den vi behandlar just nu 
-          if (indexNewIncome !== i) {
-            data[indexNewIncome].population += data[i].population;
-            data[i].population = 0;
-          } 
-        }
     }
     return data;
   };
@@ -64,7 +59,12 @@ const DataVis = () => {
       return { ...a };
     });
     var [collectedTax, newData] = collectFromTheRich(newData, taxBreakPoint);
-    newData = giveToThePoor(newData, taxBreakPoint, collectedTax);
+    newData = giveToThePoor(newData, collectedTax);
+    let testPop = 0;
+    for (let i = 0; i < csvData.length; i++) {
+      testPop += newData[i].population;
+    }
+    console.log(testPop);
     setData(newData);
   };
 

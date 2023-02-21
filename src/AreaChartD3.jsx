@@ -66,7 +66,6 @@ const AreaChartD3 = ({ data }) => {
 
     svg.append('g').call(yAxis);
 
-    /*
     svg
       .selectAll('circle')
       .data(data)
@@ -75,7 +74,7 @@ const AreaChartD3 = ({ data }) => {
       .attr('cx', (value) => xScale(value.income))
       .attr('cy', (value) => yScale(value.population))
       .attr('stroke', 'red')
-      .attr('fill', 'black');*/
+      .attr('fill', 'black');
   }, [data]);
 
   return (
