@@ -11,49 +11,47 @@ const DataVis = () => {
   const [taxRate, setTaxRate] = useState(0);
   const [csvData, setCsvData] = useState(null);
 
-
-  // Collects money(tax) from the people above the incomeMin and moves population down the brackets accordingly
+  // Collects money(tax) from people above the incomeMin and moves population down the brackets accordingly
   // Returns the money and the modified data
   const collectFromTheRich = (data, incomeMin) => {
     var collectedTax = 0;
     for (let i = 0; i < csvData.length; i++) {
       if (csvData[i].income > incomeMin) {
-        const newIncome = csvData[i].income - (csvData[i].income - incomeMin) * taxRate;
-        collectedTax += (csvData[i].income - incomeMin) * taxRate * csvData[i].population;
+        const newIncome =
+          csvData[i].income - (csvData[i].income - incomeMin) * taxRate;
+        collectedTax +=
+          (csvData[i].income - incomeMin) * taxRate * csvData[i].population;
         var indexNewIncome = closestIndex(csvData, newIncome);
         if (indexNewIncome !== i) {
           data[indexNewIncome].population += data[i].population;
           data[i].population = 0;
-        } 
+        }
       }
     }
     return [collectedTax, data];
   };
 
-
-  // distributes the collected money among the brackets below incomeMax and moves population accordingly
+  // Distributes the collected money among the brackets below incomeMax and moves population accordingly
   const giveToThePoor = (data, incomeMax, collectedTax) => {
-    var popUnderLimit = 0; // amount of pop under the tax limit(level4 (100dollars)) 
+    var popUnderLimit = 0; // amount of pop under the tax limit((100dollars))
     for (let i = 0; i < csvData.length; i++) {
       if (csvData[i].income <= incomeMax) {
         popUnderLimit += csvData[i].population;
       }
     }
-    // Tar ut pengar per person från insamlade pengar uttdelat på alla under incomeMax
     var popShare = collectedTax / popUnderLimit;
-    console.log("moneyShare/pop: " + popShare);
     for (let i = csvData.length - 1; i >= 0; i--) {
-        if (csvData[i].income <= incomeMax) {
-          // beräkna ny inkomst
-          const newIncome2 = csvData[i].income + popShare;
-          //hitta närmaste index till nya inkomsten för incomeBracket
-          var indexNewIncome = closestIndex(csvData, newIncome2);
-          // om nya närmaste incomeBracket är en annan en den vi behandlar just nu 
-          if (indexNewIncome !== i) {
-            data[indexNewIncome].population += data[i].population;
-            data[i].population = 0;
-          } 
+      if (csvData[i].income <= incomeMax) {
+        // Calculate new income
+        const newIncome2 = csvData[i].income + popShare;
+        // Find index of the incomebracket that is the closest match
+        var indexNewIncome = closestIndex(csvData, newIncome2);
+        // If the new income bracket is not the same as the original bracket, move the population
+        if (indexNewIncome !== i) {
+          data[indexNewIncome].population += data[i].population;
+          data[i].population = 0;
         }
+      }
     }
     return data;
   };
