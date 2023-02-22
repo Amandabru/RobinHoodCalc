@@ -21,12 +21,18 @@ const BoxSliders = ({ onTaxChange, taxRate }) => {
             min="0"
             max="1"
             step="0.001"
-            defaultValue={0}
+            value={taxRate / 100}
             onChange={(e) => {
               onTaxChange(e.target.value);
             }}
           />
-          <span style={{ border: "1px solid black", padding: "3px" }}>
+          <span
+            style={{
+              border: "1px solid black",
+              padding: "3px",
+              marginLeft: "15px",
+            }}
+          >
             {parseFloat(taxRate.toFixed(3))}%
           </span>
         </div>
@@ -87,6 +93,11 @@ const BoxSliders = ({ onTaxChange, taxRate }) => {
           />
         </div>
       </div>
+      <hr width="80%"></hr>
+      <h2 style={{ textAlign: "center", textDecoration: "underline" }}>
+        Individual Tax for Billionaires
+      </h2>
+      <span>coming soon :))</span>
     </div>
   );
 };
