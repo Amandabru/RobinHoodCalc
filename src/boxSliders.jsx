@@ -1,10 +1,17 @@
 import React from "react";
 import "./boxSlider.css";
 
-const BoxSliders = () => {
+const BoxSliders = ({ onTaxChange, taxRate }) => {
   return (
-    <div style={{ border: "1px solid black", width: "fit-content" }}>
-      <h2 style={{ textAlign: "center" }}>Take From The Rich</h2>
+    <div
+      style={{
+        border: "1px solid black",
+        width: "fit-content",
+      }}
+    >
+      <h2 style={{ textAlign: "center", textDecoration: "underline" }}>
+        Take From The Rich
+      </h2>
       <div className="boxSliderContainer">
         <label>100-1k $/day</label>
         <div>
@@ -15,7 +22,13 @@ const BoxSliders = () => {
             max="1"
             step="0.001"
             defaultValue={0}
+            onChange={(e) => {
+              onTaxChange(e.target.value);
+            }}
           />
+          <span style={{ border: "1px solid black", padding: "3px" }}>
+            {parseFloat(taxRate.toFixed(3))}%
+          </span>
         </div>
       </div>
 

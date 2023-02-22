@@ -2,14 +2,15 @@
   margin-left: 5em;
   margin-right: 5em;
   padding-bottom: 5%;
+  font-weight: bold;
 }
 
 .boxSlider {
   -webkit-appearance: none; /* Override default CSS styles */
-  width: 300px;
+  width: 250px;
   appearance: none;
   height: 15px; /* Specified height */
-  background: #d3d3d3; /* Grey background */
+  background: gainsboro; /* Grey background */
 }
 
 .boxSlider::-webkit-slider-thumb {
