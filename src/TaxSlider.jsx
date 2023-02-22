@@ -1,7 +1,7 @@
 import React from 'react';
 import './taxSlider.css';
 
-const TaxSlider = ({ onTaxChange, taxRate }) => {
+const TaxSlider = ({ onTaxChange, taxes }) => {
   return (
     <div
       style={{
@@ -32,7 +32,7 @@ const TaxSlider = ({ onTaxChange, taxRate }) => {
               marginLeft: '15px',
             }}
           >
-            {parseFloat((taxRate[1].taxRate * 100).toFixed(3))}%
+            {parseFloat((taxes[1].taxRate * 100).toFixed(3))}%
           </span>
         </div>
       </div>
@@ -57,7 +57,7 @@ const TaxSlider = ({ onTaxChange, taxRate }) => {
               marginLeft: '15px',
             }}
           >
-            {parseFloat((taxRate[2].taxRate * 100).toFixed(3))}%
+            {parseFloat((taxes[2].taxRate * 100).toFixed(3))}%
           </span>
         </div>
       </div>
@@ -82,7 +82,7 @@ const TaxSlider = ({ onTaxChange, taxRate }) => {
               marginLeft: '15px',
             }}
           >
-            {parseFloat((taxRate[3].taxRate * 100).toFixed(3))}%
+            {parseFloat((taxes[3].taxRate * 100).toFixed(3))}%
           </span>
         </div>
       </div>
@@ -107,7 +107,7 @@ const TaxSlider = ({ onTaxChange, taxRate }) => {
               marginLeft: '15px',
             }}
           >
-            {parseFloat((taxRate[4].taxRate * 100).toFixed(3))}%
+            {parseFloat((taxes[4].taxRate * 100).toFixed(3))}%
           </span>
         </div>
       </div>
@@ -132,7 +132,7 @@ const TaxSlider = ({ onTaxChange, taxRate }) => {
               marginLeft: '15px',
             }}
           >
-            {parseFloat((taxRate[5].taxRate * 100).toFixed(3))}%
+            {parseFloat((taxes[5].taxRate * 100).toFixed(3))}%
           </span>
         </div>
       </div>
@@ -140,7 +140,7 @@ const TaxSlider = ({ onTaxChange, taxRate }) => {
       <h2 style={{ textAlign: 'center', textDecoration: 'underline' }}>
         Individual Tax for Billionaires
       </h2>
-      <span>coming soon :))</span>
+      <span>coming soon</span>
     </div>
   );
 };
