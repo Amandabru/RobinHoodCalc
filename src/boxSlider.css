@@ -1,0 +1,22 @@
+.boxSliderContainer {
+  margin-left: 5em;
+  margin-right: 5em;
+  padding-bottom: 5%;
+}
+
+.boxSlider {
+  -webkit-appearance: none; /* Override default CSS styles */
+  width: 300px;
+  appearance: none;
+  height: 15px; /* Specified height */
+  background: #d3d3d3; /* Grey background */
+}
+
+.boxSlider::-webkit-slider-thumb {
+  -webkit-appearance: none; /* Override default look */
+  appearance: none;
+  width: 15px; /* Set a specific slider handle width */
+  height: 15px; /* Slider handle height */
+  background: black;
+  cursor: pointer; /* Cursor on hover */
+}

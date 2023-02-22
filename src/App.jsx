@@ -1,7 +1,8 @@
-import DataVis from './DataVis';
+import DataVis from "./DataVis";
+import BoxSliders from "./boxSliders";
 
 const App = () => {
-  return <DataVis />;
+  return <BoxSliders />;
 };
 
 export default App;
