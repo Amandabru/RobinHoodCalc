@@ -13,8 +13,8 @@ import {
 
 const AreaChartD3 = ({ data }) => {
   const svgRef = useRef();
-  const w = 700;
-  const h = 500;
+  const w = 500;
+  const h = 300;
 
   var minIncome = min(data, (d) => d.income);
   var maxIncome = max(data, (d) => d.income);

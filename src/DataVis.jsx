@@ -8,15 +8,26 @@ const csvUrl =
 
 const DataVis = () => {
   const [data, setData] = useState(null);
-  const [taxRate, setTaxRate] = useState(0);
+  const [taxRate, setTaxRate] = useState(null);
   const [csvData, setCsvData] = useState(null);
+
+  const updateTaxRate = (bracketId, newTaxRate) => {
+    var taxRates = { ...taxRate };
+    taxRates[bracketId].taxRate = newTaxRate;
+    setTaxRate(taxRates);
+  };
 
   // Collects money(tax) from the people above the incomeMin and moves population down the brackets accordingly
   // Returns the money and the modified data
-  const collectFromTheRich = (data, incomeMin) => {
-    var collectedTax = 0;
+  const collectFromTheRich = (
+    data,
+    collectedTax,
+    incomeMin,
+    incomeMax,
+    taxRate
+  ) => {
     for (let i = 0; i < csvData.length; i++) {
-      if (csvData[i].income > incomeMin) {
+      if (incomeMin < csvData[i].income && csvData[i].income < incomeMax) {
         const newIncome =
           csvData[i].income - (csvData[i].income - incomeMin) * taxRate;
         collectedTax +=
@@ -32,7 +43,7 @@ const DataVis = () => {
   };
 
   // distributes the collected money among the brackets below incomeMax and moves population accordingly
-  const giveToThePoor = (data, collectedTax) => {
+  const bringOutOfPoverty = (data, collectedTax) => {
     for (let i = 0; i < csvData.length; i++) {
       var incomeDiff = data[i + 1].income - data[i].income;
       if (collectedTax >= data[i].population * incomeDiff) {
@@ -40,13 +51,12 @@ const DataVis = () => {
         data[i + 1].population += data[i].population;
         data[i].population = 0;
       } else {
-        /*
         data[i + 1].population += Math.floor(
           collectedTax / (data[i + 1].income - data[i].income)
         );
         data[i].population -= Math.floor(
           collectedTax / (data[i + 1].income - data[i].income)
-        );*/
+        );
         return data;
       }
     }
@@ -54,17 +64,21 @@ const DataVis = () => {
   };
 
   const updateData = () => {
-    const taxBreakPoint = 100;
     var newData = csvData.map((a) => {
       return { ...a };
     });
-    var [collectedTax, newData] = collectFromTheRich(newData, taxBreakPoint);
-    newData = giveToThePoor(newData, collectedTax);
-    let testPop = 0;
-    for (let i = 0; i < csvData.length; i++) {
-      testPop += newData[i].population;
+    var collectedTax = 0;
+    for (let i = 1; i < 6; i++) {
+      var [taxContribution, newData] = collectFromTheRich(
+        newData,
+        collectedTax,
+        taxRate[i].incomeMin,
+        taxRate[i].incomeMax,
+        taxRate[i].taxRate
+      );
+      collectedTax = taxContribution;
     }
-    console.log(testPop);
+    newData = bringOutOfPoverty(newData, collectedTax);
     setData(newData);
   };
 
@@ -75,6 +89,14 @@ const DataVis = () => {
         population: +d.population,
       };
     }).then(setCsvData);
+    var bracketTaxes = {
+      1: { id: 1, incomeMin: 100, incomeMax: 200, taxRate: 0 },
+      2: { id: 2, incomeMin: 200, incomeMax: 10000, taxRate: 0 },
+      3: { id: 3, incomeMin: 10000, incomeMax: 100000, taxRate: 0 },
+      4: { id: 4, incomeMin: 100000, incomeMax: 1000000, taxRate: 0 },
+      5: { id: 5, incomeMin: 1000000, incomeMax: 30000000, taxRate: 0 },
+    };
+    setTaxRate(bracketTaxes);
   }, []);
 
   useEffect(() => {
@@ -91,8 +113,8 @@ const DataVis = () => {
     <>
       <AreaChartD3 data={data ? data : csvData} />
       <TaxSlider
-        onTaxChange={(taxRate) => setTaxRate(taxRate)}
-        taxRate={taxRate * 100}
+        onTaxChange={(bracketId, taxRate) => updateTaxRate(bracketId, taxRate)}
+        taxRate={taxRate ? taxRate : 0}
       />
     </>
   );
