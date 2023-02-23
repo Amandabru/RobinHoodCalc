@@ -1,3 +1,4 @@
+/*Sliders*/
 .boxSliderContainer {
   margin-left: 5em;
   margin-right: 5em;
@@ -6,22 +7,23 @@
 }
 
 .boxSlider {
-  -webkit-appearance: none; /* Override default CSS styles */
+  -webkit-appearance: none;
   width: 250px;
   appearance: none;
-  height: 15px; /* Specified height */
-  background: gainsboro; /* Grey background */
+  height: 15px;
+  background: gainsboro;
 }
 
 .boxSlider::-webkit-slider-thumb {
-  -webkit-appearance: none; /* Override default look */
+  -webkit-appearance: none;
   appearance: none;
-  width: 15px; /* Set a specific slider handle width */
-  height: 15px; /* Slider handle height */
+  width: 15px;
+  height: 15px;
   background: black;
   cursor: pointer;
 }
 
+/*Box showing tax-percentage*/
 .percentageBox {
   border: 1px solid black;
   padding: 3px;
