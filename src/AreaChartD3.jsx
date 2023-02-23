@@ -9,6 +9,7 @@ import {
   axisBottom,
   axisLeft,
   curveMonotoneX,
+  brushX
 } from 'd3';
 
 const AreaChartD3 = ({ data }) => {
@@ -66,6 +67,7 @@ const AreaChartD3 = ({ data }) => {
 
     svg.append('g').call(yAxis);
 
+<<<<<<< Updated upstream
     /*
     svg
       .selectAll('circle')
@@ -76,12 +78,22 @@ const AreaChartD3 = ({ data }) => {
       .attr('cy', (value) => yScale(value.population))
       .attr('stroke', 'red')
       .attr('fill', 'black');*/
+=======
+    // brush
+    const brush = brushX()
+      .extent([[0,0], [w,h]]);
+
+    svg.select(".brush").call(brush).call(brush.move, [1,100]);
+
+>>>>>>> Stashed changes
   }, [data]);
 
   return (
-    <>
-      <svg ref={svgRef}></svg>
-    </>
+    <React.Fragment>
+      <svg ref={svgRef}>
+        <g className = "brush" />
+      </svg>
+    </React.Fragment>
   );
 };
 export default AreaChartD3;
