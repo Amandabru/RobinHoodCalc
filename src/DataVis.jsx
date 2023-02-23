@@ -79,6 +79,14 @@ const DataVis = () => {
       taxes
     );
     newData = giveToThePoor(newData, collectedTax);
+    var totPopulation = 0;
+    // make percentage
+    for (let i = 0; i < newData.length; i++) {
+      totPopulation += newData[i].population;
+    }
+    for (let i = 0; i < newData.length; i++) {
+      newData[i].population = newData[i].population / totPopulation;
+    }
     setData(newData);
   };
 
