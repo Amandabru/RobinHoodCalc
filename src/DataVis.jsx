@@ -79,7 +79,6 @@ const DataVis = () => {
       taxes
     );
     newData = giveToThePoor(newData, collectedTax);
-    console.log(newData);
     setData(newData);
   };
 
@@ -91,11 +90,11 @@ const DataVis = () => {
       };
     }).then(setCsvData);
     setTaxes({
-      1: { incomeMin: 10, incomeMax: 100, taxRate: 0 },
-      2: { incomeMin: 100, incomeMax: 1000, taxRate: 0 },
-      3: { incomeMin: 1000, incomeMax: 10000, taxRate: 0 },
-      4: { incomeMin: 10000, incomeMax: 100000, taxRate: 0 },
-      5: { incomeMin: 100000, incomeMax: 3000000, taxRate: 0 },
+      1: { incomeMin: 100, incomeMax: 1000, taxRate: 0 },
+      2: { incomeMin: 1000, incomeMax: 10000, taxRate: 0 },
+      3: { incomeMin: 10000, incomeMax: 100000, taxRate: 0 },
+      4: { incomeMin: 100000, incomeMax: 1000000, taxRate: 0 },
+      5: { incomeMin: 1000000, incomeMax: 30000000, taxRate: 0 },
     });
   }, []);
 
