@@ -9,11 +9,22 @@ const BoxSliders = ({ onTaxChange, taxRate }) => {
         width: "fit-content",
       }}
     >
+      <button
+        style={{ cursor: "pointer" }}
+        onClick={() => {
+          onTaxChange(0);
+        }}
+      >
+        Clear All
+      </button>
+
       <h2 style={{ textAlign: "center", textDecoration: "underline" }}>
         Take From The Rich
       </h2>
+
       <div className="boxSliderContainer">
-        <label>100-1k $/day</label>
+        <label>Income of: 100-1k $/day</label>
+
         <div>
           <input
             className="boxSlider"
@@ -37,7 +48,6 @@ const BoxSliders = ({ onTaxChange, taxRate }) => {
           </span>
         </div>
       </div>
-
       <div className="boxSliderContainer">
         <label>1k-10k $/day</label>
         <div>
@@ -51,7 +61,6 @@ const BoxSliders = ({ onTaxChange, taxRate }) => {
           />
         </div>
       </div>
-
       <div className="boxSliderContainer">
         <label>10k-100k $/day</label>
         <div>
@@ -65,7 +74,6 @@ const BoxSliders = ({ onTaxChange, taxRate }) => {
           />
         </div>
       </div>
-
       <div className="boxSliderContainer">
         <label>100k-1M $/day</label>
         <div>
@@ -79,7 +87,6 @@ const BoxSliders = ({ onTaxChange, taxRate }) => {
           />
         </div>
       </div>
-
       <div className="boxSliderContainer">
         <label>1M $/day</label>
         <div>
