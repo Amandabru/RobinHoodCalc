@@ -10,7 +10,7 @@ const BoxSliders = ({ onTaxChange, taxRate }) => {
       }}
     >
       <button
-        style={{ cursor: "pointer" }}
+        style={{ cursor: "pointer", float: "right" }}
         onClick={() => {
           onTaxChange(0);
         }}
