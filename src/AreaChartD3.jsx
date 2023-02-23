@@ -13,8 +13,8 @@ import {
 
 const AreaChartD3 = ({ data }) => {
   const svgRef = useRef();
-  const w = 700;
-  const h = 500;
+  const w = 500;
+  const h = 300;
 
   var minIncome = min(data, (d) => d.income);
   var maxIncome = max(data, (d) => d.income);
@@ -66,7 +66,6 @@ const AreaChartD3 = ({ data }) => {
 
     svg.append('g').call(yAxis);
 
-    /*
     svg
       .selectAll('circle')
       .data(data)
@@ -75,7 +74,7 @@ const AreaChartD3 = ({ data }) => {
       .attr('cx', (value) => xScale(value.income))
       .attr('cy', (value) => yScale(value.population))
       .attr('stroke', 'red')
-      .attr('fill', 'black');*/
+      .attr('fill', 'black');
   }, [data]);
 
   return (
