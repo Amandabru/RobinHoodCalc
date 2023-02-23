@@ -10,7 +10,7 @@ const BoxSliders = ({ onTaxChange, taxRate }) => {
       }}
     >
       <button
-        style={{ cursor: "pointer", float: "right" }}
+        style={{ cursor: "pointer", float: "right", margin: "5px" }}
         onClick={() => {
           onTaxChange(0);
         }}
@@ -30,7 +30,7 @@ const BoxSliders = ({ onTaxChange, taxRate }) => {
           >
             ?
             <span className="infoText">
-              A tax for distributing money to people under income level 4
+              Tax different income levels within level 4
             </span>
           </div>
         </h2>
@@ -115,9 +115,27 @@ const BoxSliders = ({ onTaxChange, taxRate }) => {
 
       <hr width="80%"></hr>
 
-      <h2 style={{ textAlign: "center", textDecoration: "underline" }}>
-        Individual Tax for Billionaires
-      </h2>
+      <button style={{ cursor: "pointer", float: "right", margin: "5px" }}>
+        Clear All
+      </button>
+
+      <header style={{ position: "relative", textAlign: "center" }}>
+        <h2 style={{ textDecoration: "underline" }}>
+          Individual Tax for Billionaires
+          <div
+            className="info"
+            style={{
+              marginLeft: "10px",
+              color: "gray",
+            }}
+          >
+            ?
+            <span className="infoText">
+              Add specific billionaires to assign them individual taxes
+            </span>
+          </div>
+        </h2>
+      </header>
       <span>coming soon :))</span>
     </div>
   );
