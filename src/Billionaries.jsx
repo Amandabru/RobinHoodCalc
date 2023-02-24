@@ -42,7 +42,9 @@ const Billionaries = () => {
   useEffect(() => {
     console.log(data);
     if (data) {
-      var maxIncome = max(data, (d) => d.income);
+      var maxIncome = max(data, (d) => +d.income);
+      console.log(maxIncome);
+      console.log(data);
       const xScale = scaleLog().domain([1000000, maxIncome]).range([0, w]);
       const yScale = scaleLinear().domain([0, 3]).range([h, 0]);
 
@@ -81,7 +83,7 @@ const Billionaries = () => {
         .data(data)
         .join('circle')
         .attr('r', 20)
-        .attr('cx', (d) => xScale(d.income))
+        .attr('cx', (d) => xScale(+d.income))
         .attr('cy', function (d) {
           let counter = 0;
           for (const obj of data) {
