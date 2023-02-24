@@ -33,9 +33,11 @@ const AreaChartD3 = ({ data }) => {
 
     svg.selectAll('*').remove();
 
+    // scales
     const xScale = scaleLog().domain([minIncome, maxIncome]).range([0, w]);
     const yScale = scaleLinear().domain([minPop, maxPop]).range([h, 0]);
 
+    // area chart
     const generateScaledArea = area()
       .x((d) => xScale(d.income))
       .y0(h)
@@ -50,6 +52,7 @@ const AreaChartD3 = ({ data }) => {
       .attr('fill', '#ffca34')
       .attr('stroke', '#ffca34');
 
+    // extreme poverty line
     svg
       .append('line')
       .attr('stroke', 'grey')
@@ -59,6 +62,16 @@ const AreaChartD3 = ({ data }) => {
       .attr('y2', h)
       .style('stroke-dasharray', '3, 3');
 
+    svg
+      .append("text")
+      .attr("x", -270)
+      .attr("y", xScale(1.5))
+      .attr("font-size", 11)
+      .attr("fill", "grey")
+      .text("Extreme poverty")
+      .attr("transform", "rotate(-90)")
+
+    // axis
     const xAxis = axisBottom().scale(xScale);
 
     const yAxis = axisLeft().scale(yScale);
@@ -67,6 +80,7 @@ const AreaChartD3 = ({ data }) => {
 
     svg.append('g').call(yAxis);
 
+    // data circles
     svg
       .selectAll('circle')
       .data(data)
@@ -74,7 +88,8 @@ const AreaChartD3 = ({ data }) => {
       .attr('r', 1)
       .attr('cx', (value) => xScale(value.income))
       .attr('cy', (value) => yScale(value.population))
-      .attr('stroke', 'red')
+      .attr('stroke', 'red');
+
     // brush
     const brush = brushX()
       .extent([[0,0], [w,h]]);
