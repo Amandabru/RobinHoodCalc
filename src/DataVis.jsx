@@ -15,7 +15,21 @@ const DataVis = () => {
 
   const updateTaxes = (taxBracketNr, newTax) => {
     var newTaxes = { ...taxes };
+    /*
+    if ((taxBracketNr = 'all')) {
+      for (const taxBracketNr in taxes) {
+        newTaxes[taxBracketNr].taxRate = newTax;
+      }
+    }*/
     newTaxes[taxBracketNr].taxRate = newTax;
+    setTaxes(newTaxes);
+  };
+
+  const clearAllTAxes = () => {
+    var newTaxes = { ...taxes };
+    for (const taxBracketNr in taxes) {
+      newTaxes[taxBracketNr].taxRate = 0;
+    }
     setTaxes(newTaxes);
   };
 
@@ -120,15 +134,12 @@ const DataVis = () => {
   return (
     <>
       <AreaChartD3 data={data ? data : csvData} />
-      <TaxSlider
+      <BoxSliders
         onTaxChange={(taxBracketNr, newTax) =>
           updateTaxes(taxBracketNr, newTax)
         }
+        clearTaxes={() => clearAllTAxes()}
         taxes={taxes ? taxes : 0}
-      />
-      <BoxSliders
-        onTaxChange={(taxRate) => setTaxRate(taxRate)}
-        taxRate={taxRate * 100}
       />
     </>
   );

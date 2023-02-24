@@ -1,136 +1,159 @@
-import React from "react";
-import "./boxSlider.css";
+import React from 'react';
+import './boxSlider.css';
 
-const BoxSliders = ({ onTaxChange, taxRate }) => {
+const BoxSliders = ({ onTaxChange, clearAllTaxes, taxes }) => {
   return (
     <div
       style={{
-        border: "1px solid black",
-        width: "fit-content",
+        border: '1px solid black',
+        width: 'fit-content',
       }}
     >
       <button
-        style={{ cursor: "pointer", float: "right", margin: "5px" }}
+        style={{ cursor: 'pointer', float: 'right', margin: '5px' }}
         onClick={() => {
-          onTaxChange(0);
+          clearAllTaxes();
         }}
       >
         Clear All
       </button>
-
-      <header style={{ position: "relative", textAlign: "center" }}>
-        <h2 style={{ textDecoration: "underline" }}>
+      <header style={{ position: 'relative', textAlign: 'center' }}>
+        <h2 style={{ textDecoration: 'underline' }}>
           Take From The Rich
           <div
-            className="info"
+            className='info'
             style={{
-              marginLeft: "10px",
-              color: "gray",
+              marginLeft: '10px',
+              color: 'gray',
             }}
           >
             ?
-            <span className="infoText">
+            <span className='infoText'>
               Tax different income levels within level 4
             </span>
           </div>
         </h2>
       </header>
 
-      <div className="boxSliderContainer">
+      <div className='boxSliderContainer'>
         <label>Income of: 100-1k $/day</label>
 
         <div>
           <input
-            className="boxSlider"
-            type="range"
-            min="0"
-            max="1"
-            step="0.001"
-            value={taxRate / 100}
+            className='boxSlider'
+            type='range'
+            min='0'
+            max='1'
+            step='0.001'
+            value={taxes[1].taxRate}
             onChange={(e) => {
-              onTaxChange(e.target.value);
+              onTaxChange(1, e.target.value);
             }}
           />
-          <span className="percentageBox">
-            {parseFloat(taxRate.toFixed(3))}%
+          <span className='percentageBox'>
+            {parseFloat((taxes[1].taxRate * 100).toFixed(3))}%
           </span>
         </div>
       </div>
 
-      <div className="boxSliderContainer">
+      <div className='boxSliderContainer'>
         <label>1k-10k $/day</label>
         <div>
           <input
-            className="boxSlider"
-            type="range"
-            min="0"
-            max="1"
-            step="0.001"
-            defaultValue={0}
+            className='boxSlider'
+            type='range'
+            min='0'
+            max='1'
+            step='0.001'
+            value={taxes[2].taxRate}
+            onChange={(e) => {
+              onTaxChange(2, e.target.value);
+            }}
           />
+          <span className='percentageBox'>
+            {parseFloat((taxes[2].taxRate * 100).toFixed(3))}%
+          </span>
         </div>
       </div>
 
-      <div className="boxSliderContainer">
+      <div className='boxSliderContainer'>
         <label>10k-100k $/day</label>
         <div>
           <input
-            className="boxSlider"
-            type="range"
-            min="0"
-            max="1"
-            step="0.001"
-            defaultValue={0}
+            className='boxSlider'
+            type='range'
+            min='0'
+            max='1'
+            step='0.001'
+            value={taxes[3].taxRate}
+            onChange={(e) => {
+              onTaxChange(3, e.target.value);
+            }}
           />
+          <span className='percentageBox'>
+            {parseFloat((taxes[3].taxRate * 100).toFixed(3))}%
+          </span>
         </div>
       </div>
 
-      <div className="boxSliderContainer">
+      <div className='boxSliderContainer'>
         <label>100k-1M $/day</label>
         <div>
           <input
-            className="boxSlider"
-            type="range"
-            min="0"
-            max="1"
-            step="0.001"
-            defaultValue={0}
+            className='boxSlider'
+            type='range'
+            min='0'
+            max='1'
+            step='0.001'
+            value={taxes[4].taxRate}
+            onChange={(e) => {
+              onTaxChange(4, e.target.value);
+            }}
           />
+          <span className='percentageBox'>
+            {parseFloat((taxes[4].taxRate * 100).toFixed(3))}%
+          </span>
         </div>
       </div>
 
-      <div className="boxSliderContainer">
+      <div className='boxSliderContainer'>
         <label>1M $/day</label>
         <div>
           <input
-            className="boxSlider"
-            type="range"
-            min="0"
-            max="1"
-            step="0.001"
-            defaultValue={0}
+            className='boxSlider'
+            type='range'
+            min='0'
+            max='1'
+            step='0.001'
+            value={taxes[5].taxRate}
+            onChange={(e) => {
+              onTaxChange(5, e.target.value);
+            }}
           />
+          <span className='percentageBox'>
+            {parseFloat((taxes[5].taxRate * 100).toFixed(3))}%
+          </span>
         </div>
       </div>
 
-      <hr width="80%"></hr>
+      <hr width='80%'></hr>
 
-      <button style={{ cursor: "pointer", float: "right", margin: "5px" }}>
+      <button style={{ cursor: 'pointer', float: 'right', margin: '5px' }}>
         Clear All
       </button>
 
-      <header style={{ position: "relative", textAlign: "center" }}>
-        <h2 style={{ textDecoration: "underline" }}>
+      <header style={{ position: 'relative', textAlign: 'center' }}>
+        <h2 style={{ textDecoration: 'underline' }}>
           Individual Tax for Billionaires
           <div
-            className="info"
+            className='info'
             style={{
-              marginLeft: "10px",
-              color: "gray",
+              marginLeft: '10px',
+              color: 'gray',
             }}
           >
             ?
-            <span className="infoText">
+            <span className='infoText'>
               Add specific billionaires to assign them individual taxes
             </span>
           </div>
