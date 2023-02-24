@@ -44,6 +44,7 @@ const AreaChartD3 = ({ data }) => {
       .domain([0, 100])
       .range([h, 0]);
 
+    // area chart
     const generateScaledArea = area()
       .x((d) => xScale(d.income))
       .y0(h)
@@ -58,6 +59,7 @@ const AreaChartD3 = ({ data }) => {
       .attr("fill", "#ffca34")
       .attr("stroke", "#ffca34");
 
+    // extreme poverty line
     svg
       .append("line")
       .attr("stroke", "grey")
@@ -106,12 +108,23 @@ const AreaChartD3 = ({ data }) => {
       .attr("dy", ".75em")
       .text("Equality tax");
 
+    svg
+      .append("text")
+      .attr("x", -270)
+      .attr("y", xScale(1.5))
+      .attr("font-size", 11)
+      .attr("fill", "grey")
+      .text("Extreme poverty")
+      .attr("transform", "rotate(-90)");
+
+    // axis
     const xAxis = axisBottom().scale(xScale);
 
     const yAxisLeft = axisLeft().scale(yScaleLeft);
 
     const yAxisRight = axisRight().scale(yScaleRight);
 
+    // data circles
     svg
       .append("g")
       .call(xAxis)
