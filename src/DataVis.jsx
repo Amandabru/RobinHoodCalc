@@ -1,17 +1,18 @@
-import React, { useState, useEffect } from 'react';
-import { csv } from 'd3';
-import TaxSlider from './TaxSlider';
-import AreaChartD3 from './AreaChartD3';
-import closestIndex from './helpers';
-import BoxSliders from './boxSliders';
+import React, { useState, useEffect } from "react";
+import { csv } from "d3";
+import TaxSlider from "./TaxSlider";
+import AreaChartD3 from "./AreaChartD3";
+import closestIndex from "./helpers";
+import BoxSliders from "./boxSliders";
 
 const csvUrl =
-  'https://gist.githubusercontent.com/Amandabru/00e96eaa56143e6499d1c651bac03aa8/raw/58ce042b4504d9b660bb93693e47b966cc2eb34f/GapminderData.csv';
+  "https://gist.githubusercontent.com/Amandabru/00e96eaa56143e6499d1c651bac03aa8/raw/58ce042b4504d9b660bb93693e47b966cc2eb34f/GapminderData.csv";
 
 const DataVis = () => {
   const [data, setData] = useState(null);
   const [taxes, setTaxes] = useState(null);
   const [csvData, setCsvData] = useState(null);
+  const [ExtremePovertyCount, setExtremePovertyCount] = useState(788586497);
 
   const updateTaxes = (taxBracketNr, newTax) => {
     var newTaxes = { ...taxes };
@@ -95,6 +96,19 @@ const DataVis = () => {
     );
     newData = giveToThePoor(newData, collectedTax);
     var totPopulation = 0;
+
+    // Counter of People in Extreme Poverty
+
+    var peopleInExtremePoverty = 0;
+    for (let i = 0; i < csvData.length; i++) {
+      if (newData[i].income <= 2) {
+        peopleInExtremePoverty += newData[i].population;
+      } else {
+        break;
+      }
+    }
+    setExtremePovertyCount(peopleInExtremePoverty);
+
     // make percentage
     for (let i = 0; i < newData.length; i++) {
       totPopulation += newData[i].population;
@@ -106,7 +120,7 @@ const DataVis = () => {
   };
 
   useEffect(() => {
-    csv(csvUrl, function (d) {
+    csv(csvUrl, function(d) {
       return {
         income: +d.income,
         population: +d.population,
@@ -133,7 +147,10 @@ const DataVis = () => {
 
   return (
     <>
-      <AreaChartD3 data={data ? data : csvData} />
+      <AreaChartD3
+        data={data ? data : csvData}
+        ExtremePovertyCount={ExtremePovertyCount}
+      />
       <BoxSliders
         onTaxChange={(taxBracketNr, newTax) =>
           updateTaxes(taxBracketNr, newTax)
