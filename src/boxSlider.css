@@ -1,0 +1,59 @@
+/*Sliders*/
+.boxSliderContainer {
+  margin-left: 5em;
+  margin-right: 5em;
+  padding-bottom: 5%;
+  font-weight: bold;
+}
+
+.boxSlider {
+  -webkit-appearance: none;
+  width: 250px;
+  appearance: none;
+  height: 15px;
+  background: gainsboro;
+}
+
+.boxSlider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 15px;
+  height: 15px;
+  background: black;
+  cursor: pointer;
+}
+
+/*Box showing tax-percentage*/
+.percentageBox {
+  border: 1px solid black;
+  padding: 3px;
+  margin-left: 15px;
+  cursor: default;
+}
+
+/*PopUp*/
+.info {
+  position: relative;
+  display: inline-block;
+  cursor: default;
+}
+
+.info .infoText {
+  position: absolute;
+  left: 20px;
+  padding: 5px;
+  visibility: hidden;
+  width: 150px;
+  background-color: white;
+  color: black;
+  text-align: center;
+  border: 1px solid black;
+
+  /*Tillfällig fullösning angående fontstorleken i boxen*/
+  font-size: medium;
+  font-weight: 100;
+}
+
+.info:hover .infoText {
+  visibility: visible;
+}

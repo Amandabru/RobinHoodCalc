@@ -3,6 +3,7 @@ import { csv } from 'd3';
 import TaxSlider from './TaxSlider';
 import AreaChartD3 from './AreaChartD3';
 import closestIndex from './helpers';
+import BoxSliders from './boxSliders';
 
 const csvUrl =
   'https://gist.githubusercontent.com/Amandabru/00e96eaa56143e6499d1c651bac03aa8/raw/58ce042b4504d9b660bb93693e47b966cc2eb34f/GapminderData.csv';
@@ -124,6 +125,10 @@ const DataVis = () => {
           updateTaxes(taxBracketNr, newTax)
         }
         taxes={taxes ? taxes : 0}
+      />
+      <BoxSliders
+        onTaxChange={(taxRate) => setTaxRate(taxRate)}
+        taxRate={taxRate * 100}
       />
     </>
   );
