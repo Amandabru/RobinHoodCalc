@@ -7,6 +7,7 @@ const BoxSliders = ({ onTaxChange, taxRate }) => {
       <input
         type="number"
         value={parseFloat(taxRate.toFixed(3))}
+        onInput={(e) => (e.target.value = e.target.value.slice(0, 3))}
         onChange={(e) => {
           onTaxChange(e.target.value / 100);
         }}
