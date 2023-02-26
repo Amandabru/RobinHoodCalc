@@ -13,7 +13,7 @@ import {
   brushX,
 } from 'd3';
 
-const AreaChartD3 = ({ data }) => {
+const AreaChartD3 = ({ data, ExtremePovertyCount }) => {
   const svgRef = useRef();
   const w = 600;
   const h = 400;
@@ -34,7 +34,20 @@ const AreaChartD3 = ({ data }) => {
 
     svg.selectAll('*').remove();
 
-    const xScale = scaleLog().domain([minIncome, maxIncome]).range([0, w]);
+    const AxisXformat = [
+      '1',
+      '10',
+      '100',
+      '1000',
+      '10000',
+      '100000',
+      '1000000',
+      '10000000',
+      '100000000',
+    ];
+
+    let xScale = scaleLog().domain([minIncome, maxIncome]).range([0, w]).nice();
+
     const yScaleLeft = scaleLinear().domain([minPop, maxPop]).range([h, 0]);
     const yScaleRight = scaleLinear().domain([0, 100]).range([h, 0]);
 
@@ -108,11 +121,11 @@ const AreaChartD3 = ({ data }) => {
       .attr('y', xScale(1.5))
       .attr('font-size', 11)
       .attr('fill', 'grey')
-      .text('Extreme poverty')
+      .text('Extreme poverty: ' + ExtremePovertyCount)
       .attr('transform', 'rotate(-90)');
 
     // axis
-    const xAxis = axisBottom().scale(xScale);
+    const xAxis = axisBottom().scale(xScale).tickValues(AxisXformat);
 
     const yAxisLeft = axisLeft().scale(yScaleLeft);
 
@@ -125,14 +138,16 @@ const AreaChartD3 = ({ data }) => {
 
     svg.append('g').call(yAxisRight).attr('transform', `translate(${w}, 0)`);
 
-    svg
-      .selectAll('circle')
+    svg.append('g').call(yAxisRight).attr('transform', `translate(${w}, 0)`);
+
+    /*svg
+      .selectAll("circle")
       .data(data)
-      .join('circle')
-      .attr('r', 1)
-      .attr('cx', (value) => xScale(value.income))
-      .attr('cy', (value) => yScaleLeft(value.population))
-      .attr('stroke', 'red');
+      .join("circle")
+      .attr("r", 1)
+      .attr("cx", (value) => xScale(value.income))
+      .attr("cy", (value) => yScaleLeft(value.population))
+      .attr("stroke", "red");*/
     // brush
     const brush = brushX().extent([
       [0, 0],
