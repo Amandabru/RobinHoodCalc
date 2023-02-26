@@ -9,15 +9,9 @@ const BoxSliders = ({ onTaxChange, clearAllTaxes, taxes }) => {
         width: 'fit-content',
       }}
     >
-      <button
-        style={{ cursor: 'pointer', float: 'right', margin: '5px' }}
-        onClick={() => {
-          clearAllTaxes();
-        }}
+      <header
+        style={{ position: 'relative', textAlign: 'center', padding: '15px' }}
       >
-        Clear All
-      </button>
-      <header style={{ position: 'relative', textAlign: 'center' }}>
         <h2 style={{ textDecoration: 'underline' }}>
           Take From The Rich
           <div
@@ -32,6 +26,14 @@ const BoxSliders = ({ onTaxChange, clearAllTaxes, taxes }) => {
               Tax different income levels within level 4
             </span>
           </div>
+          <button
+            style={{ cursor: 'pointer', float: 'right', marginLeft: '1rem' }}
+            onClick={() => {
+              clearAllTaxes();
+            }}
+          >
+            Clear All
+          </button>
         </h2>
       </header>
 

@@ -4,6 +4,7 @@ import TaxSlider from './TaxSlider';
 import AreaChartD3 from './AreaChartD3';
 import closestIndex from './helpers';
 import BoxSliders from './boxSliders';
+import './dataVis.css';
 
 const csvUrl =
   'https://gist.githubusercontent.com/Amandabru/00e96eaa56143e6499d1c651bac03aa8/raw/58ce042b4504d9b660bb93693e47b966cc2eb34f/GapminderData.csv';
@@ -15,12 +16,6 @@ const DataVis = () => {
 
   const updateTaxes = (taxBracketNr, newTax) => {
     var newTaxes = { ...taxes };
-    /*
-    if ((taxBracketNr = 'all')) {
-      for (const taxBracketNr in taxes) {
-        newTaxes[taxBracketNr].taxRate = newTax;
-      }
-    }*/
     newTaxes[taxBracketNr].taxRate = newTax;
     setTaxes(newTaxes);
   };
@@ -132,7 +127,7 @@ const DataVis = () => {
   }
 
   return (
-    <>
+    <div className='taxTheRichContainer'>
       <AreaChartD3 data={data ? data : csvData} />
       <BoxSliders
         onTaxChange={(taxBracketNr, newTax) =>
@@ -141,7 +136,7 @@ const DataVis = () => {
         clearTaxes={() => clearAllTAxes()}
         taxes={taxes ? taxes : 0}
       />
-    </>
+    </div>
   );
 };
 
