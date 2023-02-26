@@ -30,6 +30,7 @@ const BoxSliders = ({ onTaxChange, clearAllTaxes, taxes }) => {
             style={{ cursor: 'pointer', float: 'right', marginLeft: '1rem' }}
             onClick={() => {
               clearAllTaxes();
+              console.log('cleared');
             }}
           >
             Clear All

@@ -84,7 +84,7 @@ const AreaChartD3 = ({ data, ExtremePovertyCount }) => {
       .attr('text-anchor', 'end')
       .attr('x', w)
       .attr('y', h + 35)
-      .text('Income (dollar per day)');
+      .text('Income ($/day)');
 
     // left y axis label
     var axisLabelXLeft = -35;
@@ -113,15 +113,15 @@ const AreaChartD3 = ({ data, ExtremePovertyCount }) => {
       .attr('text-anchor', 'middle')
       .attr('y', 6)
       .attr('dy', '.75em')
-      .text('Equality tax');
+      .text('Equality tax (%)');
 
     svg
       .append('text')
       .attr('x', -270)
       .attr('y', xScale(1.5))
-      .attr('font-size', 11)
-      .attr('fill', 'grey')
-      .text('Extreme poverty: ' + ExtremePovertyCount)
+      .attr('font-size', 13)
+      .attr('fill', 'black')
+      .text('People in extreme poverty: ' + ExtremePovertyCount)
       .attr('transform', 'rotate(-90)');
 
     // axis

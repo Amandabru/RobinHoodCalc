@@ -150,7 +150,7 @@ const DataVis = () => {
         onTaxChange={(taxBracketNr, newTax) =>
           updateTaxes(taxBracketNr, newTax)
         }
-        clearTaxes={() => clearAllTAxes()}
+        clearAllTaxes={() => clearAllTAxes()}
         taxes={taxes ? taxes : 0}
       />
     </div>
