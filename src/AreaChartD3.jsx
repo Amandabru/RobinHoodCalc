@@ -115,7 +115,7 @@ const AreaChartD3 = ({ data, ExtremePovertyCount }) => {
       .attr("text-anchor", "middle")
       .attr("y", 6)
       .attr("dy", ".75em")
-      .text("Robinhood tax (%)");
+      .text("Robin Hood tax (%)");
 
     svg
       .append("text")
