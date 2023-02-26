@@ -1,0 +1,64 @@
+.boxSliderContainer {
+  margin-left: 3em;
+  margin-right: 3em;
+  padding-bottom: 5%;
+  float:left;
+}
+
+.boxsliderOwner {
+  display:flex;
+}
+
+/*
+.boxSlider {
+  -webkit-appearance: none;
+  width: 15px;
+  appearance: slider-vertical;
+  height: 150px; /* Specified height
+  background: none; /* Grey background */
+  /*
+}
+.boxSlider::-webkit-slider-thumb {
+  border: 2px solid #F27B7F;
+  height: 15px;
+  width: 15px;
+  border-radius: 0px;
+  background: #FF96AB;
+  cursor: pointer;
+  -webkit-appearance: none;
+}
+*/
+
+.boxSlider{
+  -webkit-appearance: none;
+  width: 15px;
+  appearance: slider-vertical; 
+  /* transform: rotate(270deg); */
+  height:100px; 
+  background: transparent; /* Otherwise white in Chrome */
+}
+.boxSlider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  border: 1px solid #000000;
+  height: 36px;
+  width: 16px;
+  border-radius: 3px;
+  background: #ffffff;
+  cursor: pointer;
+  margin-top: -14px; /* You need to specify a margin in Chrome, but in Firefox and IE it is automatic */
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d; /* Add cool effects to your sliders! */
+}
+
+.boxSlider:focus {
+  outline: none; /* Removes the blue border. You should probably do some kind of focus styling for accessibility reasons though. */
+}
+
+.boxSlider::-ms-track {
+  width: 15px;
+  cursor: pointer;
+
+  /* Hides the slider so custom styles can be added */
+  background: transparent; 
+  border-color: transparent;
+  color: #301b95;
+}
