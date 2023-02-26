@@ -119,8 +119,8 @@ const AreaChartD3 = ({ data, ExtremePovertyCount }) => {
       .append('text')
       .attr('x', -270)
       .attr('y', xScale(1.5))
-      .attr('font-size', 13)
-      .attr('fill', 'black')
+      .attr('font-size', 14)
+      .attr('fill', 'gray')
       .text('People in extreme poverty: ' + ExtremePovertyCount)
       .attr('transform', 'rotate(-90)');
 
