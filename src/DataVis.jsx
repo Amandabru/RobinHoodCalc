@@ -1,12 +1,13 @@
-import React, { useState, useEffect } from "react";
-import { csv } from "d3";
-import TaxSlider from "./TaxSlider";
-import AreaChartD3 from "./AreaChartD3";
-import closestIndex from "./helpers";
-import BoxSliders from "./boxSliders";
+import React, { useState, useEffect } from 'react';
+import { csv } from 'd3';
+import TaxSlider from './TaxSlider';
+import AreaChartD3 from './AreaChartD3';
+import closestIndex from './helpers';
+import BoxSliders from './boxSliders';
+import './dataVis.css';
 
 const csvUrl =
-  "https://gist.githubusercontent.com/Amandabru/00e96eaa56143e6499d1c651bac03aa8/raw/58ce042b4504d9b660bb93693e47b966cc2eb34f/GapminderData.csv";
+  'https://gist.githubusercontent.com/Amandabru/00e96eaa56143e6499d1c651bac03aa8/raw/58ce042b4504d9b660bb93693e47b966cc2eb34f/GapminderData.csv';
 
 const DataVis = () => {
   const [data, setData] = useState(null);
@@ -114,7 +115,7 @@ const DataVis = () => {
   };
 
   useEffect(() => {
-    csv(csvUrl, function(d) {
+    csv(csvUrl, function (d) {
       return {
         income: +d.income,
         population: +d.population,
@@ -140,7 +141,7 @@ const DataVis = () => {
   }
 
   return (
-    <>
+    <div className='taxTheRichContainer'>
       <AreaChartD3
         data={data ? data : csvData}
         ExtremePovertyCount={ExtremePovertyCount}
