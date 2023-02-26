@@ -1,0 +1,9 @@
+.howToUseContainer {
+  width: 50%;
+}
+
+.howToUseContainer > h1,
+h2,
+p {
+  margin: 1rem;
+}
