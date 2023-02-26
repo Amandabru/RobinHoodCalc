@@ -6,7 +6,7 @@ const Header = () => {
   return (
     <div className='header'>
       <Link className='link link1' to='/'>
-        TAX THE RICH
+        ROBIN HOOD CALCULATOR
       </Link>
       <Link className='link link2' to='/how-to-use'>
         HOW TO USE
