@@ -54,9 +54,21 @@ const BoxSliders = ({ onTaxChange, clearAllTaxes, taxes }) => {
               onTaxChange(1, e.target.value);
             }}
           />
-          <span className="percentageBox">
-            {parseFloat((taxes[1].taxRate * 100).toFixed(3))}%
-          </span>
+          <input
+            className="percentageBox"
+            type="text"
+            inputMode="numeric"
+            value={parseFloat((taxes[1].taxRate * 100).toFixed(0))}
+            onInput={(e) => {
+              if (e.target.value >= 100) {
+                e.target.value = 100;
+              }
+            }}
+            onChange={(e) => {
+              onTaxChange(1, e.target.value / 100);
+            }}
+          />
+          <span> % </span>
         </div>
       </div>
 
@@ -74,9 +86,21 @@ const BoxSliders = ({ onTaxChange, clearAllTaxes, taxes }) => {
               onTaxChange(2, e.target.value);
             }}
           />
-          <span className="percentageBox">
-            {parseFloat((taxes[2].taxRate * 100).toFixed(3))}%
-          </span>
+          <input
+            className="percentageBox"
+            type="text"
+            inputMode="numeric"
+            value={parseFloat((taxes[2].taxRate * 100).toFixed(0))}
+            onInput={(e) => {
+              if (e.target.value >= 100) {
+                e.target.value = 100;
+              }
+            }}
+            onChange={(e) => {
+              onTaxChange(2, e.target.value / 100);
+            }}
+          />
+          <span> % </span>
         </div>
       </div>
 
@@ -94,9 +118,21 @@ const BoxSliders = ({ onTaxChange, clearAllTaxes, taxes }) => {
               onTaxChange(3, e.target.value);
             }}
           />
-          <span className="percentageBox">
-            {parseFloat((taxes[3].taxRate * 100).toFixed(3))}%
-          </span>
+          <input
+            className="percentageBox"
+            type="text"
+            inputMode="numeric"
+            value={parseFloat((taxes[3].taxRate * 100).toFixed(0))}
+            onInput={(e) => {
+              if (e.target.value >= 100) {
+                e.target.value = 100;
+              }
+            }}
+            onChange={(e) => {
+              onTaxChange(3, e.target.value / 100);
+            }}
+          />
+          <span> % </span>
         </div>
       </div>
 
@@ -114,9 +150,21 @@ const BoxSliders = ({ onTaxChange, clearAllTaxes, taxes }) => {
               onTaxChange(4, e.target.value);
             }}
           />
-          <span className="percentageBox">
-            {parseFloat((taxes[4].taxRate * 100).toFixed(3))}%
-          </span>
+          <input
+            className="percentageBox"
+            type="text"
+            inputMode="numeric"
+            value={parseFloat((taxes[4].taxRate * 100).toFixed(0))}
+            onInput={(e) => {
+              if (e.target.value >= 100) {
+                e.target.value = 100;
+              }
+            }}
+            onChange={(e) => {
+              onTaxChange(4, e.target.value / 100);
+            }}
+          />
+          <span> % </span>
         </div>
       </div>
 
@@ -134,9 +182,21 @@ const BoxSliders = ({ onTaxChange, clearAllTaxes, taxes }) => {
               onTaxChange(5, e.target.value);
             }}
           />
-          <span className="percentageBox">
-            {parseFloat((taxes[5].taxRate * 100).toFixed(3))}%
-          </span>
+          <input
+            className="percentageBox"
+            type="text"
+            inputMode="numeric"
+            value={parseFloat((taxes[5].taxRate * 100).toFixed(0))}
+            onInput={(e) => {
+              if (e.target.value >= 100) {
+                e.target.value = 100;
+              }
+            }}
+            onChange={(e) => {
+              onTaxChange(5, e.target.value / 100);
+            }}
+          />
+          <span> % </span>
         </div>
       </div>
 

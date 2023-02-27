@@ -25,10 +25,9 @@
 
 /*Box showing tax-percentage*/
 .percentageBox {
-  border: 1px solid black;
-  padding: 3px;
-  margin-left: 15px;
-  cursor: default;
+  width: 4ch;
+  text-align: center;
+  margin-left: 5px;
 }
 
 /*PopUp*/
