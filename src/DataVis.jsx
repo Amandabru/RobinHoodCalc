@@ -1,20 +1,19 @@
-import React, { useState, useEffect } from "react";
-import { csv } from "d3";
-import TaxSlider from "./TaxSlider";
-import AreaChartD3 from "./AreaChartD3";
-import closestIndex from "./helpers";
-import BoxSliders from "./boxSliders";
-import "./dataVis.css";
+import React, { useState, useEffect } from 'react';
+import { csv } from 'd3';
+import TaxSlider from './TaxSlider';
+import AreaChartD3 from './AreaChartD3';
+import closestIndex from './helpers';
+import BoxSliders from './boxSliders';
+import './dataVis.css';
 
 const csvUrl =
-  "https://gist.githubusercontent.com/Amandabru/00e96eaa56143e6499d1c651bac03aa8/raw/58ce042b4504d9b660bb93693e47b966cc2eb34f/GapminderData.csv";
+  'https://gist.githubusercontent.com/Amandabru/00e96eaa56143e6499d1c651bac03aa8/raw/58ce042b4504d9b660bb93693e47b966cc2eb34f/GapminderData.csv';
 
 const DataVis = () => {
   const [data, setData] = useState(null);
   const [taxes, setTaxes] = useState(null);
   const [csvData, setCsvData] = useState(null);
   const [ExtremePovertyCount, setExtremePovertyCount] = useState(9);
-  const [csvDataPercentage, setCsvDataPercentage] = useState(null);
 
   const updateTaxes = (taxBracketNr, newTax) => {
     var newTaxes = { ...taxes };
@@ -30,7 +29,7 @@ const DataVis = () => {
     setTaxes(newTaxes);
   };
 
-  // make precentage of default data
+  // transform data into percentages
   const makePercentage = (data) => {
     var newDataPercentage = data.map((a) => {
       return { ...a };
@@ -41,7 +40,7 @@ const DataVis = () => {
     }
     for (let i = 0; i < newDataPercentage.length; i++) {
       newDataPercentage[i].population =
-        newDataPercentage[i].population / totPopulation;
+        (newDataPercentage[i].population / totPopulation) * 100;
     }
     return newDataPercentage;
   };
@@ -110,7 +109,6 @@ const DataVis = () => {
     var totPopulation = 0;
 
     // Counter of People in Extreme Poverty
-
     var peopleInExtremePoverty = 0;
     for (let i = 0; i < csvData.length; i++) {
       if (newData[i].income <= 2) {
@@ -120,12 +118,8 @@ const DataVis = () => {
       }
     }
 
-    // make percentage
     for (let i = 0; i < newData.length; i++) {
       totPopulation += newData[i].population;
-    }
-    for (let i = 0; i < newData.length; i++) {
-      newData[i].population = newData[i].population / totPopulation;
     }
     setExtremePovertyCount(
       Math.floor((peopleInExtremePoverty / totPopulation) * 100)
@@ -134,7 +128,7 @@ const DataVis = () => {
   };
 
   useEffect(() => {
-    csv(csvUrl, function(d) {
+    csv(csvUrl, function (d) {
       return {
         income: +d.income,
         population: +d.population,
@@ -152,7 +146,6 @@ const DataVis = () => {
   useEffect(() => {
     if (csvData) {
       updateData();
-      setCsvDataPercentage(makePercentage(csvData));
     }
   }, [taxes]);
 
@@ -161,9 +154,13 @@ const DataVis = () => {
   }
 
   return (
-    <div className="taxTheRichContainer">
+    <div className='taxTheRichContainer'>
       <AreaChartD3
-        data={data ? [data, csvDataPercentage] : [csvData, csvData]}
+        data={
+          data
+            ? [makePercentage(data), makePercentage(csvData)]
+            : [makePercentage(csvData), makePercentage(csvData)]
+        }
         ExtremePovertyCount={ExtremePovertyCount}
       />
       <BoxSliders
