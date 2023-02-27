@@ -14,6 +14,7 @@ const DataVis = () => {
   const [taxes, setTaxes] = useState(null);
   const [csvData, setCsvData] = useState(null);
   const [ExtremePovertyCount, setExtremePovertyCount] = useState(788586497);
+  const [csvDataPercentage, setCsvDataPercentage] = useState(null);
 
   const updateTaxes = (taxBracketNr, newTax) => {
     var newTaxes = { ...taxes };
@@ -28,6 +29,22 @@ const DataVis = () => {
     }
     setTaxes(newTaxes);
   };
+
+  // make precentage of default data
+  const makePercentage = (data) =>{
+    var newDataPercentage = data.map((a) => {
+      return { ...a };
+    });
+    var totPopulation = 0
+    for (let i = 0; i < newDataPercentage.length; i++) {
+      totPopulation += newDataPercentage[i].population;
+    }
+    for (let i = 0; i < newDataPercentage.length; i++) {
+      newDataPercentage[i].population = newDataPercentage[i].population / totPopulation;
+    }
+    return newDataPercentage;
+  }
+
 
   // Collects money(tax) from the people above the incomeMin and moves population down the brackets accordingly
   // Returns the money and the modified data
@@ -133,6 +150,7 @@ const DataVis = () => {
   useEffect(() => {
     if (csvData) {
       updateData();
+      setCsvDataPercentage(makePercentage(csvData));
     }
   }, [taxes]);
 
@@ -143,7 +161,7 @@ const DataVis = () => {
   return (
     <div className='taxTheRichContainer'>
       <AreaChartD3
-        data={data ? data : csvData}
+        data={data? [data, csvDataPercentage] : [csvData, csvData]}
         ExtremePovertyCount={ExtremePovertyCount}
       />
       <BoxSliders
