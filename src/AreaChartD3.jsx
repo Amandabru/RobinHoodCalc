@@ -11,11 +11,10 @@ import {
   axisRight,
   curveMonotoneX,
   brushX,
-  selectAll
+  selectAll,
 } from "d3";
 
-
-const AreaChartD3 = ({ data,  ExtremePovertyCount }) => {
+const AreaChartD3 = ({ data, ExtremePovertyCount }) => {
   const changingData = data[0];
   const defaultData = data[1];
   const svgRef = useRef();
@@ -28,7 +27,6 @@ const AreaChartD3 = ({ data,  ExtremePovertyCount }) => {
   var minPop = min(changingData, (d) => d.population);
 
   useEffect(() => {
-
     const svg = select(svgRef.current)
       .attr("width", w)
       .attr("height", h)
@@ -63,18 +61,21 @@ const AreaChartD3 = ({ data,  ExtremePovertyCount }) => {
       .range([h, 0]);
 
     // remove
-    selectAll('#axis').remove();
-    selectAll('#chagningArea').remove();
-    selectAll('#poverty').remove();
-    selectAll('#defaultArea').remove();
-  
+    selectAll("#axis").remove();
+    selectAll("#chagningArea").remove();
+    selectAll("#poverty").remove();
+    selectAll("#defaultArea").remove();
+
     //brush
-    const brush = brushX().extent([[0,0], [w,h]]);
+    const brush = brushX().extent([
+      [0, 0],
+      [w, h],
+    ]);
 
     svg
       .select(".brush")
       .call(brush)
-      .call(brush.move, [0, 0]);    
+      .call(brush.move, [0, 0]);
 
     // x axis label
     svg
@@ -84,7 +85,7 @@ const AreaChartD3 = ({ data,  ExtremePovertyCount }) => {
       .attr("text-anchor", "end")
       .attr("x", w)
       .attr("y", h + 35)
-      .text("Income (dollar per day)")
+      .text("Income ($/day)")
       .attr("id", "axis");
 
     // left y axis label
@@ -104,65 +105,61 @@ const AreaChartD3 = ({ data,  ExtremePovertyCount }) => {
       .attr("id", "axis");
 
     // right yaxis lable
-    var axisLabelXRight = w + 30;
     svg
       .append("text")
-      .attr(
-        "transform",
-        "translate(" + axisLabelXRight + ", " + axisLabelY + ")"
-      )
+      .attr("transform", "translate(" + w + ", " + axisLabelY + ")")
       .attr("class", "y label")
       .attr("text-anchor", "middle")
       .attr("y", 6)
       .attr("dy", ".75em")
-      .text("Equality tax")
+      .text("Robin Hood tax (%)")
       .attr("id", "axis");
 
     // Default chart
- 
-    const generateDefaultArea = area()
-    .x((d) => xScale(d.income))
-    .y0(h)
-    .y1((val) => yScaleLeft(val.population))
-    .curve(curveMonotoneX);
 
-  svg
-    .selectAll('#defaultArea')
-    .data([defaultData])
-    .enter()
-    .append('path')
-    .attr('d', (d) => generateDefaultArea(d))
-    .attr('fill', '#ffca34')
-    .attr('stroke', '#ffca34')
-    .style("opacity", "0.4")
-    .attr("id", "defaultArea");
+    const generateDefaultArea = area()
+      .x((d) => xScale(d.income))
+      .y0(h)
+      .y1((val) => yScaleLeft(val.population))
+      .curve(curveMonotoneX);
+
+    svg
+      .selectAll("#defaultArea")
+      .data([defaultData])
+      .enter()
+      .append("path")
+      .attr("d", (d) => generateDefaultArea(d))
+      .attr("fill", "#ffca34")
+      .attr("stroke", "#ffca34")
+      .style("opacity", "0.4")
+      .attr("id", "defaultArea");
 
     // area chart
     const generateScaledArea = area()
-    .x((d) => xScale(d.income))
-    .y0(h)
-    .y1((val) => yScaleLeft(val.population))
-    .curve(curveMonotoneX);
+      .x((d) => xScale(d.income))
+      .y0(h)
+      .y1((val) => yScaleLeft(val.population))
+      .curve(curveMonotoneX);
 
     svg
-      .selectAll('#chagningArea')
+      .selectAll("#chagningArea")
       .data([changingData])
       .enter()
-      .append('path')
-      .attr('d', (d) => generateScaledArea(d))
-      .attr('fill', '#ffca34')
-      .attr('stroke', '#ffca34')
+      .append("path")
+      .attr("d", (d) => generateScaledArea(d))
+      .attr("fill", "#ffca34")
+      .attr("stroke", "#ffca34")
       .attr("id", "chagningArea");
 
     // extreme poverty line
     svg
-      .append('line')
-      .attr('stroke', 'grey')
-      .attr('x1', xScale(2))
-      .attr('y1', 0)
-      .attr('x2', xScale(2))
-      .attr('y2', h)
-      .style('stroke-dasharray', '3, 3')
+      .append("line")
+      .attr("stroke", "grey")
+      .attr("x1", xScale(2))
+      .attr("y1", 0)
+      .attr("x2", xScale(2))
+      .attr("y2", h)
+      .style("stroke-dasharray", "3, 3")
       .attr("id", "poverty");
 
     svg
@@ -172,6 +169,16 @@ const AreaChartD3 = ({ data,  ExtremePovertyCount }) => {
       .attr("font-size", 11)
       .attr("fill", "grey")
       .text("Extreme poverty: " + ExtremePovertyCount)
+      .attr("transform", "rotate(-90)")
+      .attr("id", "poverty");
+
+    svg
+      .append("text")
+      .attr("x", -183)
+      .attr("y", xScale(1.5))
+      .attr("font-size", 14)
+      .attr("fill", "gray")
+      .text("%")
       .attr("transform", "rotate(-90)")
       .attr("id", "poverty");
 
@@ -190,12 +197,16 @@ const AreaChartD3 = ({ data,  ExtremePovertyCount }) => {
       .attr("transform", `translate(0, ${h})`)
       .attr("id", "axis");
 
-      svg.append("g").call(yAxisLeft).attr("id", "axis");
+    svg
+      .append("g")
+      .call(yAxisLeft)
+      .attr("id", "axis");
 
-      svg
-        .append("g")
-        .call(yAxisRight)
-        .attr("transform", `translate(${w}, 0)`).attr("id", "axis");
+    svg
+      .append("g")
+      .call(yAxisRight)
+      .attr("transform", `translate(${w}, 0)`)
+      .attr("id", "axis");
 
     // data circles
     /*
@@ -209,8 +220,6 @@ const AreaChartD3 = ({ data,  ExtremePovertyCount }) => {
       .attr('stroke', 'red')
       .attr("id", "chagningArea");
       */
-
-
   }, [data]);
 
   return (
