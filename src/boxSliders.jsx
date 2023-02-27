@@ -5,13 +5,21 @@ const BoxSliders = ({ onTaxChange, taxRate }) => {
   return (
     <div>
       <input
-        type="number"
-        value={parseFloat(taxRate.toFixed(3))}
-        onInput={(e) => (e.target.value = e.target.value.slice(0, 3))}
+        className="percentageBox"
+        type="text"
+        inputMode="numeric"
+        value={parseFloat(taxRate.toFixed(0))}
+        onInput={(e) => {
+          if (e.target.value >= 100) {
+            e.target.value = 100;
+          }
+        }}
         onChange={(e) => {
           onTaxChange(e.target.value / 100);
         }}
       />
+
+      <span> % </span>
 
       <div
         style={{
@@ -61,9 +69,21 @@ const BoxSliders = ({ onTaxChange, taxRate }) => {
                 onTaxChange(e.target.value);
               }}
             />
-            <span className="percentageBox">
-              {parseFloat(taxRate.toFixed(3))}%
-            </span>
+            <input
+              className="percentageBox"
+              type="text"
+              inputMode="numeric"
+              value={parseFloat(taxRate.toFixed(0))}
+              onInput={(e) => {
+                if (e.target.value >= 100) {
+                  e.target.value = 100;
+                }
+              }}
+              onChange={(e) => {
+                onTaxChange(e.target.value / 100);
+              }}
+            />
+            <span> % </span>
           </div>
         </div>
 
