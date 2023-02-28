@@ -6,12 +6,14 @@ const BoxSliders = ({ onTaxChange, taxRate }) => {
     <div>
       <input
         className="percentageBox"
-        type="text"
+        type="text" //ev numeric, dock problem med nollan
         inputMode="numeric"
         value={parseFloat(taxRate.toFixed(0))}
         onInput={(e) => {
           if (e.target.value >= 100) {
             e.target.value = 100;
+          } else if (isNaN(e.target.value)) {
+            e.target.value = 0;
           }
         }}
         onChange={(e) => {
