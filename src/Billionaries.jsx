@@ -19,17 +19,28 @@ import brin from './Images/sergey_brin.png';
 import page from './Images/larry_page.png';
 import ballmer from './Images/steve_ballmer.png';
 import buffett from './Images/warren_buffett.png';
-
+import peauch from './Images/bertrand_peuch.jpeg';
 
 const url =
-  'https://gist.githubusercontent.com/Amandabru/791125eedbe23167f74f20b2739a53be/raw/17c80ecf84d104cd121648bbc64aa87fd84376b6/billionairesData.csv';
+  'https://gist.githubusercontent.com/Amandabru/791125eedbe23167f74f20b2739a53be/raw/d305634d922d1de74398a1fd5f16139fb5685ba9/billionairesData.csv';
 
 const Billionaries = () => {
   const [data, setData] = useState();
   const svgRef = useRef();
   const w = 700;
   const h = 500;
-  const imag = [arnault, gates, musk, bezos, ellison, brin, page, ballmer, buffett];
+  const imag = [
+    ballmer,
+    peauch,
+    ellison,
+    brin,
+    page,
+    buffett,
+    gates,
+    arnault,
+    bezos,
+    musk,
+  ];
 
   useEffect(() => {
     csv(url).then(setData);
@@ -37,8 +48,9 @@ const Billionaries = () => {
 
   useEffect(() => {
     if (data) {
-      var maxIncome = max(data, (d) => +d.income);
       console.log(data);
+      console.log(imag);
+      var maxIncome = max(data, (d) => +d.income);
       const xScale = scaleLog().domain([1000000, maxIncome]).range([0, w]);
       const yScale = scaleLinear().domain([0, 3]).range([h, 0]);
 
@@ -81,6 +93,7 @@ const Billionaries = () => {
         .attr('cy', function (d) {
           let counter = 0;
           for (const obj of data) {
+            console.log(obj);
             if (obj.income == d.income) {
               if (obj.billionaire == d.billionaire) {
                 break;
