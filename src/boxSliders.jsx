@@ -62,6 +62,8 @@ const BoxSliders = ({ onTaxChange, clearAllTaxes, taxes }) => {
             onInput={(e) => {
               if (e.target.value >= 100) {
                 e.target.value = 100;
+              } else if (isNaN(e.target.value)) {
+                e.target.value = 0;
               }
             }}
             onChange={(e) => {
@@ -94,6 +96,8 @@ const BoxSliders = ({ onTaxChange, clearAllTaxes, taxes }) => {
             onInput={(e) => {
               if (e.target.value >= 100) {
                 e.target.value = 100;
+              } else if (isNaN(e.target.value)) {
+                e.target.value = 0;
               }
             }}
             onChange={(e) => {
@@ -126,6 +130,8 @@ const BoxSliders = ({ onTaxChange, clearAllTaxes, taxes }) => {
             onInput={(e) => {
               if (e.target.value >= 100) {
                 e.target.value = 100;
+              } else if (isNaN(e.target.value)) {
+                e.target.value = 0;
               }
             }}
             onChange={(e) => {
@@ -158,6 +164,8 @@ const BoxSliders = ({ onTaxChange, clearAllTaxes, taxes }) => {
             onInput={(e) => {
               if (e.target.value >= 100) {
                 e.target.value = 100;
+              } else if (isNaN(e.target.value)) {
+                e.target.value = 0;
               }
             }}
             onChange={(e) => {
@@ -190,6 +198,8 @@ const BoxSliders = ({ onTaxChange, clearAllTaxes, taxes }) => {
             onInput={(e) => {
               if (e.target.value >= 100) {
                 e.target.value = 100;
+              } else if (isNaN(e.target.value)) {
+                e.target.value = 0;
               }
             }}
             onChange={(e) => {
