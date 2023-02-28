@@ -236,7 +236,7 @@ const AreaChartD3 = ({ data, ExtremePovertyCount, billionaries }) => {
             counter += 1;
           }
         }
-        return yScaleLeft(0.2 + counter * 0.5);
+        return yScaleLeft(maxPop / 25 + counter * (maxPop / 20));
       })
       .attr('fill', function (d) {
         return 'url(#' + d.billionaire.toLowerCase().replace(/ /g, '-') + ')';
