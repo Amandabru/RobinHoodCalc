@@ -13,13 +13,36 @@ import {
   brushX,
   selectAll,
 } from 'd3';
+import './circleStyle.css';
+import arnault from './Images/bernard_arnault.png';
+import gates from './Images/bill_gates.png';
+import musk from './Images/elon_musk.png';
+import bezos from './Images/jeff_bezos.png';
+import ellison from './Images/larry_ellison.png';
+import brin from './Images/sergey_brin.png';
+import page from './Images/larry_page.png';
+import ballmer from './Images/steve_ballmer.png';
+import buffett from './Images/warren_buffett.png';
+import peauch from './Images/bertrand_peuch.jpeg';
 
-const AreaChartD3 = ({ data, ExtremePovertyCount }) => {
+const AreaChartD3 = ({ data, ExtremePovertyCount, billionaries }) => {
   const changingData = data[0];
   const defaultData = data[1];
   const svgRef = useRef();
-  const w = 500;
-  const h = 300;
+  const w = 600;
+  const h = 400;
+  const imag = [
+    ballmer,
+    peauch,
+    ellison,
+    brin,
+    page,
+    buffett,
+    gates,
+    arnault,
+    bezos,
+    musk,
+  ];
 
   var minIncome = min(changingData, (d) => d.income);
   var maxIncome = max(changingData, (d) => d.income);
@@ -171,6 +194,54 @@ const AreaChartD3 = ({ data, ExtremePovertyCount }) => {
       .text('%')
       .attr('transform', 'rotate(-90)')
       .attr('id', 'poverty');
+
+    //billionaries
+
+    var defs = svg.append('defs');
+
+    defs
+      .selectAll('.billionaires')
+      .data(billionaries)
+      .enter()
+      .append('pattern')
+      .attr('class', 'billionaires')
+      .attr('id', function (d) {
+        return d.billionaire.toLowerCase().replace(/ /g, '-');
+      })
+      .attr('height', '100%')
+      .attr('width', '100%')
+      .attr('patternContentUnits', 'objectBoundingBox')
+      .append('image')
+      .attr('height', 1)
+      .attr('width', 1)
+      .attr('preserveAspectRatio', 'none')
+      .attr('xlink:href', function (d) {
+        return imag[d.images];
+      });
+
+    svg
+      .selectAll('circle')
+      .data(billionaries)
+      .join('circle')
+      .attr('r', 10)
+      .attr('cx', (d) => xScale(d.income))
+      .attr('cy', function (d) {
+        let counter = 0;
+        for (const obj of billionaries) {
+          console.log(obj);
+          if (Math.log(Math.abs(obj.income - d.income)) < 14) {
+            if (obj.billionaire == d.billionaire) {
+              break;
+            }
+            counter += 1;
+          }
+        }
+        return yScaleLeft(0.2 + counter * 0.5);
+      })
+      .attr('fill', function (d) {
+        return 'url(#' + d.billionaire.toLowerCase().replace(/ /g, '-') + ')';
+      })
+      .attr('class', 'circle');
 
     // axis
     const xAxis = axisBottom().scale(xScale).tickValues(AxisXformat);

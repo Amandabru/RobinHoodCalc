@@ -1,19 +1,23 @@
 import React, { useState, useEffect } from 'react';
 import { csv } from 'd3';
-import TaxSlider from './TaxSlider';
 import AreaChartD3 from './AreaChartD3';
 import closestIndex from './helpers';
 import BoxSliders from './boxSliders';
 import './dataVis.css';
 
 const csvUrl =
-  'https://gist.githubusercontent.com/Amandabru/00e96eaa56143e6499d1c651bac03aa8/raw/58ce042b4504d9b660bb93693e47b966cc2eb34f/GapminderData.csv';
+  'https://gist.githubusercontent.com/Amandabru/00e96eaa56143e6499d1c651bac03aa8/raw/ccbd3e8c9dec23b78482dd47994d8faa49a1b96d/GapminderData.csv';
+
+const billionairesCsvUrl =
+  'https://gist.githubusercontent.com/Amandabru/791125eedbe23167f74f20b2739a53be/raw/203d2e923bffaef26d10a7f81da92337f59ab57b/billionairesData.csv';
 
 const DataVis = () => {
   const [data, setData] = useState(null);
   const [taxes, setTaxes] = useState(null);
   const [csvData, setCsvData] = useState(null);
   const [ExtremePovertyCount, setExtremePovertyCount] = useState(9);
+  const [billionaires, setBillionaires] = useState(null);
+  const [csvBillionaires, setCsvBillionaires] = useState(null);
 
   const updateTaxes = (taxBracketNr, newTax) => {
     var newTaxes = { ...taxes };
@@ -29,7 +33,7 @@ const DataVis = () => {
     setTaxes(newTaxes);
   };
 
-  // transform data into percentages
+  // transform income data into percentages
   const makePercentage = (data) => {
     var newDataPercentage = data.map((a) => {
       return { ...a };
@@ -47,7 +51,7 @@ const DataVis = () => {
 
   // Collects money(tax) from the people above the incomeMin and moves population down the brackets accordingly
   // Returns the money and the modified data
-  const collectFromTheRich = (data, collectedTax, taxes) => {
+  const collectFromTheRich = (data, collectedTax, taxes, billionaires) => {
     for (let i = 0; i < csvData.length; i++) {
       var partialCollectedTax = 0;
       for (const taxBracketNr in taxes) {
@@ -71,7 +75,27 @@ const DataVis = () => {
       }
       collectedTax += partialCollectedTax * csvData[i].population;
     }
-    return [collectedTax, data];
+
+    //Taxing the billionaires
+    for (let i = 0; i < csvBillionaires.length; i++) {
+      partialCollectedTax = 0;
+      for (const taxBracketNr in taxes) {
+        if (taxes[taxBracketNr].incomeMin < csvBillionaires[i].income) {
+          if (csvBillionaires[i].income < taxes[taxBracketNr].incomeMax) {
+            partialCollectedTax +=
+              (csvBillionaires[i].income - taxes[taxBracketNr].incomeMin) *
+              taxes[taxBracketNr].taxRate;
+          } else {
+            partialCollectedTax +=
+              (taxes[taxBracketNr].incomeMax - taxes[taxBracketNr].incomeMin) *
+              taxes[taxBracketNr].taxRate;
+          }
+        }
+      }
+      billionaires[i].income = csvBillionaires[i].income - partialCollectedTax;
+      collectedTax += partialCollectedTax;
+    }
+    return [collectedTax, data, billionaires];
   };
 
   // distributes the collected money among the brackets below incomeMax and moves population accordingly
@@ -99,11 +123,16 @@ const DataVis = () => {
     var newData = csvData.map((a) => {
       return { ...a };
     });
+    var newBillionaires = csvBillionaires.map((a) => {
+      return { ...a };
+    });
+
     var collectedTax = 0;
-    var [collectedTax, newData] = collectFromTheRich(
+    var [collectedTax, newData, newBillionaires] = collectFromTheRich(
       newData,
       collectedTax,
-      taxes
+      taxes,
+      newBillionaires
     );
     newData = giveToThePoor(newData, collectedTax);
     var totPopulation = 0;
@@ -117,7 +146,6 @@ const DataVis = () => {
         break;
       }
     }
-
     for (let i = 0; i < newData.length; i++) {
       totPopulation += newData[i].population;
     }
@@ -125,6 +153,7 @@ const DataVis = () => {
       Math.floor((peopleInExtremePoverty / totPopulation) * 100)
     );
     setData(newData);
+    setBillionaires(newBillionaires);
   };
 
   useEffect(() => {
@@ -134,6 +163,13 @@ const DataVis = () => {
         population: +d.population,
       };
     }).then(setCsvData);
+    csv(billionairesCsvUrl, function (d) {
+      return {
+        billionaire: d.billionaire,
+        income: +d.income,
+        images: +d.images,
+      };
+    }).then(setCsvBillionaires);
     setTaxes({
       1: { incomeMin: 100, incomeMax: 1000, taxRate: 0 },
       2: { incomeMin: 1000, incomeMax: 10000, taxRate: 0 },
@@ -149,7 +185,7 @@ const DataVis = () => {
     }
   }, [taxes]);
 
-  if (!csvData) {
+  if (!csvData || !csvBillionaires) {
     return <div>Loading</div>;
   }
 
@@ -162,6 +198,7 @@ const DataVis = () => {
             : [makePercentage(csvData), makePercentage(csvData)]
         }
         ExtremePovertyCount={ExtremePovertyCount}
+        billionaries={billionaires ? billionaires : csvBillionaires}
       />
       <BoxSliders
         onTaxChange={(taxBracketNr, newTax) =>
