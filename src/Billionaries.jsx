@@ -10,40 +10,34 @@ import {
   axisLeft,
 } from 'd3';
 import './circleStyle.css';
-import image1 from './Image1.jpg';
-import image2 from './Image2.jpg';
-import image3 from './image3.jpg';
+import arnault from './Images/bernard_arnault.png';
+import gates from './Images/bill_gates.png';
+import musk from './Images/elon_musk.png';
+import bezos from './Images/jeff_bezos.png';
+import ellison from './Images/larry_ellison.png';
+import brin from './Images/sergey_brin.png';
+import page from './Images/larry_page.png';
+import ballmer from './Images/steve_ballmer.png';
+import buffett from './Images/warren_buffett.png';
+
 
 const url =
-  'https://gist.githubusercontent.com/Amandabru/791125eedbe23167f74f20b2739a53be/raw/782b43454bcd0446542efbe44a1fd2872b457972/billionairesData.csv';
+  'https://gist.githubusercontent.com/Amandabru/791125eedbe23167f74f20b2739a53be/raw/17c80ecf84d104cd121648bbc64aa87fd84376b6/billionairesData.csv';
 
 const Billionaries = () => {
   const [data, setData] = useState();
   const svgRef = useRef();
   const w = 700;
   const h = 500;
-  const images = [
-    image1,
-    image2,
-    image2,
-    image2,
-    image2,
-    image2,
-    image2,
-    image2,
-    image3,
-    image3,
-  ];
+  const imag = [arnault, gates, musk, bezos, ellison, brin, page, ballmer, buffett];
 
   useEffect(() => {
     csv(url).then(setData);
   }, []);
 
   useEffect(() => {
-    console.log(data);
     if (data) {
       var maxIncome = max(data, (d) => +d.income);
-      console.log(maxIncome);
       console.log(data);
       const xScale = scaleLog().domain([1000000, maxIncome]).range([0, w]);
       const yScale = scaleLinear().domain([0, 3]).range([h, 0]);
@@ -75,7 +69,7 @@ const Billionaries = () => {
         .attr('width', 1)
         .attr('preserveAspectRatio', 'none')
         .attr('xlink:href', function (d) {
-          return images[d.images];
+          return imag[d.images];
         });
 
       svg
