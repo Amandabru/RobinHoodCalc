@@ -11,12 +11,12 @@
   padding-bottom: 4%;
   font-weight: bold;
   display: grid;
-  grid-template-columns: 1fr 0.4fr;
+  grid-template-columns: 1fr 0.5fr;
 }
 
 .titleContainer {
   display: grid;
-  grid-template-columns: 1fr 0.4fr;
+  grid-template-columns: 1fr 0.5fr;
   margin-left: 2em;
   margin-right: 2em;
 }
@@ -121,7 +121,7 @@
 
 .marginalTax {
   margin: auto;
-  margin-bottom: 0rem;
+  margin-bottom: 0;
   margin-right: 0;
   text-align: right;
 }
