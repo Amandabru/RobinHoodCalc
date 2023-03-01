@@ -33,7 +33,7 @@
   appearance: none;
   height: 15px;
   background: #ffffff;
-  box-shadow: rgba(0, 0, 0, 0.329) 0.4px 0.8px 0.8px 0.8px;
+  box-shadow: rgba(0, 0, 0, 0.329) 1px 1px 1.5px 1.2px inset;
   position: relative;
   border-radius: 3px;
 }
