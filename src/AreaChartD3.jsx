@@ -1,4 +1,5 @@
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useEffect, useState } from 'react';
+
 import {
   select,
   scaleLinear,
@@ -12,6 +13,9 @@ import {
   curveMonotoneX,
   brushX,
   selectAll,
+  pointer,
+  text,
+  raise
 } from "d3";
 import "./circleStyle.css";
 import arnault from "./Images/bernard_arnault.png";
@@ -24,6 +28,7 @@ import page from "./Images/larry_page.png";
 import ballmer from "./Images/steve_ballmer.png";
 import buffett from "./Images/warren_buffett.png";
 import peauch from "./Images/bertrand_peuch.jpeg";
+ 
 
 const AreaChartD3 = ({ data, ExtremePovertyCount, billionaries }) => {
   const changingData = data[0];
@@ -48,6 +53,11 @@ const AreaChartD3 = ({ data, ExtremePovertyCount, billionaries }) => {
   var maxIncome = max(changingData, (d) => d.income);
   var maxPop = max(changingData, (d) => d.population);
   var minPop = min(changingData, (d) => d.population);
+
+  let xScale = scaleLog().domain([minIncome, maxIncome]).range([0, w]).nice();
+  const yScaleLeft = scaleLinear().domain([minPop, maxPop]).range([h, 0]);
+  const yScaleRight = scaleLinear().domain([0, 100]).range([h, 0]);
+
 
   useEffect(() => {
     const svg = select(svgRef.current)
@@ -92,19 +102,16 @@ const AreaChartD3 = ({ data, ExtremePovertyCount, billionaries }) => {
       "13",
     ];
 
-    let xScale = scaleLog().domain([minIncome, maxIncome]).range([0, w]).nice();
-
-    const yScaleLeft = scaleLinear().domain([minPop, maxPop]).range([h, 0]);
-
-    const yScaleRight = scaleLinear().domain([0, 100]).range([h, 0]);
-
     // remove
-    selectAll("#axis").remove();
-    selectAll("#chagningArea").remove();
-    selectAll("#poverty").remove();
-    selectAll("#defaultArea").remove();
+    selectAll('#axis').remove();
+    selectAll('#chagningArea').remove();
+    selectAll('#poverty').remove();
+    selectAll('#povertyText').remove();
+    selectAll('#defaultArea').remove();
+    selectAll('#amountOfPeopleLeft').remove();
+    selectAll('#amountOfPeopleRight').remove();
 
-    //brush
+    // brush 
     const brush = brushX().extent([
       [0, 0],
       [w, h],
@@ -162,7 +169,6 @@ const AreaChartD3 = ({ data, ExtremePovertyCount, billionaries }) => {
       .attr("id", "axis");
 
     // Default chart
-
     const generateDefaultArea = area()
       .x((d) => xScale(d.income))
       .y0(h)
@@ -197,39 +203,7 @@ const AreaChartD3 = ({ data, ExtremePovertyCount, billionaries }) => {
       .attr("stroke", "#ffca34")
       .attr("id", "chagningArea");
 
-    // extreme poverty line
-    svg
-      .append("line")
-      .attr("stroke", "grey")
-      .attr("x1", xScale(2))
-      .attr("y1", 0)
-      .attr("x2", xScale(2))
-      .attr("y2", h)
-      .style("stroke-dasharray", "3, 3")
-      .attr("id", "poverty");
-
-    svg
-      .append("text")
-      .attr("x", -270)
-      .attr("y", xScale(1.5))
-      .attr("font-size", 11)
-      .attr("fill", "grey")
-      .text("Extreme poverty: " + ExtremePovertyCount)
-      .attr("transform", "rotate(-90)")
-      .attr("id", "poverty");
-
-    svg
-      .append("text")
-      .attr("x", -183)
-      .attr("y", xScale(1.5))
-      .attr("font-size", 14)
-      .attr("fill", "gray")
-      .text("%")
-      .attr("transform", "rotate(-90)")
-      .attr("id", "poverty");
-
     //billionaries
-
     var defs = svg.append("defs");
 
     defs
@@ -275,6 +249,58 @@ const AreaChartD3 = ({ data, ExtremePovertyCount, billionaries }) => {
         return "url(#" + d.billionaire.toLowerCase().replace(/ /g, "-") + ")";
       })
       .attr("class", "circle");
+    
+    // extreme poverty line
+    svg
+      .append("line")
+      .attr("stroke", "grey")
+      .attr("x1", xScale(2))
+      .attr("y1", 0)
+      .attr("x2", xScale(2))
+      .attr("y2", h)
+      .style("stroke-dasharray", "3, 3")
+      .attr("id", "poverty");
+       
+    svg
+      .append('text')
+      .attr('x', -270)
+      .attr('y', xScale(1.5))
+      .attr('font-size', 13)
+      .attr('fill', 'gray')
+      .text('Extreme poverty: ' + ExtremePovertyCount)
+      .attr('transform', 'rotate(-90)')
+      .attr('id', 'povertyText');
+
+    svg
+      .append('text')
+      .attr('x', -168)
+      .attr('y', xScale(1.5))
+      .attr('font-size', 14)
+      .attr('fill', 'gray')
+      .text('%')
+      .attr('transform', 'rotate(-90)')
+      .attr('id', 'povertyText');
+
+    // amount of people
+    svg
+    .append('text')
+    .attr('x', xScale(0.7))
+    .attr('y', 170)
+    .attr('font-size', 20)
+    .attr('fill', 'gray')
+    .text('hej')
+    .attr('id', 'amountOfPeopleLeft')
+    .style("opacity", 0);
+
+    svg
+    .append('text')
+    .attr('x', xScale(2.4))
+    .attr('y', 170)
+    .attr('font-size', 20)
+    .attr('fill', 'gray')
+    .text('då')
+    .attr('id', 'amountOfPeopleRight')
+    .style("opacity", 0);
 
     // axis
     const xAxis = axisBottom().scale(xScale).tickValues(AxisXformat);
@@ -308,7 +334,36 @@ const AreaChartD3 = ({ data, ExtremePovertyCount, billionaries }) => {
       .attr("transform", `translate(${w}, 0)`)
       .attr("id", "axis");
 
-    // data circles
+    // moving gray line
+    svg
+    .append('rect')
+    .style("fill", "none")
+    .style("pointer-events", "all")
+    .attr('width', w)
+    .attr('height', 20)
+    .attr("y", 400)
+    .on('mouseover', e => {
+      selectAll('#povertyText').style("opacity", 0);
+      selectAll('#poverty').attr("x1", pointer(e)[0]).attr("x2", pointer(e)[0]);
+      // selectAll('#amountOfPeople').style("opacity", 1);
+    })
+    .on('mousemove', e => {
+      selectAll('#poverty').attr("x1", pointer(e)[0]).attr("x2", pointer(e)[0])
+      selectAll('#amountOfPeopleLeft').style("opacity", 1);
+      selectAll('#amountOfPeopleLeft').attr("x", pointer(e)[0]-30);
+      selectAll('#amountOfPeopleRight').style("opacity", 1);
+      selectAll('#amountOfPeopleRight').attr("x", pointer(e)[0]+8);
+    })
+    .on('mouseleave', mouseout);
+  
+    function mouseout() {
+      selectAll('#povertyText').style("opacity", 1);
+      selectAll('#poverty').attr("x1", xScale(2)).attr("x2", xScale(2));
+      selectAll('#amountOfPeopleLeft').style("opacity", 0);
+      selectAll('#amountOfPeopleRight').style("opacity", 0);
+    };
+
+        // data circles
     /*
     svg
       .selectAll('circle')
@@ -320,6 +375,7 @@ const AreaChartD3 = ({ data, ExtremePovertyCount, billionaries }) => {
       .attr('stroke', 'red')
       .attr("id", "chagningArea");
       */
+
   }, [data]);
 
   return (
