@@ -27,9 +27,9 @@ const BoxSliders = ({ onTaxChange, clearAllTaxes, taxes }) => {
         </div>
         <p className='taxationDescription'>
           The Robin Hood Taxation System taxes the world’s richest and
-          redistributes directly to the people of lower income levels. It is a
-          progressive taxation system where you as user control the marginal
-          rate of taxation for five different income intervals.
+          redistributes directly to people of lower income levels. The system is
+          progressive and you as user control the marginal rate of taxation for
+          five different income intervals.
         </p>
       </header>
       <div className='titleContainer'>
@@ -234,7 +234,12 @@ const BoxSliders = ({ onTaxChange, clearAllTaxes, taxes }) => {
         </div>
       </div>
 
-      <hr width='100%'></hr>
+      <hr
+        width='100%'
+        style={{
+          marginTop: '15px',
+        }}
+      ></hr>
 
       <header
         style={{

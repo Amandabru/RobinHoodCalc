@@ -8,7 +8,7 @@
 .boxSliderContainer {
   margin-left: 2em;
   margin-right: 2em;
-  padding-bottom: 4%;
+  padding-bottom: 2.5%;
   font-weight: bold;
   display: grid;
   grid-template-columns: 1fr 0.5fr;
@@ -84,8 +84,6 @@
   text-align: center;
   box-shadow: rgba(0, 0, 0, 0.429) 0px 1px 4px;
   z-index: 2;
-
-  /*Tillfällig fullösning angående fontstorleken i boxen*/
   font-size: 13px;
   font-weight: 100;
 }
@@ -95,8 +93,8 @@
 }
 
 .taxationDescription {
-  font-size: 15px;
-  text-align: left;
+  font-size: 13px;
+  text-align: justify;
   margin-bottom: 0;
   margin-top: 0;
 }
@@ -105,7 +103,7 @@
   margin-left: 2em;
   margin-right: 2.5em;
   text-align: right;
-  padding-bottom: 3%;
+  padding-bottom: 2%;
 }
 
 .btn {
