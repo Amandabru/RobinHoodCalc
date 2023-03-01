@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { csv } from 'd3';
-import TaxSlider from './TaxSlider';
 import AreaChartD3 from './AreaChartD3';
 import closestIndex from './helpers';
 import BoxSliders from './boxSliders';
+import InGraphSlider from './inGraphSliders';
 import './dataVis.css';
+
 
 const csvUrl =
   'https://gist.githubusercontent.com/Amandabru/00e96eaa56143e6499d1c651bac03aa8/raw/58ce042b4504d9b660bb93693e47b966cc2eb34f/GapminderData.csv';
@@ -155,14 +156,20 @@ const DataVis = () => {
 
   return (
     <div className='taxTheRichContainer'>
-      <AreaChartD3
+      <AreaChartD3 className="areaChart"
         data={
           data
             ? [makePercentage(data), makePercentage(csvData)]
             : [makePercentage(csvData), makePercentage(csvData)]
         }
         ExtremePovertyCount={ExtremePovertyCount}
-      />
+      />     
+      < InGraphSlider classname="inGraphsliders" onTaxChange={(taxBracketNr, newTax) =>
+          updateTaxes(taxBracketNr, newTax)
+        }
+        clearAllTaxes={() => clearAllTAxes()}
+        taxes={taxes ? taxes : 0}/>
+
       <BoxSliders
         onTaxChange={(taxBracketNr, newTax) =>
           updateTaxes(taxBracketNr, newTax)
@@ -170,6 +177,7 @@ const DataVis = () => {
         clearAllTaxes={() => clearAllTAxes()}
         taxes={taxes ? taxes : 0}
       />
+
     </div>
   );
 };

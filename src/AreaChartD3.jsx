@@ -18,8 +18,8 @@ const AreaChartD3 = ({ data, ExtremePovertyCount }) => {
   const changingData = data[0];
   const defaultData = data[1];
   const svgRef = useRef();
-  const w = 500;
-  const h = 300;
+  const w = 600;
+  const h = 400;
 
   var minIncome = min(changingData, (d) => d.income);
   var maxIncome = max(changingData, (d) => d.income);

@@ -1,0 +1,39 @@
+
+.sliders{
+  position:absolute;
+  margin-left: 215px;
+  margin-top: 245px;
+}
+
+.slider-container {
+  position: relative;
+  float: left;
+  width: 54px;
+  z-index: 1;
+}
+
+
+.inGraphSlider {
+  -webkit-appearance: none;
+  margin: -20;
+  padding: 0;
+  height: 20px;
+  width: 440px;
+  background-color: transparent;
+  border-radius: 10px;
+  overflow: hidden;
+  transform: rotate(-90deg);
+  orientation: vertical;
+}
+
+.inGraphSlider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  height: 40px;
+  width: 40px;
+  background: url(./handle.png);
+  background-size: cover;
+  border-radius: 50%;
+  cursor: pointer;
+  margin-top: 0px;
+  transform: rotate(90deg);
+}
