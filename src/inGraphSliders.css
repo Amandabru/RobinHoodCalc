@@ -12,8 +12,8 @@
   z-index: 1;
 }
 
-
 .inGraphSlider {
+  pointer-events: none;
   -webkit-appearance: none;
   margin: -20;
   padding: 0;
@@ -27,6 +27,7 @@
 }
 
 .inGraphSlider::-webkit-slider-thumb {
+  pointer-events: auto;
   -webkit-appearance: none;
   height: 40px;
   width: 40px;

@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, useEffect } from "react";
 import {
   select,
   scaleLinear,
@@ -12,14 +12,37 @@ import {
   curveMonotoneX,
   brushX,
   selectAll,
-} from 'd3';
+} from "d3";
+import "./circleStyle.css";
+import arnault from "./Images/bernard_arnault.png";
+import gates from "./Images/bill_gates.png";
+import musk from "./Images/elon_musk.png";
+import bezos from "./Images/jeff_bezos.png";
+import ellison from "./Images/larry_ellison.png";
+import brin from "./Images/sergey_brin.png";
+import page from "./Images/larry_page.png";
+import ballmer from "./Images/steve_ballmer.png";
+import buffett from "./Images/warren_buffett.png";
+import peauch from "./Images/bertrand_peuch.jpeg";
 
-const AreaChartD3 = ({ data, ExtremePovertyCount }) => {
+const AreaChartD3 = ({ data, ExtremePovertyCount, billionaries }) => {
   const changingData = data[0];
   const defaultData = data[1];
   const svgRef = useRef();
   const w = 600;
   const h = 400;
+  const imag = [
+    ballmer,
+    peauch,
+    ellison,
+    brin,
+    page,
+    buffett,
+    gates,
+    arnault,
+    bezos,
+    musk,
+  ];
 
   var minIncome = min(changingData, (d) => d.income);
   var maxIncome = max(changingData, (d) => d.income);
@@ -28,23 +51,45 @@ const AreaChartD3 = ({ data, ExtremePovertyCount }) => {
 
   useEffect(() => {
     const svg = select(svgRef.current)
-      .attr('width', w)
-      .attr('height', h)
-      .style('overflow', 'visible')
-      .style('margin-top', '30')
-      .style('margin-left', '100')
-      .style('margin-bottom', '50');
+      .attr("width", w)
+      .attr("height", h)
+      .style("overflow", "visible")
+      .style("margin-top", "30")
+      .style("margin-left", "100")
+      .style("margin-bottom", "50");
 
     const AxisXformat = [
-      '1',
-      '10',
-      '100',
-      '1000',
-      '10000',
-      '100000',
-      '1000000',
-      '10000000',
-      '100000000',
+      "1",
+      "10",
+      "100",
+      "1000",
+      "10000",
+      "100000",
+      "1000000",
+      "10000000",
+      "100000000",
+    ];
+
+    // income levels
+    const levels = [
+      2, 8, 32, 128, 512, 2048, 8192, 32768, 131072, 524288, 2097152, 8388608,
+      33554432,
+    ];
+
+    const levelLabels = [
+      "1",
+      "2",
+      "3",
+      "4",
+      "5",
+      "6",
+      "7",
+      "8",
+      "9",
+      "10",
+      "11",
+      "12",
+      "13",
     ];
 
     let xScale = scaleLog().domain([minIncome, maxIncome]).range([0, w]).nice();
@@ -54,10 +99,10 @@ const AreaChartD3 = ({ data, ExtremePovertyCount }) => {
     const yScaleRight = scaleLinear().domain([0, 100]).range([h, 0]);
 
     // remove
-    selectAll('#axis').remove();
-    selectAll('#chagningArea').remove();
-    selectAll('#poverty').remove();
-    selectAll('#defaultArea').remove();
+    selectAll("#axis").remove();
+    selectAll("#chagningArea").remove();
+    selectAll("#poverty").remove();
+    selectAll("#defaultArea").remove();
 
     //brush
     const brush = brushX().extent([
@@ -65,45 +110,56 @@ const AreaChartD3 = ({ data, ExtremePovertyCount }) => {
       [w, h],
     ]);
 
-    svg.select('.brush').call(brush).call(brush.move, [0, 0]);
+    svg.select(".brush").call(brush).call(brush.move, [0, 0]);
 
-    // x axis label
+    // x axis label (income)
     svg
-      .style('font', '12px times')
-      .append('text')
-      .attr('class', 'x label')
-      .attr('text-anchor', 'end')
-      .attr('x', w)
-      .attr('y', h + 35)
-      .text('Income ($/day)')
-      .attr('id', 'axis');
+      .style("font", "12px times")
+      .append("text")
+      .attr("class", "x label")
+      .attr("text-anchor", "end")
+      .attr("x", w)
+      .attr("y", h + 35)
+      .text("Income ($/day)")
+      .attr("id", "axis");
+
+    // x axis label (levels)
+    svg
+      .style("font", "12px times")
+      .append("text")
+      .attr("class", "x label")
+      .attr("text-anchor", "end")
+      .attr("x", 0)
+      .attr("y", h + 75)
+      .text("Level")
+      .attr("id", "axis");
 
     // left y axis label
     var axisLabelXLeft = -35;
     var axisLabelY = -25;
     svg
-      .append('text')
+      .append("text")
       .attr(
-        'transform',
-        'translate(' + axisLabelXLeft + ', ' + axisLabelY + ')'
+        "transform",
+        "translate(" + axisLabelXLeft + ", " + axisLabelY + ")"
       )
-      .attr('class', 'y label')
-      .attr('text-anchor', 'middle')
-      .attr('y', 6)
-      .attr('dy', '.75em')
-      .text('Population (%)')
-      .attr('id', 'axis');
+      .attr("class", "y label")
+      .attr("text-anchor", "middle")
+      .attr("y", 6)
+      .attr("dy", ".75em")
+      .text("Population (%)")
+      .attr("id", "axis");
 
     // right yaxis lable
     svg
-      .append('text')
-      .attr('transform', 'translate(' + w + ', ' + axisLabelY + ')')
-      .attr('class', 'y label')
-      .attr('text-anchor', 'middle')
-      .attr('y', 6)
-      .attr('dy', '.75em')
-      .text('Robin Hood tax (%)')
-      .attr('id', 'axis');
+      .append("text")
+      .attr("transform", "translate(" + w + ", " + axisLabelY + ")")
+      .attr("class", "y label")
+      .attr("text-anchor", "middle")
+      .attr("y", 6)
+      .attr("dy", ".75em")
+      .text("Robin Hood tax (%)")
+      .attr("id", "axis");
 
     // Default chart
 
@@ -114,15 +170,15 @@ const AreaChartD3 = ({ data, ExtremePovertyCount }) => {
       .curve(curveMonotoneX);
 
     svg
-      .selectAll('#defaultArea')
+      .selectAll("#defaultArea")
       .data([defaultData])
       .enter()
-      .append('path')
-      .attr('d', (d) => generateDefaultArea(d))
-      .attr('fill', '#ffca34')
-      .attr('stroke', '#ffca34')
-      .style('opacity', '0.4')
-      .attr('id', 'defaultArea');
+      .append("path")
+      .attr("d", (d) => generateDefaultArea(d))
+      .attr("fill", "#ffca34")
+      .attr("stroke", "#ffca34")
+      .style("opacity", "0.4")
+      .attr("id", "defaultArea");
 
     // area chart
     const generateScaledArea = area()
@@ -132,66 +188,125 @@ const AreaChartD3 = ({ data, ExtremePovertyCount }) => {
       .curve(curveMonotoneX);
 
     svg
-      .selectAll('#chagningArea')
+      .selectAll("#chagningArea")
       .data([changingData])
       .enter()
-      .append('path')
-      .attr('d', (d) => generateScaledArea(d))
-      .attr('fill', '#ffca34')
-      .attr('stroke', '#ffca34')
-      .attr('id', 'chagningArea');
+      .append("path")
+      .attr("d", (d) => generateScaledArea(d))
+      .attr("fill", "#ffca34")
+      .attr("stroke", "#ffca34")
+      .attr("id", "chagningArea");
 
     // extreme poverty line
     svg
-      .append('line')
-      .attr('stroke', 'grey')
-      .attr('x1', xScale(2))
-      .attr('y1', 0)
-      .attr('x2', xScale(2))
-      .attr('y2', h)
-      .style('stroke-dasharray', '3, 3')
-      .attr('id', 'poverty');
+      .append("line")
+      .attr("stroke", "grey")
+      .attr("x1", xScale(2))
+      .attr("y1", 0)
+      .attr("x2", xScale(2))
+      .attr("y2", h)
+      .style("stroke-dasharray", "3, 3")
+      .attr("id", "poverty");
 
     svg
-      .append('text')
-      .attr('x', -270)
-      .attr('y', xScale(1.5))
-      .attr('font-size', 11)
-      .attr('fill', 'grey')
-      .text('Extreme poverty: ' + ExtremePovertyCount)
-      .attr('transform', 'rotate(-90)')
-      .attr('id', 'poverty');
+      .append("text")
+      .attr("x", -270)
+      .attr("y", xScale(1.5))
+      .attr("font-size", 11)
+      .attr("fill", "grey")
+      .text("Extreme poverty: " + ExtremePovertyCount)
+      .attr("transform", "rotate(-90)")
+      .attr("id", "poverty");
 
     svg
-      .append('text')
-      .attr('x', -183)
-      .attr('y', xScale(1.5))
-      .attr('font-size', 14)
-      .attr('fill', 'gray')
-      .text('%')
-      .attr('transform', 'rotate(-90)')
-      .attr('id', 'poverty');
+      .append("text")
+      .attr("x", -183)
+      .attr("y", xScale(1.5))
+      .attr("font-size", 14)
+      .attr("fill", "gray")
+      .text("%")
+      .attr("transform", "rotate(-90)")
+      .attr("id", "poverty");
+
+    //billionaries
+
+    var defs = svg.append("defs");
+
+    defs
+      .selectAll(".billionaires")
+      .data(billionaries)
+      .enter()
+      .append("pattern")
+      .attr("class", "billionaires")
+      .attr("id", function (d) {
+        return d.billionaire.toLowerCase().replace(/ /g, "-");
+      })
+      .attr("height", "100%")
+      .attr("width", "100%")
+      .attr("patternContentUnits", "objectBoundingBox")
+      .append("image")
+      .attr("height", 1)
+      .attr("width", 1)
+      .attr("preserveAspectRatio", "none")
+      .attr("xlink:href", function (d) {
+        return imag[d.images];
+      });
+
+    svg
+      .selectAll("circle")
+      .data(billionaries)
+      .join("circle")
+      .attr("r", 10)
+      .attr("cx", (d) => xScale(d.income))
+      .attr("cy", function (d) {
+        let counter = 0;
+        for (const obj of billionaries) {
+          console.log(obj);
+          if (Math.log(Math.abs(obj.income - d.income)) < 14) {
+            if (obj.billionaire == d.billionaire) {
+              break;
+            }
+            counter += 1;
+          }
+        }
+        return yScaleLeft(maxPop / 25 + counter * (maxPop / 20));
+      })
+      .attr("fill", function (d) {
+        return "url(#" + d.billionaire.toLowerCase().replace(/ /g, "-") + ")";
+      })
+      .attr("class", "circle");
 
     // axis
     const xAxis = axisBottom().scale(xScale).tickValues(AxisXformat);
+
+    const xAxisLevels = axisBottom()
+      .scale(xScale)
+      .tickValues(levels)
+      .tickFormat((d, i) => levelLabels[i]); // needs to be adjusted
 
     const yAxisLeft = axisLeft().scale(yScaleLeft);
 
     const yAxisRight = axisRight().scale(yScaleRight);
 
     svg
-      .append('g')
+      .append("g")
       .call(xAxis)
-      .attr('transform', `translate(0, ${h})`)
-      .attr('id', 'axis');
-
-    svg.append('g').call(yAxisLeft).attr('id', 'axis');
+      .attr("transform", `translate(0, ${h})`)
+      .attr("id", "axis");
 
     svg
-      .append('g')
+      .append("g")
+      .call(xAxisLevels)
+      .attr("transform", `translate(0, 450 )`)
+      .attr("id", "axis");
+
+    svg.append("g").call(yAxisLeft).attr("id", "axis");
+
+    svg
+      .append("g")
       .call(yAxisRight)
-      .attr('transform', `translate(${w}, 0)`)
-      .attr('id', 'axis');
+      .attr("transform", `translate(${w}, 0)`)
+      .attr("id", "axis");
 
     // data circles
     /*
@@ -210,7 +325,7 @@ const AreaChartD3 = ({ data, ExtremePovertyCount }) => {
   return (
     <React.Fragment>
       <svg ref={svgRef}>
-        <g className='brush' />
+        <g className="brush" />
       </svg>
     </React.Fragment>
   );

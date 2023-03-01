@@ -24,8 +24,7 @@ import peauch from './Images/bertrand_peuch.jpeg';
 const url =
   'https://gist.githubusercontent.com/Amandabru/791125eedbe23167f74f20b2739a53be/raw/d305634d922d1de74398a1fd5f16139fb5685ba9/billionairesData.csv';
 
-const Billionaries = () => {
-  const [data, setData] = useState();
+const Billionaries = ({ data }) => {
   const svgRef = useRef();
   const w = 700;
   const h = 500;
@@ -43,13 +42,7 @@ const Billionaries = () => {
   ];
 
   useEffect(() => {
-    csv(url).then(setData);
-  }, []);
-
-  useEffect(() => {
     if (data) {
-      console.log(data);
-      console.log(imag);
       var maxIncome = max(data, (d) => +d.income);
       const xScale = scaleLog().domain([1000000, maxIncome]).range([0, w]);
       const yScale = scaleLinear().domain([0, 3]).range([h, 0]);
@@ -89,7 +82,7 @@ const Billionaries = () => {
         .data(data)
         .join('circle')
         .attr('r', 20)
-        .attr('cx', (d) => xScale(+d.income))
+        .attr('cx', (d) => xScale(d.income))
         .attr('cy', function (d) {
           let counter = 0;
           for (const obj of data) {
