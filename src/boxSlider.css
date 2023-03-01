@@ -1,17 +1,40 @@
 /*Sliders*/
+.taxationContainer {
+  border-radius: 5px;
+  width: fit-content;
+  box-shadow: rgba(0, 0, 0, 0.429) 0px 1px 4px;
+}
+
 .boxSliderContainer {
   margin-left: 2em;
   margin-right: 2em;
-  padding-bottom: 5%;
+  padding-bottom: 4%;
   font-weight: bold;
+  display: grid;
+  grid-template-columns: 1fr 0.4fr;
+}
+
+.titleContainer {
+  display: grid;
+  grid-template-columns: 1fr 0.4fr;
+  margin-left: 2em;
+  margin-right: 2em;
+}
+
+.headTitle {
+  margin-left: 0;
+  margin-right: 0;
 }
 
 .boxSlider {
   -webkit-appearance: none;
-  width: 200px;
+  width: 100%;
   appearance: none;
   height: 15px;
-  background: gainsboro;
+  background: #f2f1ec;
+  box-shadow: rgba(0, 0, 0, 0.429) 0px 1px 1px;
+  position: relative;
+  border-radius: 3px;
 }
 
 .boxSlider::-webkit-slider-thumb {
@@ -19,15 +42,25 @@
   appearance: none;
   width: 15px;
   height: 15px;
-  background: black;
+  background: #f6c944;
   cursor: pointer;
+  border-radius: 3px;
+  box-shadow: rgba(0, 0, 0, 0.429) 0px 1px 4px;
+}
+
+.percetageBoxWrapper {
+  margin: auto;
+  margin-bottom: 0.1rem;
+  margin-right: 0;
 }
 
 /*Box showing tax-percentage*/
 .percentageBox {
   width: 4ch;
   text-align: center;
-  margin-left: 5px;
+  border: 0.8px solid rgb(66, 66, 66);
+  border-radius: 2px;
+  background: #f5f5f2;
 }
 
 /*PopUp*/
@@ -39,20 +72,55 @@
 
 .info .infoText {
   position: absolute;
-  left: 20px;
-  padding: 5px;
+  left: -140px;
+  top: 30px;
+  padding: 10px;
   visibility: hidden;
   width: 150px;
   background-color: white;
+  border-radius: 3px;
   color: black;
   text-align: center;
-  border: 1px solid black;
+  box-shadow: rgba(0, 0, 0, 0.429) 0px 1px 4px;
+  z-index: 2;
 
   /*Tillfällig fullösning angående fontstorleken i boxen*/
-  font-size: medium;
+  font-size: 13px;
   font-weight: 100;
 }
 
 .info:hover .infoText {
   visibility: visible;
+}
+
+.taxationDescription {
+  font-size: 15px;
+  text-align: left;
+  margin-bottom: 0;
+  margin-top: 0;
+}
+
+.clearAll {
+  margin-left: 2em;
+  margin-right: 2.5em;
+  text-align: right;
+  padding-bottom: 3%;
+}
+
+.btn {
+  cursor: pointer;
+  font-size: 12px;
+  border: 0.8px solid rgb(156, 156, 156);
+  border-radius: 2px;
+  height: 25px;
+  width: 60px;
+  margin: auto;
+  background: #f5f5f2;
+}
+
+.marginalTax {
+  margin: auto;
+  margin-bottom: 0rem;
+  margin-right: 0;
+  text-align: right;
 }

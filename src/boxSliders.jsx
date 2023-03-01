@@ -1,67 +1,79 @@
-import React from "react";
-import "./boxSlider.css";
-import Toggle from "./toggle";
+import React from 'react';
+import './boxSlider.css';
+import Toggle from './toggle';
 
 const BoxSliders = ({ onTaxChange, clearAllTaxes, taxes }) => {
   const logState = (state) => {
-    console.log("Toggled:", state);
+    console.log('Toggled:', state);
   };
   return (
-    <div
-      style={{
-        border: "1px solid black",
-        width: "fit-content",
-      }}
-    >
+    <div className='taxationContainer'>
       <header
-        style={{ position: "relative", textAlign: "center", padding: "15px" }}
+        style={{
+          padding: '15px',
+        }}
       >
-        <h2 style={{ textDecoration: "underline" }}>
-          Take From The Rich
-          <div
-            className="info"
-            style={{
-              marginLeft: "10px",
-              color: "gray",
-            }}
-          >
-            ?
-            <span className="infoText">
-              Tax different income levels to redistribute income to the poor by
-              dragging the slider corresponding to each income level
-            </span>
-          </div>
+        <div className='titleContainer headTitle'>
+          <h2>Tax The Rich</h2>
           <button
-            style={{ cursor: "pointer", float: "right", marginLeft: "1rem" }}
+            className='btn'
             onClick={() => {
               clearAllTaxes();
-              console.log("cleared");
+              console.log('cleared');
             }}
           >
             Clear All
           </button>
-        </h2>
+        </div>
+        <p className='taxationDescription'>
+          The Robin Hood Taxation System taxes the world’s richest and
+          redistributes directly to the people of lower income levels. It is a
+          progressive taxation system where you as user control the marginal
+          rate of taxation for five different income intervals.
+        </p>
       </header>
-
-      <div className="boxSliderContainer">
-        <label>Income of: 100-1k $/day</label>
-
+      <div className='titleContainer'>
+        <h4> Income Interval [$/day] </h4>
+        <h4 className='marginalTax'>
+          {' '}
+          Marginal Tax Rate
+          <div
+            className='info'
+            style={{
+              marginLeft: '10px',
+              color: 'gray',
+            }}
+          >
+            ?
+            <span className='infoText'>
+              Marginal tax rate is the tax rate that applies to each additional
+              level of income. In this progressive tax system, people pay more
+              in taxes as their income increases and a portion of their income
+              moves into a higher income bracket.
+            </span>
+          </div>
+        </h4>
+      </div>
+      <div className='boxSliderContainer'>
         <div>
+          <h4>100-1k</h4>
           <input
-            className="boxSlider"
-            type="range"
-            min="0"
-            max="1"
-            step="0.001"
+            className='boxSlider'
+            type='range'
+            min='0'
+            max='1'
+            step='0.001'
             value={taxes[1].taxRate}
             onChange={(e) => {
               onTaxChange(1, e.target.value);
             }}
           />
+        </div>
+        <div className='percetageBoxWrapper'>
           <input
-            className="percentageBox"
-            type="text"
-            inputMode="numeric"
+            className='percentageBox'
+            type='text'
+            inputMode='numeric'
             value={parseFloat((taxes[1].taxRate * 100).toFixed(0))}
             onInput={(e) => {
               if (e.target.value >= 100) {
@@ -78,24 +90,26 @@ const BoxSliders = ({ onTaxChange, clearAllTaxes, taxes }) => {
         </div>
       </div>
 
-      <div className="boxSliderContainer">
-        <label>1k-10k $/day</label>
+      <div className='boxSliderContainer'>
         <div>
+          <h4>1k-10k</h4>
           <input
-            className="boxSlider"
-            type="range"
-            min="0"
-            max="1"
-            step="0.001"
+            className='boxSlider'
+            type='range'
+            min='0'
+            max='1'
+            step='0.001'
             value={taxes[2].taxRate}
             onChange={(e) => {
               onTaxChange(2, e.target.value);
             }}
           />
+        </div>
+        <div className='percetageBoxWrapper'>
           <input
-            className="percentageBox"
-            type="text"
-            inputMode="numeric"
+            className='percentageBox'
+            type='text'
+            inputMode='numeric'
             value={parseFloat((taxes[2].taxRate * 100).toFixed(0))}
             onInput={(e) => {
               if (e.target.value >= 100) {
@@ -112,24 +126,26 @@ const BoxSliders = ({ onTaxChange, clearAllTaxes, taxes }) => {
         </div>
       </div>
 
-      <div className="boxSliderContainer">
-        <label>10k-100k $/day</label>
+      <div className='boxSliderContainer'>
         <div>
+          <h4>10k-100k</h4>
           <input
-            className="boxSlider"
-            type="range"
-            min="0"
-            max="1"
-            step="0.001"
+            className='boxSlider'
+            type='range'
+            min='0'
+            max='1'
+            step='0.001'
             value={taxes[3].taxRate}
             onChange={(e) => {
               onTaxChange(3, e.target.value);
             }}
           />
+        </div>
+        <div className='percetageBoxWrapper'>
           <input
-            className="percentageBox"
-            type="text"
-            inputMode="numeric"
+            className='percentageBox'
+            type='text'
+            inputMode='numeric'
             value={parseFloat((taxes[3].taxRate * 100).toFixed(0))}
             onInput={(e) => {
               if (e.target.value >= 100) {
@@ -146,24 +162,26 @@ const BoxSliders = ({ onTaxChange, clearAllTaxes, taxes }) => {
         </div>
       </div>
 
-      <div className="boxSliderContainer">
-        <label>100k-1M $/day</label>
+      <div className='boxSliderContainer'>
         <div>
+          <h4>100k-1M</h4>
           <input
-            className="boxSlider"
-            type="range"
-            min="0"
-            max="1"
-            step="0.001"
+            className='boxSlider'
+            type='range'
+            min='0'
+            max='1'
+            step='0.001'
             value={taxes[4].taxRate}
             onChange={(e) => {
               onTaxChange(4, e.target.value);
             }}
           />
+        </div>
+        <div className='percetageBoxWrapper'>
           <input
-            className="percentageBox"
-            type="text"
-            inputMode="numeric"
+            className='percentageBox'
+            type='text'
+            inputMode='numeric'
             value={parseFloat((taxes[4].taxRate * 100).toFixed(0))}
             onInput={(e) => {
               if (e.target.value >= 100) {
@@ -180,24 +198,26 @@ const BoxSliders = ({ onTaxChange, clearAllTaxes, taxes }) => {
         </div>
       </div>
 
-      <div className="boxSliderContainer">
-        <label>≥ 1M $/day</label>
+      <div className='boxSliderContainer'>
         <div>
+          <h4>≥ 1M </h4>
           <input
-            className="boxSlider"
-            type="range"
-            min="0"
-            max="1"
-            step="0.001"
+            className='boxSlider'
+            type='range'
+            min='0'
+            max='1'
+            step='0.001'
             value={taxes[5].taxRate}
             onChange={(e) => {
               onTaxChange(5, e.target.value);
             }}
           />
+        </div>
+        <div className='percetageBoxWrapper'>
           <input
-            className="percentageBox"
-            type="text"
-            inputMode="numeric"
+            className='percentageBox'
+            type='text'
+            inputMode='numeric'
             value={parseFloat((taxes[5].taxRate * 100).toFixed(0))}
             onInput={(e) => {
               if (e.target.value >= 100) {
@@ -214,33 +234,43 @@ const BoxSliders = ({ onTaxChange, clearAllTaxes, taxes }) => {
         </div>
       </div>
 
-      <hr width="80%"></hr>
+      <hr width='100%'></hr>
 
-      <button style={{ cursor: "pointer", float: "right", margin: "5px" }}>
-        Clear All
-      </button>
-
-      <header style={{ position: "relative", textAlign: "center" }}>
-        <h2 style={{ textDecoration: "underline" }}>
-          Individual Tax for Billionaires
-          <div
-            className="info"
-            style={{
-              marginLeft: "10px",
-              color: "gray",
+      <header
+        style={{
+          padding: '15px',
+        }}
+      >
+        <div className='titleContainer headTitle'>
+          <h2>
+            Tax the 10 Richest
+            <div
+              className='info'
+              style={{
+                marginLeft: '10px',
+                color: 'gray',
+              }}
+            >
+              ?
+              <span className='infoText'>
+                Add specific billionaires to assign them individual taxes
+              </span>
+            </div>
+          </h2>
+          <button
+            className='btn'
+            onClick={() => {
+              clearAllTaxes();
+              console.log('cleared');
             }}
           >
-            ?
-            <span className="infoText">
-              Add specific billionaires to assign them individual taxes
-            </span>
-          </div>
-          <div>
-            <Toggle toggled={true} onClick={logState} />
-          </div>
-        </h2>
+            Clear All
+          </button>
+        </div>
+        <div>
+          <Toggle toggled={true} onClick={logState} />
+        </div>
       </header>
-      <span>coming soon :))</span>
     </div>
   );
 };

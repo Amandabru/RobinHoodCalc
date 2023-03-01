@@ -6,7 +6,6 @@ import BoxSliders from './boxSliders';
 import InGraphSlider from './inGraphSliders';
 import './dataVis.css';
 
-
 const csvUrl =
   'https://gist.githubusercontent.com/Amandabru/00e96eaa56143e6499d1c651bac03aa8/raw/ccbd3e8c9dec23b78482dd47994d8faa49a1b96d/GapminderData.csv';
 
@@ -193,7 +192,8 @@ const DataVis = () => {
 
   return (
     <div className='taxTheRichContainer'>
-      <AreaChartD3 className="areaChart"
+      <AreaChartD3
+        className='areaChart'
         data={
           data
             ? [makePercentage(data), makePercentage(csvData)]
@@ -201,12 +201,15 @@ const DataVis = () => {
         }
         ExtremePovertyCount={ExtremePovertyCount}
         billionaries={billionaires ? billionaires : csvBillionaires}
-      />     
-      < InGraphSlider classname="inGraphsliders" onTaxChange={(taxBracketNr, newTax) =>
+      />
+      <InGraphSlider
+        classname='inGraphsliders'
+        onTaxChange={(taxBracketNr, newTax) =>
           updateTaxes(taxBracketNr, newTax)
         }
         clearAllTaxes={() => clearAllTAxes()}
-        taxes={taxes ? taxes : 0}/>
+        taxes={taxes ? taxes : 0}
+      />
 
       <BoxSliders
         onTaxChange={(taxBracketNr, newTax) =>
@@ -215,7 +218,6 @@ const DataVis = () => {
         clearAllTaxes={() => clearAllTAxes()}
         taxes={taxes ? taxes : 0}
       />
-
     </div>
   );
 };
