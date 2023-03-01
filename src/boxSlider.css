@@ -32,8 +32,8 @@
   width: 100%;
   appearance: none;
   height: 15px;
-  background: #f9f8f6;
-  box-shadow: rgba(0, 0, 0, 0.429) 0px 1px 1px;
+  background: #ffffff;
+  box-shadow: rgba(0, 0, 0, 0.329) 0.4px 0.8px 0.8px 0.8px;
   position: relative;
   border-radius: 3px;
 }
@@ -110,13 +110,13 @@
 .btn {
   cursor: pointer;
   font-size: 12px;
-  border: 0.8px solid rgb(156, 156, 156);
+  border: 0.8px transparent;
   border-radius: 2px;
   height: 25px;
   width: 60px;
   margin: auto;
   background: #fbfaf9;
-  box-shadow: rgba(0, 0, 0, 0.429) 0px 1px 2px;
+  box-shadow: rgba(0, 0, 0, 0.329) 0.4px 0.8px 0.8px 0.8px;
   font-family: inherit;
 }
 
