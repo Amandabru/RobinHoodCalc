@@ -59,8 +59,9 @@
 .percentageBox {
   width: 4ch;
   text-align: center;
-  border: 0.8px solid rgb(66, 66, 66);
+  border: transparent;
   border-radius: 2px;
+  box-shadow: rgba(0, 0, 0, 0.329) 0.6px 0.6px 1.2px 1.2px inset;
 }
 
 /*PopUp*/
