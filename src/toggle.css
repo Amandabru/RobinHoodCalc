@@ -1,0 +1,47 @@
+.togglelabel {
+  position: relative;
+  display: inline-block;
+  width: 30px; /*60px*/
+  height: 15px; /*30px*/
+}
+
+.toggleinput {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.togglespan {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #bbbbbb;
+  transition: 0.3s;
+  border-radius: 30px; /*30px*/
+}
+.togglespan:before {
+  position: absolute;
+  content: "";
+  height: 11px; /*25px*/
+  width: 11px; /*25px*/
+  left: 2px; /*3px*/
+  bottom: 2px; /*2.6px*/
+  background-color: #fff;
+  border-radius: 50%;
+  transition: 0.3s;
+}
+
+.toggleinput:checked + span {
+  background-color: #f6c944;
+}
+
+.toggleinput:checked + span:before {
+  transform: translateX(14px);
+}
+
+.togglemargin {
+  padding-left: 10px;
+}

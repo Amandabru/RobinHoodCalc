@@ -1,7 +1,11 @@
 import React from "react";
 import "./boxSlider.css";
+import Toggle from "./toggle";
 
 const BoxSliders = ({ onTaxChange, clearAllTaxes, taxes }) => {
+  const logState = (state) => {
+    console.log("Toggled:", state);
+  };
   return (
     <div
       style={{
@@ -230,6 +234,9 @@ const BoxSliders = ({ onTaxChange, clearAllTaxes, taxes }) => {
             <span className="infoText">
               Add specific billionaires to assign them individual taxes
             </span>
+          </div>
+          <div>
+            <Toggle toggled={true} onClick={logState} />
           </div>
         </h2>
       </header>
