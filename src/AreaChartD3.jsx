@@ -16,6 +16,7 @@ import {
   pointer,
   text,
   raise,
+  invert
 } from 'd3';
 import './circleStyle.css';
 import arnault from './Images/bernard_arnault.png';
@@ -29,7 +30,7 @@ import ballmer from './Images/steve_ballmer.png';
 import buffett from './Images/warren_buffett.png';
 import peauch from './Images/bertrand_peuch.jpeg';
 
-const AreaChartD3 = ({ data, ExtremePovertyCount, billionaries }) => {
+const AreaChartD3 = ({ data, ExtremePovertyCount, billionaries, peopleCounter }) => {
   const changingData = data[0];
   const defaultData = data[1];
   const svgRef = useRef();
@@ -261,42 +262,37 @@ const AreaChartD3 = ({ data, ExtremePovertyCount, billionaries }) => {
 
     svg
       .append('text')
-      .attr('x', -270)
+      .attr('x', -390)
       .attr('y', xScale(1.5))
       .attr('font-size', 13)
       .attr('fill', 'gray')
-      .text('Extreme poverty: ' + ExtremePovertyCount)
+      .text('Extreme poverty')
       .attr('transform', 'rotate(-90)')
       .attr('id', 'povertyText');
 
-    svg
-      .append('text')
-      .attr('x', -168)
-      .attr('y', xScale(1.5))
-      .attr('font-size', 14)
-      .attr('fill', 'gray')
-      .text('%')
-      .attr('transform', 'rotate(-90)')
-      .attr('id', 'povertyText');
-
-    // amount of people
     svg
       .append('text')
       .attr('x', xScale(0.7))
       .attr('y', 170)
       .attr('font-size', 20)
       .attr('fill', 'gray')
-      .text('hej')
+      .text(ExtremePovertyCount + '%')
+      .attr('id', 'povertyText');
+
+    // amount of people
+    svg
+      .append('text')
+      .attr('y', 170)
+      .attr('font-size', 20)
+      .attr('fill', 'gray')
       .attr('id', 'amountOfPeopleLeft')
       .style('opacity', 0);
 
     svg
       .append('text')
-      .attr('x', xScale(2.4))
       .attr('y', 170)
       .attr('font-size', 20)
       .attr('fill', 'gray')
-      .text('då')
       .attr('id', 'amountOfPeopleRight')
       .style('opacity', 0);
 
@@ -345,16 +341,23 @@ const AreaChartD3 = ({ data, ExtremePovertyCount, billionaries }) => {
         selectAll('#poverty')
           .attr('x1', pointer(e)[0])
           .attr('x2', pointer(e)[0]);
-        // selectAll('#amountOfPeople').style("opacity", 1);
       })
       .on('mousemove', (e) => {
+        let text = peopleCounter(xScale.invert(pointer(e)[0]));
         selectAll('#poverty')
           .attr('x1', pointer(e)[0])
           .attr('x2', pointer(e)[0]);
-        selectAll('#amountOfPeopleLeft').style('opacity', 1);
-        selectAll('#amountOfPeopleLeft').attr('x', pointer(e)[0] - 30);
-        selectAll('#amountOfPeopleRight').style('opacity', 1);
-        selectAll('#amountOfPeopleRight').attr('x', pointer(e)[0] + 8);
+        selectAll('#amountOfPeopleLeft')
+        .style('opacity', 1)
+        .attr("text-anchor", "end")
+        .attr('x', pointer(e)[0] - 8)
+        .text(text[0]);
+        
+        selectAll('#amountOfPeopleRight')
+        .style('opacity', 1)
+        .attr('x', pointer(e)[0] + 8)
+        .text(text[1]);;
+        
       })
       .on('mouseleave', mouseout);
 

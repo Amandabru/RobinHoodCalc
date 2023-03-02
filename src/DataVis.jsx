@@ -157,6 +157,38 @@ const DataVis = () => {
     setBillionaires(newBillionaires);
   };
 
+  const peopleCounter = (xValue) => {
+    var totPopulation = 0;
+    var peopleToLeft = 0;
+    let dataSet = null;
+    if(data)
+      dataSet = data;
+    else
+      dataSet = csvData;
+
+    for (let i = 0; i < csvData.length; i++) {
+      if (dataSet[i].income <= xValue) {
+        peopleToLeft += dataSet[i].population;
+      } else {
+        break;
+      }
+    }
+    for (let i = 0; i < dataSet.length; i++) {
+      totPopulation += dataSet[i].population;
+    }
+
+    const peopleCount = ((peopleToLeft / totPopulation) * 100).toFixed(1);
+    let textLeft = peopleCount + '%';
+    let textRight = (100 - peopleCount).toFixed(1) + '%';
+
+    if (peopleCount < 0.001)
+      textLeft = "few";
+    else if ((100 - peopleCount).toFixed(1) < 0.001)
+      textRight = "few";
+
+    return [textLeft, textRight];
+  };
+
   useEffect(() => {
     csv(csvUrl, function (d) {
       return {
@@ -201,6 +233,7 @@ const DataVis = () => {
         }
         ExtremePovertyCount={ExtremePovertyCount}
         billionaries={billionaires ? billionaires : csvBillionaires}
+        peopleCounter = {(xValue) => peopleCounter(xValue)}
       />
       <InGraphSlider
         classname='inGraphsliders'
