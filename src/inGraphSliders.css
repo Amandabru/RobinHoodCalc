@@ -1,13 +1,13 @@
 .sliders {
   position: absolute;
-  margin-left: 215px;
-  margin-top: 245px;
+  margin-left: 204px;
+  margin-top: 235px;
 }
 
 .slider-container {
   position: relative;
   float: left;
-  width: 54px;
+  width: 54.5px;
   z-index: 1;
 }
 
@@ -16,8 +16,8 @@
   -webkit-appearance: none;
   margin: -20;
   padding: 0;
-  height: 20px;
-  width: 440px;
+  height: 54px;
+  width: 455px;
   background-color: transparent;
   border-radius: 10px;
   overflow: hidden;
@@ -28,11 +28,12 @@
 .inGraphSlider::-webkit-slider-thumb {
   pointer-events: auto;
   -webkit-appearance: none;
-  height: 40px;
-  width: 40px;
-  background: url(./handle.png);
-  background-size: cover;
-  border-radius: 50%;
+  height: 10px;
+  width: 54px;
+  background: url(./NewHandle.png);
+  background-size: 55px 5px;
+  background-repeat: no-repeat;
+  border-radius: none;
   cursor: grab;
   margin-top: 0px;
   transform: rotate(90deg);
