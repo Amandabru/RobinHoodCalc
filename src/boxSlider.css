@@ -1,17 +1,8 @@
-/*Sliders*/
+/*Containers*/
 .taxationContainer {
   border-radius: 5px;
   width: fit-content;
   box-shadow: rgba(0, 0, 0, 0.429) 0px 1px 4px;
-}
-
-.boxSliderContainer {
-  margin-left: 2em;
-  margin-right: 2em;
-  padding-bottom: 2.5%;
-  font-weight: bold;
-  display: grid;
-  grid-template-columns: 1fr 0.5fr;
 }
 
 .titleContainer {
@@ -21,10 +12,51 @@
   margin-right: 2em;
 }
 
+/*Titles*/
 .headTitle {
   margin-left: 0;
   margin-right: 0;
   grid-template-columns: 1fr 0.35fr;
+}
+
+.marginalTax {
+  margin: auto;
+  margin-bottom: 0;
+  margin-right: 0;
+  text-align: right;
+}
+
+/*Description*/
+.taxationDescription {
+  font-size: 13px;
+  text-align: justify;
+  margin-bottom: 0;
+  margin-top: 0;
+}
+
+/*Buttons*/
+
+.btn {
+  cursor: pointer;
+  font-size: 12px;
+  border: 0.8px transparent;
+  border-radius: 2px;
+  height: 25px;
+  width: 60px;
+  margin: auto;
+  background: #fbfaf9;
+  box-shadow: rgba(0, 0, 0, 0.329) 0.4px 0.8px 0.8px 0.8px;
+  font-family: inherit;
+}
+
+/*Sliders*/
+.boxSliderContainer {
+  margin-left: 2em;
+  margin-right: 2em;
+  padding-bottom: 2.5%;
+  font-weight: bold;
+  display: grid;
+  grid-template-columns: 1fr 0.5fr;
 }
 
 .boxSlider {
@@ -36,6 +68,7 @@
   box-shadow: rgba(0, 0, 0, 0.329) 1px 1px 1.5px 1.2px inset;
   position: relative;
   border-radius: 3px;
+  cursor: pointer;
 }
 
 .boxSlider::-webkit-slider-thumb {
@@ -43,19 +76,25 @@
   appearance: none;
   width: 15px;
   height: 15px;
-  background: #f6c944;
-  cursor: pointer;
+  background: black;
+  cursor: grab;
   border-radius: 3px;
   box-shadow: rgba(0, 0, 0, 0.429) 0px 1px 4px;
 }
 
+.boxSlider::-webkit-slider-thumb:active {
+  background: #f6c944;
+  transition: 100ms;
+  cursor: grabbing;
+}
+
+/*Box showing tax-percentage*/
 .percetageBoxWrapper {
   margin: auto;
   margin-bottom: 0.1rem;
   margin-right: 0;
 }
 
-/*Box showing tax-percentage*/
 .percentageBox {
   width: 4ch;
   text-align: center;
@@ -90,38 +129,4 @@
 
 .info:hover .infoText {
   visibility: visible;
-}
-
-.taxationDescription {
-  font-size: 13px;
-  text-align: justify;
-  margin-bottom: 0;
-  margin-top: 0;
-}
-
-.clearAll {
-  margin-left: 2em;
-  margin-right: 2.5em;
-  text-align: right;
-  padding-bottom: 2%;
-}
-
-.btn {
-  cursor: pointer;
-  font-size: 12px;
-  border: 0.8px transparent;
-  border-radius: 2px;
-  height: 25px;
-  width: 60px;
-  margin: auto;
-  background: #fbfaf9;
-  box-shadow: rgba(0, 0, 0, 0.329) 0.4px 0.8px 0.8px 0.8px;
-  font-family: inherit;
-}
-
-.marginalTax {
-  margin: auto;
-  margin-bottom: 0;
-  margin-right: 0;
-  text-align: right;
 }

@@ -1,6 +1,5 @@
-
-.sliders{
-  position:absolute;
+.sliders {
+  position: absolute;
   margin-left: 215px;
   margin-top: 245px;
 }
@@ -34,7 +33,11 @@
   background: url(./handle.png);
   background-size: cover;
   border-radius: 50%;
-  cursor: pointer;
+  cursor: grab;
   margin-top: 0px;
   transform: rotate(90deg);
+}
+
+.inGraphSlider::-webkit-slider-thumb:active {
+  cursor: grabbing;
 }
