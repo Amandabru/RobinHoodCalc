@@ -103,6 +103,11 @@
   box-shadow: rgba(0, 0, 0, 0.329) 0.6px 0.6px 1.2px 1.2px inset;
 }
 
+.percentageSymbol {
+  cursor: default;
+  padding-left: 2px;
+}
+
 /*PopUp*/
 .info {
   position: relative;
@@ -124,7 +129,7 @@
   box-shadow: rgba(0, 0, 0, 0.429) 0px 1px 4px;
   z-index: 2;
   font-size: 13px;
-  font-weight: 100;
+  font-weight: 500;
 }
 
 .info:hover .infoText {
