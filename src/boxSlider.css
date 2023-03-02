@@ -3,6 +3,7 @@
   border-radius: 5px;
   width: fit-content;
   box-shadow: rgba(0, 0, 0, 0.429) 0px 1px 4px;
+  cursor: default;
 }
 
 .titleContainer {
@@ -107,7 +108,6 @@
 }
 
 .percentageSymbol {
-  cursor: default;
   padding-left: 2px;
 }
 
