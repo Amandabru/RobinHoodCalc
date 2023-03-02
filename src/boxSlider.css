@@ -35,7 +35,6 @@
 }
 
 /*Buttons*/
-
 .btn {
   cursor: pointer;
   font-size: 12px;
@@ -47,6 +46,10 @@
   background: #fbfaf9;
   box-shadow: rgba(0, 0, 0, 0.329) 0.4px 0.8px 0.8px 0.8px;
   font-family: inherit;
+}
+
+.btn:active {
+  box-shadow: rgba(0, 0, 0, 0.329) 0.4px 0.8px 0.8px 0.8px inset;
 }
 
 /*Sliders*/
