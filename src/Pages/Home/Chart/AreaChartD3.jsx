@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useState } from 'react';
+import React, { useRef, useEffect } from 'react';
 
 import {
   select,
@@ -14,23 +14,20 @@ import {
   brushX,
   selectAll,
   pointer,
-  text,
-  raise,
-  invert
 } from 'd3';
 import './circleStyle.css';
-import arnault from './Images/bernard_arnault.png';
-import gates from './Images/bill_gates.png';
-import musk from './Images/elon_musk.png';
-import bezos from './Images/jeff_bezos.png';
-import ellison from './Images/larry_ellison.png';
-import brin from './Images/sergey_brin.png';
-import page from './Images/larry_page.png';
-import ballmer from './Images/steve_ballmer.png';
-import buffett from './Images/warren_buffett.png';
-import peauch from './Images/bertrand_peuch.jpeg';
+import arnault from '../../../Images/bernard_arnault.png';
+import gates from '../../../Images/bill_gates.png';
+import musk from '../../../Images/elon_musk.png';
+import bezos from '../../../Images/jeff_bezos.png';
+import ellison from '../../../Images/larry_ellison.png';
+import brin from '../../../Images/sergey_brin.png';
+import page from '../../../Images/larry_page.png';
+import ballmer from '../../../Images/steve_ballmer.png';
+import buffett from '../../../Images/warren_buffett.png';
+import peauch from '../../../Images/bertrand_peuch.jpeg';
 
-const AreaChartD3 = ({ data, ExtremePovertyCount, billionaries, peopleCounter }) => {
+const AreaChartD3 = ({ data, ExtremePovertyCount, billionaries }) => {
   const changingData = data[0];
   const defaultData = data[1];
   const svgRef = useRef();
@@ -171,8 +168,7 @@ const AreaChartD3 = ({ data, ExtremePovertyCount, billionaries, peopleCounter })
     const generateDefaultArea = area()
       .x((d) => xScale(d.income))
       .y0(h)
-      .y1((val) => yScaleLeft(val.population))
-      .curve(curveMonotoneX);
+      .y1((val) => yScaleLeft(val.population));
 
     svg
       .selectAll('#defaultArea')
@@ -234,9 +230,8 @@ const AreaChartD3 = ({ data, ExtremePovertyCount, billionaries, peopleCounter })
       .attr('cy', function (d) {
         let counter = 0;
         for (const obj of billionaries) {
-          console.log(obj);
           if (Math.log(Math.abs(obj.income - d.income)) < 14) {
-            if (obj.billionaire == d.billionaire) {
+            if (obj.billionaire === d.billionaire) {
               break;
             }
             counter += 1;
@@ -262,37 +257,42 @@ const AreaChartD3 = ({ data, ExtremePovertyCount, billionaries, peopleCounter })
 
     svg
       .append('text')
-      .attr('x', -390)
+      .attr('x', -270)
       .attr('y', xScale(1.5))
       .attr('font-size', 13)
       .attr('fill', 'gray')
-      .text('Extreme poverty')
+      .text('Extreme poverty: ' + ExtremePovertyCount)
       .attr('transform', 'rotate(-90)')
       .attr('id', 'povertyText');
 
+    svg
+      .append('text')
+      .attr('x', -168)
+      .attr('y', xScale(1.5))
+      .attr('font-size', 14)
+      .attr('fill', 'gray')
+      .text('%')
+      .attr('transform', 'rotate(-90)')
+      .attr('id', 'povertyText');
+
+    // amount of people
     svg
       .append('text')
       .attr('x', xScale(0.7))
       .attr('y', 170)
       .attr('font-size', 20)
       .attr('fill', 'gray')
-      .text(ExtremePovertyCount + '%')
-      .attr('id', 'povertyText');
-
-    // amount of people
-    svg
-      .append('text')
-      .attr('y', 170)
-      .attr('font-size', 20)
-      .attr('fill', 'gray')
+      .text('hej')
       .attr('id', 'amountOfPeopleLeft')
       .style('opacity', 0);
 
     svg
       .append('text')
+      .attr('x', xScale(2.4))
       .attr('y', 170)
       .attr('font-size', 20)
       .attr('fill', 'gray')
+      .text('då')
       .attr('id', 'amountOfPeopleRight')
       .style('opacity', 0);
 
@@ -341,23 +341,16 @@ const AreaChartD3 = ({ data, ExtremePovertyCount, billionaries, peopleCounter })
         selectAll('#poverty')
           .attr('x1', pointer(e)[0])
           .attr('x2', pointer(e)[0]);
+        // selectAll('#amountOfPeople').style("opacity", 1);
       })
       .on('mousemove', (e) => {
-        let text = peopleCounter(xScale.invert(pointer(e)[0]));
         selectAll('#poverty')
           .attr('x1', pointer(e)[0])
           .attr('x2', pointer(e)[0]);
-        selectAll('#amountOfPeopleLeft')
-        .style('opacity', 1)
-        .attr("text-anchor", "end")
-        .attr('x', pointer(e)[0] - 8)
-        .text(text[0]);
-        
-        selectAll('#amountOfPeopleRight')
-        .style('opacity', 1)
-        .attr('x', pointer(e)[0] + 8)
-        .text(text[1]);;
-        
+        selectAll('#amountOfPeopleLeft').style('opacity', 1);
+        selectAll('#amountOfPeopleLeft').attr('x', pointer(e)[0] - 30);
+        selectAll('#amountOfPeopleRight').style('opacity', 1);
+        selectAll('#amountOfPeopleRight').attr('x', pointer(e)[0] + 8);
       })
       .on('mouseleave', mouseout);
 
