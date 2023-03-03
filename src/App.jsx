@@ -1,8 +1,8 @@
-import Home from './Pages/Home/Home';
-import Header from './Header/Header';
-import About from './Pages/About/About';
-import Team from './Pages/Team/Team';
-import HowToUse from './Pages/HowToUse/HowToUse';
+import Home from './Pages/Home/home';
+import Header from './Header/header';
+import About from './Pages/About/about';
+import Team from './Pages/Team/team';
+import HowToUse from './Pages/HowToUse/howToUse';
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 

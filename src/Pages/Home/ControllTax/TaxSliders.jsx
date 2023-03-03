@@ -1,6 +1,6 @@
 import React from 'react';
 import './taxSliders.css';
-import Toggle from './Toggle/Toggle';
+import Toggle from './Toggle/toggle';
 
 const TaxSliders = ({ onTaxChange, clearAllTaxes, taxes }) => {
   const logState = (state) => {
