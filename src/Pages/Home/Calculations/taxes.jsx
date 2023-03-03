@@ -10,6 +10,7 @@ const setDefaultTax = () => {
 };
 
 const updateTaxes = (taxBracketNr, { ...taxes }, newTax) => {
+  console.log(taxes[taxBracketNr]);
   taxes[taxBracketNr].taxRate = newTax;
   return taxes;
 };

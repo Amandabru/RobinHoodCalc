@@ -84,9 +84,8 @@ const Home = () => {
       <InGraphSlider
         classname='inGraphsliders'
         onTaxChange={(taxBracketNr, newTax) =>
-          updateTaxes(taxBracketNr, taxes, newTax)
+          setTaxes(updateTaxes(taxBracketNr, taxes, newTax))
         }
-        clearAllTaxes={() => setTaxes(setDefaultTax())}
         taxes={taxes}
       />
 
