@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { csv } from 'd3';
 import AreaChartD3 from './Chart/AreaChartD3';
-import BoxSliders from './TaxSliders/TaxSliders';
+import BoxSliders from './ControllTax/TaxSliders';
 import InGraphSlider from './Chart/inGraphSliders';
 import './home.css';
 import { updateTaxes, setDefaultTax } from './Calculations/taxes';
