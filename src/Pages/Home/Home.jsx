@@ -80,6 +80,7 @@ const Home = () => {
         ExtremePovertyCount={extremePovertyPercentage(data)}
         billionaries={billionaires}
         peopleCounter={(xValue) => peopleCounter(xValue, data)}
+        taxValue={taxes}
       />
       <InGraphSlider
         classname='inGraphsliders'
@@ -88,7 +89,6 @@ const Home = () => {
         }
         taxes={taxes}
       />
-
       <BoxSliders
         onTaxChange={(taxBracketNr, newTax) =>
           setTaxes(updateTaxes(taxBracketNr, taxes, newTax))

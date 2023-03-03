@@ -16,7 +16,7 @@ import {
   pointer,
   text,
   invert,
-  selection
+  selection,
 } from 'd3';
 import './circleStyle.css';
 import arnault from '../../../Images/bernard_arnault.png';
@@ -30,7 +30,13 @@ import ballmer from '../../../Images/steve_ballmer.png';
 import buffett from '../../../Images/warren_buffett.png';
 import peauch from '../../../Images/bertrand_peuch.jpeg';
 
-const AreaChartD3 = ({ data, ExtremePovertyCount, billionaries, taxValue }) => {
+const AreaChartD3 = ({
+  data,
+  ExtremePovertyCount,
+  billionaries,
+  peopleCounter,
+  taxValue,
+}) => {
   const changingData = data[0];
   const defaultData = data[1];
   const svgRef = useRef();
@@ -224,24 +230,19 @@ const AreaChartD3 = ({ data, ExtremePovertyCount, billionaries, taxValue }) => {
         return imag[d.images];
       });
 
-    selection.prototype.moveToFront = function() {
-      return this.each(function(){
-      this.parentNode.appendChild(this);
+    selection.prototype.moveToFront = function () {
+      return this.each(function () {
+        this.parentNode.appendChild(this);
       });
     };
-    
-    const highlight = function(d, i){
-      selectAll('circle').style("opacity", 0.4);
-      select(this)
-      .style("opacity", 1)
-      .attr("r", 30)
-      .moveToFront();
+
+    const highlight = function (d, i) {
+      selectAll('circle').style('opacity', 0.4);
+      select(this).style('opacity', 1).attr('r', 30).moveToFront();
     };
 
-    const highlightOff = function (d,i){
-      selectAll('circle')
-      .style("opacity", 1)
-      .attr("r", 10);
+    const highlightOff = function (d, i) {
+      selectAll('circle').style('opacity', 1).attr('r', 10);
     };
 
     svg
@@ -312,21 +313,17 @@ const AreaChartD3 = ({ data, ExtremePovertyCount, billionaries, taxValue }) => {
     // amount of people
     svg
       .append('text')
-      .attr('x', xScale(0.7))
       .attr('y', 170)
       .attr('font-size', 20)
       .attr('fill', 'gray')
-      .text('hej')
       .attr('id', 'amountOfPeopleLeft')
       .style('opacity', 0);
 
     svg
       .append('text')
-      .attr('x', xScale(2.4))
       .attr('y', 170)
       .attr('font-size', 20)
       .attr('fill', 'gray')
-      .text('då')
       .attr('id', 'amountOfPeopleRight')
       .style('opacity', 0);
 
@@ -368,23 +365,29 @@ const AreaChartD3 = ({ data, ExtremePovertyCount, billionaries, taxValue }) => {
       .style('fill', 'none')
       .style('pointer-events', 'all')
       .attr('width', w)
-      .attr('height', 30)
+      .attr('height', 20)
       .attr('y', 400)
       .on('mouseover', (e) => {
         selectAll('#povertyText').style('opacity', 0);
         selectAll('#poverty')
           .attr('x1', pointer(e)[0])
           .attr('x2', pointer(e)[0]);
-        // selectAll('#amountOfPeople').style("opacity", 1);
       })
       .on('mousemove', (e) => {
+        let text = peopleCounter(xScale.invert(pointer(e)[0]));
         selectAll('#poverty')
           .attr('x1', pointer(e)[0])
           .attr('x2', pointer(e)[0]);
-        selectAll('#amountOfPeopleLeft').style('opacity', 1);
-        selectAll('#amountOfPeopleLeft').attr('x', pointer(e)[0] - 30);
-        selectAll('#amountOfPeopleRight').style('opacity', 1);
-        selectAll('#amountOfPeopleRight').attr('x', pointer(e)[0] + 8);
+        selectAll('#amountOfPeopleLeft')
+          .style('opacity', 1)
+          .attr('text-anchor', 'end')
+          .attr('x', pointer(e)[0] - 8)
+          .text(text[0]);
+
+        selectAll('#amountOfPeopleRight')
+          .style('opacity', 1)
+          .attr('x', pointer(e)[0] + 8)
+          .text(text[1]);
       })
       .on('mouseleave', mouseout);
 
