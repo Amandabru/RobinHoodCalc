@@ -14,6 +14,9 @@ import {
   brushX,
   selectAll,
   pointer,
+  text,
+  invert,
+  selection
 } from 'd3';
 import './circleStyle.css';
 import arnault from '../../../Images/bernard_arnault.png';
@@ -221,6 +224,26 @@ const AreaChartD3 = ({ data, ExtremePovertyCount, billionaries, taxValue }) => {
         return imag[d.images];
       });
 
+    selection.prototype.moveToFront = function() {
+      return this.each(function(){
+      this.parentNode.appendChild(this);
+      });
+    };
+    
+    const highlight = function(d, i){
+      selectAll('circle').style("opacity", 0.4);
+      select(this)
+      .style("opacity", 1)
+      .attr("r", 30)
+      .moveToFront();
+    };
+
+    const highlightOff = function (d,i){
+      selectAll('circle')
+      .style("opacity", 1)
+      .attr("r", 10);
+    };
+
     svg
       .selectAll('circle')
       .data(billionaries)
@@ -242,7 +265,9 @@ const AreaChartD3 = ({ data, ExtremePovertyCount, billionaries, taxValue }) => {
       .attr('fill', function (d) {
         return 'url(#' + d.billionaire.toLowerCase().replace(/ /g, '-') + ')';
       })
-      .attr('class', 'circle');
+      .attr('class', 'circle')
+      .on('mouseover', highlight)
+      .on('mouseleave', highlightOff);
 
     // Line from inGraphSliders
     svg
@@ -343,7 +368,7 @@ const AreaChartD3 = ({ data, ExtremePovertyCount, billionaries, taxValue }) => {
       .style('fill', 'none')
       .style('pointer-events', 'all')
       .attr('width', w)
-      .attr('height', 20)
+      .attr('height', 30)
       .attr('y', 400)
       .on('mouseover', (e) => {
         selectAll('#povertyText').style('opacity', 0);
