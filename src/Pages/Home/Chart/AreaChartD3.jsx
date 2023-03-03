@@ -299,7 +299,7 @@ const AreaChartD3 = ({
       .text('Extreme poverty: ' + ExtremePovertyCount)
       .attr('transform', 'rotate(-90)')
       .attr('id', 'povertyText');
-
+    /*
     svg
       .append('text')
       .attr('x', -168)
@@ -309,7 +309,7 @@ const AreaChartD3 = ({
       .text('%')
       .attr('transform', 'rotate(-90)')
       .attr('id', 'povertyText');
-
+      */
     // amount of people
     svg
       .append('text')

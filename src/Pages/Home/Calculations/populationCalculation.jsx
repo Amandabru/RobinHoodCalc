@@ -39,7 +39,7 @@ const extremePovertyPercentage = ([...data]) => {
   for (let i = 0; i < data.length; i++) {
     totPopulation += data[i].population;
   }
-  return Math.floor((peopleInExtremePoverty / totPopulation) * 100);
+  return ((peopleInExtremePoverty / totPopulation) * 100).toFixed(0) + '%';
 };
 
 export { peopleCounter, extremePovertyPercentage };
