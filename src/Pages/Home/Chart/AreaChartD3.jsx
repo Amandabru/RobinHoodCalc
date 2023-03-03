@@ -27,7 +27,7 @@ import ballmer from '../../../Images/steve_ballmer.png';
 import buffett from '../../../Images/warren_buffett.png';
 import peauch from '../../../Images/bertrand_peuch.jpeg';
 
-const AreaChartD3 = ({ data, ExtremePovertyCount, billionaries }) => {
+const AreaChartD3 = ({ data, ExtremePovertyCount, billionaries, taxValue }) => {
   const changingData = data[0];
   const defaultData = data[1];
   const svgRef = useRef();
@@ -243,6 +243,15 @@ const AreaChartD3 = ({ data, ExtremePovertyCount, billionaries }) => {
         return 'url(#' + d.billionaire.toLowerCase().replace(/ /g, '-') + ')';
       })
       .attr('class', 'circle');
+
+    // Line from inGraphSliders
+    svg
+      .append('line')
+      .attr('stroke', 'grey')
+      .attr('x1', 0)
+      .attr('y1', yScaleRight(taxValue))
+      .attr('x2', w)
+      .attr('y2', yScaleRight(taxValue));
 
     // extreme poverty line
     svg
