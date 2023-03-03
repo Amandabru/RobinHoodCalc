@@ -165,10 +165,8 @@ const DataVis = () => {
     var totPopulation = 0;
     var peopleToLeft = 0;
     let dataSet = null;
-    if(data)
-      dataSet = data;
-    else
-      dataSet = csvData;
+    if (data) dataSet = data;
+    else dataSet = csvData;
 
     for (let i = 0; i < csvData.length; i++) {
       if (dataSet[i].income <= xValue) {
@@ -185,10 +183,8 @@ const DataVis = () => {
     let textLeft = peopleCount + '%';
     let textRight = (100 - peopleCount).toFixed(1) + '%';
 
-    if (peopleCount < 0.001)
-      textLeft = "few";
-    else if ((100 - peopleCount).toFixed(1) < 0.001)
-      textRight = "few";
+    if (peopleCount < 0.001) textLeft = 'few';
+    else if ((100 - peopleCount).toFixed(1) < 0.001) textRight = 'few';
 
     return [textLeft, textRight];
   };
@@ -237,7 +233,7 @@ const DataVis = () => {
         }
         ExtremePovertyCount={ExtremePovertyCount}
         billionaries={billionaires ? billionaires : csvBillionaires}
-        peopleCounter = {(xValue) => peopleCounter(xValue)}
+        peopleCounter={(xValue) => peopleCounter(xValue)}
       />
       <InGraphSlider
         classname='inGraphsliders'
