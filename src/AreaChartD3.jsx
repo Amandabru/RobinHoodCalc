@@ -30,7 +30,7 @@ import ballmer from './Images/steve_ballmer.png';
 import buffett from './Images/warren_buffett.png';
 import peauch from './Images/bertrand_peuch.jpeg';
 
-const AreaChartD3 = ({ data, ExtremePovertyCount, billionaries, peopleCounter }) => {
+const AreaChartD3 = ({ data, ExtremePovertyCount, billionaries, peopleCounter, taxValue}) => {
   const changingData = data[0];
   const defaultData = data[1];
   const svgRef = useRef();
@@ -234,7 +234,6 @@ const AreaChartD3 = ({ data, ExtremePovertyCount, billionaries, peopleCounter })
       .attr('cy', function (d) {
         let counter = 0;
         for (const obj of billionaries) {
-          console.log(obj);
           if (Math.log(Math.abs(obj.income - d.income)) < 14) {
             if (obj.billionaire == d.billionaire) {
               break;
@@ -249,6 +248,19 @@ const AreaChartD3 = ({ data, ExtremePovertyCount, billionaries, peopleCounter })
       })
       .attr('class', 'circle');
 
+
+
+
+    // Line from inGraphSliders
+    svg
+      .append('line')
+      .attr('stroke', 'grey')
+      .attr('x1', 0)
+      .attr('y1', yScaleRight(taxValue))
+      .attr('x2', w)
+      .attr('y2',yScaleRight(taxValue))
+
+      
     // extreme poverty line
     svg
       .append('line')
