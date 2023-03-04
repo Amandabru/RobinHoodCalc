@@ -1,11 +1,12 @@
 import React from 'react';
 import './taxSliders.css';
-import Toggle from './Toggle/toggle';
+import Toggle from '../Toggle/Toggle';
 
 const TaxSliders = ({ onTaxChange, clearAllTaxes, taxes }) => {
   const logState = (state) => {
     console.log('Toggled:', state);
   };
+
   return (
     <div className='taxationContainer'>
       <header
@@ -71,7 +72,7 @@ const TaxSliders = ({ onTaxChange, clearAllTaxes, taxes }) => {
         </div>
         <div className='percetageBoxWrapper'>
           <input
-            className='percentageBox'
+            className={'percentageBox'}
             type='text'
             inputMode='numeric'
             value={parseFloat((taxes[1].taxRate * 100).toFixed(0))}
@@ -83,7 +84,11 @@ const TaxSliders = ({ onTaxChange, clearAllTaxes, taxes }) => {
               }
             }}
             onChange={(e) => {
-              onTaxChange(1, e.target.value / 100);
+              if (e.target.value == '') {
+                onTaxChange(1, 0);
+              } else {
+                onTaxChange(1, e.target.value / 100);
+              }
             }}
           />
           <span className='percentageSymbol'> % </span>

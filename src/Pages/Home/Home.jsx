@@ -1,25 +1,40 @@
 import React, { useState, useEffect } from 'react';
 import { csv } from 'd3';
-import AreaChartD3 from './Chart/areaChartD3';
-import BoxSliders from './ControllTax/taxSliders';
-import InGraphSlider from './Chart/inGraphSliders';
+import AreaChartD3 from './Chart/AreaChartD3';
+import TaxSliders from './TaxSliders/TaxSliders';
+import InGraphSlider from './InGraphSliders/InGraphSliders';
 import './home.css';
-import { updateTaxes, setDefaultTax } from './Calculations/taxes';
 import {
+  updateTaxes,
+  setDefaultTax,
   giveToThePoor,
   collectFromTheRich,
   makePercentage,
-} from './Calculations/populationManipulation';
-import {
   peopleCounter,
   extremePovertyPercentage,
-} from './Calculations/populationCalculation';
+} from './Utils/index';
 
 const dataUrl =
   'https://gist.githubusercontent.com/Amandabru/00e96eaa56143e6499d1c651bac03aa8/raw/ccbd3e8c9dec23b78482dd47994d8faa49a1b96d/GapminderData.csv';
 
 const billionairesUrl =
   'https://gist.githubusercontent.com/Amandabru/791125eedbe23167f74f20b2739a53be/raw/203d2e923bffaef26d10a7f81da92337f59ab57b/billionairesData.csv';
+
+const movingAverage = (N, data) => {
+  let Y = data.map((a) => {
+    return { ...a };
+  });
+  for (let i = 0; i < data.length; i++) {
+    let sum = 0;
+    for (let k = 0; k < N; k++) {
+      if (k <= i) {
+        sum += data[i - k].population;
+      }
+    }
+    Y[i].population = sum / N;
+  }
+  return Y;
+};
 
 const Home = () => {
   const [data, setData] = useState(null);
@@ -76,7 +91,10 @@ const Home = () => {
     <div className='taxTheRichContainer'>
       <AreaChartD3
         className='areaChart'
-        data={[makePercentage(data), makePercentage(defaultData)]}
+        data={[
+          makePercentage(movingAverage(3, data)),
+          makePercentage(movingAverage(3, defaultData)),
+        ]}
         ExtremePovertyCount={extremePovertyPercentage(data)}
         billionaries={billionaires}
         peopleCounter={(xValue) => peopleCounter(xValue, data)}
@@ -89,7 +107,7 @@ const Home = () => {
         }
         taxes={taxes}
       />
-      <BoxSliders
+      <TaxSliders
         onTaxChange={(taxBracketNr, newTax) =>
           setTaxes(updateTaxes(taxBracketNr, taxes, newTax))
         }

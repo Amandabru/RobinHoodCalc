@@ -17,6 +17,7 @@ import {
   text,
   invert,
   selection,
+  index,
 } from 'd3';
 import './circleStyle.css';
 import arnault from '../../../Images/bernard_arnault.png';

@@ -9,10 +9,4 @@ const setDefaultTax = () => {
   return taxes;
 };
 
-const updateTaxes = (taxBracketNr, { ...taxes }, newTax) => {
-  console.log(taxes[taxBracketNr]);
-  taxes[taxBracketNr].taxRate = newTax;
-  return taxes;
-};
-
-export { updateTaxes, setDefaultTax };
+export default setDefaultTax;

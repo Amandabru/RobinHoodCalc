@@ -1,5 +1,5 @@
 //FLAWED FUNCTION
-import closestIndex from './helpers';
+import closestIndex from './closestIndex';
 
 const distributeEqually = (data, incomeMax, collectedTax) => {
   var popUnderLimit = 0; // amount of pop under the tax limit((100dollars))
