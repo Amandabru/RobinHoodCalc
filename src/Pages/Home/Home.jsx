@@ -20,22 +20,6 @@ const dataUrl =
 const billionairesUrl =
   'https://gist.githubusercontent.com/Amandabru/791125eedbe23167f74f20b2739a53be/raw/203d2e923bffaef26d10a7f81da92337f59ab57b/billionairesData.csv';
 
-const movingAverage = (N, data) => {
-  let Y = data.map((a) => {
-    return { ...a };
-  });
-  for (let i = 0; i < data.length; i++) {
-    let sum = 0;
-    for (let k = 0; k < N; k++) {
-      if (k <= i) {
-        sum += data[i - k].population;
-      }
-    }
-    Y[i].population = sum / N;
-  }
-  return Y;
-};
-
 const Home = () => {
   const [data, setData] = useState(null);
   const [taxes, setTaxes] = useState(null);
@@ -91,10 +75,7 @@ const Home = () => {
     <div className='taxTheRichContainer'>
       <AreaChartD3
         className='areaChart'
-        data={[
-          makePercentage(movingAverage(3, data)),
-          makePercentage(movingAverage(3, defaultData)),
-        ]}
+        data={[makePercentage(data), makePercentage(defaultData)]}
         ExtremePovertyCount={extremePovertyPercentage(data)}
         billionaries={billionaires}
         peopleCounter={(xValue) => peopleCounter(xValue, data)}

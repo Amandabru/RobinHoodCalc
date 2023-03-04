@@ -6,3 +6,4 @@ export { default as peopleCounter } from './peopleCounter';
 export { default as collectFromTheRich } from './collectFromTheRich';
 export { default as setDefaultTax } from './setDefaultTaxes';
 export { default as updateTaxes } from './updateTaxes';
+export { default as movingAverage } from './movingAverage';
