@@ -116,7 +116,7 @@ const AreaChartD3 = ({
     selectAll("#defaultArea").remove();
     selectAll("#amountOfPeopleLeft").remove();
     selectAll("#amountOfPeopleRight").remove();
-    selectAll("#levelAxis");
+    selectAll("#levelAxis").remove();
 
     // brush
     const brush = brushX().extent([
@@ -388,11 +388,14 @@ const AreaChartD3 = ({
       .attr("transform", `translate(0, ${h})`)
       .attr("id", "axis");
 
+    // guide för levels, ta bort sen
     svg
       .append("g")
       .call(xAxisLevels)
       .attr("transform", `translate(0, 450 )`)
       .attr("id", "axis");
+
+    //----------------------------------
 
     levels.forEach((d, i) => {
       svg
