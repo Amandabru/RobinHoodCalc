@@ -236,18 +236,43 @@ const AreaChartD3 = ({
         this.parentNode.appendChild(this);
       });
     };
+    
+    const highlight = function(d, i){
+      selectAll('.circle').style("opacity", 0.4);
+      select(this)
+      .style("opacity", 1)
+      .attr("r", 15)
+      .moveToFront();
+      
+      select(".bigCircle")
+      .style("opacity", 1)
+      .attr("fill", select(this).attr('fill'));
 
-    const highlight = function (d, i) {
-      selectAll('circle').style('opacity', 0.4);
-      select(this).style('opacity', 1).attr('r', 30).moveToFront();
+      select(".infoTextName")
+      .text(i.billionaire);
+
+      select(".infoTextDollar")
+      .text((i.income/1000000).toFixed(1) + " M$/day");
+      
     };
 
-    const highlightOff = function (d, i) {
-      selectAll('circle').style('opacity', 1).attr('r', 10);
+    const highlightOff = function (d,i){
+      selectAll('.circle')
+      .style("opacity", 1)
+      .attr("r", 10);
+
+      select(".bigCircle")
+      .style("opacity", 0);
+
+      select(".infoTextName")
+      .text("");
+
+      select(".infoTextDollar")
+      .text("");
     };
 
     svg
-      .selectAll('circle')
+      .selectAll('.circle')
       .data(billionaries)
       .join('circle')
       .attr('r', 10)
@@ -271,6 +296,32 @@ const AreaChartD3 = ({
       .on('mouseover', highlight)
       .on('mouseleave', highlightOff);
 
+    // Hover over billionaire
+    svg.
+      append('circle')
+      .attr('r', 30)
+      .attr('cx', xScale(10000))
+      .attr('cy', 100)
+      .attr('class', 'bigCircle')
+      .attr('stroke', '#ffca34')
+      .style("opacity", 0);
+
+    svg.
+      append('text')
+      .style("font-size", "20px")
+      .attr('x', xScale(50000))
+      .attr('y', 90)
+      .attr('class', 'infoTextName')
+      .attr('stroke', '#ffca34');
+
+    svg.
+      append('text')
+      .style("font-size", "20px")
+      .attr('x', xScale(50000))
+      .attr('y', 120)
+      .attr('class', 'infoTextDollar')
+      .attr('stroke', '#ffca34');
+
     // Line from inGraphSliders
     svg
       .append('line')
@@ -293,24 +344,24 @@ const AreaChartD3 = ({
 
     svg
       .append('text')
-      .attr('x', -270)
+      .attr('x', -380)
       .attr('y', xScale(1.5))
       .attr('font-size', 13)
       .attr('fill', 'gray')
-      .text('Extreme poverty: ' + ExtremePovertyCount)
+      .text('Extreme poverty')
       .attr('transform', 'rotate(-90)')
       .attr('id', 'povertyText');
-    /*
+    
     svg
       .append('text')
-      .attr('x', -168)
-      .attr('y', xScale(1.5))
-      .attr('font-size', 14)
+      .attr('x',  xScale(0.4))
+      .attr('y', 170)
+      .attr('font-size', 20)
       .attr('fill', 'gray')
-      .text('%')
-      .attr('transform', 'rotate(-90)')
+      .text(ExtremePovertyCount)
       .attr('id', 'povertyText');
-      */
+      
+
     // amount of people
     svg
       .append('text')
