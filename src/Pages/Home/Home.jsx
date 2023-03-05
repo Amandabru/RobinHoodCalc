@@ -3,7 +3,6 @@ import { csv } from "d3";
 import AreaChartD3 from "./Chart/AreaChartD3";
 import TaxSliders from "./TaxSliders/TaxSliders";
 import InGraphSlider from "./InGraphSliders/InGraphSliders";
-import TaxBillionaires from "./TaxBillionaires/TaxBillionaires";
 import "./home.css";
 import {
   updateTaxes,
