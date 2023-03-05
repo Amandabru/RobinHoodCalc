@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import './toggle.css';
+import { useState } from "react";
+import "./toggle.css";
 
 export const Toggle = ({ label, toggled, onClick }) => {
   const [isToggled, toggle] = useState(toggled);
@@ -10,15 +10,15 @@ export const Toggle = ({ label, toggled, onClick }) => {
   };
 
   return (
-    <div className='togglemargin'>
-      <label className='togglelabel'>
+    <div className="togglemargin">
+      <label className="togglelabel">
         <input
-          className='toggleinput'
-          type='checkbox'
+          className="toggleinput"
+          type="checkbox"
           defaultChecked={isToggled}
           onClick={callback}
         />
-        <span className='togglespan' />
+        <span className="togglespan" />
         <strong>{label}</strong>
       </label>
     </div>
@@ -26,3 +26,6 @@ export const Toggle = ({ label, toggled, onClick }) => {
 };
 
 export default Toggle;
+
+/*  <Toggle toggled={true} onClick={logState} /> 
+import Toggle from "../Toggle/Toggle"; */

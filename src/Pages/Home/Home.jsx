@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from 'react';
-import { csv } from 'd3';
-import AreaChartD3 from './Chart/AreaChartD3';
-import TaxSliders from './TaxSliders/TaxSliders';
-import InGraphSlider from './InGraphSliders/InGraphSliders';
-import './home.css';
+import React, { useState, useEffect } from "react";
+import { csv } from "d3";
+import AreaChartD3 from "./Chart/AreaChartD3";
+import TaxSliders from "./TaxSliders/TaxSliders";
+import InGraphSlider from "./InGraphSliders/InGraphSliders";
+import TaxBillionaires from "./TaxBillionaires/TaxBillionaires";
+import "./home.css";
 import {
   updateTaxes,
   setDefaultTax,
@@ -12,13 +13,13 @@ import {
   makePercentage,
   peopleCounter,
   extremePovertyPercentage,
-} from './Utils/index';
+} from "./Utils/index";
 
 const dataUrl =
-  'https://gist.githubusercontent.com/Amandabru/00e96eaa56143e6499d1c651bac03aa8/raw/ccbd3e8c9dec23b78482dd47994d8faa49a1b96d/GapminderData.csv';
+  "https://gist.githubusercontent.com/Amandabru/00e96eaa56143e6499d1c651bac03aa8/raw/ccbd3e8c9dec23b78482dd47994d8faa49a1b96d/GapminderData.csv";
 
 const billionairesUrl =
-  'https://gist.githubusercontent.com/Amandabru/791125eedbe23167f74f20b2739a53be/raw/203d2e923bffaef26d10a7f81da92337f59ab57b/billionairesData.csv';
+  "https://gist.githubusercontent.com/Amandabru/791125eedbe23167f74f20b2739a53be/raw/203d2e923bffaef26d10a7f81da92337f59ab57b/billionairesData.csv";
 
 const Home = () => {
   const [data, setData] = useState(null);
@@ -39,7 +40,7 @@ const Home = () => {
   };
 
   useEffect(() => {
-    csv(dataUrl, function (d) {
+    csv(dataUrl, function(d) {
       return {
         income: +d.income,
         population: +d.population,
@@ -48,7 +49,7 @@ const Home = () => {
       setDefaultData(data);
       setData(data);
     });
-    csv(billionairesUrl, function (d) {
+    csv(billionairesUrl, function(d) {
       return {
         billionaire: d.billionaire,
         income: +d.income,
@@ -72,9 +73,9 @@ const Home = () => {
   }
 
   return (
-    <div className='taxTheRichContainer'>
+    <div className="taxTheRichContainer">
       <AreaChartD3
-        className='areaChart'
+        className="areaChart"
         data={[makePercentage(data), makePercentage(defaultData)]}
         ExtremePovertyCount={extremePovertyPercentage(data)}
         billionaries={billionaires}
@@ -82,7 +83,7 @@ const Home = () => {
         taxValue={taxes}
       />
       <InGraphSlider
-        classname='inGraphsliders'
+        classname="inGraphsliders"
         onTaxChange={(taxBracketNr, newTax) =>
           setTaxes(updateTaxes(taxBracketNr, taxes, newTax))
         }
@@ -94,6 +95,7 @@ const Home = () => {
         }
         clearAllTaxes={() => setTaxes(setDefaultTax())}
         taxes={taxes}
+        billionaires={billionaires ? billionaires : billionairesUrl}
       />
     </div>
   );

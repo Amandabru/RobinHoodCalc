@@ -51,14 +51,22 @@ function TaxBillionaires({ billionaires }) {
   return (
     <div>
       <button onClick={addNewDiv} disabled={divs.length >= options.length}>
-        Add new div
+        Add billionaire
       </button>
       {divs.map((div) => (
         <div key={div.id}>
           {div.selected ? (
             <div style={{ display: "flex", alignItems: "center" }}>
               <p>{div.option}</p>
-              <button onClick={() => removeDiv(div.id)}>Remove div</button>
+              <p style={{ marginLeft: "10px" }}>
+                {
+                  billionaires.find(
+                    (billionaire) => billionaire.billionaire === div.option
+                  ).income
+                }{" "}
+                $/day{" "}
+              </p>
+              <button onClick={() => removeDiv(div.id)}>Remove</button>
             </div>
           ) : (
             <select
@@ -86,7 +94,3 @@ function TaxBillionaires({ billionaires }) {
 }
 
 export default TaxBillionaires;
-
-/* Write this in home.jsx to make the element visible <TaxBillionaires
-        billionaires={billionaires ? billionaires : billionairesUrl}
-      /> */
