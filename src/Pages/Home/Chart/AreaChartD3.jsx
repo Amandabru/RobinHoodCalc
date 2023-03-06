@@ -200,7 +200,7 @@ const AreaChartD3 = ({
       .attr("stroke", "#ffca34")
       .attr("id", "chagningArea");
 
-    //billionaries
+    // billionaries
     var defs = svg.append("defs");
 
     defs
@@ -393,8 +393,8 @@ const AreaChartD3 = ({
       .style("fill", "none")
       .style("pointer-events", "all")
       .attr("width", w)
-      .attr("height", 20)
-      .attr("y", 400)
+      .attr("height", 25)
+      .attr("y", 403)
       .on("mouseover", (e) => {
         selectAll("#povertyText").style("opacity", 0);
         selectAll("#poverty")

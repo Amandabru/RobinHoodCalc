@@ -46,8 +46,6 @@
 
 .inGraphSlider:hover + .hoverLine{
   opacity: 0.4;
-  left: 405px;
-  top: 500px;
   visibility: visible;
 }
 
