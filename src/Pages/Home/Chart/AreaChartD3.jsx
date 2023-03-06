@@ -109,14 +109,15 @@ const AreaChartD3 = ({
     ];
 
     // remove
-    selectAll('#axis').remove();
-    selectAll('#chagningArea').remove();
-    selectAll('#poverty').remove();
-    selectAll('#povertyText').remove();
-    selectAll('#defaultArea').remove();
-    selectAll('#amountOfPeopleLeft').remove();
-    selectAll('#amountOfPeopleRight').remove();
-    selectAll('#levelAxis').remove();
+    selectAll("#axis").remove();
+    selectAll("#chagningArea").remove();
+    selectAll("#poverty").remove();
+    selectAll("#povertyText").remove();
+    selectAll("#defaultArea").remove();
+    selectAll("#amountOfPeopleLeft").remove();
+    selectAll("#amountOfPeopleRight").remove();
+    selectAll("#levelAxis").remove();
+    selectAll("#topLine").remove();
 
     // brush
     const brush = brushX().extent([
@@ -239,8 +240,8 @@ const AreaChartD3 = ({
     };
 
     const highlight = function (d, i) {
-      selectAll('.circle').style('opacity', 0.4);
-      select(this).style('opacity', 1).attr('r', 15).moveToFront();
+      selectAll(".circle").style("opacity", 0.4);
+      select(this).style("opacity", 1).attr("r", 13).moveToFront();
 
       select('.bigCircle')
         .style('opacity', 1)
@@ -248,10 +249,15 @@ const AreaChartD3 = ({
 
       select('.infoTextName').text(i.billionaire);
 
-      select('.infoTextDollar').text(
-        (i.income / 1000000).toFixed(1) + ' M$/day'
-      );
-    };
+      let textIncome = "";
+      if(i.income > 100000)
+        textIncome = (i.income / 1000000).toFixed(1) + " M$/day";
+      else
+        textIncome = i.income + " $/day";
+
+      select(".infoTextDollar")
+      .text(textIncome);
+    }
 
     const highlightOff = function (d, i) {
       selectAll('.circle').style('opacity', 1).attr('r', 10);
@@ -316,12 +322,14 @@ const AreaChartD3 = ({
 
     // Line from inGraphSliders
     svg
-      .append('line')
-      .attr('stroke', 'grey')
-      .attr('x1', 0)
-      .attr('y1', yScaleRight(taxValue))
-      .attr('x2', w)
-      .attr('y2', yScaleRight(taxValue));
+      .append("line")
+      .attr("stroke", "grey")
+      .attr("x1", 0)
+      .attr("y1", yScaleRight(taxValue))
+      .attr("x2", w)
+      .attr("y2", yScaleRight(taxValue))
+      .style("opacity", 0.2)
+      .attr("id", "topLine");
 
     // extreme poverty line
     svg
