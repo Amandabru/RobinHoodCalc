@@ -1,5 +1,7 @@
-import React, { useState } from "react";
-import { v4 as uuidv4 } from "uuid";
+import React, { useState } from 'react';
+import { v4 as uuidv4 } from 'uuid';
+import Toggle from '../Toggle/Toggle';
+import './taxbillionaires.css';
 
 function TaxBillionaires({ billionaires }) {
   const [divs, setDivs] = useState([]);
@@ -10,7 +12,7 @@ function TaxBillionaires({ billionaires }) {
     // Create a new div element
     const newDiv = {
       id: uuidv4(),
-      option: "",
+      option: '',
       selected: false,
     };
 
@@ -24,11 +26,11 @@ function TaxBillionaires({ billionaires }) {
 
   function handleOptionChange(e, id) {
     const value = e.target.value;
-    if (value !== "") {
+    if (value !== '') {
       // If a dropdown is selected, add a new div with a default value of ""
       const newDiv = {
         id: uuidv4(),
-        option: "",
+        option: '',
         selected: false,
       };
       setDivs([...divs, newDiv]);
@@ -48,32 +50,90 @@ function TaxBillionaires({ billionaires }) {
     setDivs(newDivs);
   }
 
+  function removeZeros(income) {
+    return income / 1000000;
+  }
+
   return (
     <div>
       <button onClick={addNewDiv} disabled={divs.length >= options.length}>
         Add billionaire
       </button>
       {divs.map((div) => (
-        <div key={div.id} style={{ display: "flex", alignItems: "center" }}>
+        <div key={div.id}>
           <div>
             {div.selected ? (
-              <div style={{ display: "flex", alignItems: "center" }}>
-                <p>{div.option}</p>
-                <p style={{ marginLeft: "10px" }}>
-                  {
-                    billionaires.find(
-                      (billionaire) => billionaire.billionaire === div.option
-                    ).income
-                  }{" "}
-                  $/day
-                </p>
+              <div className='billionaireEntry'>
+                <div>
+                  <div className='titleContainer1'>
+                    <p> {div.option} </p>
+                    <p>
+                      {removeZeros(
+                        billionaires.find(
+                          (billionaire) =>
+                            billionaire.billionaire === div.option
+                        ).income
+                      )}{' '}
+                      M$/day
+                    </p>
+                    <p className='marginalTax1'>
+                      {' '}
+                      Tax Rate
+                      <div
+                        className='info1'
+                        style={{
+                          marginLeft: '10px',
+                          color: 'gray',
+                        }}
+                      >
+                        ?
+                        <span className='infoText1'>
+                          Marginal tax rate is the tax rate that applies to each
+                          additional level of income. In this progressive tax
+                          system, people pay more in taxes as their income
+                          increases and a portion of their income moves into a
+                          higher income bracket.
+                        </span>
+                      </div>
+                    </p>
+                    <button
+                      className='cancelButton'
+                      onClick={() => removeDiv(div.id)}
+                    >
+                      x
+                    </button>
+                  </div>
+                  <div className='boxSliderContainer1'>
+                    <div>
+                      <input
+                        className='boxSlider1'
+                        type='range'
+                        min='0'
+                        max='1'
+                        step='0.001'
+                        onChange={(e) => {}}
+                      />
+                    </div>
+                    <div className='percetageBoxWrapper1'>
+                      <input
+                        className={'percentageBox1'}
+                        type='text'
+                        inputMode='numeric'
+                      />
+                      <span className='percentageSymbol'> % </span>
+                    </div>
+                    <div className='toggle'>
+                      <Toggle />
+                    </div>
+                  </div>
+                </div>
               </div>
             ) : (
               <select
                 value={div.option}
                 onChange={(e) => handleOptionChange(e, div.id)}
               >
-                <option value="">Select an option</option>
+                <option value=''>Select an option</option>
                 {options.map((option, index) => (
                   <option
                     key={index}
@@ -88,7 +148,6 @@ function TaxBillionaires({ billionaires }) {
               </select>
             )}
           </div>
-          <button onClick={() => removeDiv(div.id)}>Remove</button>
         </div>
       ))}
     </div>

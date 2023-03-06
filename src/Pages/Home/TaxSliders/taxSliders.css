@@ -116,6 +116,7 @@
   position: relative;
   display: inline-block;
   cursor: default;
+  font-size: medium;
 }
 
 .info .infoText {
