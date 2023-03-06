@@ -41,7 +41,7 @@ const TaxSliders = ({ onTaxChange, clearAllTaxes, taxes, billionaires }) => {
           <div
             className='info'
             style={{
-              marginLeft: '10px',
+              marginLeft: '5px',
               color: 'gray',
             }}
           >

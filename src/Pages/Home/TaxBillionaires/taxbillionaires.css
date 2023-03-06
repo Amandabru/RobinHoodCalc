@@ -1,6 +1,6 @@
 .billionaireEntry {
   box-shadow: rgba(0, 0, 0, 0.429) 0px 1px 4px;
-  border-radius: 3px;
+  border-radius: 4px;
 }
 
 .cancelButton {
@@ -27,6 +27,7 @@
 .name {
   margin: auto;
   margin-left: 0;
+  font-weight: bold;
 }
 
 .income {
@@ -40,8 +41,12 @@
   padding: 1rem;
 }
 
+.taxRate {
+  text-align: center;
+}
 .taxTitle {
   margin: auto;
+  font-weight: bold;
 }
 
 .toggle {
@@ -49,14 +54,14 @@
   margin-bottom: 0;
 }
 
-.info1 {
+.moreInfo {
   position: relative;
   display: inline-block;
   cursor: default;
   font-size: medium;
 }
 
-.info1 .infoText1 {
+.moreInfo .moreInfoText {
   position: absolute;
   left: -140px;
   top: 30px;
@@ -73,7 +78,11 @@
   font-weight: 500;
 }
 
-.boxSlider1 {
+.moreInfo:hover .moreInfoText {
+  visibility: visible;
+}
+
+.slider {
   -webkit-appearance: none;
   width: 100%;
   appearance: none;
@@ -83,32 +92,31 @@
   position: relative;
   border-radius: 3px;
   cursor: pointer;
-  margin: auto;
-  margin-bottom: 0;
+  margin: 0.15rem;
 }
 
-.boxSlider1::-webkit-slider-thumb {
+.slider::-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none;
   width: 15px;
+  height: 15px;
   background: black;
   cursor: grab;
   border-radius: 3px;
   box-shadow: rgba(0, 0, 0, 0.429) 0px 1px 4px;
 }
 
-.boxSlider1::-webkit-slider-thumb:active {
+.slider::-webkit-slider-thumb:active {
   background: #f6c944;
   transition: 100ms;
   cursor: grabbing;
 }
 
-.percentageBox1 {
+.percentage {
   width: 4ch;
   height: 15px;
   text-align: center;
   border: transparent;
   border-radius: 2px;
   box-shadow: rgba(0, 0, 0, 0.329) 1px 1px 1.5px 1.2px inset;
-  margin: auto;
 }

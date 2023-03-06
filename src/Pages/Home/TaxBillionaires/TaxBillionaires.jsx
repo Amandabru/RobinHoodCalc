@@ -84,7 +84,7 @@ function TaxBillionaires({ billionaires }) {
                     </p>
                   </div>
                   <input
-                    className='boxSlider1'
+                    className='slider'
                     type='range'
                     min='0'
                     max='1'
@@ -98,25 +98,21 @@ function TaxBillionaires({ billionaires }) {
                       {' '}
                       Tax Rate
                       <div
-                        className='info1'
+                        className='moreInfo'
                         style={{
-                          marginLeft: '10px',
+                          marginLeft: '5px',
                           color: 'gray',
                         }}
                       >
                         ?
-                        <span className='infoText1'>
-                          Marginal tax rate is the tax rate that applies to each
-                          additional level of income. In this progressive tax
-                          system, people pay more in taxes as their income
-                          increases and a portion of their income moves into a
-                          higher income bracket.
+                        <span className='moreInfoText'>
+                          Tax sdfaskdfjaskldf bskfbas jbfjsdfksdjf sdfsbdkf.
                         </span>
                       </div>
                     </p>
                     <div className='percetageBoxWrapper1'>
                       <input
-                        className={'percentageBox1'}
+                        className={'percentage'}
                         type='text'
                         inputMode='numeric'
                       />
