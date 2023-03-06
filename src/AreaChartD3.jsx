@@ -380,8 +380,8 @@ const AreaChartD3 = ({ data, ExtremePovertyCount, billionaries, peopleCounter, t
       selectAll('#amountOfPeopleRight').style('opacity', 0);
     }
 
+    /* 
     // data circles
-    /*
     svg
       .selectAll('circle')
       .data(changingData)
@@ -392,7 +392,8 @@ const AreaChartD3 = ({ data, ExtremePovertyCount, billionaries, peopleCounter, t
       .attr('stroke', 'red')
       .attr("id", "chagningArea");
       */
-  }, [data]);
+
+  }, [data]); 
 
   return (
     <React.Fragment>

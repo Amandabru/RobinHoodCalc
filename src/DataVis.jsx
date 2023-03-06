@@ -139,8 +139,8 @@ const DataVis = () => {
       taxes,
       newBillionaires
     );
-    newData = distributeEqually(newData, 100, collectedTax);
-    /*newData = giveToThePoor(newData, collectedTax);*/
+     newData = distributeEqually(newData, 100, collectedTax); 
+    newData = giveToThePoor(newData, collectedTax);
     var totPopulation = 0;
     // Counter of People in Extreme Poverty
     var peopleInExtremePoverty = 0;
