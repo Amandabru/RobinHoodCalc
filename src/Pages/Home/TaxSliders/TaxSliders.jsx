@@ -1,11 +1,18 @@
 import React from "react";
-import "./boxSlider.css";
-import Toggle from "./toggle";
+import "./taxSliders.css";
+import TaxBillionaires from "../TaxBillionaires/TaxBillionaires";
 
-const BoxSliders = ({ onTaxChange, clearAllTaxes, taxes }) => {
+const TaxSliders = ({
+  onTaxChange,
+  clearAllTaxes,
+  taxes,
+  billionaires,
+  billionairesUrl,
+}) => {
   const logState = (state) => {
     console.log("Toggled:", state);
   };
+
   return (
     <div className="taxationContainer">
       <header
@@ -71,7 +78,7 @@ const BoxSliders = ({ onTaxChange, clearAllTaxes, taxes }) => {
         </div>
         <div className="percetageBoxWrapper">
           <input
-            className="percentageBox"
+            className={"percentageBox"}
             type="text"
             inputMode="numeric"
             value={parseFloat((taxes[1].taxRate * 100).toFixed(0))}
@@ -83,7 +90,11 @@ const BoxSliders = ({ onTaxChange, clearAllTaxes, taxes }) => {
               }
             }}
             onChange={(e) => {
-              onTaxChange(1, e.target.value / 100);
+              if (e.target.value == "") {
+                onTaxChange(1, 0);
+              } else {
+                onTaxChange(1, e.target.value / 100);
+              }
             }}
           />
           <span className="percentageSymbol"> % </span>
@@ -273,11 +284,13 @@ const BoxSliders = ({ onTaxChange, clearAllTaxes, taxes }) => {
           </button>
         </div>
         <div>
-          <Toggle toggled={true} onClick={logState} />
+          <TaxBillionaires
+            billionaires={billionaires ? billionaires : billionairesUrl}
+          />
         </div>
       </header>
     </div>
   );
 };
 
-export default BoxSliders;
+export default TaxSliders;

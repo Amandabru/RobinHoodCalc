@@ -3,5 +3,5 @@
   column-gap: 5rem;
   display: grid;
   grid-template-columns: 1.1fr 0.9fr;
-  position:relative;
+  position: relative;
 }

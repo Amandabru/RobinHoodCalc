@@ -30,7 +30,7 @@
   -webkit-appearance: none;
   height: 10px;
   width: 54px;
-  background: url(./NewHandle.png);
+  background: url(/src/Images/NewHandle.png);
   background-size: 55px 5px;
   background-repeat: no-repeat;
   border-radius: none;

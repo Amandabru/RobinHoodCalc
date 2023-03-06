@@ -26,3 +26,6 @@ export const Toggle = ({ label, toggled, onClick }) => {
 };
 
 export default Toggle;
+
+/*  <Toggle toggled={true} onClick={logState} /> 
+import Toggle from "../Toggle/Toggle"; */
