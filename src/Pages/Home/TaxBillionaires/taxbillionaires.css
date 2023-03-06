@@ -1,6 +1,7 @@
 .billionaireEntry {
   box-shadow: rgba(0, 0, 0, 0.429) 0px 1px 4px;
   border-radius: 4px;
+  margin-bottom: 2.5%;
 }
 
 .cancelButton {
@@ -8,6 +9,7 @@
   background: transparent;
   border: transparent;
   cursor: pointer;
+  font-size: large;
 }
 
 .billionaireContent {
