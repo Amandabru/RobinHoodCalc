@@ -466,53 +466,6 @@ const AreaChartD3 = ({
         .on("mouseout", mouseout);
     });
 
-    // level axis + moving box
-    svg
-      .append("rect")
-      .attr("x", 0)
-      .attr("y", 0)
-      .attr("width", 33)
-      .attr("height", h)
-      .attr("stroke", "gray")
-      .attr("fill", "gray")
-      .style("opacity", 0)
-      .attr("id", "levelRect");
-
-    levels.forEach((d, i) => {
-      svg
-        .append("text")
-        .attr("fill", "gray")
-        .attr("font-size", 15)
-        .attr("text-anchor", "middle")
-        .attr("x", xScale(d))
-        .attr("y", h + 50)
-        .text("◆")
-        .attr("id", "levelAxis");
-
-      svg
-        .append("text")
-        .attr("fill", "gray")
-        .attr("font-size", 15)
-        .attr("text-anchor", "middle")
-        .attr("x", xScale(d) - 17) // :))
-        .attr("y", h + 50)
-        .text(levelLabels[i])
-        .attr("id", "levelAxis")
-        .on("mouseenter", () => {
-          selectAll("#levelRect")
-            .attr("x", xScale(levels[i - 1]))
-            .attr("width", () => {
-              if (Number.isNaN(xScale(levels[i]) - xScale(levels[i - 1]))) {
-                return xScale(2);
-              } else {
-                return xScale(levels[i]) - xScale(levels[i - 1]);
-              }
-            })
-            .style("opacity", 0.3);
-        })
-        .on("mouseout", mouseout);
-    });
-
     function mouseout() {
       selectAll("#povertyText").style("opacity", 1);
       selectAll("#poverty").attr("x1", xScale(2)).attr("x2", xScale(2));
