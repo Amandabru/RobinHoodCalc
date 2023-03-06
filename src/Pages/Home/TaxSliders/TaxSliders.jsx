@@ -9,10 +9,6 @@ const TaxSliders = ({
   billionaires,
   billionairesUrl,
 }) => {
-  const logState = (state) => {
-    console.log("Toggled:", state);
-  };
-
   return (
     <div className="taxationContainer">
       <header
@@ -40,7 +36,7 @@ const TaxSliders = ({
         </p>
       </header>
       <div className="titleContainer">
-        <h4> Income Interval [$/day] </h4>
+        <h4> Income Interval ($/day) </h4>
         <h4 className="marginalTax">
           {" "}
           Marginal Tax Rate
@@ -251,44 +247,9 @@ const TaxSliders = ({
           marginTop: "15px",
         }}
       ></hr>
-
-      <header
-        style={{
-          padding: "15px",
-        }}
-      >
-        <div className="titleContainer headTitle">
-          <h2>
-            Tax the 10 Richest
-            <div
-              className="info"
-              style={{
-                marginLeft: "10px",
-                color: "gray",
-              }}
-            >
-              ?
-              <span className="infoText">
-                Add specific billionaires to assign them individual taxes
-              </span>
-            </div>
-          </h2>
-          <button
-            className="btn"
-            onClick={() => {
-              clearAllTaxes();
-              console.log("cleared");
-            }}
-          >
-            Clear All
-          </button>
-        </div>
-        <div>
-          <TaxBillionaires
-            billionaires={billionaires ? billionaires : billionairesUrl}
-          />
-        </div>
-      </header>
+      <TaxBillionaires
+        billionaires={billionaires ? billionaires : billionairesUrl}
+      />
     </div>
   );
 };
