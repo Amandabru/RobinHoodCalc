@@ -55,19 +55,25 @@ function TaxBillionaires({ billionaires }) {
   }
 
   return (
-    <div>
+    <>
       <button onClick={addNewDiv} disabled={divs.length >= options.length}>
         Add billionaire
       </button>
       {divs.map((div) => (
         <div key={div.id}>
-          <div>
-            {div.selected ? (
-              <div className='billionaireEntry'>
-                <div>
-                  <div className='titleContainer1'>
-                    <p> {div.option} </p>
-                    <p>
+          {div.selected ? (
+            <div className='billionaireEntry'>
+              <button
+                className='cancelButton'
+                onClick={() => removeDiv(div.id)}
+              >
+                x
+              </button>
+              <div className='billionaireContent'>
+                <div className='containerLeft'>
+                  <div className='nameAndIncome'>
+                    <p className='name'> {div.option} </p>
+                    <p className='income'>
                       {removeZeros(
                         billionaires.find(
                           (billionaire) =>
@@ -76,7 +82,19 @@ function TaxBillionaires({ billionaires }) {
                       )}{' '}
                       M$/day
                     </p>
-                    <p className='marginalTax1'>
+                  </div>
+                  <input
+                    className='boxSlider1'
+                    type='range'
+                    min='0'
+                    max='1'
+                    step='0.001'
+                    onChange={(e) => {}}
+                  />
+                </div>
+                <div className='containerRight'>
+                  <div className='taxRate'>
+                    <p className='taxTitle'>
                       {' '}
                       Tax Rate
                       <div
@@ -96,24 +114,6 @@ function TaxBillionaires({ billionaires }) {
                         </span>
                       </div>
                     </p>
-                    <button
-                      className='cancelButton'
-                      onClick={() => removeDiv(div.id)}
-                    >
-                      x
-                    </button>
-                  </div>
-                  <div className='boxSliderContainer1'>
-                    <div>
-                      <input
-                        className='boxSlider1'
-                        type='range'
-                        min='0'
-                        max='1'
-                        step='0.001'
-                        onChange={(e) => {}}
-                      />
-                    </div>
                     <div className='percetageBoxWrapper1'>
                       <input
                         className={'percentageBox1'}
@@ -122,35 +122,35 @@ function TaxBillionaires({ billionaires }) {
                       />
                       <span className='percentageSymbol'> % </span>
                     </div>
-                    <div className='toggle'>
-                      <Toggle />
-                    </div>
+                  </div>
+                  <div className='toggle'>
+                    <Toggle />
                   </div>
                 </div>
               </div>
-            ) : (
-              <select
-                value={div.option}
-                onChange={(e) => handleOptionChange(e, div.id)}
-              >
-                <option value=''>Select an option</option>
-                {options.map((option, index) => (
-                  <option
-                    key={index}
-                    value={option}
-                    disabled={divs.some(
-                      (d) => d.option === option && d.id !== div.id
-                    )}
-                  >
-                    {option}
-                  </option>
-                ))}
-              </select>
-            )}
-          </div>
+            </div>
+          ) : (
+            <select
+              value={div.option}
+              onChange={(e) => handleOptionChange(e, div.id)}
+            >
+              <option value=''>Select an option</option>
+              {options.map((option, index) => (
+                <option
+                  key={index}
+                  value={option}
+                  disabled={divs.some(
+                    (d) => d.option === option && d.id !== div.id
+                  )}
+                >
+                  {option}
+                </option>
+              ))}
+            </select>
+          )}
         </div>
       ))}
-    </div>
+    </>
   );
 }
 
