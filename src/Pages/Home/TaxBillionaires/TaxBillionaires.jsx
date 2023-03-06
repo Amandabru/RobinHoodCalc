@@ -54,39 +54,41 @@ function TaxBillionaires({ billionaires }) {
         Add billionaire
       </button>
       {divs.map((div) => (
-        <div key={div.id}>
-          {div.selected ? (
-            <div style={{ display: "flex", alignItems: "center" }}>
-              <p>{div.option}</p>
-              <p style={{ marginLeft: "10px" }}>
-                {
-                  billionaires.find(
-                    (billionaire) => billionaire.billionaire === div.option
-                  ).income
-                }{" "}
-                $/day{" "}
-              </p>
-              <button onClick={() => removeDiv(div.id)}>Remove</button>
-            </div>
-          ) : (
-            <select
-              value={div.option}
-              onChange={(e) => handleOptionChange(e, div.id)}
-            >
-              <option value="">Select an option</option>
-              {options.map((option, index) => (
-                <option
-                  key={index}
-                  value={option}
-                  disabled={divs.some(
-                    (d) => d.option === option && d.id !== div.id
-                  )}
-                >
-                  {option}
-                </option>
-              ))}
-            </select>
-          )}
+        <div key={div.id} style={{ display: "flex", alignItems: "center" }}>
+          <div>
+            {div.selected ? (
+              <div style={{ display: "flex", alignItems: "center" }}>
+                <p>{div.option}</p>
+                <p style={{ marginLeft: "10px" }}>
+                  {
+                    billionaires.find(
+                      (billionaire) => billionaire.billionaire === div.option
+                    ).income
+                  }{" "}
+                  $/day
+                </p>
+              </div>
+            ) : (
+              <select
+                value={div.option}
+                onChange={(e) => handleOptionChange(e, div.id)}
+              >
+                <option value="">Select an option</option>
+                {options.map((option, index) => (
+                  <option
+                    key={index}
+                    value={option}
+                    disabled={divs.some(
+                      (d) => d.option === option && d.id !== div.id
+                    )}
+                  >
+                    {option}
+                  </option>
+                ))}
+              </select>
+            )}
+          </div>
+          <button onClick={() => removeDiv(div.id)}>Remove</button>
         </div>
       ))}
     </div>
