@@ -9,6 +9,7 @@
   float: left;
   width: 54.5px;
   z-index: 1;
+  pointer-events: none;
 }
 
 .inGraphSlider {
@@ -41,4 +42,16 @@
 
 .inGraphSlider::-webkit-slider-thumb:active {
   cursor: grabbing;
+}
+
+.inGraphSlider:hover + .hoverLine{
+  opacity: 0.4;
+  left: 405px;
+  top: 500px;
+  visibility: visible;
+}
+
+.hoverLine{
+  position: fixed;
+  visibility: hidden;
 }

@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import { v4 as uuidv4 } from 'uuid';
 import Toggle from '../Toggle/Toggle';
+import { v4 as uuidv4 } from 'uuid';
 import './taxbillionaires.css';
+import '../TaxSliders/taxSliders.css';
 
 function TaxBillionaires({ billionaires }) {
   const [divs, setDivs] = useState([]);
@@ -46,8 +47,12 @@ function TaxBillionaires({ billionaires }) {
   }
 
   function removeDiv(id) {
-    const newDivs = divs.filter((div) => div.id !== id);
-    setDivs(newDivs);
+    if (id) {
+      const newDivs = divs.filter((div) => div.id !== id);
+      setDivs(newDivs);
+    } else {
+      setDivs([]);
+    }
   }
 
   function removeZeros(income) {
@@ -55,98 +60,133 @@ function TaxBillionaires({ billionaires }) {
   }
 
   return (
-    <>
-      <button onClick={addNewDiv} disabled={divs.length >= options.length}>
-        Add billionaire
-      </button>
-      {divs.map((div) => (
-        <div key={div.id}>
-          {div.selected ? (
-            <div className='billionaireEntry'>
-              <button
-                className='cancelButton'
-                onClick={() => removeDiv(div.id)}
-              >
-                x
-              </button>
-              <div className='billionaireContent'>
-                <div className='containerLeft'>
-                  <div className='nameAndIncome'>
-                    <p className='name'> {div.option} </p>
-                    <p className='income'>
-                      {removeZeros(
-                        billionaires.find(
-                          (billionaire) =>
-                            billionaire.billionaire === div.option
-                        ).income
-                      )}{' '}
-                      M$/day
-                    </p>
-                  </div>
-                  <input
-                    className='slider'
-                    type='range'
-                    min='0'
-                    max='1'
-                    step='0.001'
-                    onChange={(e) => {}}
-                  />
-                </div>
-                <div className='containerRight'>
-                  <div className='taxRate'>
-                    <p className='taxTitle'>
-                      {' '}
-                      Tax Rate
-                      <div
-                        className='moreInfo'
-                        style={{
-                          marginLeft: '5px',
-                          color: 'gray',
-                        }}
-                      >
-                        ?
-                        <span className='moreInfoText'>
-                          Tax sdfaskdfjaskldf bskfbas jbfjsdfksdjf sdfsbdkf.
-                        </span>
-                      </div>
-                    </p>
-                    <div className='percetageBoxWrapper1'>
-                      <input
-                        className={'percentage'}
-                        type='text'
-                        inputMode='numeric'
-                      />
-                      <span className='percentageSymbol'> % </span>
+    <header
+      style={{
+        padding: '15px',
+      }}
+    >
+      <div className='titleContainer headTitle'>
+        <h2>
+          Tax the 10 Richest
+          <div
+            className='info'
+            style={{
+              marginLeft: '10px',
+              color: 'gray',
+            }}
+          >
+            ?
+            <span className='infoText'>
+              Add specific billionaires to assign them individual taxes
+            </span>
+          </div>
+        </h2>
+        <button
+          className='btn'
+          onClick={() => {
+            removeDiv();
+          }}
+        >
+          Clear All
+        </button>
+      </div>
+      <div
+        style={{
+          padding: '15px',
+        }}
+      >
+        <button onClick={addNewDiv} disabled={divs.length >= options.length}>
+          Add billionaire
+        </button>
+        {divs.map((div) => (
+          <div key={div.id}>
+            {div.selected ? (
+              <div className='billionaireEntry'>
+                <button
+                  className='cancelButton'
+                  onClick={() => removeDiv(div.id)}
+                >
+                  x
+                </button>
+                <div className='billionaireContent'>
+                  <div className='containerLeft'>
+                    <div className='nameAndIncome'>
+                      <p className='name'> {div.option} </p>
+                      <p className='income'>
+                        {removeZeros(
+                          billionaires.find(
+                            (billionaire) =>
+                              billionaire.billionaire === div.option
+                          ).income
+                        )}{' '}
+                        M$/day
+                      </p>
                     </div>
+                    <input
+                      className='slider'
+                      type='range'
+                      min='0'
+                      max='1'
+                      step='0.001'
+                      onChange={(e) => {}}
+                    />
                   </div>
-                  <div className='toggle'>
-                    <Toggle />
+                  <div className='containerRight'>
+                    <div className='taxRate'>
+                      <p className='taxTitle'>
+                        {' '}
+                        Tax Rate
+                        <div
+                          className='moreInfo'
+                          style={{
+                            marginLeft: '5px',
+                            color: 'gray',
+                          }}
+                        >
+                          ?
+                          <span className='moreInfoText'>
+                            Tax sdfaskdfjaskldf bskfbas jbfjsdfksdjf sdfsbdkf.
+                          </span>
+                        </div>
+                      </p>
+                      <div className='percetageBoxWrapper1'>
+                        <input
+                          className={'percentage'}
+                          type='text'
+                          inputMode='numeric'
+                        />
+                        <span className='percentageSymbol'> % </span>
+                      </div>
+                    </div>
+                    <div className='toggle'>
+                      <Toggle />
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-          ) : (
-            <select
-              value={div.option}
-              onChange={(e) => handleOptionChange(e, div.id)}
-            >
-              <option value=''>Select an option</option>
-              {options.map((option, index) => (
-                <option
-                  key={index}
-                  value={option}
-                  disabled={divs.some(
-                    (d) => d.option === option && d.id !== div.id
-                  )}
-                >
-                  {option}
-                </option>
-              ))}
-            </select>
-          )}
-        </div>
-      ))}
-    </>
+            ) : (
+              <select
+                value={div.option}
+                onChange={(e) => handleOptionChange(e, div.id)}
+              >
+                <option value=''>Select an option</option>
+                {options.map((option, index) => (
+                  <option
+                    key={index}
+                    value={option}
+                    disabled={divs.some(
+                      (d) => d.option === option && d.id !== div.id
+                    )}
+                  >
+                    {option}
+                  </option>
+                ))}
+              </select>
+            )}
+          </div>
+        ))}
+      </div>
+    </header>
   );
 }
 

@@ -245,40 +245,7 @@ const TaxSliders = ({ onTaxChange, clearAllTaxes, taxes, billionaires }) => {
           marginTop: '15px',
         }}
       ></hr>
-
-      <header
-        style={{
-          padding: '15px',
-        }}
-      >
-        <div className='titleContainer headTitle'>
-          <h2>
-            Tax the 10 Richest
-            <div
-              className='info'
-              style={{
-                marginLeft: '10px',
-                color: 'gray',
-              }}
-            >
-              ?
-              <span className='infoText'>
-                Add specific billionaires to assign them individual taxes
-              </span>
-            </div>
-          </h2>
-          <button
-            className='btn'
-            onClick={() => {
-              clearAllTaxes();
-              console.log('cleared');
-            }}
-          >
-            Clear All
-          </button>
-        </div>
-        <TaxBillionaires billionaires={billionaires} />
-      </header>
+      <TaxBillionaires billionaires={billionaires} />
     </div>
   );
 };

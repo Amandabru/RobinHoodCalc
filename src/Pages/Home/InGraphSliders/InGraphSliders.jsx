@@ -16,6 +16,9 @@ function CustomSlider({ onTaxChange, taxes }) {
             onTaxChange(1, e.target.value);
           }}
         />
+        <div className='hoverLine' style={{ marginTop: -400*taxes[1].taxRate}}>
+        {(100*taxes[1].taxRate).toFixed(1) + "%"}
+        </div>
       </div>
       <div className='slider-container'>
         <input

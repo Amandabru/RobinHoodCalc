@@ -122,3 +122,51 @@
   border-radius: 2px;
   box-shadow: rgba(0, 0, 0, 0.329) 1px 1px 1.5px 1.2px inset;
 }
+/* QVISTEN */
+
+.btnAdd {
+  cursor: pointer;
+  font-size: 12px;
+  border: 0.8px transparent;
+  border-radius: 2px;
+  height: 25px;
+  width: 100px;
+  background: #fbfaf9;
+  box-shadow: rgba(0, 0, 0, 0.329) 0.4px 0.8px 0.8px 0.8px;
+  font-family: inherit;
+}
+
+.btnAdd:active {
+  box-shadow: rgba(0, 0, 0, 0.329) 0.4px 0.8px 0.8px 0.8px inset;
+}
+
+.btnRemove {
+  cursor: pointer;
+  font-size: 12px;
+  border: 0.8px transparent;
+  border-radius: 2px;
+  margin-left: 10px;
+  height: 25px;
+  width: 60px;
+  background: #fbfaf9;
+  box-shadow: rgba(0, 0, 0, 0.329) 0.4px 0.8px 0.8px 0.8px;
+  font-family: inherit;
+  float: right;
+}
+
+.btnRemove:active {
+  box-shadow: rgba(0, 0, 0, 0.329) 0.4px 0.8px 0.8px 0.8px inset;
+}
+
+.dropdown {
+  cursor: pointer;
+  font-size: 12px;
+  border: 0.8px transparent;
+  border-radius: 2px;
+  height: 25px;
+  width: 100px;
+  margin-top: 5%;
+  background: #fbfaf9;
+  box-shadow: rgba(0, 0, 0, 0.329) 0.4px 0.8px 0.8px 0.8px;
+  font-family: inherit;
+}
