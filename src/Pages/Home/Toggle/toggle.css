@@ -24,7 +24,7 @@
 }
 .togglespan:before {
   position: absolute;
-  content: "";
+  content: '';
   height: 11px; /*25px*/
   width: 11px; /*25px*/
   left: 2px; /*3px*/

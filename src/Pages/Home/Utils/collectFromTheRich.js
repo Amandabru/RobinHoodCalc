@@ -1,11 +1,17 @@
 import closestIndex from './closestIndex';
 
-const collectFromTheRich = (defaultData, taxes, defaultBillionaires) => {
+const collectFromTheRich = (
+  defaultData,
+  taxes,
+  defaultBillionaires,
+  billionaires,
+  individualTaxes
+) => {
   let collectedTax = 0;
   let data = defaultData.map((a) => {
     return { ...a };
   });
-  let billionaires = defaultBillionaires.map((a) => {
+  let newBillionaires = defaultBillionaires.map((a) => {
     return { ...a };
   });
   for (let i = 0; i < defaultData.length; i++) {
@@ -48,11 +54,14 @@ const collectFromTheRich = (defaultData, taxes, defaultBillionaires) => {
         }
       }
     }
-    billionaires[i].income =
+    newBillionaires[i].income =
       defaultBillionaires[i].income - partialCollectedTax;
-    collectedTax += partialCollectedTax;
+    let individualTax =
+      newBillionaires[i].income * individualTaxes[i].individualTax;
+    newBillionaires[i].income -= individualTax;
+    collectedTax += partialCollectedTax + individualTax;
   }
-  return [collectedTax, data, billionaires];
+  return [collectedTax, data, newBillionaires];
 };
 
 export default collectFromTheRich;
