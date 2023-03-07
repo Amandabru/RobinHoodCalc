@@ -43,3 +43,13 @@
 .inGraphSlider::-webkit-slider-thumb:active {
   cursor: grabbing;
 }
+
+.inGraphSlider:hover + .hoverLine{
+  opacity: 0.4;
+  visibility: visible;
+}
+
+.hoverLine{
+  position: fixed;
+  visibility: hidden;
+}

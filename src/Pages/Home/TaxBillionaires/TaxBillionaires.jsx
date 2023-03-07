@@ -1,97 +1,192 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import Toggle from "../Toggle/Toggle";
 import { v4 as uuidv4 } from "uuid";
+import "./taxbillionaires.css";
 
-function TaxBillionaires({ billionaires }) {
-  const [divs, setDivs] = useState([]);
+function TaxBillionaires({
+  billionaires,
+  onIndividualTaxChange,
+  individualTaxes,
+  clearAllIndividualTaxes,
+  onChangeBillionaireList,
+}) {
+  const [selectedBillionaire, setSelectedBillionaire] = useState("");
+  const [billionaireList, setBillionaireList] = useState([]);
 
-  const options = billionaires.map((item) => item.billionaire);
-
-  function addNewDiv() {
-    // Create a new div element
-    const newDiv = {
-      id: uuidv4(),
-      option: "",
-      selected: false,
-    };
-
-    // Add the new div to the array of divs
-    if (divs.length > 0) {
-      setDivs([newDiv, ...divs]);
-    } else {
-      setDivs([...divs, newDiv]);
-    }
-  }
-
-  function handleOptionChange(e, id) {
-    const value = e.target.value;
-    if (value !== "") {
-      // If a dropdown is selected, add a new div with a default value of ""
-      const newDiv = {
-        id: uuidv4(),
-        option: "",
-        selected: false,
-      };
-      setDivs([...divs, newDiv]);
-    }
-    const newDivs = divs.map((div) => {
-      if (div.id === id) {
-        return { ...div, option: value, selected: true };
-      } else {
-        return div;
+  function handleOptionChange(e) {
+    const selected = e.target.value;
+    if (selected !== "") {
+      const newBillionaire = billionaires.find(
+        (billionaire) => billionaire.billionaire === selected
+      );
+      if (newBillionaire) {
+        setBillionaireList([
+          { ...newBillionaire, id: newBillionaire.billionaire }, //uuidv4()
+          ...billionaireList,
+        ]);
       }
-    });
-    setDivs(newDivs);
+      setSelectedBillionaire("");
+    }
+  }
+  function handleRemoveDiv(id) {
+    if (id) {
+      const newDivs = billionaireList.filter((div) => div.id !== id);
+      setBillionaireList(newDivs);
+      onChangeBillionaireList(billionaireList);
+    } else {
+      setBillionaireList([]);
+      onChangeBillionaireList(billionaireList);
+    }
   }
 
-  function removeDiv(id) {
-    const newDivs = divs.filter((div) => div.id !== id);
-    setDivs(newDivs);
+  function formatIncome(n) {
+    if (n < 1e3) return n;
+    if (n >= 1e3 && n < 1e6) return +(n / 1e3).toFixed(0) + "k";
+    if (n >= 1e6 && n < 1e9) return +(n / 1e6).toFixed(1) + "M";
+    if (n >= 1e9 && n < 1e12) return +(n / 1e9).toFixed(1) + "B";
   }
+
+  useEffect(() => {
+    onChangeBillionaireList(billionaireList);
+  }, [billionaireList, onChangeBillionaireList]);
 
   return (
-    <div>
-      <button onClick={addNewDiv} disabled={divs.length >= options.length}>
-        Add billionaire
-      </button>
-      {divs.map((div) => (
-        <div key={div.id} style={{ display: "flex", alignItems: "center" }}>
-          <div>
-            {div.selected ? (
-              <div style={{ display: "flex", alignItems: "center" }}>
-                <p>{div.option}</p>
-                <p style={{ marginLeft: "10px" }}>
-                  {
-                    billionaires.find(
-                      (billionaire) => billionaire.billionaire === div.option
-                    ).income
-                  }{" "}
-                  $/day
-                </p>
-              </div>
-            ) : (
-              <select
-                value={div.option}
-                onChange={(e) => handleOptionChange(e, div.id)}
+    <header
+      style={{
+        padding: "15px",
+      }}
+    >
+      <div className="titleContainer headTitle">
+        <h2>Tax the 10 Richest</h2>
+        <button
+          className="btn"
+          onClick={() => {
+            handleRemoveDiv();
+            clearAllIndividualTaxes();
+          }}
+        >
+          Clear All
+        </button>
+      </div>
+      <p className="taxTheRichDescription">
+        Specify additional tax rates for the top ten richest. This additional
+        tax rate is applied on all income that is left after having applied
+        other Robin Hood taxes.
+      </p>
+      <div
+        style={{
+          padding: "15px",
+        }}
+      >
+        <div style={{ display: "flex" }}>
+          <select
+            className="dropdown"
+            value={selectedBillionaire}
+            onChange={handleOptionChange}
+          >
+            <option value="">Add Billionaire</option>
+            {billionaires.map((billionaire) => (
+              <option
+                key={billionaire.billionaire}
+                disabled={
+                  selectedBillionaire === billionaire.billionaire ||
+                  billionaireList.some(
+                    (b) => b.billionaire === billionaire.billionaire
+                  )
+                }
               >
-                <option value="">Select an option</option>
-                {options.map((option, index) => (
-                  <option
-                    key={index}
-                    value={option}
-                    disabled={divs.some(
-                      (d) => d.option === option && d.id !== div.id
-                    )}
-                  >
-                    {option}
-                  </option>
-                ))}
-              </select>
-            )}
-          </div>
-          <button onClick={() => removeDiv(div.id)}>Remove</button>
+                {billionaire.billionaire}
+              </option>
+            ))}
+          </select>
         </div>
-      ))}
-    </div>
+        {billionaireList.map((billionaire) => (
+          <div className="billionaireEntry" key={billionaire.billionaire}>
+            <button
+              className="cancelButton"
+              onClick={() => {
+                handleRemoveDiv(billionaire.id);
+                onIndividualTaxChange(billionaire.billionaire, 0);
+              }}
+            >
+              x
+            </button>
+            <div className="billionaireContent">
+              <div className="containerLeft">
+                <div className="nameAndIncome">
+                  <p className="name"> {billionaire.billionaire} </p>
+                  <p className="income">
+                    Daily income:{" "}
+                    {formatIncome(
+                      billionaires.find(
+                        (b) => b.billionaire === billionaire.billionaire
+                      ).income
+                    )}{" "}
+                    $
+                  </p>
+                </div>
+                <input
+                  className="slider"
+                  type="range"
+                  min="0"
+                  max="1"
+                  step="0.001"
+                  value={
+                    individualTaxes.find(
+                      (b) => b.billionaire === billionaire.billionaire
+                    ).individualTax
+                  }
+                  onChange={(e) => {
+                    onIndividualTaxChange(
+                      billionaire.billionaire,
+                      e.target.value
+                    );
+                  }}
+                />
+              </div>
+              <div className="containerRight">
+                <div className="taxRate">
+                  <p className="taxTitle"> Tax Rate</p>
+                  <div className="percetageBoxWrapper1">
+                    <input
+                      className={"percentage"}
+                      type="text"
+                      inputMode="numeric"
+                      value={parseFloat(
+                        individualTaxes.find(
+                          (b) => b.billionaire === billionaire.billionaire
+                        ).individualTax * 100
+                      ).toFixed(0)}
+                      onInput={(e) => {
+                        if (e.target.value >= 100) {
+                          e.target.value = 100;
+                        } else if (isNaN(e.target.value)) {
+                          e.target.value = 0;
+                        }
+                      }}
+                      onChange={(e) => {
+                        if (e.target.value == "") {
+                          onIndividualTaxChange(billionaire.billionaire, 0);
+                        } else {
+                          onIndividualTaxChange(
+                            billionaire.billionaire,
+                            e.target.value / 100
+                          );
+                        }
+                      }}
+                    />
+                    <span className="percentageSymbol"> % </span>
+                  </div>
+                </div>
+                <div className="toggle">
+                  <Toggle />
+                </div>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </header>
   );
 }
 

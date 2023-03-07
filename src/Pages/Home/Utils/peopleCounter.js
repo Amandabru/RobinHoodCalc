@@ -14,11 +14,11 @@ const peopleCounter = (xValue, [...data]) => {
   }
 
   const peopleCount = ((peopleToLeft / totPopulation) * 100).toFixed(1);
-  let textLeft = peopleCount + '%';
-  let textRight = (100 - peopleCount).toFixed(1) + '%';
+  let textLeft = peopleCount + "%";
+  let textRight = (100 - peopleCount).toFixed(1) + "%";
 
-  if (peopleCount < 0.001) textLeft = 'few';
-  else if ((100 - peopleCount).toFixed(1) < 0.001) textRight = 'few';
+  if (peopleCount < 0.001) textLeft = "few";
+  else if ((100 - peopleCount).toFixed(1) < 0.001) textRight = "few";
 
   return [textLeft, textRight];
 };

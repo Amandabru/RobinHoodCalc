@@ -1,11 +1,4 @@
 /*Containers*/
-.taxationContainer {
-  border-radius: 5px;
-  width: fit-content;
-  box-shadow: rgba(0, 0, 0, 0.429) 0px 1px 4px;
-  cursor: default;
-}
-
 .titleContainer {
   display: grid;
   grid-template-columns: 1fr 0.4fr;
@@ -53,6 +46,10 @@
   box-shadow: rgba(0, 0, 0, 0.329) 0.4px 0.8px 0.8px 0.8px inset;
 }
 
+.btn:hover {
+  background: #f6c944;
+}
+
 /*Sliders*/
 .boxSliderContainer {
   margin-left: 2em;
@@ -80,14 +77,13 @@
   appearance: none;
   width: 15px;
   height: 15px;
-  background: black;
+  background: #f6c944;
   cursor: grab;
   border-radius: 3px;
   box-shadow: rgba(0, 0, 0, 0.429) 0px 1px 4px;
 }
 
 .boxSlider::-webkit-slider-thumb:active {
-  background: #f6c944;
   transition: 100ms;
   cursor: grabbing;
 }
@@ -102,9 +98,11 @@
 .percentageBox {
   width: 4ch;
   text-align: center;
-  border: transparent;
+  border: none;
+  border-bottom: 1.5px solid #f6c944;
   border-radius: 2px;
-  box-shadow: rgba(0, 0, 0, 0.329) 0.6px 0.6px 1.2px 1.2px inset;
+  background-color: rgba(128, 128, 128, 0.089);
+  
 }
 
 .percentageSymbol {
@@ -116,6 +114,7 @@
   position: relative;
   display: inline-block;
   cursor: default;
+  font-size: medium;
 }
 
 .info .infoText {

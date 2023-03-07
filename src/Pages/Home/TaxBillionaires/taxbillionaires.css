@@ -1,0 +1,158 @@
+.billionaireEntry {
+  box-shadow: rgba(0, 0, 0, 0.429) 0px 1px 4px;
+  border-radius: 4px;
+  margin-bottom: 2.5%;
+  position: relative;
+}
+
+.taxTheRichDescription {
+  font-size: 13px;
+  text-align: justify;
+  margin-bottom: 0;
+  margin-top: 0;
+  margin-bottom: 2.5%;
+}
+
+.cancelButton {
+  background: transparent;
+  border: transparent;
+  cursor: pointer;
+  font-size: large;
+  position: absolute;
+  margin-left: 93%;
+}
+
+.billionaireContent {
+  display: grid;
+  grid-template-columns: 55fr 45fr;
+  font-size: 14px;
+}
+
+.containerLeft {
+  width: 100%;
+  padding: 0.5rem;
+  margin: auto;
+  margin-left: 0;
+  margin-bottom: 0;
+}
+
+.nameAndIncome {
+  display: flex;
+}
+
+.name {
+  margin: auto;
+  margin-left: 0;
+  font-weight: bold;
+}
+
+.income {
+  padding-left: 1rem;
+  margin: auto;
+  margin-right: 0;
+}
+
+.containerRight {
+  display: grid;
+  grid-template-columns: 80fr 20fr;
+  padding: 0.5rem;
+  margin: auto;
+  margin-bottom: 0;
+}
+
+.taxRate {
+  text-align: center;
+}
+
+.taxTitle {
+  margin: auto;
+  font-weight: bold;
+}
+
+.toggle {
+  margin: auto;
+  margin-bottom: 0;
+}
+
+.moreInfo {
+  position: relative;
+  display: inline-block;
+  cursor: default;
+  font-size: medium;
+}
+
+.moreInfo .moreInfoText {
+  position: absolute;
+  left: -140px;
+  top: 30px;
+  padding: 10px;
+  visibility: hidden;
+  width: 150px;
+  background-color: white;
+  border-radius: 3px;
+  color: black;
+  text-align: center;
+  box-shadow: rgba(0, 0, 0, 0.429) 0px 1px 4px;
+  z-index: 2;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.moreInfo:hover .moreInfoText {
+  visibility: visible;
+}
+
+.slider {
+  -webkit-appearance: none;
+  width: 100%;
+  appearance: none;
+  height: 17px;
+  background: #ffffff;
+  box-shadow: rgba(0, 0, 0, 0.329) 1px 1px 1.5px 1.2px inset;
+  position: relative;
+  border-radius: 3px;
+  cursor: pointer;
+  margin: 0;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 15px;
+  height: 15px;
+  background: #f6c944;
+  cursor: grab;
+  border-radius: 3px;
+  box-shadow: rgba(0, 0, 0, 0.429) 0px 1px 4px;
+}
+
+.slider::-webkit-slider-thumb:active {
+  background: #f6c944;
+  transition: 100ms;
+  cursor: grabbing;
+}
+
+.percentage {
+  width: 4ch;
+  height: 15px;
+  text-align: center;
+  border: transparent;
+  border-radius: 2px;
+  box-shadow: rgba(0, 0, 0, 0.329) 1px 1px 1.5px 1.2px inset;
+  margin-bottom: 0.3rem;
+}
+
+.dropdown {
+  cursor: pointer;
+  font-size: 12px;
+  border: 0.8px transparent;
+  border-radius: 2px;
+  height: 25px;
+  width: 100px;
+  margin-top: -5%;
+  margin-left: 0.5%;
+  margin-bottom: 2.5%;
+  background: #fbfaf9;
+  box-shadow: rgba(0, 0, 0, 0.329) 0.4px 0.8px 0.8px 0.8px;
+  font-family: inherit;
+}

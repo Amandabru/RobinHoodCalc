@@ -16,6 +16,9 @@ function CustomSlider({ onTaxChange, taxes }) {
             onTaxChange(1, e.target.value);
           }}
         />
+        <div className='hoverLine' style={{ marginTop: -400*taxes[1].taxRate, left: '405px', top: '500px'}}>
+        {(100*taxes[1].taxRate).toFixed(1) + "%"}
+        </div>
       </div>
       <div className='slider-container'>
         <input
@@ -29,6 +32,9 @@ function CustomSlider({ onTaxChange, taxes }) {
             onTaxChange(2, e.target.value);
           }}
         />
+        <div className='hoverLine' style={{ marginTop: -400*taxes[2].taxRate, left: '460px', top: '500px'}}>
+        {(100*taxes[2].taxRate).toFixed(1) + "%"}
+        </div>
       </div>
       <div className='slider-container'>
         <input
@@ -42,6 +48,9 @@ function CustomSlider({ onTaxChange, taxes }) {
             onTaxChange(3, e.target.value);
           }}
         />
+        <div className='hoverLine' style={{ marginTop: -400*taxes[3].taxRate, left: '515px', top: '500px'}}>
+        {(100*taxes[3].taxRate).toFixed(1) + "%"}
+        </div>
       </div>
       <div className='slider-container'>
         <input
@@ -55,6 +64,9 @@ function CustomSlider({ onTaxChange, taxes }) {
             onTaxChange(4, e.target.value);
           }}
         />
+        <div className='hoverLine' style={{ marginTop: -400*taxes[4].taxRate, left: '570px', top: '500px'}}>
+        {(100*taxes[4].taxRate).toFixed(1) + "%"}
+        </div>
       </div>
       <div className='slider-container'>
         <input
@@ -68,6 +80,9 @@ function CustomSlider({ onTaxChange, taxes }) {
             onTaxChange(5, e.target.value);
           }}
         />
+        <div className='hoverLine' style={{ marginTop: -400*taxes[5].taxRate, left: '625px', top: '500px'}}>
+        {(100*taxes[5].taxRate).toFixed(1) + "%"}
+        </div>
       </div>
     </div>
   );
