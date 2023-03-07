@@ -1,0 +1,9 @@
+.AboutContainer {
+    width: 50%;
+}
+
+.AboutContainer > h1,
+h2,
+p {
+margin: 1rem;
+}
