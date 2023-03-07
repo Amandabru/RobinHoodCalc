@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Toggle from '../Toggle/Toggle';
 import { v4 as uuidv4 } from 'uuid';
 import './taxbillionaires.css';
@@ -8,6 +8,7 @@ function TaxBillionaires({
   onIndividualTaxChange,
   individualTaxes,
   clearAllIndividualTaxes,
+  onChangeBillionaireList
 }) {
   const [selectedBillionaire, setSelectedBillionaire] = useState('');
   const [billionaireList, setBillionaireList] = useState([]);
@@ -31,8 +32,10 @@ function TaxBillionaires({
     if (id) {
       const newDivs = billionaireList.filter((div) => div.id !== id);
       setBillionaireList(newDivs);
+      onChangeBillionaireList(billionaireList)
     } else {
       setBillionaireList([]);
+      onChangeBillionaireList(billionaireList)
     }
   }
 
@@ -42,6 +45,10 @@ function TaxBillionaires({
     if (n >= 1e6 && n < 1e9) return +(n / 1e6).toFixed(1) + 'M';
     if (n >= 1e9 && n < 1e12) return +(n / 1e9).toFixed(1) + 'B';
   }
+
+  useEffect(() => {
+    onChangeBillionaireList(billionaireList);
+  }, [billionaireList, onChangeBillionaireList]);
 
   return (
     <header

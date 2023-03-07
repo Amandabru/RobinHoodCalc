@@ -34,6 +34,7 @@ const Home = () => {
   const [billionaires, setBillionaires] = useState(null);
   const [defaultBillionaires, setDefaultBillionaires] = useState(null);
   const [individualTaxes, setIndividualTaxes] = useState(0);
+  const [selectedBillionaires, setSelectedBillionaires] = useState(null);
 
   const updateData = () => {
     var [collectedTax, updatedData, newBillionaires] = collectFromTheRich(
@@ -104,6 +105,7 @@ const Home = () => {
           levelCounter(x1Value, x2Value, data)
         }
         taxValue={taxes}
+        billionaireList={selectedBillionaires}
       />
       <InGraphSlider
         onTaxChange={(taxBracketNr, newTax) =>
@@ -127,6 +129,8 @@ const Home = () => {
         clearAllIndividualTaxes={() =>
           setIndividualTaxes(setDefaultIndividualTax(individualTaxes))
         }
+        onChangeBillionaireList={(billionaireList) => 
+        setSelectedBillionaires(billionaireList)}
       />
     </div>
   );

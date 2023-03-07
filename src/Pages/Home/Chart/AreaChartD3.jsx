@@ -38,6 +38,7 @@ const AreaChartD3 = ({
   peopleCounter,
   taxValue,
   levelCounter,
+  billionaireList
 }) => {
   const changingData = data[0];
   const defaultData = data[1];
@@ -67,6 +68,7 @@ const AreaChartD3 = ({
   const yScaleRight = scaleLinear().domain([0, 100]).range([h, 0]);
 
   useEffect(() => {
+
     const svg = select(svgRef.current)
       .attr("width", w)
       .attr("height", h)
@@ -123,12 +125,14 @@ const AreaChartD3 = ({
     selectAll("#levelInfo").remove();
 
     // brush
+    /*
     const brush = brushX().extent([
       [0, 0],
       [w, h],
     ]);
 
     svg.select(".brush").call(brush).call(brush.move, [0, 0]);
+    */
 
     // x axis label (income)
     svg
@@ -299,16 +303,14 @@ const AreaChartD3 = ({
       .style("font-size", "20px")
       .attr("x", xScale(50000))
       .attr("y", 90)
-      .attr("class", "infoTextName")
-      .attr("stroke", "#ffca34");
+      .attr("class", "infoTextName");
 
     svg
       .append("text")
       .style("font-size", "20px")
       .attr("x", xScale(50000))
       .attr("y", 120)
-      .attr("class", "infoTextDollar")
-      .attr("stroke", "#ffca34");
+      .attr("class", "infoTextDollar");
 
     // Line from inGraphSliders
     svg
