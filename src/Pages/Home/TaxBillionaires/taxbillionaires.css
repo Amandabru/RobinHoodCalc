@@ -2,24 +2,30 @@
   box-shadow: rgba(0, 0, 0, 0.429) 0px 1px 4px;
   border-radius: 4px;
   margin-bottom: 2.5%;
+  position: relative;
 }
 
 .cancelButton {
-  float: right;
   background: transparent;
   border: transparent;
   cursor: pointer;
   font-size: large;
+  position: absolute;
+  margin-left: 93%;
 }
 
 .billionaireContent {
   display: grid;
-  grid-template-columns: 60% 40%;
+  grid-template-columns: 55fr 45fr;
   font-size: 14px;
 }
 
 .containerLeft {
-  padding: 1rem;
+  width: 100%;
+  padding: 0.5rem;
+  margin: auto;
+  margin-left: 0;
+  margin-bottom: 0;
 }
 
 .nameAndIncome {
@@ -33,19 +39,23 @@
 }
 
 .income {
+  padding-left: 1rem;
   margin: auto;
   margin-right: 0;
 }
 
 .containerRight {
   display: grid;
-  grid-template-columns: 80% 20%;
-  padding: 1rem;
+  grid-template-columns: 80fr 20fr;
+  padding: 0.5rem;
+  margin: auto;
+  margin-bottom: 0;
 }
 
 .taxRate {
   text-align: center;
 }
+
 .taxTitle {
   margin: auto;
   font-weight: bold;
@@ -94,7 +104,7 @@
   position: relative;
   border-radius: 3px;
   cursor: pointer;
-  margin: 0.15rem;
+  margin: 0;
 }
 
 .slider::-webkit-slider-thumb {
@@ -121,6 +131,7 @@
   border: transparent;
   border-radius: 2px;
   box-shadow: rgba(0, 0, 0, 0.329) 1px 1px 1.5px 1.2px inset;
+  margin-bottom: 0.3rem;
 }
 
 /* QVISTEN */

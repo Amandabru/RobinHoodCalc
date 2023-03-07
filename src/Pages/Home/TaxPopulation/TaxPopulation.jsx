@@ -1,14 +1,9 @@
 import React from 'react';
-import './taxSliders.css';
-import TaxBillionaires from '../TaxBillionaires/TaxBillionaires';
+import './taxPopulation.css';
 
-const TaxSliders = ({ onTaxChange, clearAllTaxes, taxes, billionaires }) => {
-  const logState = (state) => {
-    console.log('Toggled:', state);
-  };
-
+const TaxPopulation = ({ onTaxChange, clearAllTaxes, taxes }) => {
   return (
-    <div className='taxationContainer'>
+    <div>
       <header
         style={{
           padding: '15px',
@@ -20,7 +15,6 @@ const TaxSliders = ({ onTaxChange, clearAllTaxes, taxes, billionaires }) => {
             className='btn'
             onClick={() => {
               clearAllTaxes();
-              console.log('cleared');
             }}
           >
             Clear All
@@ -245,9 +239,8 @@ const TaxSliders = ({ onTaxChange, clearAllTaxes, taxes, billionaires }) => {
           marginTop: '15px',
         }}
       ></hr>
-      <TaxBillionaires billionaires={billionaires} />
     </div>
   );
 };
 
-export default TaxSliders;
+export default TaxPopulation;

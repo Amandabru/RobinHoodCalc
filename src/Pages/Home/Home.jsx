@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { csv } from 'd3';
 import AreaChartD3 from './Chart/AreaChartD3';
-import TaxSliders from './TaxSliders/TaxSliders';
+import Taxes from './Taxes/Taxes';
 import InGraphSlider from './InGraphSliders/InGraphSliders';
 import './home.css';
 import {
@@ -13,6 +13,8 @@ import {
   makePercentage,
   peopleCounter,
   extremePovertyPercentage,
+  updateIndividualTax,
+  setDefaultIndividualTax,
 } from './Utils/index';
 
 const dataUrl =
@@ -30,12 +32,15 @@ const Home = () => {
   const [defaultData, setDefaultData] = useState(null);
   const [billionaires, setBillionaires] = useState(null);
   const [defaultBillionaires, setDefaultBillionaires] = useState(null);
+  const [individualTaxes, setIndividualTaxes] = useState(0);
 
   const updateData = () => {
     var [collectedTax, updatedData, newBillionaires] = collectFromTheRich(
       defaultData,
       taxes,
-      defaultBillionaires
+      defaultBillionaires,
+      billionaires,
+      individualTaxes
     );
     updatedData = giveToThePoor(updatedData, collectedTax);
     setData(updatedData);
@@ -57,21 +62,30 @@ const Home = () => {
         billionaire: d.billionaire,
         income: +d.income,
         images: +d.images,
+        individualTax: 0,
       };
     }).then((data) => {
       setDefaultBillionaires(data);
       setBillionaires(data);
     });
     setTaxes(setDefaultTax());
+
+    // FULT KOMMER GÖRAS BÄTTRE SEN
+    csv(billionairesUrl, function (d) {
+      return {
+        billionaire: d.billionaire,
+        individualTax: 0,
+      };
+    }).then(setIndividualTaxes);
   }, []);
 
   useEffect(() => {
     if (data) {
       updateData();
     }
-  }, [taxes]);
+  }, [taxes, individualTaxes]);
 
-  if (!data || !billionaires || !taxes) {
+  if (!data || !billionaires || !taxes || !individualTaxes) {
     return <div>Loading</div>;
   }
 
@@ -95,13 +109,22 @@ const Home = () => {
         }
         taxes={taxes}
       />
-      <TaxSliders
+      <Taxes
         onTaxChange={(taxBracketNr, newTax) =>
           setTaxes(updateTaxes(taxBracketNr, taxes, newTax))
         }
         clearAllTaxes={() => setTaxes(setDefaultTax())}
         taxes={taxes}
         billionaires={billionaires}
+        onIndividualTaxChange={(billionaire, newTax) =>
+          setIndividualTaxes(
+            updateIndividualTax(billionaire, newTax, individualTaxes)
+          )
+        }
+        individualTaxes={individualTaxes}
+        clearAllIndividualTaxes={() =>
+          setIndividualTaxes(setDefaultIndividualTax(individualTaxes))
+        }
       />
     </div>
   );
