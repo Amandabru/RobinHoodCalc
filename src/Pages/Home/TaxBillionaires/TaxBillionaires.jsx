@@ -75,6 +75,11 @@ function TaxBillionaires({
           Clear All
         </button>
       </div>
+      <p className='taxTheRichDescription'>
+        The Robin Hood Taxation System taxes the world’s richest and
+        redistributes directly to people of lower income levels. The system is
+        progressive and you as user.
+      </p>
       <div
         style={{
           padding: '15px',
@@ -86,7 +91,7 @@ function TaxBillionaires({
             value={selectedBillionaire}
             onChange={handleOptionChange}
           >
-            <option value=''>Add billionaire</option>
+            <option value=''>Add Billionaire</option>
             {billionaires.map((billionaire) => (
               <option
                 key={billionaire.billionaire}
@@ -118,7 +123,12 @@ function TaxBillionaires({
                 <div className='nameAndIncome'>
                   <p className='name'> {billionaire.billionaire} </p>
                   <p className='income'>
-                    {formatIncome(billionaire.income)} $/day
+                    {formatIncome(
+                      billionaires.find(
+                        (b) => b.billionaire === billionaire.billionaire
+                      ).income
+                    )}{' '}
+                    $/day
                   </p>
                 </div>
                 <input

@@ -5,6 +5,14 @@
   position: relative;
 }
 
+.taxTheRichDescription {
+  font-size: 13px;
+  text-align: justify;
+  margin-bottom: 0;
+  margin-top: 0;
+  margin-bottom: 2.5%;
+}
+
 .cancelButton {
   background: transparent;
   border: transparent;
@@ -112,7 +120,7 @@
   appearance: none;
   width: 15px;
   height: 15px;
-  background: black;
+  background: #f6c944;
   cursor: grab;
   border-radius: 3px;
   box-shadow: rgba(0, 0, 0, 0.429) 0px 1px 4px;
@@ -132,42 +140,6 @@
   border-radius: 2px;
   box-shadow: rgba(0, 0, 0, 0.329) 1px 1px 1.5px 1.2px inset;
   margin-bottom: 0.3rem;
-}
-
-/* QVISTEN */
-
-.btnAdd {
-  cursor: pointer;
-  font-size: 12px;
-  border: 0.8px transparent;
-  border-radius: 2px;
-  height: 25px;
-  width: 100px;
-  background: #fbfaf9;
-  box-shadow: rgba(0, 0, 0, 0.329) 0.4px 0.8px 0.8px 0.8px;
-  font-family: inherit;
-}
-
-.btnAdd:active {
-  box-shadow: rgba(0, 0, 0, 0.329) 0.4px 0.8px 0.8px 0.8px inset;
-}
-
-.btnRemove {
-  cursor: pointer;
-  font-size: 12px;
-  border: 0.8px transparent;
-  border-radius: 2px;
-  margin-left: 10px;
-  height: 25px;
-  width: 60px;
-  background: #fbfaf9;
-  box-shadow: rgba(0, 0, 0, 0.329) 0.4px 0.8px 0.8px 0.8px;
-  font-family: inherit;
-  float: right;
-}
-
-.btnRemove:active {
-  box-shadow: rgba(0, 0, 0, 0.329) 0.4px 0.8px 0.8px 0.8px inset;
 }
 
 .dropdown {

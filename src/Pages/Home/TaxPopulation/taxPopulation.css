@@ -73,14 +73,13 @@
   appearance: none;
   width: 15px;
   height: 15px;
-  background: black;
+  background: #f6c944;
   cursor: grab;
   border-radius: 3px;
   box-shadow: rgba(0, 0, 0, 0.429) 0px 1px 4px;
 }
 
 .boxSlider::-webkit-slider-thumb:active {
-  background: #f6c944;
   transition: 100ms;
   cursor: grabbing;
 }
