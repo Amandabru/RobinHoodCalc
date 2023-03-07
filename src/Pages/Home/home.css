@@ -5,7 +5,3 @@
   grid-template-columns: 1.1fr 0.9fr;
   position: relative;
 }
-
-.areaChart {
-  position: fixed;
-}

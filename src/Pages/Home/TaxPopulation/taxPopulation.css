@@ -46,6 +46,10 @@
   box-shadow: rgba(0, 0, 0, 0.329) 0.4px 0.8px 0.8px 0.8px inset;
 }
 
+.btn:hover {
+  background: #f6c944;
+}
+
 /*Sliders*/
 .boxSliderContainer {
   margin-left: 2em;

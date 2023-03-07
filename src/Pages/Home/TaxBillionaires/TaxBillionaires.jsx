@@ -50,21 +50,7 @@ function TaxBillionaires({
       }}
     >
       <div className='titleContainer headTitle'>
-        <h2>
-          Tax the 10 Richest
-          <div
-            className='info'
-            style={{
-              marginLeft: '10px',
-              color: 'gray',
-            }}
-          >
-            ?
-            <span className='infoText'>
-              Add specific billionaires to assign them individual taxes
-            </span>
-          </div>
-        </h2>
+        <h2>Tax the 10 Richest</h2>
         <button
           className='btn'
           onClick={() => {
@@ -76,9 +62,9 @@ function TaxBillionaires({
         </button>
       </div>
       <p className='taxTheRichDescription'>
-        The Robin Hood Taxation System taxes the world’s richest and
-        redistributes directly to people of lower income levels. The system is
-        progressive and you as user.
+        Specify additional tax rates for the top ten richest. This additional
+        tax rate is applied on all income that is left after having applied
+        other Robin Hood taxes.
       </p>
       <div
         style={{
@@ -152,22 +138,7 @@ function TaxBillionaires({
               </div>
               <div className='containerRight'>
                 <div className='taxRate'>
-                  <p className='taxTitle'>
-                    {' '}
-                    Tax Rate
-                    <div
-                      className='moreInfo'
-                      style={{
-                        marginLeft: '5px',
-                        color: 'gray',
-                      }}
-                    >
-                      ?
-                      <span className='moreInfoText'>
-                        Tax sdfaskdfjaskldf bskfbas jbfjsdfksdjf sdfsbdkf.
-                      </span>
-                    </div>
-                  </p>
+                  <p className='taxTitle'> Tax Rate</p>
                   <div className='percetageBoxWrapper1'>
                     <input
                       className={'percentage'}
