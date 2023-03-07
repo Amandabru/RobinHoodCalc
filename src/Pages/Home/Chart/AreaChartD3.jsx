@@ -136,8 +136,8 @@ const AreaChartD3 = ({
       .append("text")
       .attr("class", "x label")
       .attr("text-anchor", "end")
-      .attr("x", w + 35)
-      .attr("y", h + 35)
+      .attr("x", w - 5)
+      .attr("y", h - 5)
       .text("($/day)")
       .attr("id", "axis");
 
