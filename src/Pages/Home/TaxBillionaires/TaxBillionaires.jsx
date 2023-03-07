@@ -8,7 +8,7 @@ function TaxBillionaires({
   onIndividualTaxChange,
   individualTaxes,
   clearAllIndividualTaxes,
-  onChangeBillionaireList
+  onChangeBillionaireList,
 }) {
   const [selectedBillionaire, setSelectedBillionaire] = useState('');
   const [billionaireList, setBillionaireList] = useState([]);
@@ -21,22 +21,32 @@ function TaxBillionaires({
       );
       if (newBillionaire) {
         setBillionaireList([
-          { ...newBillionaire, id: newBillionaire.billionaire }, //uuidv4()
+          { ...newBillionaire, id: newBillionaire.billionaire, active: true }, //uuidv4()
           ...billionaireList,
         ]);
       }
       setSelectedBillionaire('');
     }
   }
+
+  function handleToggle(id, toggleState) {
+    let newBillionaireList = billionaireList.map((b) => {
+      if (b.id === id) {
+        return { ...b, active: !toggleState };
+      }
+    });
+    console.log(newBillionaireList);
+    setBillionaireList(newBillionaireList);
+  }
+
   function handleRemoveDiv(id) {
     if (id) {
       const newDivs = billionaireList.filter((div) => div.id !== id);
       setBillionaireList(newDivs);
-      onChangeBillionaireList(billionaireList)
     } else {
       setBillionaireList([]);
-      onChangeBillionaireList(billionaireList)
     }
+    onChangeBillionaireList(billionaireList);
   }
 
   function formatIncome(n) {
@@ -178,7 +188,12 @@ function TaxBillionaires({
                   </div>
                 </div>
                 <div className='toggle'>
-                  <Toggle />
+                  <Toggle
+                    toggled={billionaire.active}
+                    onClick={() =>
+                      handleToggle(billionaire.id, billionaire.active)
+                    }
+                  />
                 </div>
               </div>
             </div>

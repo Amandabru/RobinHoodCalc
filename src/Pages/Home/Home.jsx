@@ -64,7 +64,6 @@ const Home = () => {
         billionaire: d.billionaire,
         income: +d.income,
         images: +d.images,
-        individualTax: 0,
       };
     }).then((data) => {
       setDefaultBillionaires(data);
