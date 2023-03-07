@@ -286,7 +286,14 @@ const AreaChartD3 = ({
       })
       .attr('class', 'circle')
       .on('mouseover', highlight)
-      .on('mouseleave', highlightOff);
+      .on('mouseleave', highlightOff)
+      .attr('id', function (d) {
+        if (billionaireList.length !== 0) {
+          if (billionaireList.find((b) => b.id === d.billionaire) !== undefined)
+            return 'bill';
+          else return '';
+        } else return '';
+      });
 
     // Hover over billionaire
     svg
@@ -508,7 +515,7 @@ const AreaChartD3 = ({
               .append('svg:tspan')
               .attr('x', xScale(levels[i]) + 10)
               .attr('dy', 20)
-              .text('People: ' + levelCounter(levels[i - 1], levels[i]));
+              .text('People: ~' + levelCounter(levels[i - 1], levels[i]));
           } else if (i > 7) {
             selectAll('#levelInfo')
               .style('opacity', 1)
@@ -539,11 +546,13 @@ const AreaChartD3 = ({
               .append('svg:tspan')
               .attr('x', xScale(levels[i]) - 40)
               .attr('dy', 20)
-              .text('People: ' + levelCounter(levels[i - 1], levels[i]));
+              .text('People: ~' + levelCounter(levels[i - 1], levels[i]));
           }
         })
         .on('mouseout', mouseout);
     });
+
+    // mouse out function
 
     function mouseout() {
       selectAll('#povertyText').style('opacity', 1);

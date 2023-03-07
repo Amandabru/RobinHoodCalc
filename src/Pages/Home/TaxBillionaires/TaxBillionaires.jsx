@@ -126,12 +126,13 @@ function TaxBillionaires({
                 <div className='nameAndIncome'>
                   <p className='name'> {billionaire.billionaire} </p>
                   <p className='income'>
+                    Daily income:{' '}
                     {formatIncome(
                       billionaires.find(
                         (b) => b.billionaire === billionaire.billionaire
                       ).income
                     )}{' '}
-                    $/day
+                    $
                   </p>
                 </div>
                 <input
