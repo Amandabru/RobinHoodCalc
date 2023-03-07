@@ -136,9 +136,9 @@ const AreaChartD3 = ({
       .append("text")
       .attr("class", "x label")
       .attr("text-anchor", "end")
-      .attr("x", w)
+      .attr("x", w + 35)
       .attr("y", h + 35)
-      .text("Income ($/day)")
+      .text("($/day)")
       .attr("id", "axis");
 
     // left y axis label
@@ -445,21 +445,21 @@ const AreaChartD3 = ({
     levels.forEach((d, i) => {
       svg
         .append("text")
-        .attr("fill", "gray")
+        .attr("fill", "#f6c944")
         .attr("font-size", 15)
         .attr("text-anchor", "middle")
         .attr("x", xScale(d))
-        .attr("y", h + 50)
+        .attr("y", h + 35)
         .text("◆")
         .attr("id", "levelAxis");
 
       svg
         .append("text")
-        .attr("fill", "gray")
+        .attr("fill", "black")
         .attr("font-size", 15)
         .attr("text-anchor", "middle")
         .attr("x", xScale(d) - 17) // :))
-        .attr("y", h + 50)
+        .attr("y", h + 35)
         .text(levelLabels[i])
         .attr("id", "levelAxis")
         .on("mouseenter", () => {
