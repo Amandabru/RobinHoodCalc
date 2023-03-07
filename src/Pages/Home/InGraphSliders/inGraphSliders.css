@@ -9,6 +9,7 @@
   float: left;
   width: 54.5px;
   z-index: 1;
+  pointer-events: none;
 }
 
 .inGraphSlider {

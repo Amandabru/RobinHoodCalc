@@ -4,6 +4,7 @@ import AreaChartD3 from './Chart/AreaChartD3';
 import TaxSliders from './TaxSliders/TaxSliders';
 import InGraphSlider from './InGraphSliders/InGraphSliders';
 import './home.css';
+import Toggle from './Toggle/Toggle';
 import {
   updateTaxes,
   movingAverage,
@@ -13,6 +14,7 @@ import {
   makePercentage,
   peopleCounter,
   extremePovertyPercentage,
+  populationToWealth,
 } from './Utils/index';
 
 const dataUrl =
@@ -30,17 +32,32 @@ const Home = () => {
   const [defaultData, setDefaultData] = useState(null);
   const [billionaires, setBillionaires] = useState(null);
   const [defaultBillionaires, setDefaultBillionaires] = useState(null);
+  const [toggleState, setToggleState] = useState(false);
+  const [shadowData, setShadowData] = useState(null);
 
   const updateData = () => {
     var [collectedTax, updatedData, newBillionaires] = collectFromTheRich(
       defaultData,
       taxes,
-      defaultBillionaires
-    );
+      defaultBillionaires);
     updatedData = giveToThePoor(updatedData, collectedTax);
+    if (toggleState !== true){
     setData(updatedData);
+    setShadowData(defaultData);
+    }
+    else{
+      setData(populationToWealth(updatedData));
+      setShadowData(populationToWealth(defaultData));
+    }
     setBillionaires(newBillionaires);
+    
   };
+
+  const updateToggle = state => {
+    setToggleState(state);
+    console.log(toggleState)
+    updateData();
+  }
 
   useEffect(() => {
     csv(dataUrl, function (d) {
@@ -50,6 +67,7 @@ const Home = () => {
       };
     }).then((data) => {
       setDefaultData(data);
+      setShadowData(data);
       setData(data);
     });
     csv(billionairesUrl, function (d) {
@@ -71,22 +89,30 @@ const Home = () => {
     }
   }, [taxes]);
 
+  useEffect(() => {
+    if (data) {
+      updateData();
+    }
+  }, [toggleState]);
+
   if (!data || !billionaires || !taxes) {
     return <div>Loading</div>;
   }
 
+
   return (
     <div className='taxTheRichContainer'>
-      <AreaChartD3
+        <AreaChartD3
         className='areaChart'
         data={[
-          movingAverage(2, makePercentage(data)),
-          movingAverage(2, makePercentage(defaultData)),
+          movingAverage(10, makePercentage(data)),
+          movingAverage(10, makePercentage(shadowData))
         ]}
         ExtremePovertyCount={extremePovertyPercentage(data)}
         billionaries={billionaires}
         peopleCounter={(xValue) => peopleCounter(xValue, data)}
         taxValue={taxes}
+        wealthToggle={toggleState}
       />
       <InGraphSlider
         classname='inGraphsliders'
@@ -103,6 +129,7 @@ const Home = () => {
         taxes={taxes}
         billionaires={billionaires ? billionaires : billionairesUrl}
       />
+      <Toggle label={"toggle wealth"} toggled={false} onClick={updateToggle}/>
     </div>
   );
 };

@@ -37,9 +37,15 @@ const AreaChartD3 = ({
   billionaries,
   peopleCounter,
   taxValue,
+  wealthToggle,
 }) => {
   const changingData = data[0];
   const defaultData = data[1];
+  //const wealthDataNew = wealthData[0];
+  //const wealthDataDefault = wealthData[1];
+  const yAxisLabelPop = "Population %";
+  const yAxisLabelWealth = "Wealth %";
+  const wealthToggled = wealthToggle;
   const svgRef = useRef();
   const w = 600;
   const h = 400;
@@ -59,7 +65,7 @@ const AreaChartD3 = ({
   var minIncome = min(changingData, (d) => d.income);
   var maxIncome = max(changingData, (d) => d.income);
   var maxPop = max(changingData, (d) => d.population);
-  var minPop = min(changingData, (d) => d.population);
+  var minPop = min(changingData, (d) => d.population); 
 
   let xScale = scaleLog().domain([minIncome, maxIncome]).range([0, w]).nice();
   const yScaleLeft = scaleLinear().domain([minPop, maxPop]).range([h, 0]);
@@ -151,7 +157,9 @@ const AreaChartD3 = ({
     // left y axis label
     var axisLabelXLeft = -35;
     var axisLabelY = -25;
-    svg
+    
+    if(!wealthToggled){
+      svg
       .append('text')
       .attr(
         'transform',
@@ -163,6 +171,21 @@ const AreaChartD3 = ({
       .attr('dy', '.75em')
       .text('Population (%)')
       .attr('id', 'axis');
+    }
+    else{
+      svg
+      .append('text')
+      .attr(
+        'transform',
+        'translate(' + axisLabelXLeft + ', ' + axisLabelY + ')'
+      )
+      .attr('class', 'y label')
+      .attr('text-anchor', 'middle')
+      .attr('y', 6)
+      .attr('dy', '.75em')
+      .text('Wealth (%)')
+      .attr('id', 'axis');
+    }
 
     // right yaxis lable
     svg
