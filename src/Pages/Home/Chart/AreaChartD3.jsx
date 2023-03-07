@@ -38,7 +38,7 @@ const AreaChartD3 = ({
   peopleCounter,
   taxValue,
   levelCounter,
-  billionaireList
+  billionaireList,
 }) => {
   const changingData = data[0];
   const defaultData = data[1];
@@ -68,7 +68,6 @@ const AreaChartD3 = ({
   const yScaleRight = scaleLinear().domain([0, 100]).range([h, 0]);
 
   useEffect(() => {
-
     const svg = select(svgRef.current)
       .attr("width", w)
       .attr("height", h)
@@ -508,7 +507,7 @@ const AreaChartD3 = ({
               .append("svg:tspan")
               .attr("x", xScale(levels[i]) + 10)
               .attr("dy", 20)
-              .text("People: " + levelCounter(levels[i - 1], levels[i]));
+              .text("People: ~" + levelCounter(levels[i - 1], levels[i]));
           } else if (i > 7) {
             selectAll("#levelInfo")
               .style("opacity", 1)
@@ -539,11 +538,13 @@ const AreaChartD3 = ({
               .append("svg:tspan")
               .attr("x", xScale(levels[i]) - 40)
               .attr("dy", 20)
-              .text("People: " + levelCounter(levels[i - 1], levels[i]));
+              .text("People: ~" + levelCounter(levels[i - 1], levels[i]));
           }
         })
         .on("mouseout", mouseout);
     });
+
+    // mouse out function
 
     function mouseout() {
       selectAll("#povertyText").style("opacity", 1);
