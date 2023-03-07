@@ -10,22 +10,18 @@ function TaxBillionaires({
   clearAllIndividualTaxes,
   onChangeBillionaireList,
 }) {
-  const [selectedBillionaire, setSelectedBillionaire] = useState('');
   const [billionaireList, setBillionaireList] = useState([]);
 
   function handleOptionChange(e) {
     const selected = e.target.value;
-    if (selected !== '') {
-      const newBillionaire = billionaires.find(
-        (billionaire) => billionaire.billionaire === selected
-      );
-      if (newBillionaire) {
-        setBillionaireList([
-          { ...newBillionaire, id: newBillionaire.billionaire, active: true }, //uuidv4()
-          ...billionaireList,
-        ]);
-      }
-      setSelectedBillionaire('');
+    const newBillionaire = billionaires.find(
+      (billionaire) => billionaire.billionaire === selected
+    );
+    if (newBillionaire) {
+      setBillionaireList([
+        { ...newBillionaire, id: newBillionaire.billionaire, active: true }, //uuidv4()
+        ...billionaireList,
+      ]);
     }
   }
 
@@ -39,7 +35,7 @@ function TaxBillionaires({
     setBillionaireList(newBillionaireList);
   }
 
-  function handleRemoveDiv(id) {
+  function handleRemoveBillionaire(id) {
     if (id) {
       const newDivs = billionaireList.filter((div) => div.id !== id);
       setBillionaireList(newDivs);
@@ -89,21 +85,14 @@ function TaxBillionaires({
         }}
       >
         <div style={{ display: 'flex' }}>
-          <select
-            className='dropdown'
-            value={selectedBillionaire}
-            onChange={handleOptionChange}
-          >
+          <select className='dropdown' onChange={handleOptionChange}>
             <option value=''>Add Billionaire</option>
             {billionaires.map((billionaire) => (
               <option
                 key={billionaire.billionaire}
-                disabled={
-                  selectedBillionaire === billionaire.billionaire ||
-                  billionaireList.some(
-                    (b) => b.billionaire === billionaire.billionaire
-                  )
-                }
+                disabled={billionaireList.some(
+                  (b) => b.billionaire === billionaire.billionaire
+                )}
               >
                 {billionaire.billionaire}
               </option>
