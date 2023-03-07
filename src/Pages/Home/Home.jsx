@@ -13,6 +13,7 @@ import {
   makePercentage,
   peopleCounter,
   extremePovertyPercentage,
+  levelCounter,
   updateIndividualTax,
   setDefaultIndividualTax,
 } from './Utils/index';
