@@ -37,6 +37,7 @@ const AreaChartD3 = ({
   billionaries,
   peopleCounter,
   taxValue,
+  levelCounter,
 }) => {
   const changingData = data[0];
   const defaultData = data[1];
@@ -119,6 +120,7 @@ const AreaChartD3 = ({
     selectAll("#levelAxis").remove();
     selectAll("#levelRect").remove();
     selectAll("#topLine").remove();
+    selectAll("#levelInfo").remove();
 
     // brush
     const brush = brushX().extent([
@@ -420,13 +422,22 @@ const AreaChartD3 = ({
       .on("mouseleave", mouseout);
 
     // level axis + moving box
+
+    svg
+      .append("text")
+      .attr("y", 100)
+      .attr("font-size", 12)
+      .attr("fill", "gray")
+      .attr("id", "levelInfo")
+      .style("opacity", 0);
+
     svg
       .append("rect")
       .attr("x", 0)
       .attr("y", 0)
       .attr("width", 33)
       .attr("height", h)
-      .attr("stroke", "gray")
+      .attr("stroke", "black")
       .attr("fill", "gray")
       .style("opacity", 0)
       .attr("id", "levelRect");
@@ -461,7 +472,71 @@ const AreaChartD3 = ({
                 return xScale(levels[i]) - xScale(levels[i - 1]);
               }
             })
-            .style("opacity", 0.3);
+            .style("opacity", 0.2);
+
+          if (i <= 7) {
+            selectAll("#levelInfo")
+              .style("opacity", 1)
+              .attr("x", xScale(levels[i]) + 10)
+              .text("Level " + (i + 1))
+              .attr("text-anchor", "start")
+              .append("svg:tspan")
+              .attr("x", xScale(levels[i]) + 10)
+              .attr("dy", 20)
+              .text(() => {
+                if (levels[i - 1] == undefined) {
+                  return (
+                    "Income: " +
+                    "<" +
+                    levels[i].toLocaleString("en-US") +
+                    " $/day"
+                  );
+                } else {
+                  return (
+                    "Income: " +
+                    levels[i - 1].toLocaleString("en-US") +
+                    "-" +
+                    levels[i].toLocaleString("en-US") +
+                    " $/day"
+                  );
+                }
+              })
+              .append("svg:tspan")
+              .attr("x", xScale(levels[i]) + 10)
+              .attr("dy", 20)
+              .text("People: " + levelCounter(levels[i - 1], levels[i]));
+          } else if (i > 7) {
+            selectAll("#levelInfo")
+              .style("opacity", 1)
+              .attr("x", xScale(levels[i]) - 40)
+              .text("Level " + (i + 1))
+              .attr("text-anchor", "end")
+              .append("svg:tspan")
+              .attr("x", xScale(levels[i]) - 40)
+              .attr("dy", 20)
+              .text(() => {
+                if (levels[i - 1] == undefined) {
+                  return (
+                    "Income: " +
+                    "<" +
+                    levels[i].toLocaleString("en-US") +
+                    " $/day"
+                  );
+                } else {
+                  return (
+                    "Income: " +
+                    levels[i - 1].toLocaleString("en-US") +
+                    "-" +
+                    levels[i].toLocaleString("en-US") +
+                    " $/day"
+                  );
+                }
+              })
+              .append("svg:tspan")
+              .attr("x", xScale(levels[i]) - 40)
+              .attr("dy", 20)
+              .text("People: " + levelCounter(levels[i - 1], levels[i]));
+          }
         })
         .on("mouseout", mouseout);
     });
@@ -472,6 +547,7 @@ const AreaChartD3 = ({
       selectAll("#amountOfPeopleLeft").style("opacity", 0);
       selectAll("#amountOfPeopleRight").style("opacity", 0);
       selectAll("#levelRect").style("opacity", 0);
+      selectAll("#levelInfo").style("opacity", 0);
     }
 
     // data circles
