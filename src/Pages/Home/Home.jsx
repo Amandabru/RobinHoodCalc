@@ -34,7 +34,7 @@ const Home = () => {
   const [billionaires, setBillionaires] = useState(null);
   const [defaultBillionaires, setDefaultBillionaires] = useState(null);
   const [individualTaxes, setIndividualTaxes] = useState(0);
-  const [selectedBillionaires, setSelectedBillionaires] = useState(null);
+  const [selectedBillionaires, setSelectedBillionaires] = useState([]);
 
   const updateData = () => {
     var [collectedTax, updatedData, newBillionaires] = collectFromTheRich(

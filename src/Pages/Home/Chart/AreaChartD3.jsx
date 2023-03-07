@@ -285,7 +285,18 @@ const AreaChartD3 = ({
       })
       .attr("class", "circle")
       .on("mouseover", highlight)
-      .on("mouseleave", highlightOff);
+      .on("mouseleave", highlightOff)
+      .attr("id", function(d){
+        if(billionaireList.length !== 0){
+          if(billionaireList.find((b) => 
+          b.id === d.billionaire) !== undefined)
+            return "bill";
+          else
+            return "";
+          }
+        else
+          return "";
+      });
 
     // Hover over billionaire
     svg
