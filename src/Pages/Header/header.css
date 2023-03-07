@@ -25,3 +25,8 @@
 .link:hover {
   color: #ffca34;
 }
+
+.link:focus {
+  text-decoration: underline;
+  text-decoration-color: #ffca34;
+}
