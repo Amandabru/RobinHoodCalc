@@ -91,25 +91,26 @@ const Home = () => {
 
   return (
     <div className='taxTheRichContainer'>
-      <AreaChartD3
-        className='areaChart'
-        data={[
-          movingAverage(2, makePercentage(data)),
-          movingAverage(2, makePercentage(defaultData)),
-        ]}
-        ExtremePovertyCount={extremePovertyPercentage(data)}
-        billionaries={billionaires}
-        peopleCounter={(xValue) => peopleCounter(xValue, data)}
-        taxValue={taxes}
-      />
-      <InGraphSlider
-        classname='inGraphsliders'
-        onTaxChange={(taxBracketNr, newTax) =>
-          setTaxes(updateTaxes(taxBracketNr, taxes, newTax))
-        }
-        taxes={taxes}
-      />
+      <div className='graph'>
+        <AreaChartD3
+          data={[
+            movingAverage(2, makePercentage(data)),
+            movingAverage(2, makePercentage(defaultData)),
+          ]}
+          ExtremePovertyCount={extremePovertyPercentage(data)}
+          billionaries={billionaires}
+          peopleCounter={(xValue) => peopleCounter(xValue, data)}
+          taxValue={taxes}
+        />
+        <InGraphSlider
+          onTaxChange={(taxBracketNr, newTax) =>
+            setTaxes(updateTaxes(taxBracketNr, taxes, newTax))
+          }
+          taxes={taxes}
+        />
+      </div>
       <Taxes
+        className='taxes'
         onTaxChange={(taxBracketNr, newTax) =>
           setTaxes(updateTaxes(taxBracketNr, taxes, newTax))
         }
