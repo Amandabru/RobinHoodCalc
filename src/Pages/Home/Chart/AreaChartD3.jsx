@@ -449,8 +449,9 @@ const AreaChartD3 = ({
         .attr("font-size", 15)
         .attr("text-anchor", "middle")
         .attr("x", xScale(d))
-        .attr("y", h + 35)
+        .attr("y", h + 40)
         .text("◆")
+        .style("cursor", "default")
         .attr("id", "levelAxis");
 
       svg
@@ -459,8 +460,9 @@ const AreaChartD3 = ({
         .attr("font-size", 15)
         .attr("text-anchor", "middle")
         .attr("x", xScale(d) - 17) // :))
-        .attr("y", h + 35)
+        .attr("y", h + 40)
         .text(levelLabels[i])
+        .style("cursor", "default")
         .attr("id", "levelAxis")
         .on("mouseenter", () => {
           selectAll("#levelRect")
