@@ -30,6 +30,7 @@ import page from "../../../Images/larry_page.png";
 import ballmer from "../../../Images/steve_ballmer.png";
 import buffett from "../../../Images/warren_buffett.png";
 import peauch from "../../../Images/bertrand_peuch.jpeg";
+import { addAbbrevations } from "../Utils";
 
 const AreaChartD3 = ({
   data,
@@ -140,19 +141,20 @@ const AreaChartD3 = ({
     ];
 
     // remove
-    selectAll("#axis").remove();
-    selectAll("#chagningArea").remove();
-    selectAll("#poverty").remove();
-    selectAll("#povertyText").remove();
-    selectAll("#defaultArea").remove();
-    selectAll("#amountOfPeopleLeft").remove();
-    selectAll("#amountOfPeopleRight").remove();
-    selectAll("#amountOfPeopleLeftNr").remove();
-    selectAll("#amountOfPeopleRightNr").remove();
-    selectAll("#levelAxis").remove();
-    selectAll("#levelRect").remove();
-    selectAll("#topLine").remove();
-    selectAll("#levelInfo").remove();
+    selectAll('#axis').remove();
+    selectAll('#chagningArea').remove();
+    selectAll('#poverty').remove();
+    selectAll('#povertyText').remove();
+    selectAll('#defaultArea').remove();
+    selectAll('#amountOfPeopleLeft').remove();
+    selectAll('#amountOfPeopleRight').remove();
+    selectAll('#amountOfPeopleLeftNr').remove();
+    selectAll('#amountOfPeopleRightNr').remove();
+    selectAll('#incomeValue').remove();
+    selectAll('#levelAxis').remove();
+    selectAll('#levelRect').remove();
+    selectAll('#topLine').remove();
+    selectAll('#levelInfo').remove();
 
     // brush
     /*
@@ -294,12 +296,7 @@ const AreaChartD3 = ({
 
       select(".infoTextName").text(i.billionaire);
 
-      let textIncome = "";
-      if (i.income > 100000)
-        textIncome = (i.income / 1000000).toFixed(1) + " M$/day";
-      else textIncome = i.income + " $/day";
-
-      select(".infoTextDollar").text(textIncome);
+      select(".infoTextDollar").text(addAbbrevations(i.income) + " $/day");
     };
 
     const highlightOff = function(d, i) {
@@ -447,12 +444,21 @@ const AreaChartD3 = ({
         .style("opacity", 0);
 
       svg
-        .append("text")
-        .attr("y", 200)
-        .attr("font-size", 20)
-        .attr("fill", "gray")
-        .attr("id", "amountOfPeopleRightNr")
-        .style("opacity", 0);
+        .append('text')
+        .attr('y', 200)
+        .attr('font-size', 20)
+        .attr('fill', 'gray')
+        .attr('id', 'amountOfPeopleRightNr')
+        .style('opacity', 0);
+
+      svg
+        .append('text')
+        .attr('y', 230)
+        .attr('font-size', 14)
+        .attr('fill', 'gray')
+        .attr('id', 'incomeValue')
+        .style('opacity', 0);
+      
     }
 
     // axis
@@ -515,32 +521,36 @@ const AreaChartD3 = ({
           .attr("x", pointer(e)[0] + 8)
           .text(text[1]);
 
-        selectAll("#amountOfPeopleLeftNr")
-          .style("opacity", 1)
-          .attr("text-anchor", "end")
-          .attr("x", pointer(e)[0] - 8)
-          .text(text[2]);
+        selectAll('#amountOfPeopleLeftNr')
+          .style('opacity', 1)
+          .attr('text-anchor', 'end')
+          .attr('x', pointer(e)[0] - 8)
+          .text(addAbbrevations(text[2]));
 
-        selectAll("#amountOfPeopleRightNr")
-          .style("opacity", 1)
-          .attr("x", pointer(e)[0] + 8)
-          .text(text[3]);
+        selectAll('#amountOfPeopleRightNr')
+          .style('opacity', 1)
+          .attr('x', pointer(e)[0] + 8)
+          .text(addAbbrevations(text[3]));
+
+        selectAll('#incomeValue')
+          .style('opacity', 1)
+          .attr('x', pointer(e)[0] + 8)
+          .text(addAbbrevations(xScale.invert(pointer(e)[0]).toFixed(1)) + '$/day');
       })
       .on("mouseleave", mouseout);
 
     // mouse out function
 
     function mouseout() {
-      selectAll("#povertyText").style("opacity", 1);
-      selectAll("#poverty")
-        .attr("x1", xScale(2))
-        .attr("x2", xScale(2));
-      selectAll("#amountOfPeopleLeft").style("opacity", 0);
-      selectAll("#amountOfPeopleRight").style("opacity", 0);
-      selectAll("#amountOfPeopleRightNr").style("opacity", 0);
-      selectAll("#amountOfPeopleLeftNr").style("opacity", 0);
-      selectAll("#levelRect").style("opacity", 0);
-      selectAll("#levelInfo").style("opacity", 0);
+      selectAll('#povertyText').style('opacity', 1);
+      selectAll('#poverty').attr('x1', xScale(2)).attr('x2', xScale(2));
+      selectAll('#amountOfPeopleLeft').style('opacity', 0);
+      selectAll('#amountOfPeopleRight').style('opacity', 0);
+      selectAll('#amountOfPeopleRightNr').style('opacity', 0);
+      selectAll('#amountOfPeopleLeftNr').style('opacity', 0);
+      selectAll('#incomeValue').style('opacity', 0);
+      selectAll('#levelRect').style('opacity', 0);
+      selectAll('#levelInfo').style('opacity', 0);
     }
 
     // level axis + moving box
