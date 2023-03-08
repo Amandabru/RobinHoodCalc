@@ -1,9 +1,9 @@
-const setDefaultIndividualTax = (individualTaxes) => {
-  let taxArray = individualTaxes.map((a) => {
+const setDefaultIndividualTax = (billionaires) => {
+  let newBillionaires = billionaires.map((a) => {
     return { ...a };
   });
-  taxArray.map((billionaire) => (billionaire.individualTax = 0));
-  return taxArray;
+  newBillionaires.map((billionaire) => (billionaire.individualTax = 0));
+  return newBillionaires;
 };
 
 export default setDefaultIndividualTax;

@@ -8,10 +8,7 @@ const Taxes = ({
   clearAllTaxes,
   taxes,
   billionaires,
-  onIndividualTaxChange,
-  individualTaxes,
-  clearAllIndividualTaxes,
-  onChangeBillionaireList
+  setNewBillionaires,
 }) => {
   return (
     <div className='taxationContainer'>
@@ -24,13 +21,7 @@ const Taxes = ({
       />
       <TaxBillionaires
         billionaires={billionaires}
-        onIndividualTaxChange={(billionaire, newTax) =>
-          onIndividualTaxChange(billionaire, newTax)
-        }
-        individualTaxes={individualTaxes}
-        clearAllIndividualTaxes={() => clearAllIndividualTaxes()}
-        onChangeBillionaireList={(billionaireList) => 
-        onChangeBillionaireList(billionaireList)}
+        setNewBillionaires={(billionaires) => setNewBillionaires(billionaires)}
       />
     </div>
   );

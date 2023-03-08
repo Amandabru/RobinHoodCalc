@@ -1,10 +1,12 @@
-const updateIndividualTax = (billionaire, newTax, individualTaxes) => {
-  let taxArray = individualTaxes.map((a) => {
+const updateIndividualTax = (billionaire, newTax, billionaires) => {
+  let updatedBillionaires = billionaires.map((a) => {
     return { ...a };
   });
-  let index = taxArray.findIndex((b) => b.billionaire === billionaire);
-  taxArray[index].individualTax = newTax;
-  return taxArray;
+  let index = updatedBillionaires.findIndex(
+    (b) => b.billionaire === billionaire
+  );
+  updatedBillionaires[index].individualTax = newTax;
+  return updatedBillionaires;
 };
 
 export default updateIndividualTax;
