@@ -569,7 +569,9 @@ const AreaChartD3 = ({
         .attr("text-anchor", "middle")
         .attr("x", xScale(d) - 21) // :))
         .attr("y", h + 50)
-        .text(levelLabels[i])
+        .attr("with-space-preserve", true)
+        .attr("xml:space", "preserve")
+        .text("   " + levelLabels[i] + "   ")
         .style("cursor", "default")
         .attr("id", "levelAxis")
         .on("mouseenter", () => {
