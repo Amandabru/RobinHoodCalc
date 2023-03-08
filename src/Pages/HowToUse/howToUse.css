@@ -5,22 +5,19 @@
   text-align: center;
   border-radius: 25px;
   background-color: white;
-
 }
-.title{
+.title {
   color: #ffca34;
-  border-bottom:2px solid #ffc93448;
+  width: fit-content;
+  padding: 3rem;
+  margin: auto;
+  background-image: url(/src/Images/titleBackground.png);
+  background-size: 100% 100%;
+  padding-top: 20px;
   padding-bottom: 20px;
   font-size: 40px;
 }
-.text{
+.text {
   font-size: 18px;
   padding-bottom: 15px;
 }
-
-.howToUseContainer > h1,
-h2,
-p {
-  margin: 1rem;
-}
-

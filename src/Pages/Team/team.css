@@ -1,5 +1,5 @@
 .teamContainer {
-  padding-top: 1px;
+  margin-top: 50px;
 }
 
 .team {
@@ -56,12 +56,18 @@
 }
 .titleTeam {
   color: #ffca34;
+
+  padding: 3rem;
+  padding-top: 20px;
   padding-bottom: 20px;
-  padding-top: 50px;
   font-size: 40px;
   display: flex;
   justify-content: center;
   align-items: center;
+  margin: auto;
+  width: fit-content;
+  background-image: url(/src/Images/titleBackground.png);
+  background-size: 100% 100%;
 }
 
 .team-member-description {
