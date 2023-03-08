@@ -122,17 +122,19 @@ const AreaChartD3 = ({
     ];
 
     // remove
-    selectAll("#axis").remove();
-    selectAll("#chagningArea").remove();
-    selectAll("#poverty").remove();
-    selectAll("#povertyText").remove();
-    selectAll("#defaultArea").remove();
-    selectAll("#amountOfPeopleLeft").remove();
-    selectAll("#amountOfPeopleRight").remove();
-    selectAll("#levelAxis").remove();
-    selectAll("#levelRect").remove();
-    selectAll("#topLine").remove();
-    selectAll("#levelInfo").remove();
+    selectAll('#axis').remove();
+    selectAll('#chagningArea').remove();
+    selectAll('#poverty').remove();
+    selectAll('#povertyText').remove();
+    selectAll('#defaultArea').remove();
+    selectAll('#amountOfPeopleLeft').remove();
+    selectAll('#amountOfPeopleRight').remove();
+    selectAll('#amountOfPeopleLeftNr').remove();
+    selectAll('#amountOfPeopleRightNr').remove();
+    selectAll('#levelAxis').remove();
+    selectAll('#levelRect').remove();
+    selectAll('#topLine').remove();
+    selectAll('#levelInfo').remove();
 
     // brush
     /*
@@ -365,52 +367,71 @@ const AreaChartD3 = ({
       .style("opacity", 0.2)
       .attr("id", "topLine");
 
-    // extreme poverty line
-    svg
-      .append("line")
-      .attr("stroke", "grey")
-      .attr("x1", xScale(2))
-      .attr("y1", 0)
-      .attr("x2", xScale(2))
-      .attr("y2", h)
-      .style("stroke-dasharray", "3, 3")
-      .attr("id", "poverty");
+    if(!wealthToggle){
+      // extreme poverty line
+      svg
+        .append('line')
+        .attr('stroke', 'grey')
+        .attr('x1', xScale(2))
+        .attr('y1', 0)
+        .attr('x2', xScale(2))
+        .attr('y2', h)
+        .style('stroke-dasharray', '3, 3')
+        .attr('id', 'poverty');
 
-    svg
-      .append("text")
-      .attr("x", -380)
-      .attr("y", xScale(1.5))
-      .attr("font-size", 13)
-      .attr("fill", "gray")
-      .text("Extreme poverty")
-      .attr("transform", "rotate(-90)")
-      .attr("id", "povertyText");
+      svg
+        .append('text')
+        .attr('x', -380)
+        .attr('y', xScale(1.5))
+        .attr('font-size', 13)
+        .attr('fill', 'gray')
+        .text('Extreme poverty')
+        .attr('transform', 'rotate(-90)')
+        .attr('id', 'povertyText');
 
-    svg
-      .append("text")
-      .attr("x", xScale(0.4))
-      .attr("y", 170)
-      .attr("font-size", 20)
-      .attr("fill", "gray")
-      .text(ExtremePovertyCount)
-      .attr("id", "povertyText");
+      svg
+        .append('text')
+        .attr('x', xScale(0.7))
+        .attr('y', 170)
+        .attr('font-size', 20)
+        .attr('fill', 'gray')
+        .text(ExtremePovertyCount)
+        .attr('id', 'povertyText');
 
-    // amount of people
-    svg
-      .append("text")
-      .attr("y", 170)
-      .attr("font-size", 20)
-      .attr("fill", "gray")
-      .attr("id", "amountOfPeopleLeft")
-      .style("opacity", 0);
+      // amount of people
+      svg
+        .append('text')
+        .attr('y', 170)
+        .attr('font-size', 20)
+        .attr('fill', 'gray')
+        .attr('id', 'amountOfPeopleLeft')
+        .style('opacity', 0);
 
-    svg
-      .append("text")
-      .attr("y", 170)
-      .attr("font-size", 20)
-      .attr("fill", "gray")
-      .attr("id", "amountOfPeopleRight")
-      .style("opacity", 0);
+      svg
+        .append('text')
+        .attr('y', 200)
+        .attr('font-size', 20)
+        .attr('fill', 'gray')
+        .attr('id', 'amountOfPeopleLeftNr')
+        .style('opacity', 0);
+
+      svg
+        .append('text')
+        .attr('y', 170)
+        .attr('font-size', 20)
+        .attr('fill', 'gray')
+        .attr('id', 'amountOfPeopleRight')
+        .style('opacity', 0);
+      
+      svg
+        .append('text')
+        .attr('y', 200)
+        .attr('font-size', 20)
+        .attr('fill', 'gray')
+        .attr('id', 'amountOfPeopleRightNr')
+        .style('opacity', 0);
+      
+    }
 
     // axis
     const xAxis = axisBottom().scale(xScale).tickValues(AxisXformat);
@@ -433,6 +454,8 @@ const AreaChartD3 = ({
       .attr("transform", `translate(${w}, 0)`)
       .attr("id", "axis");
 
+
+    
     // moving gray line
     svg
       .append("rect")
@@ -449,21 +472,47 @@ const AreaChartD3 = ({
       })
       .on("mousemove", (e) => {
         let text = peopleCounter(xScale.invert(pointer(e)[0]));
-        selectAll("#poverty")
-          .attr("x1", pointer(e)[0])
-          .attr("x2", pointer(e)[0]);
-        selectAll("#amountOfPeopleLeft")
-          .style("opacity", 1)
-          .attr("text-anchor", "end")
-          .attr("x", pointer(e)[0] - 8)
+        selectAll('#poverty')
+          .attr('x1', pointer(e)[0])
+          .attr('x2', pointer(e)[0]);
+
+        selectAll('#amountOfPeopleLeft')
+          .style('opacity', 1)
+          .attr('text-anchor', 'end')
+          .attr('x', pointer(e)[0] - 8)
           .text(text[0]);
 
         selectAll("#amountOfPeopleRight")
           .style("opacity", 1)
           .attr("x", pointer(e)[0] + 8)
           .text(text[1]);
+
+        selectAll('#amountOfPeopleLeftNr')
+          .style('opacity', 1)
+          .attr('text-anchor', 'end')
+          .attr('x', pointer(e)[0] - 8)
+          .text(text[2]);
+
+        selectAll('#amountOfPeopleRightNr')
+          .style('opacity', 1)
+          .attr('x', pointer(e)[0] + 8)
+          .text(text[3]);
       })
       .on("mouseleave", mouseout);
+
+
+    // mouse out function
+
+    function mouseout() {
+      selectAll('#povertyText').style('opacity', 1);
+      selectAll('#poverty').attr('x1', xScale(2)).attr('x2', xScale(2));
+      selectAll('#amountOfPeopleLeft').style('opacity', 0);
+      selectAll('#amountOfPeopleRight').style('opacity', 0);
+      selectAll('#amountOfPeopleRightNr').style('opacity', 0);
+      selectAll('#amountOfPeopleLeftNr').style('opacity', 0);
+      selectAll('#levelRect').style('opacity', 0);
+      selectAll('#levelInfo').style('opacity', 0);
+    }
 
     // level axis + moving box
 
@@ -587,16 +636,6 @@ const AreaChartD3 = ({
         .on("mouseout", mouseout);
     });
 
-    // mouse out function
-
-    function mouseout() {
-      selectAll("#povertyText").style("opacity", 1);
-      selectAll("#poverty").attr("x1", xScale(2)).attr("x2", xScale(2));
-      selectAll("#amountOfPeopleLeft").style("opacity", 0);
-      selectAll("#amountOfPeopleRight").style("opacity", 0);
-      selectAll("#levelRect").style("opacity", 0);
-      selectAll("#levelInfo").style("opacity", 0);
-    }
 
     // data circles
     /*
