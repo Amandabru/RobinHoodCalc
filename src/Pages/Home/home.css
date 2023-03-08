@@ -6,17 +6,6 @@
   align-items: start;
 }
 
-.taxTheRichTitle {
-  color: #ffca34;
-  width: fit-content;
-  padding: 3rem;
-  background-image: url(/src/Images/titleBackground.png);
-  background-size: 100% 100%;
-  padding-top: 20px;
-  padding-bottom: 20px;
-  font-size: 40px;
-}
-
 .leftSide {
   position: sticky;
   top: 20vh;

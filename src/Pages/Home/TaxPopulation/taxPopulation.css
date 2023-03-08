@@ -10,6 +10,7 @@
 .headTitle {
   margin-left: 0;
   margin-right: 0;
+  margin-bottom: 1%;
   grid-template-columns: 1fr 0.35fr;
 }
 
