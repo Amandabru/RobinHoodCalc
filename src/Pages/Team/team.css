@@ -20,22 +20,22 @@
 }
 
 .team-member-image {
-  width: 150px;
-  height: 150px;
+  width: 200px;
+  height: 200px;
   border-radius: 100%;
   margin-bottom: 20px;
   object-fit: cover;
 }
 .team-member-name {
-  font-size: 24px;
+  font-size: 20px;
   font-weight: bold;
-  margin-bottom: 10px;
+  margin-bottom: 5px;
 }
 
 .team-member-role {
-  font-size: 16px;
+  font-size: 14px;
   font-weight: bold;
-  margin-bottom: 10px;
+  margin-top: 5px;
 }
 
 .top-members {
@@ -71,6 +71,38 @@
 }
 
 .team-member-description {
-  font-size: 16px;
+  font-size: 14px;
   line-height: 1.5;
+}
+
+.icon-mail {
+  font-size: 40px;
+  color: black;
+  padding-left: 10px;
+  padding-right: 10px;
+  justify-content: center;
+  align-items: center;
+}
+.icon-linkedin {
+  font-size: 23px;
+  color: black;
+  padding-left: 10px;
+  padding-right: 10px;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 8.7px;
+}
+
+.icon-mail:hover {
+  transform: scale(1.2);
+  color: #ffca34;
+  transition: all 0.3s ease;
+  -webkit-transition: all 0.3s ease;
+}
+
+.icon-linkedin:hover {
+  transform: scale(1.2);
+  color: #ffca34;
+  transition: all 0.3s ease;
+  -webkit-transition: all 0.3s ease;
 }
