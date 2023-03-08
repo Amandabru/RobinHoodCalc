@@ -108,7 +108,7 @@ const AreaChartD3 = ({
   useEffect(() => {
     const svg = select(svgRef.current)
       .attr("preserveAspectRatio", "xMinYMin meet")
-      .attr("viewBox", "0 0 660 300")	
+      .attr("viewBox", "0 0 600 400")	
       .attr('width', '100%')
       .attr('height', '100%')
       .style('overflow', 'visible')
@@ -171,6 +171,7 @@ const AreaChartD3 = ({
     selectAll('#rectangle').remove();
     selectAll('.billionaires').remove();
     selectAll('#defs').remove();
+    selectAll('#visualTax').remove();
 
     // brush
     /*
@@ -682,16 +683,70 @@ const AreaChartD3 = ({
         .on('mouseout', mouseout);
     });
 
-    /*
+ 
+    // Tax viz in graph   
     svg
       .append("rect")
       .attr("width", xScale(1000)-xScale(100))
-      .attr("height", 100)
+      .attr("height", h - yScaleRight(100*taxValue[1].taxRate) )
       .attr('x', xScale(100))
-      .attr('y', yScaleLeft(0))
-      .attr('fill', "red")
+      .attr('y', yScaleRight(100*taxValue[1].taxRate))
+      .attr('fill', "none")
+      .attr('stroke-dasharray', '1')
+      .style("opacity", 0.4)
+      .attr("stroke", "black")
+      .attr("id", "visualTax");
 
-    */
+
+    svg
+      .append("rect")
+      .attr("width", xScale(10000)-xScale(1000))
+      .attr("height", h - yScaleRight(100*taxValue[2].taxRate) )
+      .attr('x', xScale(1000))
+      .attr('y', yScaleRight(100*taxValue[2].taxRate))
+      .attr('fill', "none")
+      .attr('stroke-dasharray', '1')
+      .style("opacity", 0.4)
+      .attr("stroke", "black")
+      .attr("id", "visualTax");
+
+    
+    svg
+      .append("rect")
+      .attr("width", xScale(100000)-xScale(10000))
+      .attr("height", h - yScaleRight(100*taxValue[3].taxRate) )
+      .attr('x', xScale(10000))
+      .attr('y', yScaleRight(100*taxValue[3].taxRate))
+      .attr('fill', "none")
+      .attr('stroke-dasharray', '1')
+      .style("opacity", 0.4)
+      .attr("stroke", "black")
+      .attr("id", "visualTax");
+
+    svg
+      .append("rect")
+      .attr("width", xScale(1000000)-xScale(100000))
+      .attr("height", h - yScaleRight(100*taxValue[4].taxRate) )
+      .attr('x', xScale(100000))
+      .attr('y', yScaleRight(100*taxValue[4].taxRate))
+      .attr('fill', "none")
+      .attr('stroke-dasharray', '1')
+      .style("opacity", 0.4)
+      .attr("stroke", "black")
+      .attr("id", "visualTax");
+
+    svg
+      .append("rect")
+      .attr("width", xScale(10000000)-xScale(1000000))
+      .attr("height", h - yScaleRight(100*taxValue[5].taxRate) )
+      .attr('x', xScale(1000000))
+      .attr('y', yScaleRight(100*taxValue[5].taxRate))
+      .attr('fill', "none")
+      .attr('stroke-dasharray', '1')
+      .style("opacity", 0.4)
+      .attr("stroke", "black")
+      .attr("id", "visualTax");
+    
   }, [data]);
 
   return (
