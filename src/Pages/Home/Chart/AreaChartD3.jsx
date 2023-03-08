@@ -38,7 +38,6 @@ const AreaChartD3 = ({
   peopleCounter,
   taxValue,
   levelCounter,
-  billionaireList,
 }) => {
   const changingData = data[0];
   const defaultData = data[1];
@@ -57,8 +56,6 @@ const AreaChartD3 = ({
     bezos,
     musk,
   ];
-
-  console.log(billionaireList);
   var minIncome = min(changingData, (d) => d.income);
   var maxIncome = max(changingData, (d) => d.income);
   var maxPop = max(changingData, (d) => d.population);
@@ -288,11 +285,8 @@ const AreaChartD3 = ({
       .on('mouseover', highlight)
       .on('mouseleave', highlightOff)
       .attr('id', function (d) {
-        if (billionaireList.length !== 0) {
-          if (billionaireList.find((b) => b.id === d.billionaire) !== undefined)
-            return 'bill';
-          else return '';
-        } else return '';
+        if (d.added && d.active) return 'bill';
+        else return '';
       });
 
     // Hover over billionaire

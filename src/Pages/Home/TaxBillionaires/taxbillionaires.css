@@ -28,6 +28,10 @@
   font-size: 14px;
 }
 
+.gray {
+  filter: grayscale(100%);
+}
+
 .containerLeft {
   width: 100%;
   padding: 0.5rem;
@@ -127,7 +131,6 @@
 }
 
 .slider::-webkit-slider-thumb:active {
-  background: #f6c944;
   transition: 100ms;
   cursor: grabbing;
 }

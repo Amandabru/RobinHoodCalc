@@ -4,14 +4,14 @@ const collectFromTheRich = (
   defaultData,
   taxes,
   defaultBillionaires,
-  billionaires,
-  individualTaxes
+  billionaires
 ) => {
+  console.log('collecting');
   let collectedTax = 0;
   let data = defaultData.map((a) => {
     return { ...a };
   });
-  let newBillionaires = defaultBillionaires.map((a) => {
+  let newBillionaires = billionaires.map((a) => {
     return { ...a };
   });
   for (let i = 0; i < defaultData.length; i++) {
@@ -56,10 +56,13 @@ const collectFromTheRich = (
     }
     newBillionaires[i].income =
       defaultBillionaires[i].income - partialCollectedTax;
-    let individualTax =
-      newBillionaires[i].income * individualTaxes[i].individualTax;
-    newBillionaires[i].income -= individualTax;
-    collectedTax += partialCollectedTax + individualTax;
+    if (newBillionaires[i].active) {
+      let individualTax =
+        newBillionaires[i].income * newBillionaires[i].individualTax;
+      newBillionaires[i].income -= individualTax;
+      collectedTax += individualTax;
+    }
+    collectedTax += partialCollectedTax;
   }
   return [collectedTax, data, newBillionaires];
 };
