@@ -11,7 +11,7 @@ const levelCounter = (x1Value, x2Value, [...data]) => {
     }
   }
 
-  people == 0 ? (people = "few") : (people = addAbbrevations(people));
+  people < 100 ? (people = "few") : (people = addAbbrevations(people));
 
   return people;
 };
