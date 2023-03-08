@@ -40,8 +40,10 @@ const AreaChartD3 = ({
   wealthToggle,
   levelCounter,
 }) => {
-  const changingData = data[0];
-  const defaultData = data[1];
+  let changingData = data[0];
+  let defaultData = data[1];
+  changingData = changingData.filter(function(d){return (d.income>0.1);});
+  defaultData = defaultData.filter(function(d){return (d.income>0.1);});
   //const wealthDataNew = wealthData[0];
   //const wealthDataDefault = wealthData[1];
   const yAxisLabelPop = 'Population %';
@@ -62,12 +64,13 @@ const AreaChartD3 = ({
     bezos,
     musk,
   ];
-  var minIncome = min(changingData, (d) => d.income);
+
+   // var minIncome = min(changingData, (d) => d.income);
   var maxIncome = max(changingData, (d) => d.income);
   var maxPop = max(changingData, (d) => d.population);
   var minPop = min(changingData, (d) => d.population);
 
-  let xScale = scaleLog().domain([minIncome, maxIncome]).range([0, w]).nice();
+  let xScale = scaleLog().domain([0.1, maxIncome]).range([0, w]).nice();
   const yScaleLeft = scaleLinear().domain([minPop, maxPop]).range([h, 0]);
   const yScaleRight = scaleLinear().domain([0, 100]).range([h, 0]);
 
@@ -307,9 +310,22 @@ const AreaChartD3 = ({
       .on('mouseover', highlight)
       .on('mouseleave', highlightOff)
       .attr('id', function (d) {
-        if (d.added && d.active) return 'bill';
+        if (d.added && d.active){
+          select(this).moveToFront();
+          return 'bill';
+        } 
         else return '';
       });
+ 
+    function animate(circle) {
+      circle
+        .transition()
+        .duration(1000)
+        .attr('r', 13)
+        .transition()
+        .duration(1000)
+        .attr('r', 10)
+    }
 
     // Hover over billionaire
     svg
