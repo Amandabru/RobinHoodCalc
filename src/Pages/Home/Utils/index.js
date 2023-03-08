@@ -8,7 +8,5 @@ export { default as setDefaultTax } from './setDefaultTax';
 export { default as updateTaxes } from './updateTaxes';
 export { default as movingAverage } from './movingAverage';
 export { default as levelCounter } from './levelCounter';
-export { default as updateIndividualTax } from './updateIndividualTax';
-export { default as setDefaultIndividualTax } from './setDefaultIndividualTax';
 export { default as populationToWealth } from './populationToWealth';
 export { default as addAbbrevations } from './addAbbreavations';
