@@ -16,7 +16,7 @@ export const Switch = ({ toggled, onClick }) => {
         <a></a>
         <span>
           <span class='left-span'>Population</span>
-          <span class='right-span'>Income</span>
+          <span class='right-span'>Total Income</span>
         </span>
       </label>
     </div>
