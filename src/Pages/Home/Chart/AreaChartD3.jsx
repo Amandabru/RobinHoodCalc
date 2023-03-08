@@ -422,7 +422,7 @@ const AreaChartD3 = ({
       svg
         .append("text")
         .attr("y", 170)
-        .attr("font-size", 20)
+        .attr("font-size", 18)
         .attr("fill", "gray")
         .attr("id", "amountOfPeopleLeft")
         .style("opacity", 0);
@@ -430,7 +430,7 @@ const AreaChartD3 = ({
       svg
         .append("text")
         .attr("y", 200)
-        .attr("font-size", 20)
+        .attr("font-size", 18)
         .attr("fill", "gray")
         .attr("id", "amountOfPeopleLeftNr")
         .style("opacity", 0);
@@ -438,7 +438,7 @@ const AreaChartD3 = ({
       svg
         .append("text")
         .attr("y", 170)
-        .attr("font-size", 20)
+        .attr("font-size", 18)
         .attr("fill", "gray")
         .attr("id", "amountOfPeopleRight")
         .style("opacity", 0);
@@ -446,19 +446,18 @@ const AreaChartD3 = ({
       svg
         .append('text')
         .attr('y', 200)
-        .attr('font-size', 20)
+        .attr('font-size', 18)
         .attr('fill', 'gray')
         .attr('id', 'amountOfPeopleRightNr')
         .style('opacity', 0);
 
       svg
         .append('text')
-        .attr('y', 230)
-        .attr('font-size', 14)
+        .attr('y', 430)
+        .attr('font-size', 13)
         .attr('fill', 'gray')
         .attr('id', 'incomeValue')
         .style('opacity', 0);
-      
     }
 
     // axis
@@ -496,8 +495,9 @@ const AreaChartD3 = ({
       .style("fill", "none")
       .style("pointer-events", "all")
       .attr("width", w)
-      .attr("height", 25)
+      .attr("height", 45)
       .attr("y", 403)
+      .style("cursor", "none")
       .on("mouseover", (e) => {
         selectAll("#povertyText").style("opacity", 0);
         selectAll("#poverty")
@@ -530,12 +530,13 @@ const AreaChartD3 = ({
         selectAll('#amountOfPeopleRightNr')
           .style('opacity', 1)
           .attr('x', pointer(e)[0] + 8)
-          .text(addAbbrevations(text[3]));
+          .text(addAbbrevations(text[3]) + ' people');
 
         selectAll('#incomeValue')
           .style('opacity', 1)
-          .attr('x', pointer(e)[0] + 8)
-          .text(addAbbrevations(xScale.invert(pointer(e)[0]).toFixed(1)) + '$/day');
+          .attr('text-anchor', 'middle')
+          .attr('x', pointer(e)[0])
+          .text(addAbbrevations(xScale.invert(pointer(e)[0]).toFixed(1)));
       })
       .on("mouseleave", mouseout);
 
@@ -581,7 +582,7 @@ const AreaChartD3 = ({
         .attr("font-size", 15)
         .attr("text-anchor", "middle")
         .attr("x", xScale(d))
-        .attr("y", h + 40)
+        .attr("y", h + 50)
         .text("◆")
         .style("cursor", "default")
         .attr("id", "levelAxis");
@@ -592,7 +593,7 @@ const AreaChartD3 = ({
         .attr("font-size", 15)
         .attr("text-anchor", "middle")
         .attr("x", xScale(d) - 21) // :))
-        .attr("y", h + 40)
+        .attr("y", h + 50)
         .text(levelLabels[i])
         .style("cursor", "default")
         .attr("id", "levelAxis")
