@@ -112,7 +112,7 @@ const AreaChartD3 = ({
       .attr('height', h)
       .style('overflow', 'visible')
       .style('margin-top', '0')
-      .style('margin-left', '0')
+      .style('margin-left', '30')
       .style('margin-bottom', '50');
 
     const AxisXformat = [
@@ -195,19 +195,6 @@ const AreaChartD3 = ({
     // left y axis label
     var axisLabelXLeft = -35;
     var axisLabelY = -25;
-
-    svg
-      .append('text')
-      .attr(
-        'transform',
-        'translate(' + axisLabelXLeft + ', ' + axisLabelY + ')'
-      )
-      .attr('class', 'y label')
-      .attr('text-anchor', 'middle')
-      .attr('y', 6)
-      .attr('dy', '.75em')
-      .text('(%)')
-      .attr('id', 'axis');
 
     // right yaxis lable
     svg

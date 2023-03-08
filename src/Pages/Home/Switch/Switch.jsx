@@ -19,6 +19,7 @@ export const Switch = ({ toggled, onClick }) => {
           <span class='right-span'>Total Income</span>
         </span>
       </label>
+      <span className='y-percentage'>(%)</span>
     </div>
   );
 };
