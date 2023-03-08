@@ -4,7 +4,7 @@ import AreaChartD3 from './Chart/AreaChartD3';
 import Taxes from './Taxes/Taxes';
 import InGraphSlider from './InGraphSliders/InGraphSliders';
 import './home.css';
-import Toggle from './Toggle/Toggle';
+import Switch from './Switch/Switch';
 import {
   updateTaxes,
   movingAverage,
@@ -108,26 +108,29 @@ const Home = () => {
 
   return (
     <div className='taxTheRichContainer'>
-      <AreaChartD3
-        data={[
-          movingAverage(10, makePercentage(data)),
-          movingAverage(10, makePercentage(shadowData)),
-        ]}
-        ExtremePovertyCount={extremePovertyPercentage(data)}
-        billionaries={billionaires}
-        peopleCounter={(xValue) => peopleCounter(xValue, data)}
-        levelCounter={(x1Value, x2Value) =>
-          levelCounter(x1Value, x2Value, data)
-        }
-        taxValue={taxes}
-        wealthToggle={toggleState}
-      />
-      <InGraphSlider
-        onTaxChange={(taxBracketNr, newTax) =>
-          setTaxes(updateTaxes(taxBracketNr, taxes, newTax))
-        }
-        taxes={taxes}
-      />
+      <div>
+        <Switch toggled={false} onClick={updateToggle} />
+        <AreaChartD3
+          data={[
+            movingAverage(10, makePercentage(data)),
+            movingAverage(10, makePercentage(shadowData)),
+          ]}
+          ExtremePovertyCount={extremePovertyPercentage(data)}
+          billionaries={billionaires}
+          peopleCounter={(xValue) => peopleCounter(xValue, data)}
+          levelCounter={(x1Value, x2Value) =>
+            levelCounter(x1Value, x2Value, data)
+          }
+          taxValue={taxes}
+          wealthToggle={toggleState}
+        />
+        <InGraphSlider
+          onTaxChange={(taxBracketNr, newTax) =>
+            setTaxes(updateTaxes(taxBracketNr, taxes, newTax))
+          }
+          taxes={taxes}
+        />
+      </div>
       <Taxes
         onTaxChange={(taxBracketNr, newTax) =>
           setTaxes(updateTaxes(taxBracketNr, taxes, newTax))
@@ -140,7 +143,6 @@ const Home = () => {
           setJustUpdated(false);
         }}
       />
-      <Toggle label={'toggle wealth'} toggled={false} onClick={updateToggle} />
     </div>
   );
 };

@@ -1,6 +1,8 @@
 .taxTheRichContainer {
   padding: 2rem;
+  padding-left: 5rem;
   column-gap: 5rem;
+  margin-top: 30px;
   display: grid;
   grid-template-columns: 1.1fr 0.9fr;
   position: relative;
