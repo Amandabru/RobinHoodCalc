@@ -100,7 +100,7 @@ const Home = () => {
 
   return (
     <div className='taxTheRichContainer'>
-      <div className='rightSide'>
+      <div className='leftSide'>
         <Switch toggled={false} onClick={updateToggle} />
         <AreaChartD3
           data={[
@@ -122,7 +122,7 @@ const Home = () => {
         />
       </div>
       <Taxes
-        className='leftSide'
+        className='RightSide'
         onTaxChange={(taxBracketNr, newTax) =>
           setTaxes(updateTaxes(taxBracketNr, taxes, newTax))
         }

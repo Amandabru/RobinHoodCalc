@@ -5,12 +5,24 @@
   grid-template-columns: 1.1fr 0.9fr;
   align-items: start;
 }
-.rightSide {
+
+.taxTheRichTitle {
+  color: #ffca34;
+  width: fit-content;
+  padding: 3rem;
+  background-image: url(/src/Images/titleBackground.png);
+  background-size: 100% 100%;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  font-size: 40px;
+}
+
+.leftSide {
   position: sticky;
   top: 20vh;
   align-self: start;
 }
 
-.leftSide {
+.rightSide {
   scroll-behavior: auto;
 }
