@@ -100,7 +100,7 @@ const Home = () => {
 
   return (
     <div className='taxTheRichContainer'>
-      <div>
+      <div className='rightSide'>
         <Switch toggled={false} onClick={updateToggle} />
         <AreaChartD3
           data={[
@@ -120,14 +120,9 @@ const Home = () => {
           taxValue={taxes}
           wealthToggle={toggleState}
         />
-        <InGraphSlider
-          onTaxChange={(taxBracketNr, newTax) =>
-            setTaxes(updateTaxes(taxBracketNr, taxes, newTax))
-          }
-          taxes={taxes}
-        />
       </div>
       <Taxes
+        className='leftSide'
         onTaxChange={(taxBracketNr, newTax) =>
           setTaxes(updateTaxes(taxBracketNr, taxes, newTax))
         }

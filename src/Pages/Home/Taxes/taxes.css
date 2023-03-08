@@ -3,6 +3,4 @@
   width: fit-content;
   box-shadow: rgba(0, 0, 0, 0.429) 0px 1px 4px;
   cursor: default;
-  overflow: auto;
-  height: 80vh;
 }
