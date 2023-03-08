@@ -1,6 +1,6 @@
 .taxTheRichContainer {
   padding: 2rem;
-  column-gap: 5rem;
+  column-gap: 7rem;
   display: grid;
   grid-template-columns: 1.1fr 0.9fr;
   align-items: start;
@@ -8,7 +8,7 @@
 
 .leftSide {
   position: sticky;
-  top: 20vh;
+  top: 17vh;
   align-self: start;
 }
 

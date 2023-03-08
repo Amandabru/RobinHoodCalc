@@ -5,7 +5,9 @@
   text-align: center;
   border-radius: 25px;
   background-color: white;
+  row-gap: 5rem;
 }
+
 .title {
   color: #ffca34;
   width: fit-content;
@@ -16,8 +18,10 @@
   padding-top: 20px;
   padding-bottom: 20px;
   font-size: 40px;
+  margin-bottom: 15px;
 }
 .text {
   font-size: 18px;
-  padding-bottom: 15px;
+  padding-top: 12px;
+  padding-bottom: 22px;
 }

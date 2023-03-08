@@ -107,14 +107,14 @@ const AreaChartD3 = ({
 
   useEffect(() => {
     const svg = select(svgRef.current)
-      .attr("preserveAspectRatio", "xMinYMin meet")
-      .attr("viewBox", "0 0 600 400")	
+      .attr('preserveAspectRatio', 'xMinYMin meet')
+      .attr('viewBox', '0 0 600 400')
       .attr('width', '100%')
       .attr('height', '100%')
       .style('overflow', 'visible')
       // .style('margin-top', '0')
-      .style('margin-left', '30')
-      // .style('margin-bottom', '50');
+      .style('margin-left', '30');
+    // .style('margin-bottom', '50');
 
     const AxisXformat = [
       '1',
@@ -199,7 +199,6 @@ const AreaChartD3 = ({
     var axisLabelY = -25;
 
     // right yaxis lable
-    /*
     svg
       .append('text')
       .attr('transform', 'translate(' + w + ', ' + axisLabelY + ')')
@@ -208,7 +207,7 @@ const AreaChartD3 = ({
       .attr('y', 6)
       .attr('dy', '.75em')
       .text('Robin Hood tax (%)')
-      .attr('id', 'axis');*/
+      .attr('id', 'axis');
 
     // Default chart
     const generateDefaultArea = area()
@@ -491,13 +490,12 @@ const AreaChartD3 = ({
       .attr('id', 'axis')
       .style('font', '10px cairo');
 
-    /*
     svg
       .append('g')
       .call(yAxisRight)
       .attr('transform', `translate(${w}, 0)`)
       .attr('id', 'axis')
-      .style('font', '10px cairo');*/
+      .style('font', '10px cairo');
 
     // moving gray line
     svg
@@ -683,8 +681,7 @@ const AreaChartD3 = ({
         .on('mouseout', mouseout);
     });
 
- 
-    // Tax viz in graph   
+    // Tax viz in graph
     /*
     svg
       .append("rect")
@@ -750,11 +747,12 @@ const AreaChartD3 = ({
       .attr("stroke", "black")
       .attr("id", "visualTax");
     */
+
     svg
       .append('line')
       .attr('stroke', 'grey')
       .attr('x1', xScale(100))
-      .attr('y1', yScaleRight(100*taxValue[1].taxRate))
+      .attr('y1', yScaleRight(100 * taxValue[1].taxRate))
       .attr('x2', xScale(100))
       .attr('y2', h)
       .style('stroke-dasharray', '3, 3')
@@ -764,9 +762,9 @@ const AreaChartD3 = ({
       .append('line')
       .attr('stroke', 'grey')
       .attr('x1', xScale(100))
-      .attr('y1', yScaleRight(100*taxValue[1].taxRate))
+      .attr('y1', yScaleRight(100 * taxValue[1].taxRate))
       .attr('x2', xScale(1000))
-      .attr('y2', yScaleRight(100*taxValue[1].taxRate))
+      .attr('y2', yScaleRight(100 * taxValue[1].taxRate))
       .style('stroke-dasharray', '3, 3')
       .attr('id', 'poverty');
 
@@ -774,31 +772,19 @@ const AreaChartD3 = ({
       .append('line')
       .attr('stroke', 'grey')
       .attr('x1', xScale(1000))
-      .attr('y1', yScaleRight(100*taxValue[1].taxRate))
+      .attr('y1', yScaleRight(100 * taxValue[1].taxRate))
       .attr('x2', xScale(1000))
-      .attr('y2', yScaleRight(100*taxValue[2].taxRate))
+      .attr('y2', yScaleRight(100 * taxValue[2].taxRate))
       .style('stroke-dasharray', '3, 3')
       .attr('id', 'poverty');
-
 
     svg
       .append('line')
       .attr('stroke', 'grey')
       .attr('x1', xScale(1000))
-      .attr('y1', yScaleRight(100*taxValue[2].taxRate))
+      .attr('y1', yScaleRight(100 * taxValue[2].taxRate))
       .attr('x2', xScale(10000))
-      .attr('y2', yScaleRight(100*taxValue[2].taxRate))
-      .style('stroke-dasharray', '3, 3')
-      .attr('id', 'poverty');
-
-
-    svg
-      .append('line')
-      .attr('stroke', 'grey')
-      .attr('x1', xScale(10000))
-      .attr('y1', yScaleRight(100*taxValue[2].taxRate))
-      .attr('x2', xScale(10000))
-      .attr('y2', yScaleRight(100*taxValue[3].taxRate))
+      .attr('y2', yScaleRight(100 * taxValue[2].taxRate))
       .style('stroke-dasharray', '3, 3')
       .attr('id', 'poverty');
 
@@ -806,9 +792,19 @@ const AreaChartD3 = ({
       .append('line')
       .attr('stroke', 'grey')
       .attr('x1', xScale(10000))
-      .attr('y1', yScaleRight(100*taxValue[3].taxRate))
+      .attr('y1', yScaleRight(100 * taxValue[2].taxRate))
+      .attr('x2', xScale(10000))
+      .attr('y2', yScaleRight(100 * taxValue[3].taxRate))
+      .style('stroke-dasharray', '3, 3')
+      .attr('id', 'poverty');
+
+    svg
+      .append('line')
+      .attr('stroke', 'grey')
+      .attr('x1', xScale(10000))
+      .attr('y1', yScaleRight(100 * taxValue[3].taxRate))
       .attr('x2', xScale(100000))
-      .attr('y2', yScaleRight(100*taxValue[3].taxRate))
+      .attr('y2', yScaleRight(100 * taxValue[3].taxRate))
       .style('stroke-dasharray', '3, 3')
       .attr('id', 'poverty');
 
@@ -816,9 +812,9 @@ const AreaChartD3 = ({
       .append('line')
       .attr('stroke', 'grey')
       .attr('x1', xScale(100000))
-      .attr('y1', yScaleRight(100*taxValue[3].taxRate))
+      .attr('y1', yScaleRight(100 * taxValue[3].taxRate))
       .attr('x2', xScale(100000))
-      .attr('y2', yScaleRight(100*taxValue[4].taxRate))
+      .attr('y2', yScaleRight(100 * taxValue[4].taxRate))
       .style('stroke-dasharray', '3, 3')
       .attr('id', 'poverty');
 
@@ -826,12 +822,33 @@ const AreaChartD3 = ({
       .append('line')
       .attr('stroke', 'grey')
       .attr('x1', xScale(100000))
-      .attr('y1', yScaleRight(100*taxValue[4].taxRate))
+      .attr('y1', yScaleRight(100 * taxValue[4].taxRate))
       .attr('x2', xScale(1000000))
-      .attr('y2', yScaleRight(100*taxValue[4].taxRate))
+      .attr('y2', yScaleRight(100 * taxValue[4].taxRate))
       .style('stroke-dasharray', '3, 3')
       .attr('id', 'poverty');
 
+    //-------------------------------------//
+    // 1 miljon
+    svg
+      .append('line')
+      .attr('stroke', 'grey')
+      .attr('x1', xScale(1000000))
+      .attr('y1', yScaleRight(100 * taxValue[4].taxRate))
+      .attr('x2', xScale(1000000))
+      .attr('y2', yScaleRight(100 * taxValue[5].taxRate))
+      .style('stroke-dasharray', '3, 3')
+      .attr('id', 'poverty');
+
+    svg
+      .append('line')
+      .attr('stroke', 'grey')
+      .attr('x1', xScale(1000000))
+      .attr('y1', yScaleRight(100 * taxValue[5].taxRate))
+      .attr('x2', xScale(100000000))
+      .attr('y2', yScaleRight(100 * taxValue[5].taxRate))
+      .style('stroke-dasharray', '3, 3')
+      .attr('id', 'poverty');
   }, [data]);
 
   return (
