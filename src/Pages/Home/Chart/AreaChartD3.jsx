@@ -52,7 +52,7 @@ const AreaChartD3 = ({
     return d.income > 0.1;
   });
   // Total income data
-  let wealthDataNew = wealthData[0]; 
+  let wealthDataNew = wealthData[0];
   let wealthDataDefault = wealthData[1];
   wealthDataNew = wealthDataNew.filter(function (d) {
     return d.income > 0.1;
@@ -77,7 +77,7 @@ const AreaChartD3 = ({
     musk,
   ];
 
-  // Declare scale variables 
+  // Declare scale variables
   let xScale;
   let yScaleLeft;
   let yScaleRight;
@@ -86,7 +86,7 @@ const AreaChartD3 = ({
   var minPop;
 
   // Scale according to population or total income
-  if (!wealthToggle){
+  if (!wealthToggle) {
     // var minIncome = min(changingData, (d) => d.income);
     maxIncome = max(changingData, (d) => d.income);
     maxPop = max(changingData, (d) => d.population);
@@ -95,8 +95,7 @@ const AreaChartD3 = ({
     xScale = scaleLog().domain([0.1, maxIncome]).range([0, w]).nice();
     yScaleLeft = scaleLinear().domain([minPop, maxPop]).range([h, 0]);
     yScaleRight = scaleLinear().domain([0, 100]).range([h, 0]);
-  }
-  else{
+  } else {
     maxIncome = max(wealthDataNew, (d) => d.income);
     maxPop = max(wealthDataNew, (d) => d.population);
     minPop = min(wealthDataNew, (d) => d.population);
@@ -197,6 +196,7 @@ const AreaChartD3 = ({
     var axisLabelY = -25;
 
     // right yaxis lable
+    /*
     svg
       .append('text')
       .attr('transform', 'translate(' + w + ', ' + axisLabelY + ')')
@@ -205,37 +205,36 @@ const AreaChartD3 = ({
       .attr('y', 6)
       .attr('dy', '.75em')
       .text('Robin Hood tax (%)')
-      .attr('id', 'axis');
+      .attr('id', 'axis');*/
 
     // Default chart
     const generateDefaultArea = area()
       .x((d) => xScale(d.income))
       .y0(h)
       .y1((val) => yScaleLeft(val.population));
-    
-    if(!wealthToggle){
-    svg
-      .selectAll('#defaultArea')
-      .data([defaultData])
-      .enter()
-      .append('path')
-      .attr('d', (d) => generateDefaultArea(d))
-      .attr('fill', '#ffca34')
-      .attr('stroke', '#ffca34')
-      .style('opacity', '0.4')
-      .attr('id', 'defaultArea');
-    }
-    else{
+
+    if (!wealthToggle) {
       svg
-      .selectAll('#defaultArea')
-      .data([wealthDataDefault])
-      .enter()
-      .append('path')
-      .attr('d', (d) => generateDefaultArea(d))
-      .attr('fill', '#ffca34')
-      .attr('stroke', '#ffca34')
-      .style('opacity', '0.4')
-      .attr('id', 'defaultArea');
+        .selectAll('#defaultArea')
+        .data([defaultData])
+        .enter()
+        .append('path')
+        .attr('d', (d) => generateDefaultArea(d))
+        .attr('fill', '#ffca34')
+        .attr('stroke', '#ffca34')
+        .style('opacity', '0.4')
+        .attr('id', 'defaultArea');
+    } else {
+      svg
+        .selectAll('#defaultArea')
+        .data([wealthDataDefault])
+        .enter()
+        .append('path')
+        .attr('d', (d) => generateDefaultArea(d))
+        .attr('fill', '#ffca34')
+        .attr('stroke', '#ffca34')
+        .style('opacity', '0.4')
+        .attr('id', 'defaultArea');
     }
     // area chart
     const generateScaledArea = area()
@@ -243,28 +242,27 @@ const AreaChartD3 = ({
       .y0(h)
       .y1((val) => yScaleLeft(val.population))
       .curve(curveMonotoneX);
-    
-    if (!wealthToggle){
-    svg
-      .selectAll('#chagningArea')
-      .data([changingData])
-      .enter()
-      .append('path')
-      .attr('d', (d) => generateScaledArea(d))
-      .attr('fill', '#ffca34')
-      .attr('stroke', '#ffca34')
-      .attr('id', 'chagningArea');
-    }
-    else{
+
+    if (!wealthToggle) {
       svg
-      .selectAll('#chagningArea')
-      .data([wealthDataNew])
-      .enter()
-      .append('path')
-      .attr('d', (d) => generateScaledArea(d))
-      .attr('fill', '#ffca34')
-      .attr('stroke', '#ffca34')
-      .attr('id', 'chagningArea');
+        .selectAll('#chagningArea')
+        .data([changingData])
+        .enter()
+        .append('path')
+        .attr('d', (d) => generateScaledArea(d))
+        .attr('fill', '#ffca34')
+        .attr('stroke', '#ffca34')
+        .attr('id', 'chagningArea');
+    } else {
+      svg
+        .selectAll('#chagningArea')
+        .data([wealthDataNew])
+        .enter()
+        .append('path')
+        .attr('d', (d) => generateScaledArea(d))
+        .attr('fill', '#ffca34')
+        .attr('stroke', '#ffca34')
+        .attr('id', 'chagningArea');
     }
 
     // billionaries
@@ -395,76 +393,76 @@ const AreaChartD3 = ({
       .style('opacity', 0.2)
       .attr('id', 'topLine');
 
-      // extreme poverty line OR extreme wealth line?
-      svg
-        .append('line')
-        .attr('stroke', 'grey')
-        .attr('x1', xScale(2))
-        .attr('y1', 0)
-        .attr('x2', xScale(2))
-        .attr('y2', h)
-        .style('stroke-dasharray', '3, 3')
-        .attr('id', 'poverty');
+    // extreme poverty line OR extreme wealth line?
+    svg
+      .append('line')
+      .attr('stroke', 'grey')
+      .attr('x1', xScale(2))
+      .attr('y1', 0)
+      .attr('x2', xScale(2))
+      .attr('y2', h)
+      .style('stroke-dasharray', '3, 3')
+      .attr('id', 'poverty');
 
-      svg
-        .append('text')
-        .attr('x', -380)
-        .attr('y', xScale(1.5))
-        .attr('font-size', 13)
-        .attr('fill', 'gray')
-        .text('Extreme poverty')
-        .attr('transform', 'rotate(-90)')
-        .attr('id', 'povertyText');
+    svg
+      .append('text')
+      .attr('x', -380)
+      .attr('y', xScale(1.5))
+      .attr('font-size', 13)
+      .attr('fill', 'gray')
+      .text('Extreme poverty')
+      .attr('transform', 'rotate(-90)')
+      .attr('id', 'povertyText');
 
-      svg
-        .append('text')
-        .attr('x', xScale(0.7))
-        .attr('y', 170)
-        .attr('font-size', 20)
-        .attr('fill', 'gray')
-        .text(ExtremePovertyCount)
-        .attr('id', 'povertyText');
+    svg
+      .append('text')
+      .attr('x', xScale(0.7))
+      .attr('y', 170)
+      .attr('font-size', 20)
+      .attr('fill', 'gray')
+      .text(ExtremePovertyCount)
+      .attr('id', 'povertyText');
 
-      // amount of people
-      svg
-        .append('text')
-        .attr('y', 170)
-        .attr('font-size', 18)
-        .attr('fill', 'gray')
-        .attr('id', 'amountOfPeopleLeft')
-        .style('opacity', 0);
+    // amount of people
+    svg
+      .append('text')
+      .attr('y', 170)
+      .attr('font-size', 18)
+      .attr('fill', 'gray')
+      .attr('id', 'amountOfPeopleLeft')
+      .style('opacity', 0);
 
-      svg
-        .append('text')
-        .attr('y', 200)
-        .attr('font-size', 18)
-        .attr('fill', 'gray')
-        .attr('id', 'amountOfPeopleLeftNr')
-        .style('opacity', 0);
+    svg
+      .append('text')
+      .attr('y', 200)
+      .attr('font-size', 18)
+      .attr('fill', 'gray')
+      .attr('id', 'amountOfPeopleLeftNr')
+      .style('opacity', 0);
 
-      svg
-        .append('text')
-        .attr('y', 170)
-        .attr('font-size', 18)
-        .attr('fill', 'gray')
-        .attr('id', 'amountOfPeopleRight')
-        .style('opacity', 0);
+    svg
+      .append('text')
+      .attr('y', 170)
+      .attr('font-size', 18)
+      .attr('fill', 'gray')
+      .attr('id', 'amountOfPeopleRight')
+      .style('opacity', 0);
 
-      svg
-        .append('text')
-        .attr('y', 200)
-        .attr('font-size', 18)
-        .attr('fill', 'gray')
-        .attr('id', 'amountOfPeopleRightNr')
-        .style('opacity', 0);
+    svg
+      .append('text')
+      .attr('y', 200)
+      .attr('font-size', 18)
+      .attr('fill', 'gray')
+      .attr('id', 'amountOfPeopleRightNr')
+      .style('opacity', 0);
 
-      svg
-        .append('text')
-        .attr('y', 430)
-        .attr('font-size', 13)
-        .attr('fill', 'gray')
-        .attr('id', 'incomeValue')
-        .style('opacity', 0);
+    svg
+      .append('text')
+      .attr('y', 430)
+      .attr('font-size', 13)
+      .attr('fill', 'gray')
+      .attr('id', 'incomeValue')
+      .style('opacity', 0);
     //}
 
     // axis
@@ -487,12 +485,13 @@ const AreaChartD3 = ({
       .attr('id', 'axis')
       .style('font', '10px cairo');
 
+    /*
     svg
       .append('g')
       .call(yAxisRight)
       .attr('transform', `translate(${w}, 0)`)
       .attr('id', 'axis')
-      .style('font', '10px cairo');
+      .style('font', '10px cairo');*/
 
     // moving gray line
     svg
