@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Toggle from '../Toggle/Toggle';
 import './taxbillionaires.css';
+import { addAbbrevations } from '../Utils/index';
 
 function TaxBillionaires({ billionaires, setNewBillionaires }) {
   const [selectedBillionaire, setSelectedBillionaire] = useState('');
@@ -38,14 +39,14 @@ function TaxBillionaires({ billionaires, setNewBillionaires }) {
       setNewBillionaires(
         billionaires.map((b) => {
           if (b.billionaire === billionaire) {
-            return { ...b, added: false, individualTax: 0 };
+            return { ...b, added: false, individualTax: 0, active: true };
           } else return { ...b };
         })
       );
     } else {
       setNewBillionaires(
         billionaires.map((b) => {
-          return { ...b, added: false, individualTax: 0 };
+          return { ...b, added: false, individualTax: 0, active: true };
         })
       );
     }
@@ -59,13 +60,6 @@ function TaxBillionaires({ billionaires, setNewBillionaires }) {
         } else return { ...b };
       })
     );
-  }
-
-  function formatIncome(n) {
-    if (n < 1e3) return n;
-    if (n >= 1e3 && n < 1e6) return +(n / 1e3).toFixed(0) + 'k';
-    if (n >= 1e6 && n < 1e9) return +(n / 1e6).toFixed(1) + 'M';
-    if (n >= 1e9 && n < 1e12) return +(n / 1e9).toFixed(1) + 'B';
   }
 
   return (
@@ -127,22 +121,22 @@ function TaxBillionaires({ billionaires, setNewBillionaires }) {
                 >
                   x
                 </button>
-                <div
-                  className={
-                    billionaire.active
-                      ? 'billionaireContent'
-                      : 'billionaireContent gray'
-                  }
-                >
-                  <div className='containerLeft'>
+                <div className='billionaireContent'>
+                  <div
+                    className={
+                      billionaire.active
+                        ? 'containerLeft'
+                        : 'containerLeft nonactive'
+                    }
+                  >
                     <div className='nameAndIncome'>
                       <p className='name'> {billionaire.billionaire} </p>
                       <p className='income'>
-                        Daily income: {formatIncome(billionaire.income)} $
+                        Daily income: {addAbbrevations(billionaire.income)} $
                       </p>
                     </div>
                     <input
-                      className={billionaire.active ? 'slider' : 'slider gray'}
+                      className={'slider'}
                       type='range'
                       min='0'
                       max='1'
@@ -161,7 +155,11 @@ function TaxBillionaires({ billionaires, setNewBillionaires }) {
                     />
                   </div>
                   <div className='containerRight'>
-                    <div className='taxRate'>
+                    <div
+                      className={
+                        billionaire.active ? 'taxRate' : 'taxRate nonactive'
+                      }
+                    >
                       <p className='taxTitle'> Tax Rate</p>
                       <div className='percetageBoxWrapper1'>
                         <input
