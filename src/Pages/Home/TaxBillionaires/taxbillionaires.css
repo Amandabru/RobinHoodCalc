@@ -28,8 +28,8 @@
   font-size: 14px;
 }
 
-.gray {
-  filter: grayscale(100%);
+.nonactive {
+  filter: opacity(40%);
 }
 
 .containerLeft {

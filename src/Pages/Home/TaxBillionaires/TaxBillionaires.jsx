@@ -127,14 +127,14 @@ function TaxBillionaires({ billionaires, setNewBillionaires }) {
                 >
                   x
                 </button>
-                <div
-                  className={
-                    billionaire.active
-                      ? 'billionaireContent'
-                      : 'billionaireContent gray'
-                  }
-                >
-                  <div className='containerLeft'>
+                <div className='billionaireContent'>
+                  <div
+                    className={
+                      billionaire.active
+                        ? 'containerLeft'
+                        : 'containerLeft nonactive'
+                    }
+                  >
                     <div className='nameAndIncome'>
                       <p className='name'> {billionaire.billionaire} </p>
                       <p className='income'>
@@ -142,7 +142,7 @@ function TaxBillionaires({ billionaires, setNewBillionaires }) {
                       </p>
                     </div>
                     <input
-                      className={billionaire.active ? 'slider' : 'slider gray'}
+                      className={'slider'}
                       type='range'
                       min='0'
                       max='1'
@@ -161,7 +161,11 @@ function TaxBillionaires({ billionaires, setNewBillionaires }) {
                     />
                   </div>
                   <div className='containerRight'>
-                    <div className='taxRate'>
+                    <div
+                      className={
+                        billionaire.active ? 'taxRate' : 'taxRate nonactive'
+                      }
+                    >
                       <p className='taxTitle'> Tax Rate</p>
                       <div className='percetageBoxWrapper1'>
                         <input
