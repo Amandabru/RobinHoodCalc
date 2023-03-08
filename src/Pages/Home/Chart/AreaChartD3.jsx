@@ -40,7 +40,9 @@ const AreaChartD3 = ({
   taxValue,
   wealthToggle,
   levelCounter,
+  wealthData,
 }) => {
+  // Population data
   let changingData = data[0];
   let defaultData = data[1];
   changingData = changingData.filter(function (d) {
@@ -49,11 +51,16 @@ const AreaChartD3 = ({
   defaultData = defaultData.filter(function (d) {
     return d.income > 0.1;
   });
-  //const wealthDataNew = wealthData[0];
-  //const wealthDataDefault = wealthData[1];
-  const yAxisLabelPop = 'Population %';
-  const yAxisLabelWealth = 'Wealth %';
-  const wealthToggled = wealthToggle;
+  // Total income data
+  let wealthDataNew = wealthData[0]; 
+  let wealthDataDefault = wealthData[1];
+  wealthDataNew = wealthDataNew.filter(function (d) {
+    return d.income > 0.1;
+  });
+  wealthDataDefault = wealthDataDefault.filter(function (d) {
+    return d.income > 0.1;
+  });
+
   const svgRef = useRef();
   const w = 600;
   const h = 400;
@@ -70,14 +77,34 @@ const AreaChartD3 = ({
     musk,
   ];
 
-  // var minIncome = min(changingData, (d) => d.income);
-  var maxIncome = max(changingData, (d) => d.income);
-  var maxPop = max(changingData, (d) => d.population);
-  var minPop = min(changingData, (d) => d.population);
+  // Declare scale variables 
+  let xScale;
+  let yScaleLeft;
+  let yScaleRight;
+  var maxIncome;
+  var maxPop;
+  var minPop;
 
-  let xScale = scaleLog().domain([0.1, maxIncome]).range([0, w]).nice();
-  const yScaleLeft = scaleLinear().domain([minPop, maxPop]).range([h, 0]);
-  const yScaleRight = scaleLinear().domain([0, 100]).range([h, 0]);
+  // Scale according to population or total income
+  if (!wealthToggle){
+    // var minIncome = min(changingData, (d) => d.income);
+    maxIncome = max(changingData, (d) => d.income);
+    maxPop = max(changingData, (d) => d.population);
+    minPop = min(changingData, (d) => d.population);
+
+    xScale = scaleLog().domain([0.1, maxIncome]).range([0, w]).nice();
+    yScaleLeft = scaleLinear().domain([minPop, maxPop]).range([h, 0]);
+    yScaleRight = scaleLinear().domain([0, 100]).range([h, 0]);
+  }
+  else{
+    maxIncome = max(wealthDataNew, (d) => d.income);
+    maxPop = max(wealthDataNew, (d) => d.population);
+    minPop = min(wealthDataNew, (d) => d.population);
+
+    xScale = scaleLog().domain([0.1, maxIncome]).range([0, w]).nice();
+    yScaleLeft = scaleLinear().domain([minPop, maxPop]).range([h, 0]);
+    yScaleRight = scaleLinear().domain([0, 100]).range([h, 0]);
+  }
 
   useEffect(() => {
     const svg = select(svgRef.current)
@@ -198,7 +225,8 @@ const AreaChartD3 = ({
       .x((d) => xScale(d.income))
       .y0(h)
       .y1((val) => yScaleLeft(val.population));
-
+    
+    if(!wealthToggle){
     svg
       .selectAll('#defaultArea')
       .data([defaultData])
@@ -209,14 +237,27 @@ const AreaChartD3 = ({
       .attr('stroke', '#ffca34')
       .style('opacity', '0.4')
       .attr('id', 'defaultArea');
-
+    }
+    else{
+      svg
+      .selectAll('#defaultArea')
+      .data([wealthDataDefault])
+      .enter()
+      .append('path')
+      .attr('d', (d) => generateDefaultArea(d))
+      .attr('fill', '#ffca34')
+      .attr('stroke', '#ffca34')
+      .style('opacity', '0.4')
+      .attr('id', 'defaultArea');
+    }
     // area chart
     const generateScaledArea = area()
       .x((d) => xScale(d.income))
       .y0(h)
       .y1((val) => yScaleLeft(val.population))
       .curve(curveMonotoneX);
-
+    
+    if (!wealthToggle){
     svg
       .selectAll('#chagningArea')
       .data([changingData])
@@ -226,6 +267,18 @@ const AreaChartD3 = ({
       .attr('fill', '#ffca34')
       .attr('stroke', '#ffca34')
       .attr('id', 'chagningArea');
+    }
+    else{
+      svg
+      .selectAll('#chagningArea')
+      .data([wealthDataNew])
+      .enter()
+      .append('path')
+      .attr('d', (d) => generateScaledArea(d))
+      .attr('fill', '#ffca34')
+      .attr('stroke', '#ffca34')
+      .attr('id', 'chagningArea');
+    }
 
     // billionaries
     var defs = svg.append('defs').attr('id', 'defs');
@@ -355,8 +408,7 @@ const AreaChartD3 = ({
       .style('opacity', 0.2)
       .attr('id', 'topLine');
 
-    if (!wealthToggle) {
-      // extreme poverty line
+      // extreme poverty line OR extreme wealth line?
       svg
         .append('line')
         .attr('stroke', 'grey')
@@ -426,7 +478,7 @@ const AreaChartD3 = ({
         .attr('fill', 'gray')
         .attr('id', 'incomeValue')
         .style('opacity', 0);
-    }
+    //}
 
     // axis
     const xAxis = axisBottom().scale(xScale).tickValues(AxisXformat);

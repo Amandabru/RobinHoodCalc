@@ -34,7 +34,6 @@ const Home = () => {
   const [billionaires, setBillionaires] = useState(null);
   const [defaultBillionaires, setDefaultBillionaires] = useState(null);
   const [toggleState, setToggleState] = useState(false);
-  const [shadowData, setShadowData] = useState(null);
   const [justUpdated, setJustUpdated] = useState(false);
 
   const updateData = () => {
@@ -45,13 +44,7 @@ const Home = () => {
       billionaires
     );
     updatedData = giveToThePoor(updatedData, collectedTax);
-    if (toggleState !== true) {
-      setData(updatedData);
-      setShadowData(defaultData);
-    } else {
-      setData(populationToWealth(updatedData));
-      setShadowData(populationToWealth(defaultData));
-    }
+    setData(updatedData);
     setBillionaires(newBillionaires);
     setJustUpdated(true);
   };
@@ -70,7 +63,6 @@ const Home = () => {
       };
     }).then((data) => {
       setDefaultData(data);
-      setShadowData(data);
       setData(data);
     });
     csv(billionairesUrl, function (d) {
@@ -113,7 +105,11 @@ const Home = () => {
         <AreaChartD3
           data={[
             movingAverage(10, makePercentage(data)),
-            movingAverage(10, makePercentage(shadowData)),
+            movingAverage(10, makePercentage(defaultData)),
+          ]}
+          wealthData={[
+            movingAverage(10, makePercentage(populationToWealth(data))),
+            movingAverage(10, makePercentage(populationToWealth(defaultData))),
           ]}
           ExtremePovertyCount={extremePovertyPercentage(data)}
           billionaries={billionaires}
