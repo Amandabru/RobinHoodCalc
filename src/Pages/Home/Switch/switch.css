@@ -2,6 +2,10 @@
   margin-bottom: 0.5rem;
 }
 
+.y-percentage {
+  font-size: 12px;
+}
+
 .toggleSwitch span span {
   display: none;
 }
@@ -17,6 +21,8 @@
   background-color: #f6c944;
   border-radius: 20px;
   user-select: none;
+  vertical-align: middle;
+  margin-right: 0.4rem;
 }
 .toggleSwitch * {
   -webkit-box-sizing: border-box;
