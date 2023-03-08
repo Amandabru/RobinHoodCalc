@@ -139,9 +139,10 @@
   width: 4ch;
   height: 15px;
   text-align: center;
-  border: transparent;
+  border: none;
   border-radius: 2px;
-  box-shadow: rgba(0, 0, 0, 0.329) 1px 1px 1.5px 1.2px inset;
+  border-bottom: 1.5px solid #f6c944;
+  background-color: rgba(128, 128, 128, 0.089);
   margin-bottom: 0.3rem;
 }
 
