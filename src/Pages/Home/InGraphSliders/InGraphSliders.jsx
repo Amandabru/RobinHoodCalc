@@ -16,7 +16,7 @@ function CustomSlider({ onTaxChange, taxes }) {
             onTaxChange(1, e.target.value);
           }}
         />
-        <div className='hoverLine' style={{ marginTop: -400*taxes[1].taxRate, left: '355px', top: '500px'}}>
+        <div className='hoverLine' style={{ marginTop: -400*taxes[1].taxRate, left: '340px', top: '500px'}}>
         {(100*taxes[1].taxRate).toFixed(1) + "%"}
         </div>
       </div>
@@ -32,7 +32,7 @@ function CustomSlider({ onTaxChange, taxes }) {
             onTaxChange(2, e.target.value);
           }}
         />
-        <div className='hoverLine' style={{ marginTop: -400*taxes[2].taxRate, left: '420px', top: '500px'}}>
+        <div className='hoverLine' style={{ marginTop: -400*taxes[2].taxRate, left: '405px', top: '500px'}}>
         {(100*taxes[2].taxRate).toFixed(1) + "%"}
         </div>
       </div>
@@ -48,7 +48,7 @@ function CustomSlider({ onTaxChange, taxes }) {
             onTaxChange(3, e.target.value);
           }}
         />
-        <div className='hoverLine' style={{ marginTop: -400*taxes[3].taxRate, left: '485px', top: '500px'}}>
+        <div className='hoverLine' style={{ marginTop: -400*taxes[3].taxRate, left: '470px', top: '500px'}}>
         {(100*taxes[3].taxRate).toFixed(1) + "%"}
         </div>
       </div>
@@ -64,7 +64,7 @@ function CustomSlider({ onTaxChange, taxes }) {
             onTaxChange(4, e.target.value);
           }}
         />
-        <div className='hoverLine' style={{ marginTop: -400*taxes[4].taxRate, left: '555px', top: '500px'}}>
+        <div className='hoverLine' style={{ marginTop: -400*taxes[4].taxRate, left: '535px', top: '500px'}}>
         {(100*taxes[4].taxRate).toFixed(1) + "%"}
         </div>
       </div>
@@ -80,7 +80,7 @@ function CustomSlider({ onTaxChange, taxes }) {
             onTaxChange(5, e.target.value);
           }}
         />
-        <div className='hoverLine' style={{ marginTop: -400*taxes[5].taxRate, left: '620px', top: '500px'}}>
+        <div className='hoverLine' style={{ marginTop: -400*taxes[5].taxRate, left: '600px', top: '500px'}}>
         {(100*taxes[5].taxRate).toFixed(1) + "%"}
         </div>
       </div>

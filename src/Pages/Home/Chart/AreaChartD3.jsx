@@ -123,20 +123,27 @@ const AreaChartD3 = ({
     ];
 
     // remove
-    selectAll("#axis").remove();
-    selectAll("#chagningArea").remove();
-    selectAll("#poverty").remove();
-    selectAll("#povertyText").remove();
-    selectAll("#defaultArea").remove();
-    selectAll("#amountOfPeopleLeft").remove();
-    selectAll("#amountOfPeopleRight").remove();
-    selectAll("#amountOfPeopleLeftNr").remove();
-    selectAll("#amountOfPeopleRightNr").remove();
-    selectAll("#incomeValue").remove();
-    selectAll("#levelAxis").remove();
-    selectAll("#levelRect").remove();
-    selectAll("#topLine").remove();
-    selectAll("#levelInfo").remove();
+    selectAll('#axis').remove();
+    selectAll('#chagningArea').remove();
+    selectAll('#poverty').remove();
+    selectAll('#povertyText').remove();
+    selectAll('#defaultArea').remove();
+    selectAll('#amountOfPeopleLeft').remove();
+    selectAll('#amountOfPeopleRight').remove();
+    selectAll('#amountOfPeopleLeftNr').remove();
+    selectAll('#amountOfPeopleRightNr').remove();
+    selectAll('#incomeValue').remove();
+    selectAll('#levelAxis').remove();
+    selectAll('#levelRect').remove();
+    selectAll('#topLine').remove();
+    selectAll('#levelInfo').remove();
+    selectAll('.bigCircle').remove();
+    selectAll('.infoTextName').remove();
+    selectAll('.infoTextDollar').remove();
+    selectAll('#rectangle').remove();
+    selectAll('.billionaires').remove();
+    selectAll('#defs').remove();
+
 
     // brush
     /*
@@ -237,7 +244,7 @@ const AreaChartD3 = ({
       .attr("id", "chagningArea");
 
     // billionaries
-    var defs = svg.append("defs");
+    var defs = svg.append("defs").attr("id", "defs");
 
     defs
       .selectAll(".billionaires")
@@ -467,11 +474,12 @@ const AreaChartD3 = ({
     // moving gray line
     svg
       .append("rect")
+      .attr("id", "rectangle")
       .style("fill", "none")
       .style("pointer-events", "all")
       .attr("width", w)
-      .attr("height", 45)
-      .attr("y", 403)
+      .attr("height", 35)
+      .attr("y", 405)
       .style("cursor", "none")
       .on("mouseover", (e) => {
         selectAll("#povertyText").style("opacity", 0);
