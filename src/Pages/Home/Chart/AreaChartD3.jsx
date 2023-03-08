@@ -107,12 +107,14 @@ const AreaChartD3 = ({
 
   useEffect(() => {
     const svg = select(svgRef.current)
-      .attr('width', w)
-      .attr('height', h)
+      .attr("preserveAspectRatio", "xMinYMin meet")
+      .attr("viewBox", "0 0 660 300")	
+      .attr('width', '100%')
+      .attr('height', '100%')
       .style('overflow', 'visible')
-      .style('margin-top', '0')
+      // .style('margin-top', '0')
       .style('margin-left', '30')
-      .style('margin-bottom', '50');
+      // .style('margin-bottom', '50');
 
     const AxisXformat = [
       '1',
@@ -677,18 +679,16 @@ const AreaChartD3 = ({
         .on('mouseout', mouseout);
     });
 
-    // data circles
     /*
     svg
-      .selectAll('circle')
-      .data(changingData)
-      .join('circle')
-      .attr('r', 1)
-      .attr('cx', (value) => xScale(value.income))
-      .attr('cy', (value) => yScaleLeft(value.population))
-      .attr('stroke', 'red')
-      .attr("id", "chagningArea");
-      */
+      .append("rect")
+      .attr("width", xScale(1000)-xScale(100))
+      .attr("height", 100)
+      .attr('x', xScale(100))
+      .attr('y', yScaleLeft(0))
+      .attr('fill', "red")
+
+    */
   }, [data]);
 
   return (
