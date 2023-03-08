@@ -38,14 +38,14 @@ function TaxBillionaires({ billionaires, setNewBillionaires }) {
       setNewBillionaires(
         billionaires.map((b) => {
           if (b.billionaire === billionaire) {
-            return { ...b, added: false, individualTax: 0 };
+            return { ...b, added: false, individualTax: 0, active: true };
           } else return { ...b };
         })
       );
     } else {
       setNewBillionaires(
         billionaires.map((b) => {
-          return { ...b, added: false, individualTax: 0 };
+          return { ...b, added: false, individualTax: 0, active: true };
         })
       );
     }
