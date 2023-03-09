@@ -3,6 +3,7 @@ import AreaChartD3 from './Chart/AreaChartD3';
 import Taxes from './Taxes/Taxes';
 import './home.css';
 import Switch from './Switch/Switch';
+import Introduction from './Introduction/Introduction';
 import {
   updateTaxes,
   movingAverage,
@@ -14,8 +15,6 @@ import {
   extremePovertyPercentage,
   levelCounter,
   populationToWealth,
-  extremePovertyCounter,
-  formatNumbers,
   useDataState,
   getData,
   getBillionaires,
@@ -91,25 +90,11 @@ const Home = () => {
   return (
     <div className='taxTheRichContainer'>
       <div className='leftSide'>
-        <div className='introduction'>
-          Welcome to the <b>Robin Hood Calculator!</b> Here you can investigate
-          how the wealth distribution of the world would look like when taking
-          from the rich and giving to the poor. Use the sliders to the right and
-          se what happens!
-          <br></br>
-          <br></br>
-          You have now succesfully brought{' '}
-          <b>
-            {extremePovertyPercentage(data) === '0%'
-              ? 'ALL'
-              : (
-                  extremePovertyCounter(defaultData) -
-                  extremePovertyCounter(data)
-                ).toLocaleString('en-US')}
-          </b>{' '}
-          people out of extreme poverty by redistributing{' '}
-          <b>{formatNumbers(totalCollectedMoney)}</b>$.
-        </div>
+        <Introduction
+          data={data}
+          defaultData={defaultData}
+          totalCollectedMoney={totalCollectedMoney}
+        />
         <Switch toggled={toggleState} onClick={setToggleState} />
         <AreaChartD3
           data={[
