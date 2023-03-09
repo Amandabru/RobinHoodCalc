@@ -11,7 +11,7 @@ const levelCounter = (x1Value, x2Value, [...data]) => {
     }
   }
 
-  people < 1000 ? (people = "< 1000") : (people = "~ " + formatNumbers(people));
+  people < 1000 ? (people = "< 1k") : (people = "~ " + formatNumbers(people));
 
   return people;
 };
