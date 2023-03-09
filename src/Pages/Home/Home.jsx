@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from 'react';
-import { csv } from 'd3';
-import AreaChartD3 from './Chart/AreaChartD3';
-import Taxes from './Taxes/Taxes';
-import InGraphSlider from './InGraphSliders/InGraphSliders';
-import './home.css';
-import Switch from './Switch/Switch';
+import React, { useState, useEffect } from "react";
+import { csv } from "d3";
+import AreaChartD3 from "./Chart/AreaChartD3";
+import Taxes from "./Taxes/Taxes";
+import InGraphSlider from "./InGraphSliders/InGraphSliders";
+import "./home.css";
+import Switch from "./Switch/Switch";
 import {
   updateTaxes,
   movingAverage,
@@ -17,17 +17,17 @@ import {
   levelCounter,
   populationToWealth,
   extremePovertyCounter,
-  formatNumbers
-} from './Utils/index';
+  formatNumbers,
+} from "./Utils/index";
 
 const dataUrl =
-  'https://gist.githubusercontent.com/GusAxelsson/f3818ba7dba4888ac0109dcf9eb473c2/raw/d0c08c5b9f9db727474f3d4208e7a9164d989aab/800_bracket_incomedata.csv';
+  "https://gist.githubusercontent.com/GusAxelsson/f3818ba7dba4888ac0109dcf9eb473c2/raw/d0c08c5b9f9db727474f3d4208e7a9164d989aab/800_bracket_incomedata.csv";
 
 // 80 datapoints. https://gist.githubusercontent.com/Amandabru/00e96eaa56143e6499d1c651bac03aa8/raw/ccbd3e8c9dec23b78482dd47994d8faa49a1b96d/GapminderData.csv
 // 800 datapoints. https://gist.githubusercontent.com/GusAxelsson/f3818ba7dba4888ac0109dcf9eb473c2/raw/d0c08c5b9f9db727474f3d4208e7a9164d989aab/800_bracket_incomedata.csv
 
 const billionairesUrl =
-  'https://gist.githubusercontent.com/Amandabru/791125eedbe23167f74f20b2739a53be/raw/203d2e923bffaef26d10a7f81da92337f59ab57b/billionairesData.csv';
+  "https://gist.githubusercontent.com/Amandabru/791125eedbe23167f74f20b2739a53be/raw/203d2e923bffaef26d10a7f81da92337f59ab57b/billionairesData.csv";
 
 const Home = () => {
   const [data, setData] = useState(null);
@@ -103,15 +103,27 @@ const Home = () => {
   }
 
   return (
-    <div className='taxTheRichContainer'>
-      <div className='leftSide'>
-      <div className='introduction'>Welcome to the <b>Robin Hood Calculator!</b> Here you can investigate how the wealth distribution of the 
-      world would look like when taking from the rich and giving to the poor. Use the sliders to the right and se what happens!
-      <br></br>
-      <br></br>
-      You have now succesfully brought <b>
-      { (extremePovertyPercentage(data) === "0%") ? "ALL" : extremePovertyCounter(defaultData) - extremePovertyCounter(data)}</b> people out of extreme poverty 
-      by redistributing <b>{formatNumbers(totalCollectedMoney)}</b>$.</div>
+    <div className="taxTheRichContainer">
+      <div className="leftSide">
+        <div className="introduction">
+          Welcome to the <b>Robin Hood Calculator!</b> Here you can investigate
+          how the wealth distribution of the world would look like when taking
+          from the rich and giving to the poor. Use the sliders to the right and
+          se what happens!
+          <br></br>
+          <br></br>
+          You have now succesfully brought{" "}
+          <b>
+            {extremePovertyPercentage(data) === "0%"
+              ? "ALL"
+              : (
+                  extremePovertyCounter(defaultData) -
+                  extremePovertyCounter(data)
+                ).toLocaleString("en-US")}
+          </b>{" "}
+          people out of extreme poverty by redistributing{" "}
+          <b>{formatNumbers(totalCollectedMoney)}</b>$.
+        </div>
         <Switch toggled={false} onClick={updateToggle} />
         <AreaChartD3
           data={[
@@ -124,7 +136,14 @@ const Home = () => {
           ]}
           ExtremePovertyCount={extremePovertyPercentage(data)}
           billionaries={billionaires}
-          leftRightCounter={(xValue) => leftRightCounter(xValue, data, populationToWealth(data) ,toggleState)}
+          leftRightCounter={(xValue) =>
+            leftRightCounter(
+              xValue,
+              data,
+              populationToWealth(data),
+              toggleState
+            )
+          }
           levelCounter={(x1Value, x2Value) =>
             levelCounter(x1Value, x2Value, data)
           }
@@ -133,7 +152,7 @@ const Home = () => {
         />
       </div>
       <Taxes
-        className='RightSide'
+        className="RightSide"
         onTaxChange={(taxBracketNr, newTax) =>
           setTaxes(updateTaxes(taxBracketNr, taxes, newTax))
         }
