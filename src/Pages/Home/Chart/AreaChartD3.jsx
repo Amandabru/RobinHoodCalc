@@ -161,6 +161,8 @@ const AreaChartD3 = ({
     selectAll('#amountOfPeopleRight').remove();
     selectAll('#amountOfPeopleLeftNr').remove();
     selectAll('#amountOfPeopleRightNr').remove();
+    selectAll("moreThan").remove();
+    selectAll("lessThan").remove();
     selectAll('#incomeValue').remove();
     selectAll('#levelAxis').remove();
     selectAll('#levelRect').remove();
@@ -409,7 +411,6 @@ const AreaChartD3 = ({
       .attr('y2', h)
       .style('stroke-dasharray', '3, 3')
       .attr('id', 'poverty');
-
     svg
       .append('text')
       .attr('x', -380)
@@ -430,6 +431,20 @@ const AreaChartD3 = ({
       .attr('id', 'povertyText');
 
     // amount of people
+    svg
+      .append('text')
+      .attr('y', 145)
+      .attr('font-size', 18)
+      .attr('fill', 'gray')
+      .attr('id', 'lessThan')
+      .style('opacity', 0);
+      svg
+      .append('text')
+      .attr('y', 145)
+      .attr('font-size', 18)
+      .attr('fill', 'gray')
+      .attr('id', 'moreThan')
+      .style('opacity', 0);
     svg
       .append('text')
       .attr('y', 170)
@@ -515,7 +530,24 @@ const AreaChartD3 = ({
           .attr('x2', pointer(e)[0]);
       })
       .on('mousemove', (e) => {
-        let text = leftRightCounter(xScale.invert(pointer(e)[0]),changingData);
+        let text = leftRightCounter(xScale.invert(pointer(e)[0]));
+        
+        // less than text
+        selectAll('#lessThan')
+          .style('opacity', 1)
+          .attr('text-anchor', 'end')
+          .attr('text-decoration', 'underline')
+          .attr('x', pointer(e)[0] - 8)
+          .text('Makes less:');
+
+        // More than text
+        selectAll('#moreThan')
+        .style('opacity', 1)
+        .attr('text-anchor', 'start')
+        .attr('text-decoration', 'underline')
+        .attr('x', pointer(e)[0] + 8)
+        .text('Makes more:');
+
         selectAll('#poverty')
           .attr('x1', pointer(e)[0])
           .attr('x2', pointer(e)[0]);
@@ -556,6 +588,8 @@ const AreaChartD3 = ({
     function mouseout() {
       selectAll('#povertyText').style('opacity', 1);
       selectAll('#poverty').attr('x1', xScale(2)).attr('x2', xScale(2));
+      selectAll('#moreThan').style('opacity',0);
+      selectAll('#lessThan').style('opacity',0);
       selectAll('#amountOfPeopleLeft').style('opacity', 0);
       selectAll('#amountOfPeopleRight').style('opacity', 0);
       selectAll('#amountOfPeopleRightNr').style('opacity', 0);
