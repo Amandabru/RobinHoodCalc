@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import './switch.css';
+import { useState } from "react";
+import "./switch.css";
 
 export const Switch = ({ toggled, onClick }) => {
   const [isToggled, toggle] = useState(toggled);
@@ -10,16 +10,16 @@ export const Switch = ({ toggled, onClick }) => {
   };
 
   return (
-    <div className='toggleContainer'>
-      <label class='toggleSwitch nolabel' onclick=''>
-        <input type='checkbox' defaultChecked={isToggled} onClick={callback} />
+    <div className="toggleContainer">
+      <label className="toggleSwitch nolabel" onclick="">
+        <input type="checkbox" defaultChecked={isToggled} onClick={callback} />
         <a></a>
         <span>
-          <span class='left-span'>Population</span>
-          <span class='right-span'>Total Income</span>
+          <span className="left-span">Population</span>
+          <span className="right-span">Total Income</span>
         </span>
       </label>
-      <span className='y-percentage'>(%)</span>
+      <span className="y-percentage">(%)</span>
     </div>
   );
 };
