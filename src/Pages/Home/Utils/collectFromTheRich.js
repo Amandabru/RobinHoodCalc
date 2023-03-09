@@ -1,4 +1,4 @@
-import closestIndex from "./closestIndex";
+import closestIndex from './closestIndex';
 
 const collectFromTheRich = (
   defaultData,

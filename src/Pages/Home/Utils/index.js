@@ -11,3 +11,6 @@ export { default as levelCounter } from './levelCounter';
 export { default as populationToWealth } from './populationToWealth';
 export { default as formatNumbers } from './formatNumbers';
 export { default as extremePovertyCounter } from './extremePovertyCounter';
+export { default as useDataState } from './useDataState';
+export { default as getData } from './getData';
+export { default as getBillionaires } from './getBillionaires';
