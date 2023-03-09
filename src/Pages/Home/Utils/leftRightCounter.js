@@ -3,10 +3,9 @@ const leftRightCounter = (xValue, [...data], [...wealthData], toggle) => {
   var peopleToLeft = 0;
   var popOrWealthData;
 
-  if (!toggle){
+  if (!toggle) {
     popOrWealthData = data;
-  }
-  else{
+  } else {
     popOrWealthData = wealthData;
   }
 
@@ -26,8 +25,13 @@ const leftRightCounter = (xValue, [...data], [...wealthData], toggle) => {
   let textLeft = peopleCount + "%";
   let textRight = (100 - peopleCount).toFixed(1) + "%";
 
-  if (peopleCount < 0.001) textLeft = "few";
-  else if ((100 - peopleCount).toFixed(1) < 0.001) textRight = "few";
+  if (peopleCount <= 0.001) {
+    textLeft = "< 0.001 %";
+    textRight = "> 99.99 %";
+  } else if (100 - peopleCount <= 0.001) {
+    textRight = " < 0.001 %";
+    textLeft = "> 99.99 %";
+  }
 
   return [textLeft, textRight, peopleToLeft, poepleToRight];
 };
