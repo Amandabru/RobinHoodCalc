@@ -11,7 +11,7 @@ export const Switch = ({ toggled, onClick }) => {
 
   return (
     <div className="toggleContainer">
-      <label className="toggleSwitch nolabel" onclick="">
+      <label className="toggleSwitch nolabel">
         <input type="checkbox" defaultChecked={isToggled} onClick={callback} />
         <a></a>
         <span>
