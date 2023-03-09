@@ -1,5 +1,6 @@
 import React, { useRef, useEffect } from 'react';
 
+
 import {
   select,
   scaleLinear,
@@ -36,7 +37,7 @@ const AreaChartD3 = ({
   data,
   ExtremePovertyCount,
   billionaries,
-  peopleCounter,
+  leftRightCounter,
   taxValue,
   wealthToggle,
   levelCounter,
@@ -514,7 +515,7 @@ const AreaChartD3 = ({
           .attr('x2', pointer(e)[0]);
       })
       .on('mousemove', (e) => {
-        let text = peopleCounter(xScale.invert(pointer(e)[0]));
+        let text = leftRightCounter(xScale.invert(pointer(e)[0]),changingData);
         selectAll('#poverty')
           .attr('x1', pointer(e)[0])
           .attr('x2', pointer(e)[0]);
@@ -539,7 +540,8 @@ const AreaChartD3 = ({
         selectAll('#amountOfPeopleRightNr')
           .style('opacity', 1)
           .attr('x', pointer(e)[0] + 8)
-          .text(addAbbrevations(text[3]) + ' people');
+          .text(() => {if (!wealthToggle){return (addAbbrevations(text[3]) + ' people')}
+                      else{ return (addAbbrevations(text[3]) + ' Dollars')}});
 
         selectAll('#incomeValue')
           .style('opacity', 1)

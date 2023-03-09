@@ -1,16 +1,24 @@
-const peopleCounter = (xValue, [...data]) => {
+const leftRightCounter = (xValue, [...data], [...wealthData], toggle) => {
   var totPopulation = 0;
   var peopleToLeft = 0;
+  var popOrWealthData;
 
-  for (let i = 0; i < data.length; i++) {
-    if (data[i].income <= xValue) {
-      peopleToLeft += data[i].population;
+  if (!toggle){
+    popOrWealthData = data;
+  }
+  else{
+    popOrWealthData = wealthData;
+  }
+
+  for (let i = 0; i < popOrWealthData.length; i++) {
+    if (popOrWealthData[i].income <= xValue) {
+      peopleToLeft += popOrWealthData[i].population;
     } else {
       break;
     }
   }
-  for (let i = 0; i < data.length; i++) {
-    totPopulation += data[i].population;
+  for (let i = 0; i < popOrWealthData.length; i++) {
+    totPopulation += popOrWealthData[i].population;
   }
 
   const poepleToRight = totPopulation - peopleToLeft;
@@ -24,4 +32,4 @@ const peopleCounter = (xValue, [...data]) => {
   return [textLeft, textRight, peopleToLeft, poepleToRight];
 };
 
-export default peopleCounter;
+export default leftRightCounter;

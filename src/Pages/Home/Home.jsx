@@ -12,7 +12,7 @@ import {
   giveToThePoor,
   collectFromTheRich,
   makePercentage,
-  peopleCounter,
+  leftRightCounter,
   extremePovertyPercentage,
   levelCounter,
   populationToWealth,
@@ -113,7 +113,7 @@ const Home = () => {
           ]}
           ExtremePovertyCount={extremePovertyPercentage(data)}
           billionaries={billionaires}
-          peopleCounter={(xValue) => peopleCounter(xValue, data)}
+          leftRightCounter={(xValue) => leftRightCounter(xValue, data, populationToWealth(data) ,toggleState)}
           levelCounter={(x1Value, x2Value) =>
             levelCounter(x1Value, x2Value, data)
           }
