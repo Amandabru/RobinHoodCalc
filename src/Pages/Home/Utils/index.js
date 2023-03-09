@@ -10,3 +10,4 @@ export { default as movingAverage } from './movingAverage';
 export { default as levelCounter } from './levelCounter';
 export { default as populationToWealth } from './populationToWealth';
 export { default as formatNumbers } from './formatNumbers';
+export { default as extremePovertyCounter } from './extremePovertyCounter';

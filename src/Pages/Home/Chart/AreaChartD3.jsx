@@ -377,18 +377,20 @@ const AreaChartD3 = ({
       .style("opacity", 0);
 
     svg
-      .append("text")
-      .style("font-size", "20px")
-      .attr("x", xScale(50000))
-      .attr("y", 90)
-      .attr("class", "infoTextName");
+      .append('text')
+      .style('font-size', '20px')
+      .attr('x', xScale(50000))
+      .attr('y', 90)
+      .attr('class', 'infoTextName')
+      .attr("fill", "grey");
 
     svg
-      .append("text")
-      .style("font-size", "20px")
-      .attr("x", xScale(50000))
-      .attr("y", 120)
-      .attr("class", "infoTextDollar");
+      .append('text')
+      .style('font-size', '20px')
+      .attr('x', xScale(50000))
+      .attr('y', 120)
+      .attr('class', 'infoTextDollar')
+      .attr("fill", "grey");
 
     // Line from inGraphSliders
     svg
@@ -432,50 +434,51 @@ const AreaChartD3 = ({
 
     // amount of people
     svg
-      .append("text")
-      .attr("y", 145)
-      .attr("font-size", 18)
-      .attr("fill", "gray")
-      .attr("id", "lessThan")
-      .style("opacity", 0);
-    svg
-      .append("text")
-      .attr("y", 145)
-      .attr("font-size", 18)
-      .attr("fill", "gray")
-      .attr("id", "moreThan")
-      .style("opacity", 0);
-    svg
-      .append("text")
-      .attr("y", 170)
-      .attr("font-size", 18)
-      .attr("fill", "gray")
-      .attr("id", "amountOfPeopleLeft")
-      .style("opacity", 0);
+      .append('text')
+      .attr('y', 120)
+      .attr('font-size', 16)
+      .attr('fill', 'gray')
+      .attr('id', 'lessThan')
+      .style('opacity', 0);
+      svg
+      .append('text')
+      .attr('y', 120)
+      .attr('font-size', 16)
+      .attr('fill', 'gray')
+      .attr('id', 'moreThan')
+      .style('opacity', 0);
 
     svg
-      .append("text")
-      .attr("y", 200)
-      .attr("font-size", 18)
-      .attr("fill", "gray")
-      .attr("id", "amountOfPeopleLeftNr")
-      .style("opacity", 0);
+      .append('text')
+      .attr('y', 150)
+      .attr('font-size', 14)
+      .attr('fill', 'gray')
+      .attr('id', 'amountOfPeopleLeft')
+      .style('opacity', 0);
 
     svg
-      .append("text")
-      .attr("y", 170)
-      .attr("font-size", 18)
-      .attr("fill", "gray")
-      .attr("id", "amountOfPeopleRight")
-      .style("opacity", 0);
+      .append('text')
+      .attr('y', 170)
+      .attr('font-size', 14)
+      .attr('fill', 'gray')
+      .attr('id', 'amountOfPeopleLeftNr')
+      .style('opacity', 0);
 
     svg
-      .append("text")
-      .attr("y", 200)
-      .attr("font-size", 18)
-      .attr("fill", "gray")
-      .attr("id", "amountOfPeopleRightNr")
-      .style("opacity", 0);
+      .append('text')
+      .attr('y', 150)
+      .attr('font-size', 14)
+      .attr('fill', 'gray')
+      .attr('id', 'amountOfPeopleRight')
+      .style('opacity', 0);
+
+    svg
+      .append('text')
+      .attr('y', 170)
+      .attr('font-size', 14)
+      .attr('fill', 'gray')
+      .attr('id', 'amountOfPeopleRightNr')
+      .style('opacity', 0);
 
     svg
       .append("text")
@@ -533,29 +536,29 @@ const AreaChartD3 = ({
         let text = leftRightCounter(xScale.invert(pointer(e)[0]));
 
         // less than text
-        selectAll("#lessThan")
-          .style("opacity", 1)
-          .attr("text-anchor", "end")
-          .attr("text-decoration", "underline")
-          .attr("x", pointer(e)[0] - 8)
-          .text("Makes less:");
+        selectAll('#lessThan')
+          .style('opacity', 1)
+          .attr('text-anchor', 'end')
+          .attr('x', pointer(e)[0] - 8)
+          .text('Makes less')
+          .attr("font-weight", 600);
 
         // More than text
-        selectAll("#moreThan")
-          .style("opacity", 1)
-          .attr("text-anchor", "start")
-          .attr("text-decoration", "underline")
-          .attr("x", pointer(e)[0] + 8)
-          .text("Makes more:");
+        selectAll('#moreThan')
+        .style('opacity', 1)
+        .attr('text-anchor', 'start')
+        .attr('x', pointer(e)[0] + 8)
+        .text('Makes more')
+        .attr("font-weight", 600);
 
-        selectAll("#poverty")
-          .attr("x1", pointer(e)[0])
-          .attr("x2", pointer(e)[0]);
+        selectAll('#poverty')
+          .attr('x1', pointer(e)[0])
+          .attr('x2', pointer(e)[0]);
 
-        selectAll("#amountOfPeopleLeft")
-          .style("opacity", 1)
-          .attr("text-anchor", "end")
-          .attr("x", pointer(e)[0] - 8)
+        selectAll('#amountOfPeopleLeft')
+          .style('opacity', 1)
+          .attr('text-anchor', 'end')
+          .attr('x', pointer(e)[0] - 8)
           .text(text[0]);
 
         selectAll("#amountOfPeopleRight")

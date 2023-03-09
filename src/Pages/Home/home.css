@@ -15,3 +15,9 @@
 .rightSide {
   scroll-behavior: auto;
 }
+
+.introduction{
+  padding-bottom: 20px;
+  font-size: 15px;
+  
+}
