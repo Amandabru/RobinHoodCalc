@@ -1,4 +1,4 @@
-import addAbbrevations from "./addAbbreavations";
+import formatNumbers from './formatNumbers';
 
 const levelCounter = (x1Value, x2Value, [...data]) => {
   var people = 0;
@@ -11,7 +11,7 @@ const levelCounter = (x1Value, x2Value, [...data]) => {
     }
   }
 
-  people < 1000 ? (people = "few") : (people = addAbbrevations(people));
+  people < 1000 ? (people = 'few') : (people = formatNumbers(people));
 
   return people;
 };

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Toggle from '../Toggle/Toggle';
 import './taxbillionaires.css';
-import { addAbbrevations } from '../Utils/index';
+import { formatNumbers } from '../Utils/index';
 
 function TaxBillionaires({ billionaires, setNewBillionaires }) {
   const [selectedBillionaire, setSelectedBillionaire] = useState('');
@@ -130,7 +130,7 @@ function TaxBillionaires({ billionaires, setNewBillionaires }) {
                     <div className='nameAndIncome'>
                       <p className='name'> {billionaire.billionaire} </p>
                       <p className='income'>
-                        Daily income: {addAbbrevations(billionaire.income)} $
+                        Daily income: {formatNumbers(billionaire.income)} $
                       </p>
                     </div>
                     <input

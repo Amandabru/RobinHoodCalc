@@ -1,6 +1,5 @@
 import React, { useRef, useEffect } from 'react';
 
-
 import {
   select,
   scaleLinear,
@@ -31,7 +30,7 @@ import page from '../../../Images/larry_page.png';
 import ballmer from '../../../Images/steve_ballmer.png';
 import buffett from '../../../Images/warren_buffett.png';
 import peauch from '../../../Images/bertrand_peuch.jpeg';
-import { addAbbrevations } from '../Utils';
+import { formatNumbers } from '../Utils';
 
 const AreaChartD3 = ({
   data,
@@ -309,7 +308,7 @@ const AreaChartD3 = ({
 
       select('.infoTextName').text(i.billionaire);
 
-      select('.infoTextDollar').text(addAbbrevations(i.income) + ' $/day');
+      select('.infoTextDollar').text(formatNumbers(i.income) + ' $/day');
     };
 
     const highlightOff = function (d, i) {
@@ -567,19 +566,24 @@ const AreaChartD3 = ({
           .style('opacity', 1)
           .attr('text-anchor', 'end')
           .attr('x', pointer(e)[0] - 8)
-          .text(addAbbrevations(text[2]));
+          .text(formatNumbers(text[2]));
 
         selectAll('#amountOfPeopleRightNr')
           .style('opacity', 1)
           .attr('x', pointer(e)[0] + 8)
-          .text(() => {if (!wealthToggle){return (addAbbrevations(text[3]) + ' people')}
-                      else{ return (addAbbrevations(text[3]) + ' Dollars')}});
+          .text(() => {
+            if (!wealthToggle) {
+              return formatNumbers(text[3]) + ' people';
+            } else {
+              return formatNumbers(text[3]) + ' Dollars';
+            }
+          });
 
         selectAll('#incomeValue')
           .style('opacity', 1)
           .attr('text-anchor', 'middle')
           .attr('x', pointer(e)[0])
-          .text(addAbbrevations(xScale.invert(pointer(e)[0]).toFixed(1)));
+          .text(formatNumbers(xScale.invert(pointer(e)[0]).toFixed(1)));
       })
       .on('mouseleave', mouseout);
 
@@ -667,15 +671,13 @@ const AreaChartD3 = ({
               .attr('dy', 20)
               .text(() => {
                 if (levels[i - 1] == undefined) {
-                  return (
-                    'Income: ' + '<' + addAbbrevations(levels[i]) + ' $/day'
-                  );
+                  return 'Income: ' + '<' + formatNumbers(levels[i]) + ' $/day';
                 } else {
                   return (
                     'Income: ' +
-                    addAbbrevations(levels[i - 1]) +
+                    formatNumbers(levels[i - 1]) +
                     '-' +
-                    addAbbrevations(levels[i]) +
+                    formatNumbers(levels[i]) +
                     ' $/day'
                   );
                 }
@@ -695,15 +697,13 @@ const AreaChartD3 = ({
               .attr('dy', 20)
               .text(() => {
                 if (levels[i - 1] == undefined) {
-                  return (
-                    'Income: ' + '<' + addAbbrevations(levels[i]) + ' $/day'
-                  );
+                  return 'Income: ' + '<' + formatNumbers(levels[i]) + ' $/day';
                 } else {
                   return (
                     'Income: ' +
-                    addAbbrevations(levels[i - 1]) +
+                    formatNumbers(levels[i - 1]) +
                     '-' +
-                    addAbbrevations(levels[i]) +
+                    formatNumbers(levels[i]) +
                     ' $/day'
                   );
                 }
