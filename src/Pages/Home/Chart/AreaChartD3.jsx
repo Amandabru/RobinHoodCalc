@@ -362,17 +362,6 @@ const AreaChartD3 = ({
         }
       });
 
-    /*
-      .attr('id', function (d) {
-        if (d.added && d.active) {
-          select(this).moveToFront();
-          return 'added';
-        } else if (d.added) return 'deactivated';
-        else {
-          return '';
-        }
-      });*/
-
     function animate(circle) {
       circle
         .transition()
