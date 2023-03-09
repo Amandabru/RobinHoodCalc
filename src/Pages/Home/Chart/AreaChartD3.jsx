@@ -698,7 +698,7 @@ const AreaChartD3 = ({
               .append("svg:tspan")
               .attr("x", xScale(levels[i]) + 10)
               .attr("dy", 20)
-              .text("People: ~" + levelCounter(levels[i - 1], levels[i]));
+              .text("People: " + levelCounter(levels[i - 1], levels[i]));
           } else if (i > 7) {
             selectAll("#levelInfo")
               .style("opacity", 1)
@@ -724,7 +724,7 @@ const AreaChartD3 = ({
               .append("svg:tspan")
               .attr("x", xScale(levels[i]) - 50)
               .attr("dy", 20)
-              .text("People: ~" + levelCounter(levels[i - 1], levels[i]));
+              .text("People: " + levelCounter(levels[i - 1], levels[i]));
           }
         })
         .on("mouseout", mouseout);
