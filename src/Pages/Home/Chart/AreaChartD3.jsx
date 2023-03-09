@@ -570,16 +570,16 @@ const AreaChartD3 = ({
           .style("opacity", 1)
           .attr("text-anchor", "end")
           .attr("x", pointer(e)[0] - 8)
-          .text(formatNumbers(text[2]));
+          .text(text[2]);
 
         selectAll("#amountOfPeopleRightNr")
           .style("opacity", 1)
           .attr("x", pointer(e)[0] + 8)
           .text(() => {
             if (!wealthToggle) {
-              return formatNumbers(text[3]) + " people";
+              return text[3] + " people";
             } else {
-              return formatNumbers(text[3]) + " Dollars";
+              return text[3] + " Dollars";
             }
           });
 
