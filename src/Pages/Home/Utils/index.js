@@ -9,4 +9,4 @@ export { default as updateTaxes } from './updateTaxes';
 export { default as movingAverage } from './movingAverage';
 export { default as levelCounter } from './levelCounter';
 export { default as populationToWealth } from './populationToWealth';
-export { default as addAbbrevations } from './addAbbreavations';
+export { default as formatNumbers } from './formatNumbers';
