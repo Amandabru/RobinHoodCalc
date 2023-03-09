@@ -1,4 +1,4 @@
-import closestIndex from './closestIndex';
+import closestIndex from "./closestIndex";
 
 const collectFromTheRich = (
   defaultData,
@@ -6,7 +6,6 @@ const collectFromTheRich = (
   defaultBillionaires,
   billionaires
 ) => {
-  console.log('collecting');
   let collectedTax = 0;
   let data = defaultData.map((a) => {
     return { ...a };
