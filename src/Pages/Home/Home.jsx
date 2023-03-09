@@ -40,10 +40,7 @@ const Home = () => {
   );
   const [toggleState, setToggleState] = useDataState(false, 'toggleState');
   const [justUpdated, setJustUpdated] = useDataState(false, 'justUpdated');
-  const [totalCollectedMoney, setTotalCollectedMoney] = useDataState(
-    0,
-    'collectedMoney'
-  );
+  const [collectedMoney, setCollectedMoney] = useDataState(0, 'collectedMoney');
 
   const updateData = () => {
     var [collectedTax, updatedData, newBillionaires] = collectFromTheRich(
@@ -52,7 +49,7 @@ const Home = () => {
       defaultBillionaires,
       billionaires
     );
-    setTotalCollectedMoney(collectedTax);
+    setCollectedMoney(collectedTax);
     updatedData = giveToThePoor(updatedData, collectedTax);
     setData(updatedData);
     setBillionaires(newBillionaires);
@@ -95,7 +92,7 @@ const Home = () => {
         <Introduction
           data={data}
           defaultData={defaultData}
-          totalCollectedMoney={totalCollectedMoney}
+          totalCollectedMoney={collectedMoney}
         />
         <Switch toggled={toggleState} onClick={setToggleState} />
         <AreaChartD3

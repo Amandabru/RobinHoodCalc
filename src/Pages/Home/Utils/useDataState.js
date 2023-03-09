@@ -8,7 +8,6 @@ function useDataState(defaultValue, key) {
 
   useEffect(() => {
     window.sessionStorage.setItem(key, JSON.stringify(value));
-    console.log(key, value);
   }, [value]);
   return [value, setValue];
 }
