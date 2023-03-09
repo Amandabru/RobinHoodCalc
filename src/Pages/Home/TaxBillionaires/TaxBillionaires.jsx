@@ -3,7 +3,11 @@ import Toggle from '../Toggle/Toggle';
 import './taxbillionaires.css';
 import { formatNumbers } from '../Utils/index';
 
-function TaxBillionaires({ billionaires, setNewBillionaires }) {
+function TaxBillionaires({
+  billionaires,
+  selectedBillionaires,
+  setSelectedBillionaires,
+}) {
   const [selectedBillionaire, setSelectedBillionaire] = useState('');
 
   function handleOptionChange(e) {
@@ -13,13 +17,10 @@ function TaxBillionaires({ billionaires, setNewBillionaires }) {
         (billionaire) => billionaire.billionaire === selected
       );
       if (newBillionaire) {
-        setNewBillionaires(
-          billionaires.map((b) => {
-            if (b.billionaire === selected) {
-              return { ...b, added: true };
-            } else return { ...b };
-          })
-        );
+        setSelectedBillionaires([
+          { ...newBillionaire, individualTax: 0, active: true },
+          ...selectedBillionaires,
+        ]);
       }
       setSelectedBillionaire('');
       window.scrollTo(0, document.body.scrollHeight);
@@ -27,8 +28,8 @@ function TaxBillionaires({ billionaires, setNewBillionaires }) {
   }
 
   function handleToggle(billionaire, toggleState) {
-    setNewBillionaires(
-      billionaires.map((b) => {
+    setSelectedBillionaires(
+      selectedBillionaires.map((b) => {
         if (b.billionaire === billionaire) {
           return { ...b, active: !toggleState };
         } else return { ...b };
@@ -38,25 +39,18 @@ function TaxBillionaires({ billionaires, setNewBillionaires }) {
 
   function handleRemoveBillionaire(billionaire) {
     if (billionaire) {
-      setNewBillionaires(
-        billionaires.map((b) => {
-          if (b.billionaire === billionaire) {
-            return { ...b, added: false, individualTax: 0, active: true };
-          } else return { ...b };
-        })
+      const newDivs = selectedBillionaires.filter(
+        (b) => b.billionaire !== billionaire
       );
+      setSelectedBillionaires(newDivs);
     } else {
-      setNewBillionaires(
-        billionaires.map((b) => {
-          return { ...b, added: false, individualTax: 0, active: true };
-        })
-      );
+      setSelectedBillionaires([]);
     }
   }
 
   function handleIndividualTaxChange(billionaire, newTax) {
-    setNewBillionaires(
-      billionaires.map((b) => {
+    setSelectedBillionaires(
+      selectedBillionaires.map((b) => {
         if (b.billionaire === billionaire) {
           return { ...b, individualTax: newTax };
         } else return { ...b };
@@ -99,7 +93,9 @@ function TaxBillionaires({ billionaires, setNewBillionaires }) {
                 key={billionaire.billionaire}
                 disabled={
                   selectedBillionaire === billionaire.billionaire ||
-                  billionaire.added
+                  selectedBillionaires.some(
+                    (b) => b.billionaire === billionaire.billionaire
+                  )
                 }
               >
                 {billionaire.billionaire}
@@ -107,108 +103,99 @@ function TaxBillionaires({ billionaires, setNewBillionaires }) {
             ))}
           </select>
         </div>
-        {billionaires.map(
-          (billionaire) =>
-            billionaire.added && (
-              <div className='billionaireEntry' key={billionaire.billionaire}>
-                <button
-                  className='cancelButton'
-                  onClick={() => {
-                    handleRemoveBillionaire(billionaire.billionaire);
+        {selectedBillionaires.map((billionaire) => (
+          <div className='billionaireEntry' key={billionaire.billionaire}>
+            <button
+              className='cancelButton'
+              onClick={() => {
+                handleRemoveBillionaire(billionaire.billionaire);
+              }}
+            >
+              x
+            </button>
+            <div className='billionaireContent'>
+              <div
+                className={
+                  billionaire.active
+                    ? 'containerLeft'
+                    : 'containerLeft nonactive'
+                }
+              >
+                <div className='nameAndIncome'>
+                  <p className='name'> {billionaire.billionaire} </p>
+                  <p className='income'>
+                    Daily income:{' '}
+                    {formatNumbers(
+                      billionaires.find(
+                        (b) => b.billionaire === billionaire.billionaire
+                      ).income
+                    )}{' '}
+                    $
+                  </p>
+                </div>
+                <input
+                  className={'slider'}
+                  type='range'
+                  min='0'
+                  max='1'
+                  step='0.001'
+                  value={billionaire.individualTax}
+                  onChange={(e) => {
+                    handleIndividualTaxChange(
+                      billionaire.billionaire,
+                      e.target.value
+                    );
                   }}
+                />
+              </div>
+              <div className='containerRight'>
+                <div
+                  className={
+                    billionaire.active ? 'taxRate' : 'taxRate nonactive'
+                  }
                 >
-                  x
-                </button>
-                <div className='billionaireContent'>
-                  <div
-                    className={
-                      billionaire.active
-                        ? 'containerLeft'
-                        : 'containerLeft nonactive'
-                    }
-                  >
-                    <div className='nameAndIncome'>
-                      <p className='name'> {billionaire.billionaire} </p>
-                      <p className='income'>
-                        Daily income: {formatNumbers(billionaire.income)} $
-                      </p>
-                    </div>
+                  <p className='taxTitle'> Tax Rate</p>
+                  <div className='percetageBoxWrapper1'>
                     <input
-                      className={'slider'}
-                      type='range'
-                      min='0'
-                      max='1'
-                      step='0.001'
-                      value={
-                        billionaires.find(
-                          (b) => b.billionaire === billionaire.billionaire
-                        ).individualTax
-                      }
+                      className={'percentage'}
+                      type='text'
+                      inputMode='numeric'
+                      value={parseFloat(
+                        billionaire.individualTax * 100
+                      ).toFixed(0)}
+                      onInput={(e) => {
+                        if (e.target.value >= 100) {
+                          e.target.value = 100;
+                        } else if (isNaN(e.target.value)) {
+                          e.target.value = 0;
+                        }
+                      }}
                       onChange={(e) => {
-                        handleIndividualTaxChange(
-                          billionaire.billionaire,
-                          e.target.value
-                        );
+                        if (e.target.value == '') {
+                          handleIndividualTaxChange(billionaire.billionaire, 0);
+                        } else {
+                          handleIndividualTaxChange(
+                            billionaire.billionaire,
+                            e.target.value / 100
+                          );
+                        }
                       }}
                     />
-                  </div>
-                  <div className='containerRight'>
-                    <div
-                      className={
-                        billionaire.active ? 'taxRate' : 'taxRate nonactive'
-                      }
-                    >
-                      <p className='taxTitle'> Tax Rate</p>
-                      <div className='percetageBoxWrapper1'>
-                        <input
-                          className={'percentage'}
-                          type='text'
-                          inputMode='numeric'
-                          value={parseFloat(
-                            billionaires.find(
-                              (b) => b.billionaire === billionaire.billionaire
-                            ).individualTax * 100
-                          ).toFixed(0)}
-                          onInput={(e) => {
-                            if (e.target.value >= 100) {
-                              e.target.value = 100;
-                            } else if (isNaN(e.target.value)) {
-                              e.target.value = 0;
-                            }
-                          }}
-                          onChange={(e) => {
-                            if (e.target.value == '') {
-                              handleIndividualTaxChange(
-                                billionaire.billionaire,
-                                0
-                              );
-                            } else {
-                              handleIndividualTaxChange(
-                                billionaire.billionaire,
-                                e.target.value / 100
-                              );
-                            }
-                          }}
-                        />
-                        <span className='percentageSymbol'> % </span>
-                      </div>
-                    </div>
-                    <div className='toggle'>
-                      <Toggle
-                        toggled={billionaire.active}
-                        onClick={() =>
-                          handleToggle(
-                            billionaire.billionaire,
-                            billionaire.active
-                          )
-                        }
-                      />
-                    </div>
+                    <span className='percentageSymbol'> % </span>
                   </div>
                 </div>
+                <div className='toggle'>
+                  <Toggle
+                    toggled={billionaire.active}
+                    onClick={() =>
+                      handleToggle(billionaire.billionaire, billionaire.active)
+                    }
+                  />
+                </div>
               </div>
-            )
-        )}
+            </div>
+          </div>
+        ))}
       </div>
     </header>
   );

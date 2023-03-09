@@ -42,6 +42,7 @@ const AreaChartD3 = ({
   wealthToggle,
   levelCounter,
   wealthData,
+  selectedBillionaires,
 }) => {
   // Population data
   let changingData = data[0];
@@ -346,6 +347,22 @@ const AreaChartD3 = ({
       .attr('class', 'circle')
       .on('mouseover', highlight)
       .on('mouseleave', highlightOff)
+      .on('mouseleave', highlightOff)
+      .attr('id', function (d) {
+        if (selectedBillionaires.length !== 0) {
+          const selectedBillionaire = selectedBillionaires.find(
+            (b) => b.billionaire === d.billionaire
+          );
+          if (selectedBillionaire && selectedBillionaire.active) {
+            select(this).moveToFront();
+            return 'added';
+          } else if (selectedBillionaire) {
+            return 'deactivated';
+          } else return '';
+        }
+      });
+
+    /*
       .attr('id', function (d) {
         if (d.added && d.active) {
           select(this).moveToFront();
@@ -354,7 +371,7 @@ const AreaChartD3 = ({
         else {
           return '';
         }
-      });
+      });*/
 
     function animate(circle) {
       circle

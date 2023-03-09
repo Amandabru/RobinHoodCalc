@@ -39,21 +39,24 @@ const Home = () => {
     'defaultBillionaires'
   );
   const [toggleState, setToggleState] = useDataState(false, 'toggleState');
-  const [justUpdated, setJustUpdated] = useDataState(false, 'justUpdated');
   const [collectedMoney, setCollectedMoney] = useDataState(0, 'collectedMoney');
+  const [selectedBillionaires, setSelectedBillionaires] = useDataState(
+    [],
+    'selectedBillionaires'
+  );
 
   const updateData = () => {
     var [collectedTax, updatedData, newBillionaires] = collectFromTheRich(
       defaultData,
       taxes,
       defaultBillionaires,
-      billionaires
+      billionaires,
+      selectedBillionaires
     );
     setCollectedMoney(collectedTax);
     updatedData = giveToThePoor(updatedData, collectedTax);
     setData(updatedData);
     setBillionaires(newBillionaires);
-    setJustUpdated(true);
   };
 
   useEffect(() => {
@@ -73,16 +76,9 @@ const Home = () => {
     if (data) {
       updateData();
     }
-  }, [taxes, billionaires, toggleState]);
+  }, [taxes, selectedBillionaires, toggleState]);
 
-  useEffect(() => {
-    //FATTAR INTE VARFÖR MEN DET FUNKAR SÅHÄR LOLLOLOLOLOL
-    if (justUpdated) {
-      setBillionaires(billionaires);
-    }
-  }, [billionaires]);
-
-  if (!data || !billionaires || !taxes) {
+  if (!data || !billionaires || !defaultData || !defaultBillionaires) {
     return <div>Loading</div>;
   }
 
@@ -106,6 +102,7 @@ const Home = () => {
           ]}
           ExtremePovertyCount={extremePovertyPercentage(data)}
           billionaries={billionaires}
+          selectedBillionaires={selectedBillionaires}
           leftRightCounter={(xValue) =>
             leftRightCounter(
               xValue,
@@ -129,9 +126,9 @@ const Home = () => {
         clearAllTaxes={() => setTaxes(setDefaultTax())}
         taxes={taxes}
         billionaires={billionaires}
-        setNewBillionaires={(billionaires) => {
-          setBillionaires(billionaires);
-          setJustUpdated(false);
+        selectedBillionaires={selectedBillionaires}
+        setSelectedBillionaires={(billionaires) => {
+          setSelectedBillionaires(billionaires);
         }}
       />
     </div>
