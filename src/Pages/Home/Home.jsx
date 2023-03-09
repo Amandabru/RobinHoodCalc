@@ -16,7 +16,8 @@ import {
   extremePovertyPercentage,
   levelCounter,
   populationToWealth,
-  extremePovertyCounter
+  extremePovertyCounter,
+  formatNumbers
 } from './Utils/index';
 
 const dataUrl =
@@ -36,6 +37,7 @@ const Home = () => {
   const [defaultBillionaires, setDefaultBillionaires] = useState(null);
   const [toggleState, setToggleState] = useState(false);
   const [justUpdated, setJustUpdated] = useState(false);
+  const [totalCollectedMoney, setTotalCollectedMoney] = useState(0);
 
   const updateData = () => {
     var [collectedTax, updatedData, newBillionaires] = collectFromTheRich(
@@ -44,6 +46,7 @@ const Home = () => {
       defaultBillionaires,
       billionaires
     );
+    setTotalCollectedMoney(collectedTax);
     updatedData = giveToThePoor(updatedData, collectedTax);
     setData(updatedData);
     setBillionaires(newBillionaires);
@@ -106,7 +109,8 @@ const Home = () => {
       world would look like when taking from the rich and giving to the poor. Use the sliders to the right and se what happens!
       <br></br>
       <br></br>
-      You have now succesfully brought <b>{extremePovertyCounter(defaultData) - extremePovertyCounter(data)}</b> people out of extreme poverty, by redistributing y amount of money.</div>
+      You have now succesfully brought <b>{extremePovertyCounter(defaultData) - extremePovertyCounter(data)}</b> people out of extreme poverty 
+      by redistributing <b>{formatNumbers(totalCollectedMoney)}</b>$.</div>
         <Switch toggled={false} onClick={updateToggle} />
         <AreaChartD3
           data={[
