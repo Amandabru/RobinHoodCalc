@@ -2,8 +2,8 @@ import { useEffect, useState } from 'react';
 
 function useDataState(defaultValue, key) {
   const [value, setValue] = useState(() => {
-    const stickyValue = window.sessionStorage.getItem(key);
-    return stickyValue !== null ? JSON.parse(stickyValue) : defaultValue;
+    const storageValue = window.sessionStorage.getItem(key);
+    return storageValue !== null ? JSON.parse(storageValue) : defaultValue;
   });
 
   useEffect(() => {

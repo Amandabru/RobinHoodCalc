@@ -60,14 +60,16 @@ const Home = () => {
   };
 
   useEffect(() => {
-    getData(dataUrl).then((data) => {
-      setData(data);
-      setDefaultData(data);
-    });
-    getBillionaires(billionairesUrl).then((billionaires) => {
-      setDefaultBillionaires(billionaires);
-      setBillionaires(billionaires);
-    });
+    if (window.sessionStorage.getItem('data') == 'null') {
+      getData(dataUrl).then((data) => {
+        setData(data);
+        setDefaultData(data);
+      });
+      getBillionaires(billionairesUrl).then((billionaires) => {
+        setDefaultBillionaires(billionaires);
+        setBillionaires(billionaires);
+      });
+    }
   }, []);
 
   useEffect(() => {
