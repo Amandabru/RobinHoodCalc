@@ -161,8 +161,8 @@ const AreaChartD3 = ({
     selectAll('#amountOfPeopleRight').remove();
     selectAll('#amountOfPeopleLeftNr').remove();
     selectAll('#amountOfPeopleRightNr').remove();
-    selectAll("moreThan").remove();
-    selectAll("lessThan").remove();
+    selectAll("#moreThan").remove();
+    selectAll("#lessThan").remove();
     selectAll('#incomeValue').remove();
     selectAll('#levelAxis').remove();
     selectAll('#levelRect').remove();
