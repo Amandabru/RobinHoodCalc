@@ -1,43 +1,53 @@
-import React from 'react';
-import './about.css';
+import React from "react";
+import "./about.css";
 
 const About = () => {
   return (
-    <div className='AboutContainer'>
-    <h1 className='title'> About</h1>
-    <p className='text'>
-      - Vad vi ville uppnå
-      <br></br>
-      - Vad det blev
-    </p>
-    <h2>Data</h2>
-    <p className='text'>
-     The data used in this visualization is from Gapminder and can be found <a href = "" > here </a>
-    </p>
-    <h2>Calculations</h2>
-    <p className='text'>
-      - Formel?
-    </p>
-    <h2>Tools</h2>
-    <p className='text'>
-      - React
-      <br></br>
-      - D3 
-      <br></br>
-      - HTML
-      <br></br>
-      - CSS
-    </p>
+    <div className="AboutContainer">
+      <h1 className="title"> About</h1>
+      <p className="text">
+        The Robin Hood Calculator is an interactive visualization tool. In this
+        visualization you can see how income is distributed in the world, and
+        you have the possibility to tax different income brackets or the ten
+        richest individuals, with the goal of lifting people out of extreme
+        poverty. Wealth inequality is an issue that is underestimated by many
+        [1, 2], and this tool aims to raise awareness about the problem and help
+        individuals understand the extent of the issue.
+      </p>
+      <h2>Data</h2>
+      <p className="text">
+        The data is taken from data sets made by{" "}
+        <a
+          style={{ color: "black", textDecorationStyle: "dotted" }}
+          href="https://www.gapminder.org/"
+          target="blank"
+        >
+          Gapminder
+        </a>
+        . The data contains information about the income distribution in the
+        world and information about the ten richest people. The data sets can be
+        found here and here.
+      </p>
+      <h2>Calculations</h2>
+      <p className="text">- Formel?</p>
+      <h2>Tools</h2>
+      <p className="text">
+        This project is built using React and D3.js. Prototyping was done using
+        Figma.
+      </p>
 
-    <h2>References</h2>
-    <a href = "" > Gapminder </a>
-    <br></br>
-    <a href = "" > How Rich Am I? </a>
-    <p>
-
-    </p>
-  </div>
-  )
+      <h2>References</h2>
+      <br></br>
+      <p style={{ textAlign: "left" }}>
+        [1] Chambers, J. R., Swan, L. K., & Heesacker, M. (2014). Better Off
+        Than We Know: Distorted Perceptions of Incomes and Income Inequality in
+        America. Psychological Science, 25(2), 613–618.
+        <br></br>
+        [2] Zucman, Gabriel. "Global wealth inequality." Annual Review of
+        Economics 11 (2019): 109-138.
+      </p>
+    </div>
+  );
 };
 
 export default About;
