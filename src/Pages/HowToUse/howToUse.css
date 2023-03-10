@@ -1,11 +1,11 @@
 .howToUseContainer {
-  width: 90%;
+  width: 60%;
   margin: auto;
   padding:6rem;
-  text-align: center;
   border-radius: 25px;
   background-color: white;
   row-gap: 5%;
+ 
 }
 
 .title {
@@ -24,17 +24,46 @@
 .text {
   font-size: 18px;
   padding-top: 12px;
-  padding-bottom: 22px;
+  padding-bottom: 0px;
 }
 
 .leftSideInfo{
-  text-align: left;
-
+  text-align: justify;
   float: left;
+  padding-bottom: 5%;
 }
 
 .rightSideInfo{
-  text-align: right;
-
+  text-align: justify;
   float: right;
+  padding-bottom: 5%;
+}
+
+.ladderImage{
+  padding-right: 10%;
+  padding-top: 2%;
+}
+
+.levelsImage{
+  padding-right: 10%;
+  padding-top: 5%;
+}
+
+.marginalTaxImage{
+  padding-left: 15%;
+  padding-top: 2%;
+}
+
+.toggleImage{
+  padding-left: 6%;
+  padding-top: 10%;
+}
+
+a:link {
+  color: black;
+  background-color: transparent;
+}
+
+a:hover{
+  color: #ffca34;
 }

@@ -387,16 +387,14 @@ const AreaChartD3 = ({
       .style("font-size", "20px")
       .attr("x", xScale(50000))
       .attr("y", 90)
-      .attr("class", "infoTextName")
-      .attr("fill", "grey");
+      .attr("class", "infoTextName");
 
     svg
       .append("text")
       .style("font-size", "20px")
       .attr("x", xScale(50000))
       .attr("y", 120)
-      .attr("class", "infoTextDollar")
-      .attr("fill", "grey");
+      .attr("class", "infoTextDollar");
 
     // Line from inGraphSliders
     svg
