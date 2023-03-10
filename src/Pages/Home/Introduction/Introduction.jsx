@@ -15,16 +15,18 @@ const Introduction = ({ data, defaultData, totalCollectedMoney }) => {
       happens!
       <br></br>
       <br></br>
-      You have now succesfully brought{' '}
-      <b>
-        {extremePovertyPercentage(data) === '0%'
-          ? 'ALL'
-          : (
-              extremePovertyCounter(defaultData) - extremePovertyCounter(data)
-            ).toLocaleString('en-US')}
-      </b>{' '}
-      people out of extreme poverty by redistributing{' '}
-      <b>{formatNumbers(totalCollectedMoney)}</b>$.
+        <div className='displayInfo'>
+        You have now brought{' '}
+        <b>
+          {extremePovertyPercentage(data) === '0%'
+            ? 'ALL'
+            : (
+                extremePovertyCounter(defaultData) - extremePovertyCounter(data)
+              ).toLocaleString('en-US')}
+        </b>{' '}
+        people out of extreme poverty by redistributing{' '}
+        <b>{formatNumbers(totalCollectedMoney)}</b>$.
+      </div>
     </div>
   );
 };
