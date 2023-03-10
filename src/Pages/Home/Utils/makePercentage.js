@@ -6,10 +6,9 @@ const makePercentage = ([...data]) => {
   for (let i = 0; i < newDataPercentage.length; i++) {
     totPopulation += newDataPercentage[i].population;
   }
-  console.log("totPopulation", totPopulation);
   for (let i = 0; i < newDataPercentage.length; i++) {
     newDataPercentage[i].population =
-      ((newDataPercentage[i].population / totPopulation) * 100);
+      (newDataPercentage[i].population / totPopulation) * 100;
   }
   return newDataPercentage;
 };

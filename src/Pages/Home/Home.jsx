@@ -1,10 +1,9 @@
-import React, { useState, useEffect } from 'react';
-import { csv } from 'd3';
+import React, { useEffect } from 'react';
 import AreaChartD3 from './Chart/AreaChartD3';
 import Taxes from './Taxes/Taxes';
-import InGraphSlider from './InGraphSliders/InGraphSliders';
 import './home.css';
 import Switch from './Switch/Switch';
+import Introduction from './Introduction/Introduction';
 import {
   updateTaxes,
   movingAverage,
@@ -16,6 +15,9 @@ import {
   extremePovertyPercentage,
   levelCounter,
   populationToWealth,
+  useDataState,
+  getData,
+  getBillionaires,
 } from './Utils/index';
 
 const dataUrl =
@@ -28,80 +30,67 @@ const billionairesUrl =
   'https://gist.githubusercontent.com/Amandabru/791125eedbe23167f74f20b2739a53be/raw/203d2e923bffaef26d10a7f81da92337f59ab57b/billionairesData.csv';
 
 const Home = () => {
-  const [data, setData] = useState(null);
-  const [taxes, setTaxes] = useState(null);
-  const [defaultData, setDefaultData] = useState(null);
-  const [billionaires, setBillionaires] = useState(null);
-  const [defaultBillionaires, setDefaultBillionaires] = useState(null);
-  const [toggleState, setToggleState] = useState(false);
-  const [justUpdated, setJustUpdated] = useState(false);
+  const [data, setData] = useDataState(null, 'data');
+  const [taxes, setTaxes] = useDataState(setDefaultTax(), 'taxes');
+  const [defaultData, setDefaultData] = useDataState(null, 'defaultData');
+  const [billionaires, setBillionaires] = useDataState(null, 'billionaires');
+  const [defaultBillionaires, setDefaultBillionaires] = useDataState(
+    null,
+    'defaultBillionaires'
+  );
+  const [toggleState, setToggleState] = useDataState(false, 'toggleState');
+  const [collectedMoney, setCollectedMoney] = useDataState(0, 'collectedMoney');
+  const [selectedBillionaires, setSelectedBillionaires] = useDataState(
+    [],
+    'selectedBillionaires'
+  );
 
   const updateData = () => {
     var [collectedTax, updatedData, newBillionaires] = collectFromTheRich(
       defaultData,
       taxes,
       defaultBillionaires,
-      billionaires
+      billionaires,
+      selectedBillionaires
     );
+    setCollectedMoney(collectedTax);
     updatedData = giveToThePoor(updatedData, collectedTax);
     setData(updatedData);
     setBillionaires(newBillionaires);
-    setJustUpdated(true);
-  };
-
-  const updateToggle = (state) => {
-    setToggleState(state);
-    console.log(toggleState);
-    updateData();
   };
 
   useEffect(() => {
-    csv(dataUrl, function (d) {
-      return {
-        income: +d.income,
-        population: +d.population,
-      };
-    }).then((data) => {
-      setDefaultData(data);
-      setData(data);
-    });
-    csv(billionairesUrl, function (d) {
-      return {
-        billionaire: d.billionaire,
-        income: +d.income,
-        images: +d.images,
-        individualTax: 0,
-        active: true,
-        added: false,
-      };
-    }).then((data) => {
-      setDefaultBillionaires(data);
-      setBillionaires(data);
-    });
-    setTaxes(setDefaultTax());
+    if (window.sessionStorage.getItem('data') == 'null') {
+      getData(dataUrl).then((data) => {
+        setData(data);
+        setDefaultData(data);
+      });
+      getBillionaires(billionairesUrl).then((billionaires) => {
+        setDefaultBillionaires(billionaires);
+        setBillionaires(billionaires);
+      });
+    }
   }, []);
 
   useEffect(() => {
     if (data) {
       updateData();
     }
-  }, [taxes, billionaires, toggleState]);
+  }, [taxes, selectedBillionaires, toggleState]);
 
-  useEffect(() => {
-    //FATTAR INTE VARFÖR MEN DET FUNKAR SÅHÄR LOLLOLOLOLOL
-    if (justUpdated) {
-      setBillionaires(billionaires);
-    }
-  }, [billionaires]);
-
-  if (!data || !billionaires || !taxes) {
+  if (!data || !billionaires || !defaultData || !defaultBillionaires) {
     return <div>Loading</div>;
   }
 
   return (
     <div className='taxTheRichContainer'>
       <div className='leftSide'>
-        <Switch toggled={false} onClick={updateToggle} />
+        <Introduction
+          data={data}
+          defaultData={defaultData}
+          totalCollectedMoney={collectedMoney}
+        />
+        <Switch toggled={toggleState} onClick={setToggleState} />
         <AreaChartD3
           data={[
             movingAverage(10, makePercentage(data)),
@@ -113,7 +102,15 @@ const Home = () => {
           ]}
           ExtremePovertyCount={extremePovertyPercentage(data)}
           billionaries={billionaires}
-          leftRightCounter={(xValue) => leftRightCounter(xValue, data, populationToWealth(data) ,toggleState)}
+          selectedBillionaires={selectedBillionaires}
+          leftRightCounter={(xValue) =>
+            leftRightCounter(
+              xValue,
+              data,
+              populationToWealth(data),
+              toggleState
+            )
+          }
           levelCounter={(x1Value, x2Value) =>
             levelCounter(x1Value, x2Value, data)
           }
@@ -129,9 +126,9 @@ const Home = () => {
         clearAllTaxes={() => setTaxes(setDefaultTax())}
         taxes={taxes}
         billionaires={billionaires}
-        setNewBillionaires={(billionaires) => {
-          setBillionaires(billionaires);
-          setJustUpdated(false);
+        selectedBillionaires={selectedBillionaires}
+        setSelectedBillionaires={(billionaires) => {
+          setSelectedBillionaires(billionaires);
         }}
       />
     </div>

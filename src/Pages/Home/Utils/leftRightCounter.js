@@ -1,12 +1,13 @@
+import formatNumbers from "./formatNumbers";
+
 const leftRightCounter = (xValue, [...data], [...wealthData], toggle) => {
   var totPopulation = 0;
   var peopleToLeft = 0;
   var popOrWealthData;
 
-  if (!toggle){
+  if (!toggle) {
     popOrWealthData = data;
-  }
-  else{
+  } else {
     popOrWealthData = wealthData;
   }
 
@@ -21,15 +22,31 @@ const leftRightCounter = (xValue, [...data], [...wealthData], toggle) => {
     totPopulation += popOrWealthData[i].population;
   }
 
-  const poepleToRight = totPopulation - peopleToLeft;
-  const peopleCount = ((peopleToLeft / totPopulation) * 100).toFixed(1);
+  let peopleToRight = totPopulation - peopleToLeft;
+  let peopleCount = ((peopleToLeft / totPopulation) * 100).toFixed(1);
   let textLeft = peopleCount + "%";
   let textRight = (100 - peopleCount).toFixed(1) + "%";
 
-  if (peopleCount < 0.001) textLeft = "few";
-  else if ((100 - peopleCount).toFixed(1) < 0.001) textRight = "few";
+  if (peopleCount <= 0.01) {
+    textLeft = "< 0.01 %";
+    textRight = "> 99.9 %";
+  } else if (100 - peopleCount <= 0.01) {
+    textRight = " < 0.01 %";
+    textLeft = "> 99.9 %";
+  }
 
-  return [textLeft, textRight, peopleToLeft, poepleToRight];
+  if (peopleToLeft < 1000) {
+    peopleToLeft = "< 1k";
+    peopleToRight = formatNumbers(peopleToRight);
+  } else if (peopleToRight < 1000) {
+    peopleToRight = "< 1k";
+    peopleToLeft = formatNumbers(peopleToLeft);
+  } else {
+    peopleToLeft = formatNumbers(peopleToLeft);
+    peopleToRight = formatNumbers(peopleToRight);
+  }
+
+  return [textLeft, textRight, peopleToLeft, peopleToRight];
 };
 
 export default leftRightCounter;

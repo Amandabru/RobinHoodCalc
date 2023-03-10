@@ -8,7 +8,8 @@ const Taxes = ({
   clearAllTaxes,
   taxes,
   billionaires,
-  setNewBillionaires,
+  selectedBillionaires,
+  setSelectedBillionaires,
 }) => {
   return (
     <div className='taxationContainer'>
@@ -21,7 +22,10 @@ const Taxes = ({
       />
       <TaxBillionaires
         billionaires={billionaires}
-        setNewBillionaires={(billionaires) => setNewBillionaires(billionaires)}
+        selectedBillionaires={selectedBillionaires}
+        setSelectedBillionaires={(billionaires) =>
+          setSelectedBillionaires(billionaires)
+        }
       />
     </div>
   );
