@@ -442,14 +442,14 @@ const AreaChartD3 = ({
     svg
       .append("text")
       .attr("y", 130)
-      .attr("font-size", 14)
+      .attr("font-size", 12)
       .attr("fill", "gray")
       .attr("id", "lessThan")
       .style("opacity", 0);
     svg
       .append("text")
       .attr("y", 130)
-      .attr("font-size", 14)
+      .attr("font-size", 12)
       .attr("fill", "gray")
       .attr("id", "moreThan")
       .style("opacity", 0);
@@ -457,7 +457,7 @@ const AreaChartD3 = ({
     svg
       .append("text")
       .attr("y", 150)
-      .attr("font-size", 14)
+      .attr("font-size", 12)
       .attr("fill", "gray")
       .attr("id", "amountOfPeopleLeft")
       .style("opacity", 0);
@@ -465,7 +465,7 @@ const AreaChartD3 = ({
     svg
       .append("text")
       .attr("y", 170)
-      .attr("font-size", 14)
+      .attr("font-size", 12)
       .attr("fill", "gray")
       .attr("id", "amountOfPeopleLeftNr")
       .style("opacity", 0);
@@ -473,7 +473,7 @@ const AreaChartD3 = ({
     svg
       .append("text")
       .attr("y", 150)
-      .attr("font-size", 14)
+      .attr("font-size", 12)
       .attr("fill", "gray")
       .attr("id", "amountOfPeopleRight")
       .style("opacity", 0);
@@ -481,7 +481,7 @@ const AreaChartD3 = ({
     svg
       .append("text")
       .attr("y", 170)
-      .attr("font-size", 14)
+      .attr("font-size", 12)
       .attr("fill", "gray")
       .attr("id", "amountOfPeopleRightNr")
       .style("opacity", 0);
@@ -490,7 +490,7 @@ const AreaChartD3 = ({
       .append("text")
       .attr("y", 430)
       .attr("font-size", 13)
-      .attr("fill", "gray")
+      .attr("fill", "black")
       .attr("id", "incomeValue")
       .style("opacity", 0);
     //}
