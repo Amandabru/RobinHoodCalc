@@ -5,6 +5,12 @@
   text-align: center;
   border-radius: 25px;
   background-color: white;
+
+  background-image: url(/src/Images/areaChart.png);
+  background-repeat: no-repeat;
+  background-position: left;
+  background-size: 90%;
+  
 }
 .titleAbout {
   color: #ffca34;
@@ -21,7 +27,8 @@
 .textAbout {
   font-size: 18px;
   padding-bottom: 15px;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
+  text-align: justify;
 }
 
 .gapminder:hover{
@@ -31,4 +38,8 @@
 .gapminder:link{
   color: black;
   background-color: transparent;
+}
+
+.headerPadding{
+  padding-bottom: 1%;
 }
