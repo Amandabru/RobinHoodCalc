@@ -6,6 +6,7 @@
 .displayInfo {
   background-color: #f5d3755b;
   border-radius: 25px;
-  width: 560px;
+  width: fit-content;
   padding-left: 8px;
+  padding-right: 8px;
 }
