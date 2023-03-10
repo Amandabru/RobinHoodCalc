@@ -118,8 +118,8 @@ const Home = () => {
           wealthToggle={toggleState}
         />
       </div>
+      <div className='rightSide'>
       <Taxes
-        className='RightSide'
         onTaxChange={(taxBracketNr, newTax) =>
           setTaxes(updateTaxes(taxBracketNr, taxes, newTax))
         }
@@ -131,6 +131,7 @@ const Home = () => {
           setSelectedBillionaires(billionaires);
         }}
       />
+      </div>
     </div>
   );
 };

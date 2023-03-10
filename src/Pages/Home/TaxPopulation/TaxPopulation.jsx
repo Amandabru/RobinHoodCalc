@@ -7,6 +7,7 @@ const TaxPopulation = ({ onTaxChange, clearAllTaxes, taxes }) => {
       <header
         style={{
           padding: "2em",
+
         }}
       >
         <div className="titleContainer headTitle">

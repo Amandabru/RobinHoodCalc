@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 const Header = () => {
   return (
-    <div className='header'>
+    <div className='mainHeader'>
       <Link className='link link1' to='/'>
         ROBIN HOOD CALCULATOR
       </Link>
