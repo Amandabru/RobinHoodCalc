@@ -76,7 +76,7 @@ function TaxBillionaires({
         </button>
       </div>
       <p className='taxTheRichDescription'>
-        Specify additional tax rates for the top ten richest. This additional
+        Specify additional tax rates for the top ten richest people. This additional
         tax rate is applied on all income that is left after having applied
         other Robin Hood taxes.
       </p>
