@@ -6,7 +6,7 @@
   border-radius: 25px;
   background-color: white;
 }
-.title {
+.titleAbout {
   color: #ffca34;
   width: fit-content;
   padding: 3rem;
@@ -16,8 +16,19 @@
   padding-top: 20px;
   padding-bottom: 20px;
   font-size: 40px;
+  margin-bottom: 20px;
 }
-.text {
+.textAbout {
   font-size: 18px;
   padding-bottom: 15px;
+  margin-bottom: 20px;
+}
+
+.gapminder:hover{
+  color: #ffca34;
+}
+
+.gapminder:link{
+  color: black;
+  background-color: transparent;
 }

@@ -43,7 +43,7 @@ const HowToUse = () => {
         <p className='text' style={{width: '50%', float: 'left'}}>
         Below the chart, there are markings which divide the world population into 
         13 different income levels. These levels are based on the income levels from Gapminder,
-        and more information about this sectioning can be found <a href='https://www.gapminder.org/fw/income-levels/ '>here</a>
+        and more information about this sectioning can be found <a href='https://www.gapminder.org/fw/income-levels/ ' className='clickLink'>here</a>
         </p>
       </div>
       <div className='rightSideInfo'>

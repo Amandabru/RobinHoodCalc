@@ -547,7 +547,7 @@ const AreaChartD3 = ({
           .text(() => {
             if (!wealthToggle) return "Makes less";
             else {
-              return "Money in lower levels";
+              return "Money to the left";
             }
           })
           .attr("font-weight", 600);
@@ -560,7 +560,7 @@ const AreaChartD3 = ({
           .text(() => {
             if (!wealthToggle) return "Makes more";
             else {
-              return "Money in higher levels";
+              return "Money to the right";
             }
           })
           .attr("font-weight", 600);

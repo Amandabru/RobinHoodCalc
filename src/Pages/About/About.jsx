@@ -4,8 +4,8 @@ import "./about.css";
 const About = () => {
   return (
     <div className="AboutContainer">
-      <h1 className="title"> About</h1>
-      <p className="text">
+      <h1 className="titleAbout"> About</h1>
+      <p className="textAbout">
         The Robin Hood Calculator is an interactive visualization tool. In this
         visualization you can see how income is distributed in the world, and
         you have the possibility to tax different income brackets or the ten
@@ -15,12 +15,12 @@ const About = () => {
         individuals understand the extent of the issue.
       </p>
       <h2>Data</h2>
-      <p className="text">
+      <p className="textAbout">
         The data is taken from data sets made by{" "}
         <a
-          style={{ color: "black", textDecorationStyle: "dotted" }}
           href="https://www.gapminder.org/"
           target="blank"
+          className="gapminder"
         >
           Gapminder
         </a>
@@ -29,9 +29,9 @@ const About = () => {
         found here and here.
       </p>
       <h2>Calculations</h2>
-      <p className="text">- Formel?</p>
+      <p className="textAbout">- Formel?</p>
       <h2>Tools</h2>
-      <p className="text">
+      <p className="textAbout">
         This project is built using React and D3.js. Prototyping was done using
         Figma.
       </p>

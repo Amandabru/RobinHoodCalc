@@ -11,7 +11,7 @@ function Team() {
       linkedin: "https://www.linkedin.com/in/amanda-brundin-bb5479177/",
       role: "Front-end Development",
       description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi eu orci eget lacus vestibulum commodo posuere in tortor. Phasellus pretium felis ipsum, vitae euismod erat posuere eget.",
+        "Main tasks: ",
       image:
         "https://st3.depositphotos.com/6672868/13701/v/600/depositphotos_137014128-stock-illustration-user-profile-icon.jpg",
     },
@@ -21,7 +21,7 @@ function Team() {
       linkedin: "https://www.linkedin.com/in/gustav-axelsson-985970176/",
       role: "Front-end Development, Data Processing",
       description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi eu orci eget lacus vestibulum commodo posuere in tortor. Phasellus pretium felis ipsum, vitae euismod erat posuere eget.",
+        "Main tasks:",
       image:
         "https://st3.depositphotos.com/6672868/13701/v/600/depositphotos_137014128-stock-illustration-user-profile-icon.jpg",
     },
@@ -31,7 +31,7 @@ function Team() {
       linkedin: "https://www.linkedin.com/in/hanna-snarberg/",
       role: "Front-end Development, Data Processing",
       description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi eu orci eget lacus vestibulum commodo posuere in tortor. Phasellus pretium felis ipsum, vitae euismod erat posuere eget. ",
+        "Main tasks: ",
       image:
         "https://st3.depositphotos.com/6672868/13701/v/600/depositphotos_137014128-stock-illustration-user-profile-icon.jpg",
     },
@@ -41,7 +41,7 @@ function Team() {
       linkedin: "https://www.linkedin.com/in/frida-jansson-8221671a2/",
       role: "UX, Front-end Development, User Testing",
       description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi eu orci eget lacus vestibulum commodo posuere in tortor. Phasellus pretium felis ipsum, vitae euismod erat posuere eget.",
+        "Main tasks:",
       image:
         "https://st3.depositphotos.com/6672868/13701/v/600/depositphotos_137014128-stock-illustration-user-profile-icon.jpg",
     },
@@ -51,7 +51,7 @@ function Team() {
       linkedin: "https://www.linkedin.com/in/hanna-almqvist-9244921a3/",
       role: "UX, Front-end Development, User Testing",
       description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi eu orci eget lacus vestibulum commodo posuere in tortor. Phasellus pretium felis ipsum, vitae euismod erat posuere eget.",
+        "Main tasks:",
       image:
         "https://st3.depositphotos.com/6672868/13701/v/600/depositphotos_137014128-stock-illustration-user-profile-icon.jpg",
     },
