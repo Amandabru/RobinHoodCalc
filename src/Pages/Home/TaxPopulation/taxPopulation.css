@@ -48,7 +48,7 @@
 }
 
 .btn:hover {
-  background: #f6c944;
+  border: 1px solid #ffca34;
 }
 
 /*Sliders*/

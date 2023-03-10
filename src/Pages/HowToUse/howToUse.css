@@ -1,8 +1,7 @@
 .howToUseContainer {
-  width: 55%;
+  width: 90%;
   margin: auto;
   margin-top: 50px;
-  text-align: center;
   border-radius: 25px;
   background-color: white;
   row-gap: 5%;
@@ -20,8 +19,21 @@
   font-size: 40px;
   margin-bottom: 15px;
 }
+
 .text {
   font-size: 18px;
   padding-top: 12px;
   padding-bottom: 22px;
+}
+
+.leftSideInfo{
+  text-align: left;
+
+  float: left;
+}
+
+.rightSideInfo{
+  text-align: right;
+
+  float: right;
 }

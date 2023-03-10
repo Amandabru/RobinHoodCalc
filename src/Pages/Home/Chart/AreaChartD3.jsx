@@ -772,8 +772,25 @@ const AreaChartD3 = ({
           if (i === 5) return xScale(100000000);
           else return xScale(100 * 10 ** i);
         })
-        .attr("y2", yScaleRight(100 * taxValue[i].taxRate))
-        .attr("id", "taxLadder");
+        .attr('y2', yScaleRight(100 * taxValue[i].taxRate))
+        .attr('id', 'taxLadder');
+
+      svg
+        .append("text")
+        .attr('stroke', 'grey')
+        .attr('x', xScale(10 * 10 ** i)+20)
+        .attr('y', yScaleRight(100 * taxValue[i].taxRate)-10)
+        .attr('id', 'taxLadder')
+        .attr('font-weight', 8)
+        .attr('font-size', 11)
+        .text((100 * taxValue[i].taxRate).toFixed(1) + '%')
+        .style("opacity", function(d){
+          if((100 * taxValue[i].taxRate).toFixed(0)==="0")
+            return 0;
+          else
+            return 0.7;
+        });
+      
     }
   }, [data]);
 
