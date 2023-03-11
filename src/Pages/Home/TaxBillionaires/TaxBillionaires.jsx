@@ -162,6 +162,7 @@ function TaxBillionaires({
                       type="number"
                       min="0"
                       max="100"
+                      step="0.1"
                       value={parseFloat(
                         (billionaire.individualTax * 100).toFixed(1)
                       ).toString()}

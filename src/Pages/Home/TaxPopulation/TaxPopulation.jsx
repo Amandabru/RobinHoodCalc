@@ -70,6 +70,7 @@ const TaxPopulation = ({ onTaxChange, clearAllTaxes, taxes }) => {
             type="number"
             min="0"
             max="100"
+            step="0.1"
             value={parseFloat((taxes[1].taxRate * 100).toFixed(1)).toString()}
             onInput={(e) => {
               if (e.target.value >= 100) {
@@ -111,6 +112,7 @@ const TaxPopulation = ({ onTaxChange, clearAllTaxes, taxes }) => {
             type="number"
             min="0"
             max="100"
+            step="0.1"
             value={parseFloat((taxes[2].taxRate * 100).toFixed(1)).toString()}
             onInput={(e) => {
               if (e.target.value >= 100) {
@@ -148,6 +150,7 @@ const TaxPopulation = ({ onTaxChange, clearAllTaxes, taxes }) => {
             type="number"
             min="0"
             max="100"
+            step="0.1"
             value={parseFloat((taxes[3].taxRate * 100).toFixed(1)).toString()}
             onInput={(e) => {
               if (e.target.value >= 100) {
@@ -185,6 +188,7 @@ const TaxPopulation = ({ onTaxChange, clearAllTaxes, taxes }) => {
             type="number"
             min="0"
             max="100"
+            step="0.1"
             value={parseFloat((taxes[4].taxRate * 100).toFixed(1)).toString()}
             onInput={(e) => {
               if (e.target.value >= 100) {
@@ -222,6 +226,7 @@ const TaxPopulation = ({ onTaxChange, clearAllTaxes, taxes }) => {
             type="number"
             min="0"
             max="100"
+            step="0.1"
             value={parseFloat((taxes[5].taxRate * 100).toFixed(1)).toString()}
             onInput={(e) => {
               if (e.target.value >= 100) {
