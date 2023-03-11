@@ -68,10 +68,13 @@ const HowToUse = () => {
         </p>
       </div>
       <div className='leftSideInfo'>
-      <img src={dollarSign} className='dollarImage' style={{width:'20%', float:'right'}} ></img>
+      <img src={dollarSign} className='dollarImage' style={{width:'17%', float:'right'}} ></img>
         <h2>Tax Billionaires</h2>
         <p className='text' style={{width: '50%', float: 'left'}}>
-        You can also tax the ten richest in the world and see how...
+        You can also only tax the ten richest people in the world and see how 
+        a specific percentage of all of their daily income would affect the 
+        total income ditribution. When taxing a billionaire, you can see how they 
+        move down the x-axis and how it would affect their daily income. 
         </p>
       </div>
       <h2>Video Demonstration</h2>

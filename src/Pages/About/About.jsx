@@ -21,10 +21,9 @@ const About = () => {
           target="blank"
           className="gapminder"
         >
-          Gapminder's visualization  
-        </a>
-         of the world's wealth distribution. The idea was to imitate Gampinder's
-        original visualization, but adding on the functionality of money redistribution.
+          Gapminder's visualization 
+        </a> of the world's wealth distribution. The idea was to imitate Gampinder's
+        original visualization, but adding the functionality of money redistribution.
       </p>
       <h2 className="headerPadding">Data</h2>
       <p className="textAbout">
@@ -37,11 +36,51 @@ const About = () => {
           Gapminder
         </a>
         . The data contains information about the income distribution of the
-        world and information about the ten richest people. The data sets can be
-        found here and here.
+        world and information about the ten richest people. The datasets containing
+        data about the population in each income bracket can be found{" "}
+        <a
+          href=""
+          target="blank"
+          className="gapminder"
+        >
+          here
+        </a>, and the correspoding
+        income brackets (representing a specific income per day) can be found{" "}
+        <a
+          href=""
+          target="blank"
+          className="gapminder"
+        >
+          here
+        </a>.
+        The billionaire data can be found{" "}
+        <a
+          href=""
+          target="blank"
+          className="gapminder"
+        >
+          here
+        </a>.
       </p>
       <h2 className="headerPadding">Calculations</h2>
-      <p className="textAbout">- Formel?</p>
+      <p className="textAbout">
+        This visualization has two different types of distribution of income,
+        which can be changed with the toggle on top. The calculations for the
+        ... visualization simply gives the collected money to the poorest, which
+        results in the accumulated peak when you start to move the sliders. The calculations
+        use a running average in order to smooth out the curve a little.
+        The second calculation is made to prevent such peaks from appearing, and
+        distributes the collected money in such a way that it goes first and
+        foremost to the poorest, but controls the appearence of the chart, making 
+        the curve smoother. For exact calculations, please visit our{" "}
+        <a
+          href=""
+          target="blank"
+          className="gapminder"
+        >
+          Github
+        </a> for this project.
+        </p>
       <h2 className="headerPadding">Tools</h2>
       <p className="textAbout">
         This project is built using React and D3.js. Prototyping was done using
