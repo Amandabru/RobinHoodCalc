@@ -10,9 +10,9 @@ const Introduction = ({ data, defaultData, totalCollectedMoney }) => {
   return (
     <div className='introduction'>
       Welcome to the <b>Robin Hood Calculator!</b> Here you can explore how
-      the wealth distribution of the world would look like when taking from the
-      rich and giving to the poor. Use the sliders to the right and se what
-      happens!
+      the daily income distribution in the world would look like when take from the
+      rich and give to the poor. Interact with the Robin Hood Taxation System 
+      to the right and see what happens!
       <br></br>
       <br></br>
         <div className='displayInfo'>

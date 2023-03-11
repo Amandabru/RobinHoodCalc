@@ -59,6 +59,11 @@
   padding-top: 10%;
 }
 
+.dollarImage{
+  padding-right: 15%;
+  padding-top: 2%;
+}
+
 .clickLink:link {
   color: black;
   background-color: transparent;
