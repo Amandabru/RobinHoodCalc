@@ -1,18 +1,19 @@
-import React, { useEffect, useState } from 'react';
-import Toggle from '../Toggle/Toggle';
-import './taxbillionaires.css';
-import { formatNumbers } from '../Utils/index';
+import React, { useEffect, useState } from "react";
+import Toggle from "../Toggle/Toggle";
+import "./taxbillionaires.css";
+import { formatNumbers } from "../Utils/index";
+import { isElementOfType } from "react-dom/test-utils";
 
 function TaxBillionaires({
   billionaires,
   selectedBillionaires,
   setSelectedBillionaires,
 }) {
-  const [selectedBillionaire, setSelectedBillionaire] = useState('');
+  const [selectedBillionaire, setSelectedBillionaire] = useState("");
 
   function handleOptionChange(e) {
     const selected = e.target.value;
-    if (selected !== '') {
+    if (selected !== "") {
       const newBillionaire = billionaires.find(
         (billionaire) => billionaire.billionaire === selected
       );
@@ -22,7 +23,7 @@ function TaxBillionaires({
           ...selectedBillionaires,
         ]);
       }
-      setSelectedBillionaire('');
+      setSelectedBillionaire("");
       window.scrollTo(0, document.body.scrollHeight);
     }
   }
@@ -61,13 +62,13 @@ function TaxBillionaires({
   return (
     <header
       style={{
-        padding: '2em',
+        padding: "2em",
       }}
     >
-      <div className='titleContainer headTitle'>
+      <div className="titleContainer headTitle">
         <h2>Tax the 10 Richest</h2>
         <button
-          className='btn'
+          className="btn"
           onClick={() => {
             handleRemoveBillionaire();
           }}
@@ -75,19 +76,19 @@ function TaxBillionaires({
           Clear All
         </button>
       </div>
-      <p className='taxTheRichDescription'>
-        Specify additional tax rates for the top ten richest people. This additional
+      <p className="taxTheRichDescription">
+        Specify additional tax rates for the top ten richest. This additional
         tax rate is applied on all income that is left after having applied
         other Robin Hood taxes.
       </p>
       <div>
-        <div style={{ display: 'flex' }}>
+        <div style={{ display: "flex" }}>
           <select
             value={selectedBillionaire}
-            className='dropdown'
+            className="dropdown"
             onChange={handleOptionChange}
           >
-            <option value=''>Add Billionaire</option>
+            <option value="">Add Billionaire</option>
             {billionaires.map((billionaire) => (
               <option
                 key={billionaire.billionaire}
@@ -104,41 +105,41 @@ function TaxBillionaires({
           </select>
         </div>
         {selectedBillionaires.map((billionaire) => (
-          <div className='billionaireEntry' key={billionaire.billionaire}>
+          <div className="billionaireEntry" key={billionaire.billionaire}>
             <button
-              className='cancelButton'
+              className="cancelButton"
               onClick={() => {
                 handleRemoveBillionaire(billionaire.billionaire);
               }}
             >
               x
             </button>
-            <div className='billionaireContent'>
+            <div className="billionaireContent">
               <div
                 className={
                   billionaire.active
-                    ? 'containerLeft'
-                    : 'containerLeft nonactive'
+                    ? "containerLeft"
+                    : "containerLeft nonactive"
                 }
               >
-                <div className='nameAndIncome'>
-                  <p className='name'> {billionaire.billionaire} </p>
-                  <p className='income'>
-                    Daily income:{' '}
+                <div className="nameAndIncome">
+                  <p className="name"> {billionaire.billionaire} </p>
+                  <p className="income">
+                    Daily income:{" "}
                     {formatNumbers(
                       billionaires.find(
                         (b) => b.billionaire === billionaire.billionaire
                       ).income
-                    )}{' '}
+                    )}{" "}
                     $
                   </p>
                 </div>
                 <input
-                  className={'slider'}
-                  type='range'
-                  min='0'
-                  max='1'
-                  step='0.001'
+                  className={"slider"}
+                  type="range"
+                  min="0"
+                  max="1"
+                  step="0.001"
                   value={billionaire.individualTax}
                   onChange={(e) => {
                     handleIndividualTaxChange(
@@ -148,21 +149,22 @@ function TaxBillionaires({
                   }}
                 />
               </div>
-              <div className='containerRight'>
+              <div className="containerRight">
                 <div
                   className={
-                    billionaire.active ? 'taxRate' : 'taxRate nonactive'
+                    billionaire.active ? "taxRate" : "taxRate nonactive"
                   }
                 >
-                  <p className='taxTitle'> Tax Rate</p>
-                  <div className='percetageBoxWrapper1'>
+                  <p className="taxTitle"> Tax Rate</p>
+                  <div className="percetageBoxWrapper1">
                     <input
-                      className={'percentage'}
-                      type='text'
-                      inputMode='numeric'
+                      className={"percentage"}
+                      type="number"
+                      min="0"
+                      max="100"
                       value={parseFloat(
-                        billionaire.individualTax * 100
-                      ).toFixed(0)}
+                        (billionaire.individualTax * 100).toFixed(1)
+                      ).toString()}
                       onInput={(e) => {
                         if (e.target.value >= 100) {
                           e.target.value = 100;
@@ -171,7 +173,7 @@ function TaxBillionaires({
                         }
                       }}
                       onChange={(e) => {
-                        if (e.target.value == '') {
+                        if (e.target.value == "") {
                           handleIndividualTaxChange(billionaire.billionaire, 0);
                         } else {
                           handleIndividualTaxChange(
@@ -181,10 +183,10 @@ function TaxBillionaires({
                         }
                       }}
                     />
-                    <span className='percentageSymbol'> % </span>
+                    <span className="percentageSymbol"> % </span>
                   </div>
                 </div>
-                <div className='toggle'>
+                <div className="toggle">
                   <Toggle
                     toggled={billionaire.active}
                     onClick={() =>

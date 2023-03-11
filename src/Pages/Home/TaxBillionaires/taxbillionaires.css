@@ -136,9 +136,9 @@
 }
 
 .percentage {
-  width: 4ch;
+  width: 7ch;
   height: 15px;
-  text-align: center;
+  text-align: right;
   border: none;
   border-radius: 2px;
   border-bottom: 1.5px solid #f6c944;
