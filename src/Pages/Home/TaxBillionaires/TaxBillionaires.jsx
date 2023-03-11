@@ -174,6 +174,8 @@ function TaxBillionaires({
                         }
                       }}
                       onChange={(e) => {
+                        e.target.value = parseFloat(e.target.value).toFixed(1);
+
                         if (e.target.value == "") {
                           handleIndividualTaxChange(billionaire.billionaire, 0);
                         } else {

@@ -80,6 +80,7 @@ const TaxPopulation = ({ onTaxChange, clearAllTaxes, taxes }) => {
               }
             }}
             onChange={(e) => {
+              e.target.value = parseFloat(e.target.value).toFixed(1);
               if (e.target.value == "") {
                 onTaxChange(1, 0);
               } else {
@@ -122,6 +123,8 @@ const TaxPopulation = ({ onTaxChange, clearAllTaxes, taxes }) => {
               }
             }}
             onChange={(e) => {
+              e.target.value = parseFloat(e.target.value).toFixed(1);
+
               onTaxChange(2, e.target.value / 100);
             }}
           />
@@ -160,6 +163,8 @@ const TaxPopulation = ({ onTaxChange, clearAllTaxes, taxes }) => {
               }
             }}
             onChange={(e) => {
+              e.target.value = parseFloat(e.target.value).toFixed(1);
+
               onTaxChange(3, e.target.value / 100);
             }}
           />
@@ -198,6 +203,8 @@ const TaxPopulation = ({ onTaxChange, clearAllTaxes, taxes }) => {
               }
             }}
             onChange={(e) => {
+              e.target.value = parseFloat(e.target.value).toFixed(1);
+
               onTaxChange(4, e.target.value / 100);
             }}
           />
@@ -236,6 +243,8 @@ const TaxPopulation = ({ onTaxChange, clearAllTaxes, taxes }) => {
               }
             }}
             onChange={(e) => {
+              e.target.value = parseFloat(e.target.value).toFixed(1);
+
               onTaxChange(5, e.target.value / 100);
             }}
           />
