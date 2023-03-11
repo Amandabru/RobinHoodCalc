@@ -28,7 +28,7 @@ const TaxPopulation = ({ onTaxChange, clearAllTaxes, taxes }) => {
         </p>
       </header>
       <div className="titleContainer">
-        <h4> Income Interval ($/day) </h4>
+        <h4> Income Bracket ($/day) </h4>
         <h4 className="marginalTax">
           {" "}
           Marginal Tax Rate

@@ -8,9 +8,8 @@
   background-image: url(/src/Images/areaChart.png);
   background-repeat: no-repeat;
   background-size: 80%;
-  background-attachment:fixed;
-  background-position: 120px 10px; 
-  
+  background-attachment: fixed;
+  background-position: 120px 10px;
 }
 .titleAbout {
   color: #ffca34;
@@ -29,17 +28,18 @@
   padding-bottom: 15px;
   margin-bottom: 10px;
   text-align: justify;
+  line-height: 20px;
 }
 
-.gapminder:hover{
+.gapminderlink:hover {
   color: #ffca34;
 }
 
-.gapminder:link{
+.gapminderlink:link {
   color: black;
   background-color: transparent;
 }
 
-.headerPadding{
+.headerPadding {
   padding-bottom: 1%;
 }
