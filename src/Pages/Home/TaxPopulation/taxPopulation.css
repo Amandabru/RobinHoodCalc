@@ -98,9 +98,9 @@
 }
 
 .percentageBox {
-  width: 4ch;
+  width: 6ch;
   height: 2ch;
-  text-align: center;
+  text-align: right;
   border: none;
   border-bottom: 1.5px solid #f6c944;
   border-radius: 2px;

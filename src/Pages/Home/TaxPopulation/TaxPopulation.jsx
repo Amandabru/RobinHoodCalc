@@ -7,7 +7,6 @@ const TaxPopulation = ({ onTaxChange, clearAllTaxes, taxes }) => {
       <header
         style={{
           padding: "2em",
-
         }}
       >
         <div className="titleContainer headTitle">
@@ -68,9 +67,10 @@ const TaxPopulation = ({ onTaxChange, clearAllTaxes, taxes }) => {
         <div className="percetageBoxWrapper">
           <input
             className={"percentageBox"}
-            type="text"
-            inputMode="numeric"
-            value={parseFloat((taxes[1].taxRate * 100).toFixed(0))}
+            type="number"
+            min="0"
+            max="100"
+            value={parseFloat((taxes[1].taxRate * 100).toFixed(1)).toString()}
             onInput={(e) => {
               if (e.target.value >= 100) {
                 e.target.value = 100;
@@ -108,9 +108,10 @@ const TaxPopulation = ({ onTaxChange, clearAllTaxes, taxes }) => {
         <div className="percetageBoxWrapper">
           <input
             className="percentageBox"
-            type="text"
-            inputMode="numeric"
-            value={parseFloat((taxes[2].taxRate * 100).toFixed(0))}
+            type="number"
+            min="0"
+            max="100"
+            value={parseFloat((taxes[2].taxRate * 100).toFixed(1)).toString()}
             onInput={(e) => {
               if (e.target.value >= 100) {
                 e.target.value = 100;
@@ -144,9 +145,10 @@ const TaxPopulation = ({ onTaxChange, clearAllTaxes, taxes }) => {
         <div className="percetageBoxWrapper">
           <input
             className="percentageBox"
-            type="text"
-            inputMode="numeric"
-            value={parseFloat((taxes[3].taxRate * 100).toFixed(0))}
+            type="number"
+            min="0"
+            max="100"
+            value={parseFloat((taxes[3].taxRate * 100).toFixed(1)).toString()}
             onInput={(e) => {
               if (e.target.value >= 100) {
                 e.target.value = 100;
@@ -180,9 +182,10 @@ const TaxPopulation = ({ onTaxChange, clearAllTaxes, taxes }) => {
         <div className="percetageBoxWrapper">
           <input
             className="percentageBox"
-            type="text"
-            inputMode="numeric"
-            value={parseFloat((taxes[4].taxRate * 100).toFixed(0))}
+            type="number"
+            min="0"
+            max="100"
+            value={parseFloat((taxes[4].taxRate * 100).toFixed(1)).toString()}
             onInput={(e) => {
               if (e.target.value >= 100) {
                 e.target.value = 100;
@@ -216,9 +219,10 @@ const TaxPopulation = ({ onTaxChange, clearAllTaxes, taxes }) => {
         <div className="percetageBoxWrapper">
           <input
             className="percentageBox"
-            type="text"
-            inputMode="numeric"
-            value={parseFloat((taxes[5].taxRate * 100).toFixed(0))}
+            type="number"
+            min="0"
+            max="100"
+            value={parseFloat((taxes[5].taxRate * 100).toFixed(1)).toString()}
             onInput={(e) => {
               if (e.target.value >= 100) {
                 e.target.value = 100;
