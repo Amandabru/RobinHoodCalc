@@ -797,6 +797,8 @@ const AreaChartD3 = ({
           else return 0.7;
         });
     }
+  
+      
   }, [data]);
 
   return (

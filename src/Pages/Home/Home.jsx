@@ -9,6 +9,7 @@ import {
   movingAverage,
   setDefaultTax,
   giveToThePoor,
+  giveToThePoor2,
   collectFromTheRich,
   makePercentage,
   leftRightCounter,
@@ -54,7 +55,7 @@ const Home = () => {
       selectedBillionaires
     );
     setCollectedMoney(collectedTax);
-    updatedData = giveToThePoor(updatedData, collectedTax);
+    updatedData = giveToThePoor2(updatedData, collectedTax);
     setData(updatedData);
     setBillionaires(newBillionaires);
   };
@@ -93,12 +94,12 @@ const Home = () => {
         <Switch toggled={toggleState} onClick={setToggleState} />
         <AreaChartD3
           data={[
-            movingAverage(10, makePercentage(data)),
-            movingAverage(10, makePercentage(defaultData)),
+            movingAverage(4, makePercentage(data)),
+            movingAverage(4, makePercentage(defaultData)),
           ]}
           wealthData={[
-            movingAverage(10, makePercentage(populationToWealth(data))),
-            movingAverage(10, makePercentage(populationToWealth(defaultData))),
+            movingAverage(4, makePercentage(populationToWealth(data))),
+            movingAverage(4, makePercentage(populationToWealth(defaultData))),
           ]}
           ExtremePovertyCount={extremePovertyPercentage(data)}
           billionaries={billionaires}

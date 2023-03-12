@@ -14,3 +14,4 @@ export { default as extremePovertyCounter } from './extremePovertyCounter';
 export { default as useDataState } from './useDataState';
 export { default as getData } from './getData';
 export { default as getBillionaires } from './getBillionaires';
+export {default as giveToThePoor2} from "./giveToThePoor2";
