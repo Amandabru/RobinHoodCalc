@@ -1,9 +1,9 @@
-import React, { useEffect } from 'react';
-import AreaChartD3 from './Chart/AreaChartD3';
-import Taxes from './Taxes/Taxes';
-import './home.css';
-import Switch from './Switch/Switch';
-import Introduction from './Introduction/Introduction';
+import React, { useEffect } from "react";
+import AreaChartD3 from "./Chart/AreaChartD3";
+import Taxes from "./Taxes/Taxes";
+import "./home.css";
+import Switch from "./Switch/Switch";
+import Introduction from "./Introduction/Introduction";
 import {
   updateTaxes,
   movingAverage,
@@ -18,31 +18,31 @@ import {
   useDataState,
   getData,
   getBillionaires,
-} from './Utils/index';
+} from "./Utils/index";
 
 const dataUrl =
-  'https://gist.githubusercontent.com/GusAxelsson/f3818ba7dba4888ac0109dcf9eb473c2/raw/d0c08c5b9f9db727474f3d4208e7a9164d989aab/800_bracket_incomedata.csv';
+  "https://gist.githubusercontent.com/GusAxelsson/f3818ba7dba4888ac0109dcf9eb473c2/raw/d0c08c5b9f9db727474f3d4208e7a9164d989aab/800_bracket_incomedata.csv";
 
 // 80 datapoints. https://gist.githubusercontent.com/Amandabru/00e96eaa56143e6499d1c651bac03aa8/raw/ccbd3e8c9dec23b78482dd47994d8faa49a1b96d/GapminderData.csv
 // 800 datapoints. https://gist.githubusercontent.com/GusAxelsson/f3818ba7dba4888ac0109dcf9eb473c2/raw/d0c08c5b9f9db727474f3d4208e7a9164d989aab/800_bracket_incomedata.csv
 
 const billionairesUrl =
-  'https://gist.githubusercontent.com/Amandabru/791125eedbe23167f74f20b2739a53be/raw/203d2e923bffaef26d10a7f81da92337f59ab57b/billionairesData.csv';
+  "https://gist.githubusercontent.com/hannaalmqvist/d890f99df8d37ad9b0b215a44f02a38f/raw/4cbda13d0d92ab6d2bb476c4566f83fe23585ab5/billionairesData.csv";
 
 const Home = () => {
-  const [data, setData] = useDataState(null, 'data');
-  const [taxes, setTaxes] = useDataState(setDefaultTax(), 'taxes');
-  const [defaultData, setDefaultData] = useDataState(null, 'defaultData');
-  const [billionaires, setBillionaires] = useDataState(null, 'billionaires');
+  const [data, setData] = useDataState(null, "data");
+  const [taxes, setTaxes] = useDataState(setDefaultTax(), "taxes");
+  const [defaultData, setDefaultData] = useDataState(null, "defaultData");
+  const [billionaires, setBillionaires] = useDataState(null, "billionaires");
   const [defaultBillionaires, setDefaultBillionaires] = useDataState(
     null,
-    'defaultBillionaires'
+    "defaultBillionaires"
   );
-  const [toggleState, setToggleState] = useDataState(false, 'toggleState');
-  const [collectedMoney, setCollectedMoney] = useDataState(0, 'collectedMoney');
+  const [toggleState, setToggleState] = useDataState(false, "toggleState");
+  const [collectedMoney, setCollectedMoney] = useDataState(0, "collectedMoney");
   const [selectedBillionaires, setSelectedBillionaires] = useDataState(
     [],
-    'selectedBillionaires'
+    "selectedBillionaires"
   );
 
   const updateData = () => {
@@ -60,7 +60,7 @@ const Home = () => {
   };
 
   useEffect(() => {
-    if (window.sessionStorage.getItem('data') == 'null') {
+    if (window.sessionStorage.getItem("data") == "null") {
       getData(dataUrl).then((data) => {
         setData(data);
         setDefaultData(data);
@@ -83,8 +83,8 @@ const Home = () => {
   }
 
   return (
-    <div className='taxTheRichContainer'>
-      <div className='leftSide'>
+    <div className="taxTheRichContainer">
+      <div className="leftSide">
         <Introduction
           data={data}
           defaultData={defaultData}
@@ -118,19 +118,19 @@ const Home = () => {
           wealthToggle={toggleState}
         />
       </div>
-      <div className='rightSide'>
-      <Taxes
-        onTaxChange={(taxBracketNr, newTax) =>
-          setTaxes(updateTaxes(taxBracketNr, taxes, newTax))
-        }
-        clearAllTaxes={() => setTaxes(setDefaultTax())}
-        taxes={taxes}
-        billionaires={billionaires}
-        selectedBillionaires={selectedBillionaires}
-        setSelectedBillionaires={(billionaires) => {
-          setSelectedBillionaires(billionaires);
-        }}
-      />
+      <div className="rightSide">
+        <Taxes
+          onTaxChange={(taxBracketNr, newTax) =>
+            setTaxes(updateTaxes(taxBracketNr, taxes, newTax))
+          }
+          clearAllTaxes={() => setTaxes(setDefaultTax())}
+          taxes={taxes}
+          billionaires={billionaires}
+          selectedBillionaires={selectedBillionaires}
+          setSelectedBillionaires={(billionaires) => {
+            setSelectedBillionaires(billionaires);
+          }}
+        />
       </div>
     </div>
   );
