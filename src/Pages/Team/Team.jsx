@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import "./team.css";
 import { IoIosMail } from "react-icons/io";
 import { BsLinkedin } from "react-icons/bs";
@@ -81,7 +81,9 @@ function Team() {
 
   const topMembers = teamMembers.slice(0, 3);
   const bottomMembers = teamMembers.slice(3, 5);
-
+  useEffect(() => {
+    window.scrollTo(0, 0)
+    }, [])
   return (
     <div className="teamContainer">
       <Fade top delay={200} distance={'15%'} force={true}>

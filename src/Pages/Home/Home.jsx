@@ -71,6 +71,7 @@ const Home = () => {
   };
 
   useEffect(() => {
+    window.scrollTo(0, 0)
     if (window.sessionStorage.getItem("data") === "null") {
       getData(dataUrl).then((data) => {
         setData(data);

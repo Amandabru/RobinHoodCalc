@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect}from "react";
 import "./howToUse.css";
 import taxLadder from "../../Images/taxladder.png";
 import levels from "../../Images/levels.png";
@@ -8,6 +8,9 @@ import dollarSign from "../../Images/dollarSign.png";
 import { Fade } from 'react-reveal';
 
 const HowToUse = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0)
+    }, [])
   return (
     <div className="howToUseContainer">
       <Fade top delay={100} distance ={'30%'} force={true}>

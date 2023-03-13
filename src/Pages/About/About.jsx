@@ -1,8 +1,11 @@
-import React from "react";
+import React, {useEffect} from "react";
 import "./about.css";
 import { Fade } from 'react-reveal';
 
 const About = () => {
+  useEffect(() => {
+  window.scrollTo(0, 0)
+  }, [])
   return (
     <div className="AboutContainer">
       <Fade top delay={200} distance={'15%'} force={true}>
