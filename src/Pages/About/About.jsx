@@ -84,15 +84,14 @@ const About = () => {
       <Fade top delay={500} distance={'15%'} force={true}>
       <h2 className="headerPadding">Calculations</h2>
       <p className="textAbout">
-        This visualization has two different types of redistribution of income,
-        which can be changed . The calculations for the
-        ... visualization simply gives the collected money to the poorest, which
-        results in an accumulated peak when you start to move the sliders. The
-        calculations use a running average in order to smooth out the curve a
-        little. The second calculation is made to prevent such peaks from
-        appearing, and distributes the collected money in such a way that it
+        In this visualization, the user has two options for distributing the money resulting
+        from the taxation of the rich. The user can choose between these two options with the radiobuttons above the chart.
+        The <b>strict distribution</b>strictly gives the collected money to the poorest, which
+        results in an accumulated peak as the people with the lowest income move up the income axis.
+        The alternative <b>smooth distribution</b> is created to prevent such peaks from appearing and distributes the collected money in such a way that it
         goes first and foremost to the poorest, but controls the appearence of
-        the chart, making the curve smoother. For exact calculations, please
+        the chart. For both alternatives, a 4-point running average filter is applied in order
+        to smooth the curve. For exact calculations, please
         visit our{" "}
         <a
           href=" https://github.com/Amandabru/RobinHoodCalc"
