@@ -10,10 +10,10 @@ import { Fade } from 'react-reveal';
 const HowToUse = () => {
   return (
     <div className="howToUseContainer">
-      <Fade top delay={100} distance ={'30%'}>
+      <Fade top delay={100} distance ={'30%'} force={true}>
       <h1 className="title"> How to Use</h1>
       </Fade>
-      <Fade left delay={200} distance ={'30%'}>
+      <Fade left delay={200} distance ={'30%'} force={true}>
       <div className="leftSideInfo">
         <img
           src={taxLadder}
@@ -32,7 +32,7 @@ const HowToUse = () => {
         </p>
       </div>
       </Fade>
-      <Fade right delay={400} distance ={'30%'}>
+      <Fade right delay={400} distance ={'30%'} force={true}>
       <div className="rightSideInfo">
         <img
           src={marginalTax}
@@ -56,7 +56,7 @@ const HowToUse = () => {
         </p>
       </div>
       </Fade>
-      <Fade left delay={600} distance ={'30%'}>
+      <Fade left delay={600} distance ={'30%'} force={true}>
       <div className="leftSideInfo">
         <img
           src={levels}
@@ -84,7 +84,7 @@ const HowToUse = () => {
         </p>
       </div>
       </Fade>
-      <Fade right delay={600} distance ={'30%'}>
+      <Fade right delay={800} distance ={'30%'} force={true}>
       <div className="rightSideInfo">
         <img
           src={toggle}
@@ -103,7 +103,7 @@ const HowToUse = () => {
         </p>
       </div>
       </Fade>
-      <Fade left delay={600} distance ={'30%'}>
+      <Fade left delay={1000} distance ={'30%'} force={true}>
       <div className="leftSideInfo">
         <img
           src={dollarSign}

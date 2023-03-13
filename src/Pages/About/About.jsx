@@ -5,10 +5,10 @@ import { Fade } from 'react-reveal';
 const About = () => {
   return (
     <div className="AboutContainer">
-       <Fade top delay={200} distance={'15%'}>
+      <Fade top delay={200} distance={'15%'} force={true}>
       <h1 className="titleAbout"> About</h1>
       </Fade>
-      <Fade top delay={300} distance={'15%'}>
+      <Fade top delay={300} distance={'15%'} force={true}>
       <p className="textAbout">
         The Robin Hood Calculator is an interactive visualization tool. In this
         visualization you can see how income is distributed in the world, and
@@ -31,9 +31,12 @@ const About = () => {
           Gapminder's visualization
         </a>{" "}
         of the world's income distribution.
+        <br></br>
+        <p className="diamondStyle">◆ ◆ ◆</p>
+        
       </p>
       </Fade>
-      <Fade top delay={400} distance={'15%'}>
+      <Fade top delay={400} distance={'15%'} force={true}>
       <h2 className="headerPadding">Data</h2>
       <p className="textAbout">
         The data in the visualization is from datasets assembled by{" "}
@@ -74,9 +77,11 @@ const About = () => {
           here
         </a>
         .
+        <br></br>
+        <p className="diamondStyle">◆ ◆ ◆</p>
       </p>
       </Fade>
-      <Fade top delay={500} distance={'15%'}>
+      <Fade top delay={500} distance={'15%'} force={true}>
       <h2 className="headerPadding">Calculations</h2>
       <p className="textAbout">
         This visualization has two different types of distribution of income,
@@ -97,16 +102,20 @@ const About = () => {
           Github
         </a>{" "}
         for this project.
+        <br></br>
+        <p className="diamondStyle">◆ ◆ ◆</p>
       </p>
       </Fade>
-      <Fade top delay={600} distance={'15%'}>
+      <Fade top delay={600} distance={'15%'} force={true}>
       <h2 className="headerPadding">Tools</h2>
       <p className="textAbout">
         This project is built using React and D3.js. Prototyping was done using
         Figma.
+        <br></br>
+        <p className="diamondStyle">◆ ◆ ◆</p>
       </p>
       </Fade>
-      <Fade top delay={700} distance={'15%'}>
+      <Fade top delay={700} distance={'15%'} force={true}>
       <h2 className="headerPadding">References</h2>
       <p style={{ textAlign: "left" }}>
         [1] Chambers, J. R., Swan, L. K., & Heesacker, M. (2014). Better Off

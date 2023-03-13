@@ -122,7 +122,7 @@ function Team() {
         <div className="bottom-members">
           {bottomMembers.map((member, index) => (
             <span key={index} className="team-member">
-              <Fade top delay={900+300*index} distance={'15%'}>
+              <Fade top delay={900+300*index} distance={'15%'} force={true}>
               <img
                 src={member.image}
                 alt={member.name}

@@ -5,10 +5,6 @@
   text-align: center;
   border-radius: 25px;
   background-color: white;
-  background-repeat: no-repeat;
-  background-size: 80%;
-  background-attachment: fixed;
-  background-position: 120px 10px;
 }
 .titleAbout {
   color: #ffca34;
@@ -41,4 +37,11 @@
 
 .headerPadding {
   padding-bottom: 1%;
+}
+
+.diamondStyle{
+  color: #ffca34;
+  font-size: 110%;
+  text-align: center;
+  padding-top: 2%;
 }

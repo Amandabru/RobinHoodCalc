@@ -358,20 +358,11 @@ const AreaChartD3 = ({
             select(this).moveToFront();
             return "added";
           } else if (selectedBillionaire) {
+            select(this).moveToFront();
             return "deactivated";
           } else return "";
         }
       });
-
-    function animate(circle) {
-      circle
-        .transition()
-        .duration(1000)
-        .attr("r", 13)
-        .transition()
-        .duration(1000)
-        .attr("r", 10);
-    }
 
     // Hover over billionaire
     svg
@@ -418,6 +409,7 @@ const AreaChartD3 = ({
       .attr("y2", h)
       .style("stroke-dasharray", "3, 3")
       .attr("id", "poverty");
+
     svg
       .append("text")
       .attr("x", -380)
@@ -608,7 +600,7 @@ const AreaChartD3 = ({
           .style("opacity", 1)
           .attr("text-anchor", "middle")
           .attr("x", pointer(e)[0])
-          .text(formatNumbers(xScale.invert(pointer(e)[0]).toFixed(1)));
+          .text(formatNumbers(xScale.invert(pointer(e)[0])));
       })
       .on("mouseleave", mouseout);
 
