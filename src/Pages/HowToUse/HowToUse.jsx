@@ -69,7 +69,10 @@ const HowToUse = () => {
           >
             here
           </a>
-          .
+          . When hovering over the income levels, you can see the lowest
+          and highest income for that level, as well as the amount of people
+          that are in that level.
+
         </p>
       </div>
       <div className="rightSideInfo">

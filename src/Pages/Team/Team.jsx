@@ -11,7 +11,7 @@ function Team() {
       linkedin: "https://www.linkedin.com/in/amanda-brundin-bb5479177/",
       role: "Front-end Development",
       description:
-        "Main tasks: ",
+        "",
       image:
         "https://st3.depositphotos.com/6672868/13701/v/600/depositphotos_137014128-stock-illustration-user-profile-icon.jpg",
     },
@@ -19,9 +19,9 @@ function Team() {
       name: "Gustav Axelsson",
       mail: "mailto:gustavax@kth.se",
       linkedin: "https://www.linkedin.com/in/gustav-axelsson-985970176/",
-      role: "Front-end Development, Data Processing",
+      role: "Front-end Development | Data Processing",
       description:
-        "Main tasks:",
+        "",
       image:
         "https://st3.depositphotos.com/6672868/13701/v/600/depositphotos_137014128-stock-illustration-user-profile-icon.jpg",
     },
@@ -29,9 +29,9 @@ function Team() {
       name: "Hanna Snarberg",
       mail: "mailto:hannasn@kth.se",
       linkedin: "https://www.linkedin.com/in/hanna-snarberg/",
-      role: "Front-end Development, Data Processing",
+      role: "Front-end Development | Data Processing",
       description:
-        "Main tasks: ",
+        "",
       image:
         "https://st3.depositphotos.com/6672868/13701/v/600/depositphotos_137014128-stock-illustration-user-profile-icon.jpg",
     },
@@ -39,9 +39,9 @@ function Team() {
       name: "Frida Jansson",
       mail: "mailto:frija@kth.se",
       linkedin: "https://www.linkedin.com/in/frida-jansson-8221671a2/",
-      role: "UX, Front-end Development, User Testing",
+      role: "UX | Front-end Development | User Testing",
       description:
-        "Main tasks:",
+        "",
       image:
         "https://st3.depositphotos.com/6672868/13701/v/600/depositphotos_137014128-stock-illustration-user-profile-icon.jpg",
     },
@@ -49,9 +49,9 @@ function Team() {
       name: "Hanna Almqvist",
       mail: "mailto:hannaal@kth.se",
       linkedin: "https://www.linkedin.com/in/hanna-almqvist-9244921a3/",
-      role: "UX, Front-end Development, User Testing",
+      role: "UX | Front-end Development | User Testing",
       description:
-        "Main tasks:",
+        "",
       image:
         "https://st3.depositphotos.com/6672868/13701/v/600/depositphotos_137014128-stock-illustration-user-profile-icon.jpg",
     },

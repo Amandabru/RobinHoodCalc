@@ -325,6 +325,7 @@ const AreaChartD3 = ({
 
     svg
       .selectAll(".circle")
+      .moveToFront()
       .data(billionaries)
       .join("circle")
       .attr("r", 10)
