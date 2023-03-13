@@ -61,7 +61,7 @@ const Home = () => {
   };
 
   useEffect(() => {
-    if (window.sessionStorage.getItem("data") == "null") {
+    if (window.sessionStorage.getItem("data") === "null") {
       getData(dataUrl).then((data) => {
         setData(data);
         setDefaultData(data);

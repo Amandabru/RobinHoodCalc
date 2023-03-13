@@ -325,6 +325,7 @@ const AreaChartD3 = ({
 
     svg
       .selectAll(".circle")
+      .moveToFront()
       .data(billionaries)
       .join("circle")
       .attr("r", 10)
@@ -703,7 +704,7 @@ const AreaChartD3 = ({
               .attr("x", xScale(levels[i]) + 10)
               .attr("dy", 20)
               .text(() => {
-                if (levels[i - 1] == undefined) {
+                if (levels[i - 1] === undefined) {
                   return "Income: " + "<" + formatNumbers(levels[i]) + " $/day";
                 } else {
                   return (
@@ -729,8 +730,8 @@ const AreaChartD3 = ({
               .attr("x", xScale(levels[i]) - 50)
               .attr("dy", 20)
               .text(() => {
-                if (levels[i - 1] == undefined) {
-                  return "Income: " + "<" + formatNumbers(levels[i]) + " $/day";
+                if (levels[i - 1] === undefined) {
+                  return ("Income: ", "<" + formatNumbers(levels[i]) + " $/day");
                 } else {
                   return (
                     "Income: " +

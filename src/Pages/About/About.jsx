@@ -16,7 +16,7 @@ const About = () => {
         <br></br>
         <br></br>
         This project was proposed by an employee at Gapminder with the aim to
-        continue develop their visualization adding the functionality of income
+        continue develop their visualization by adding the functionality of income
         redistribution. This visualization has therefore taken a lot of
         inspiration from{" "}
         <a
