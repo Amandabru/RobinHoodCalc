@@ -26,6 +26,15 @@
   line-height: 20px;
 }
 
+.gapminderlink {
+  text-decoration-color: #ffca34;
+  text-decoration-thickness: 2.5px;
+}
+
+.gapminderlink:visited{
+  color: black;
+}
+
 .gapminderlink:hover {
   color: #ffca34;
 }
@@ -36,7 +45,7 @@
 }
 
 .headerPadding {
-  padding-bottom: 1%;
+  padding-bottom: 2%;
 }
 
 .diamondStyle{
@@ -44,4 +53,5 @@
   font-size: 110%;
   text-align: center;
   padding-top: 2%;
+  letter-spacing: 5px
 }

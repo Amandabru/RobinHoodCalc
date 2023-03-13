@@ -64,6 +64,11 @@
   padding-top: 4%;
 }
 
+.distributionImage{
+  padding-right: 5%;
+  padding-top: 9%;
+}
+
 .clickLink:link {
   color: black;
   background-color: transparent;

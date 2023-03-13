@@ -33,7 +33,15 @@ const About = () => {
         >
           Gapminder's visualization
         </a>{" "}
-        of the world's income distribution.
+        of the world's income distribution. To view the code of this project, feel free to
+        visit our{" "}
+        <a
+          href=" https://github.com/Amandabru/RobinHoodCalc"
+          target="blank"
+          className="gapminderlink"
+        >
+          Github
+        </a>{" "}
         <br></br>
         <p className="diamondStyle">◆ ◆ ◆</p>
         
@@ -85,30 +93,6 @@ const About = () => {
       </p>
       </Fade>
       <Fade top delay={500} distance={'15%'} force={true}>
-      <h2 className="headerPadding">Calculations</h2>
-      <p className="textAbout">
-        In this visualization, the user has two options for distributing the money resulting
-        from the taxation of the rich. The user can choose between these two options with the radiobuttons above the chart.
-        The <b>strict distribution</b>strictly gives the collected money to the poorest, which
-        results in an accumulated peak as the people with the lowest income move up the income axis.
-        The alternative <b>smooth distribution</b> is created to prevent such peaks from appearing and distributes the collected money in such a way that it
-        goes first and foremost to the poorest, but controls the appearence of
-        the chart. For both alternatives, a 4-point running average filter is applied in order
-        to smooth the curve. For exact calculations, please
-        visit our{" "}
-        <a
-          href=" https://github.com/Amandabru/RobinHoodCalc"
-          target="blank"
-          className="gapminderlink"
-        >
-          Github
-        </a>{" "}
-        for this project.
-        <br></br>
-        <p className="diamondStyle">◆ ◆ ◆</p>
-      </p>
-      </Fade>
-      <Fade top delay={600} distance={'15%'} force={true}>
       <h2 className="headerPadding">Tools</h2>
       <p className="textAbout">
         This project is built using React and D3.js. Prototyping was done using
@@ -117,12 +101,13 @@ const About = () => {
         <p className="diamondStyle">◆ ◆ ◆</p>
       </p>
       </Fade>
-      <Fade top delay={700} distance={'15%'} force={true}>
+      <Fade top delay={600} distance={'15%'} force={true}>
       <h2 className="headerPadding">References</h2>
       <p style={{ textAlign: "left" }}>
         [1] Chambers, J. R., Swan, L. K., & Heesacker, M. (2014). Better Off
         Than We Know: Distorted Perceptions of Incomes and Income Inequality in
         America. Psychological Science, 25(2), 613–618.
+        <br></br>
         <br></br>
         [2] Zucman, Gabriel. "Global wealth inequality." Annual Review of
         Economics 11 (2019): 109-138.

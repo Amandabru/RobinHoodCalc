@@ -5,6 +5,7 @@ import levels from "../../Images/levels.png";
 import marginalTax from "../../Images/marginalTax.png";
 import toggle from "../../Images/toggle.png";
 import dollarSign from "../../Images/dollarSign.png";
+import distributionOptions from "../../Images/distributionOptions.png";
 import { Fade } from 'react-reveal';
 
 const HowToUse = () => {
@@ -79,13 +80,39 @@ const HowToUse = () => {
       <Fade right delay={800} distance ={'30%'} force={true}>
       <div className="rightSideInfo">
         <img
+          src={distributionOptions}
+          className="distributionImage"
+          alt={"Distribution Options"}
+          style={{ width: "40%", float: "left" }}
+        ></img>
+        <h2 style={{ float: "right" }}>Distribution</h2>
+        <p className="text" style={{ width: "50%", float: "right" }}>
+        You have two options for distributing the money resulting
+        from the taxation of the rich. The <b>strict distribution </b>strictly gives the collected money to the poorest, which
+        results in an accumulated peak as the people with the lowest income move up the income axis.
+        The alternative <b>smooth distribution</b> also gives money to the poorest first and foremost, but in a way that controls the appearence of
+        the chart. For exact calculations, please
+        visit our{" "}
+        <a
+          href=" https://github.com/Amandabru/RobinHoodCalc"
+          target="blank"
+          className="gapminderlink"
+        >
+          Github
+        </a>{" "}
+        </p>
+      </div>
+      </Fade>
+      <Fade left delay={1000} distance ={'30%'} force={true}>
+      <div className="leftSideInfo">
+      <img
           src={toggle}
           className="toggleImage"
           alt={"Toggle"}
-          style={{ width: "35%", float: "left" }}
+          style={{ width: "35%", float: "right" }}
         ></img>
-        <h2 style={{ float: "right" }}>Toggle Y-Axis</h2>
-        <p className="text" style={{ width: "50%", float: "right" }}>
+        <h2 style={{ float: "left" }}>Toggle Y-Axis</h2>
+        <p className="text" style={{ width: "50%", float: "left" }}>
           Our chart offers two different types of vizualisations of the world's
           income distribution. You can switch between the two vizualisations by
           toggling the title on the y-axis. When <b>Population</b> is toggled,
@@ -95,16 +122,16 @@ const HowToUse = () => {
         </p>
       </div>
       </Fade>
-      <Fade left delay={1000} distance ={'30%'} force={true}>
-      <div className="leftSideInfo">
-        <img
+      <Fade right delay={1200} distance ={'30%'} force={true}>
+      <div className="rightSideInfo">
+      <img
           src={levels}
           className="levelsImage"
           alt={"Income Levels"}
-          style={{ width: "30%", float: "right" }}
+          style={{ width: "30%", float: "left" }}
         ></img>
-        <h2>Income Levels</h2>
-        <p className="text" style={{ width: "50%", float: "left" }}>
+        <h2 style={{ float: "right" }}>Income Levels</h2>
+        <p className="text" style={{ width: "50%", float: "right" }}>
           Below the chart, there are markings which divide the world population
           into 13 different income levels. These levels are based on the income
           levels from Gapminder, and more information about this sectioning can
@@ -119,7 +146,6 @@ const HowToUse = () => {
           . When hovering over the income levels, you can see the lowest
           and highest income for that level, as well as the amount of people
           that are in that level.
-
         </p>
       </div>
       </Fade>
