@@ -46,6 +46,10 @@ const Home = () => {
     [],
     "selectedBillionaires"
   );
+  const [distributionOption, setDistributionOption] = useDataState(
+    'Avoid Population Accumulation',
+    "distributionOption"
+  );
 
   const updateData = () => {
     var [collectedTax, updatedData, newBillionaires] = collectFromTheRich(
@@ -56,7 +60,12 @@ const Home = () => {
       selectedBillionaires
     );
     setCollectedMoney(collectedTax);
-    updatedData = giveToThePoor2(updatedData, collectedTax);
+    if (distributionOption==='Avoid Population Accumulation'){
+      updatedData = giveToThePoor2(updatedData, collectedTax);
+    }
+    else {
+      updatedData = giveToThePoor(updatedData, collectedTax);
+    }
     setData(updatedData);
     setBillionaires(newBillionaires);
   };
@@ -78,7 +87,7 @@ const Home = () => {
     if (data) {
       updateData();
     }
-  }, [taxes, selectedBillionaires, toggleState]);
+  }, [taxes, selectedBillionaires, toggleState, distributionOption]);
 
   if (!data || !billionaires || !defaultData || !defaultBillionaires) {
     return <div>Loading</div>;
@@ -92,6 +101,8 @@ const Home = () => {
           data={data}
           defaultData={defaultData}
           totalCollectedMoney={collectedMoney}
+          distributionOption={distributionOption}
+          setDistributionOption={(option)=>setDistributionOption(option)}
         />
         </Fade>
         <Fade top delay={100} distance ={'70%'}>

@@ -21,7 +21,7 @@ function Team() {
       name: "Amanda Brundin",
       mail: "mailto:abrundin@kth.se",
       linkedin: "https://www.linkedin.com/in/amanda-brundin-bb5479177/",
-      role: "Front-end Development",
+      role: "Front-End Development",
       description:
         "",
       image:
@@ -33,7 +33,7 @@ function Team() {
       name: "Gustav Axelsson",
       mail: "mailto:gustavax@kth.se",
       linkedin: "https://www.linkedin.com/in/gustav-axelsson-985970176/",
-      role: "Front-end Development | Data Processing",
+      role: "Front-End Development | Data Processing",
       description:
         "",
       image:
@@ -45,7 +45,7 @@ function Team() {
       name: "Hanna Snarberg",
       mail: "mailto:hannasn@kth.se",
       linkedin: "https://www.linkedin.com/in/hanna-snarberg/",
-      role: "Front-end Development | Data Processing",
+      role: "Front-End Development | Data Processing",
       description:
         "",
       image:
@@ -57,7 +57,7 @@ function Team() {
       name: "Frida Jansson",
       mail: "mailto:frija@kth.se",
       linkedin: "https://www.linkedin.com/in/frida-jansson-8221671a2/",
-      role: "UX | Front-end Development | User Testing",
+      role: "UX | Front-End Development | User Testing",
       description:
         "",
       image:
@@ -69,7 +69,7 @@ function Team() {
       name: "Hanna Almqvist",
       mail: "mailto:hannaal@kth.se",
       linkedin: "https://www.linkedin.com/in/hanna-almqvist-9244921a3/",
-      role: "UX | Front-end Development | User Testing",
+      role: "UX | Front-End Development | User Testing",
       description:
         "",
       image:

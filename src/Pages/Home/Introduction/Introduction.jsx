@@ -1,12 +1,14 @@
 import React from "react";
 import "./introduction.css";
+import RadioButton from "./RadioButton"
 import {
   extremePovertyCounter,
   formatNumbers,
   extremePovertyPercentage,
 } from "../Utils/index";
 
-const Introduction = ({ data, defaultData, totalCollectedMoney }) => {
+const Introduction = ({ data, defaultData, totalCollectedMoney, distributionOption, setDistributionOption}) => {
+  
   return (
     <div className="introduction">
       Welcome to the <b>Robin Hood Calculator!</b> Here you can explore how the
@@ -14,6 +16,9 @@ const Introduction = ({ data, defaultData, totalCollectedMoney }) => {
       rich and give to the poor. Interact with the Robin Hood Taxation System to
       the right and the shart to see what happens!
       <br></br>
+      <br></br>
+      <div>How do you want to redistribute?</div>
+      <RadioButton selectedOption={distributionOption} onChange={(option)=> setDistributionOption(option)}/>
       <br></br>
       <div className="displayInfo">
         You have now brought{" "}
