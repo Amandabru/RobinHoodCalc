@@ -79,10 +79,6 @@ function Team() {
     },
   ];
 
-  function hover(img){
-    img.src = teamMembers[0].spexImage;
-  }
-
   const topMembers = teamMembers.slice(0, 3);
   const bottomMembers = teamMembers.slice(3, 5);
 
