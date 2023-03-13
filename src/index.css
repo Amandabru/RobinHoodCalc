@@ -7,3 +7,7 @@ body {
   font-family: 'Cairo', sans-serif;
   line-height: 120%;
 }
+
+.react-reveal{
+  animation-fill-mode: backwards !important;
+}

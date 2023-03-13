@@ -123,13 +123,13 @@
 .info .infoText {
   position: absolute;
   left: -140px;
+  color: gray;
   top: 30px;
   padding: 10px;
   visibility: hidden;
   width: 150px;
   background-color: white;
   border-radius: 3px;
-  color: black;
   text-align: center;
   box-shadow: rgba(0, 0, 0, 0.429) 0px 1px 4px;
   z-index: 2;
