@@ -5,11 +5,15 @@ import levels from "../../Images/levels.png";
 import marginalTax from "../../Images/marginalTax.png";
 import toggle from "../../Images/toggle.png";
 import dollarSign from "../../Images/dollarSign.png";
+import { Fade } from 'react-reveal';
 
 const HowToUse = () => {
   return (
     <div className="howToUseContainer">
+      <Fade top delay={100} distance ={'30%'}>
       <h1 className="title"> How to Use</h1>
+      </Fade>
+      <Fade left delay={200} distance ={'30%'}>
       <div className="leftSideInfo">
         <img
           src={taxLadder}
@@ -27,6 +31,8 @@ const HowToUse = () => {
           100k-1M & ≥ 1M $/day.
         </p>
       </div>
+      </Fade>
+      <Fade right delay={400} distance ={'30%'}>
       <div className="rightSideInfo">
         <img
           src={marginalTax}
@@ -49,6 +55,8 @@ const HowToUse = () => {
           bracket.
         </p>
       </div>
+      </Fade>
+      <Fade left delay={600} distance ={'30%'}>
       <div className="leftSideInfo">
         <img
           src={levels}
@@ -75,6 +83,8 @@ const HowToUse = () => {
 
         </p>
       </div>
+      </Fade>
+      <Fade right delay={600} distance ={'30%'}>
       <div className="rightSideInfo">
         <img
           src={toggle}
@@ -92,6 +102,8 @@ const HowToUse = () => {
           amount of money (in percentage) that lies within each income level.
         </p>
       </div>
+      </Fade>
+      <Fade left delay={600} distance ={'30%'}>
       <div className="leftSideInfo">
         <img
           src={dollarSign}
@@ -107,6 +119,7 @@ const HowToUse = () => {
           they move down the x-axis and how it would affect their daily income.
         </p>
       </div>
+      </Fade>
       <h2>Video Demonstration</h2>
     </div>
   );

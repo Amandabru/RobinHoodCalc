@@ -13,6 +13,7 @@ import GSpexHatt from "../../Images/ProfilGulHatt/GSpexHatt.png";
 import MSpexHatt from "../../Images/ProfilGulHatt/MSpexHatt.png";
 import SSpexHatt from "../../Images/ProfilGulHatt/SSpexHatt.png";
 import QSpexHatt from "../../Images/ProfilGulHatt/QSpexHatt.png";
+import { Fade } from 'react-reveal';
 
 function Team() {
   const teamMembers = [
@@ -87,11 +88,15 @@ function Team() {
 
   return (
     <div className="teamContainer">
+      <Fade top delay={200} distance={'15%'}>
       <h1 className="titleTeam"> The Team </h1>{" "}
+      </Fade>
       <div className="team">
         <div className="top-members">
+        
           {topMembers.map((member, index) => (
             <span key={index} className="team-member">
+              <Fade top delay={100+300*index} distance={'15%'}>
               <img
                 src={member.image}
                 alt={member.name}
@@ -110,12 +115,14 @@ function Team() {
                   <BsLinkedin className="icon-linkedin"> </BsLinkedin>
                 </a>
               </span>
+              </Fade>
             </span>
           ))}
         </div>
         <div className="bottom-members">
           {bottomMembers.map((member, index) => (
             <span key={index} className="team-member">
+              <Fade top delay={900+300*index} distance={'15%'}>
               <img
                 src={member.image}
                 alt={member.name}
@@ -134,6 +141,7 @@ function Team() {
                   <BsLinkedin className="icon-linkedin"> </BsLinkedin>
                 </a>
               </span>
+              </Fade>
             </span>
           ))}
         </div>

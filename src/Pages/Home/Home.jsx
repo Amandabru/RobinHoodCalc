@@ -4,6 +4,7 @@ import Taxes from "./Taxes/Taxes";
 import "./home.css";
 import Switch from "./Switch/Switch";
 import Introduction from "./Introduction/Introduction";
+import { Fade } from 'react-reveal';
 import {
   updateTaxes,
   movingAverage,
@@ -86,12 +87,17 @@ const Home = () => {
   return (
     <div className="taxTheRichContainer">
       <div className="leftSide">
+      <Fade left delay={600} distance ={'20%'}>
         <Introduction
           data={data}
           defaultData={defaultData}
           totalCollectedMoney={collectedMoney}
         />
+        </Fade>
+        <Fade top delay={100} distance ={'70%'}>
         <Switch toggled={toggleState} onClick={setToggleState} />
+        </Fade>
+        <Fade top delay={100} distance ={'5%'}>
         <AreaChartD3
           data={[
             movingAverage(4, makePercentage(data)),
@@ -118,8 +124,10 @@ const Home = () => {
           taxValue={taxes}
           wealthToggle={toggleState}
         />
+        </Fade>
       </div>
       <div className="rightSide">
+      <Fade right delay={600} distance ={'20%'}>
         <Taxes
           onTaxChange={(taxBracketNr, newTax) =>
             setTaxes(updateTaxes(taxBracketNr, taxes, newTax))
@@ -132,6 +140,7 @@ const Home = () => {
             setSelectedBillionaires(billionaires);
           }}
         />
+        </Fade>
       </div>
     </div>
   );
