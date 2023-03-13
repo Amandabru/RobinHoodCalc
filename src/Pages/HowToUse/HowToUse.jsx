@@ -38,7 +38,7 @@ const HowToUse = () => {
           src={marginalTax}
           alt={"Marginal Tax"}
           className="marginalTaxImage"
-          style={{ width: "14%", float: "left" }}
+          style={{ width: "12%", float: "left" }}
         ></img>
         <h2 style={{ float: "right" }}>What is Marginal Tax? </h2>
         <p className="text" style={{ width: "50%", float: "right" }}>
@@ -57,6 +57,42 @@ const HowToUse = () => {
       </div>
       </Fade>
       <Fade left delay={600} distance ={'30%'} force={true}>
+      <div className="leftSideInfo">
+        <img
+          src={dollarSign}
+          className="dollarImage"
+          alt={"Dollar"}
+          style={{ width: "17%", float: "right" }}
+        ></img>
+        <h2>Tax Billionaires</h2>
+        <p className="text" style={{ width: "50%", float: "left" }}>
+          You can also tax the ten richest people in the world and see how a
+          specific percentage of all of their daily income would affect the
+          total income distribution. When taxing a billionaire, you can see how
+          they move down the x-axis and how it would affect their daily income.
+        </p>
+      </div>
+      </Fade>
+      <Fade right delay={800} distance ={'30%'} force={true}>
+      <div className="rightSideInfo">
+        <img
+          src={toggle}
+          className="toggleImage"
+          alt={"Toggle"}
+          style={{ width: "35%", float: "left" }}
+        ></img>
+        <h2 style={{ float: "right" }}>Toggle Y-Axis</h2>
+        <p className="text" style={{ width: "50%", float: "right" }}>
+          Our chart offers two different types of vizualisations of the world's
+          income distribution. You can switch between the two vizualisations by
+          toggling the title on the y-axis. When <b>Population</b> is toggled,
+          the chart plots the percentage of world population against income per
+          day. When <b>Income Accumulation</b> is toggled, the chart shows the
+          amount of money (in percentage) that lies within each income level.
+        </p>
+      </div>
+      </Fade>
+      <Fade left delay={1000} distance ={'30%'} force={true}>
       <div className="leftSideInfo">
         <img
           src={levels}
@@ -84,43 +120,7 @@ const HowToUse = () => {
         </p>
       </div>
       </Fade>
-      <Fade right delay={800} distance ={'30%'} force={true}>
-      <div className="rightSideInfo">
-        <img
-          src={toggle}
-          className="toggleImage"
-          alt={"Toggle"}
-          style={{ width: "35%", float: "left" }}
-        ></img>
-        <h2 style={{ float: "right" }}>Toggle Y-Axis</h2>
-        <p className="text" style={{ width: "50%", float: "right" }}>
-          Our chart offers two different types of vizualisations of the world's
-          income distribution. You can switch between the two vizualisations by
-          toggling the title on the y-axis. When <b>Population</b> is toggled,
-          the chart plots the percentage of world population against income per
-          day. When <b>Income Accumulation</b> is toggled, the chart shows the
-          amount of money (in percentage) that lies within each income level.
-        </p>
-      </div>
-      </Fade>
-      <Fade left delay={1000} distance ={'30%'} force={true}>
-      <div className="leftSideInfo">
-        <img
-          src={dollarSign}
-          className="dollarImage"
-          alt={"Dollar"}
-          style={{ width: "17%", float: "right" }}
-        ></img>
-        <h2>Tax Billionaires</h2>
-        <p className="text" style={{ width: "50%", float: "left" }}>
-          You can also tax the ten richest people in the world and see how a
-          specific percentage of all of their daily income would affect the
-          total income distribution. When taxing a billionaire, you can see how
-          they move down the x-axis and how it would affect their daily income.
-        </p>
-      </div>
-      </Fade>
-      <h2>Video Demonstration</h2>
+      <h2></h2>
     </div>
   );
 };

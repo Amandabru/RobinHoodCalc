@@ -84,7 +84,7 @@ function Team() {
 
   return (
     <div className="teamContainer">
-      <Fade top delay={200} distance={'15%'}>
+      <Fade top delay={200} distance={'15%'} force={true}>
       <h1 className="titleTeam"> The Team </h1>{" "}
       </Fade>
       <div className="team">

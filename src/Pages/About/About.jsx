@@ -84,8 +84,8 @@ const About = () => {
       <Fade top delay={500} distance={'15%'} force={true}>
       <h2 className="headerPadding">Calculations</h2>
       <p className="textAbout">
-        This visualization has two different types of distribution of income,
-        which can be changed with the toggle on top. The calculations for the
+        This visualization has two different types of redistribution of income,
+        which can be changed . The calculations for the
         ... visualization simply gives the collected money to the poorest, which
         results in an accumulated peak when you start to move the sliders. The
         calculations use a running average in order to smooth out the curve a
