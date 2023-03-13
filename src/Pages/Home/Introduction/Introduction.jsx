@@ -1,14 +1,19 @@
 import React from "react";
 import "./introduction.css";
-import RadioButton from "./RadioButton"
+import RadioButton from "./RadioButton";
 import {
   extremePovertyCounter,
   formatNumbers,
   extremePovertyPercentage,
 } from "../Utils/index";
 
-const Introduction = ({ data, defaultData, totalCollectedMoney, distributionOption, setDistributionOption}) => {
-  
+const Introduction = ({
+  data,
+  defaultData,
+  totalCollectedMoney,
+  distributionOption,
+  setDistributionOption,
+}) => {
   return (
     <div className="introduction">
       Welcome to the <b>Robin Hood Calculator!</b> Here you can explore how the
@@ -18,13 +23,17 @@ const Introduction = ({ data, defaultData, totalCollectedMoney, distributionOpti
       <br></br>
       <br></br>
       <div>How do you want to redistribute?</div>
-      <RadioButton selectedOption={distributionOption} onChange={(option)=> setDistributionOption(option)}/>
+      <RadioButton
+        selectedOption={distributionOption}
+        onChange={(option) => setDistributionOption(option)}
+      />
       <br></br>
       <div className="displayInfo">
         You have now brought{" "}
         <b>
           {extremePovertyPercentage(data) === "0%"
-            ? "ALL"
+            ? "ALL " +
+              extremePovertyCounter(defaultData).toLocaleString("en-US")
             : (
                 extremePovertyCounter(defaultData) - extremePovertyCounter(data)
               ).toLocaleString("en-US")}
