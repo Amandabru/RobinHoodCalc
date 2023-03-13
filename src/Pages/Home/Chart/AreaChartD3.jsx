@@ -703,7 +703,7 @@ const AreaChartD3 = ({
               .attr("x", xScale(levels[i]) + 10)
               .attr("dy", 20)
               .text(() => {
-                if (levels[i - 1] == undefined) {
+                if (levels[i - 1] === undefined) {
                   return "Income: " + "<" + formatNumbers(levels[i]) + " $/day";
                 } else {
                   return (
@@ -729,8 +729,8 @@ const AreaChartD3 = ({
               .attr("x", xScale(levels[i]) - 50)
               .attr("dy", 20)
               .text(() => {
-                if (levels[i - 1] == undefined) {
-                  return "Income: " + "<" + formatNumbers(levels[i]) + " $/day";
+                if (levels[i - 1] === undefined) {
+                  return ("Income: ", "<" + formatNumbers(levels[i]) + " $/day");
                 } else {
                   return (
                     "Income: " +
