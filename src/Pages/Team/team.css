@@ -1,5 +1,5 @@
 .teamContainer {
-  padding:6rem;
+  padding: 6rem;
 }
 
 .team {
@@ -25,6 +25,7 @@
   border-radius: 100%;
   margin-bottom: 20px;
   object-fit: cover;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 .team-member-name {
   font-size: 20px;
