@@ -210,7 +210,7 @@ const AreaChartD3 = ({
       .attr("text-anchor", "middle")
       .attr("y", 6)
       .attr("dy", ".75em")
-      .text("Robin Hood tax (%)")
+      .text("Robin Hood Tax (%)")
       .attr("id", "axis");
 
     // Default chart
