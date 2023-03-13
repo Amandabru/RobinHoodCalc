@@ -2,6 +2,17 @@ import React from "react";
 import "./team.css";
 import { IoIosMail } from "react-icons/io";
 import { BsLinkedin } from "react-icons/bs";
+import gustav from "../../Images/ProfilGul/GNormal.png";
+import snaran from "../../Images/ProfilGul/SNormal.png";
+import frida from "../../Images/ProfilGul/FNormal.png";
+import manda from "../../Images/ProfilGul/ANormal.png";
+import qvisten from "../../Images/ProfilGul/QNormal.png";
+//Spexbilder
+import FSpexHatt from "../../Images/ProfilGulHatt/FridaSpexHatt.png";
+import GSpexHatt from "../../Images/ProfilGulHatt/GSpexHatt.png";
+import MSpexHatt from "../../Images/ProfilGulHatt/MSpexHatt.png";
+import SSpexHatt from "../../Images/ProfilGulHatt/SSpexHatt.png";
+import QSpexHatt from "../../Images/ProfilGulHatt/QSpexHatt.png";
 
 function Team() {
   const teamMembers = [
@@ -13,7 +24,9 @@ function Team() {
       description:
         "Main tasks: ",
       image:
-        "https://st3.depositphotos.com/6672868/13701/v/600/depositphotos_137014128-stock-illustration-user-profile-icon.jpg",
+        manda,
+      spexImage:
+        MSpexHatt,
     },
     {
       name: "Gustav Axelsson",
@@ -23,7 +36,9 @@ function Team() {
       description:
         "Main tasks:",
       image:
-        "https://st3.depositphotos.com/6672868/13701/v/600/depositphotos_137014128-stock-illustration-user-profile-icon.jpg",
+        gustav,
+      spexImage:
+        GSpexHatt,
     },
     {
       name: "Hanna Snarberg",
@@ -33,7 +48,9 @@ function Team() {
       description:
         "Main tasks: ",
       image:
-        "https://st3.depositphotos.com/6672868/13701/v/600/depositphotos_137014128-stock-illustration-user-profile-icon.jpg",
+        snaran,
+      spexImage:
+        SSpexHatt,
     },
     {
       name: "Frida Jansson",
@@ -43,7 +60,9 @@ function Team() {
       description:
         "Main tasks:",
       image:
-        "https://st3.depositphotos.com/6672868/13701/v/600/depositphotos_137014128-stock-illustration-user-profile-icon.jpg",
+        frida,
+      spexImage:
+        FSpexHatt,
     },
     {
       name: "Hanna Almqvist",
@@ -53,9 +72,15 @@ function Team() {
       description:
         "Main tasks:",
       image:
-        "https://st3.depositphotos.com/6672868/13701/v/600/depositphotos_137014128-stock-illustration-user-profile-icon.jpg",
+        qvisten,
+      spexImage:
+        QSpexHatt,
     },
   ];
+
+  function hover(img){
+    img.src = teamMembers[0].spexImage;
+  }
 
   const topMembers = teamMembers.slice(0, 3);
   const bottomMembers = teamMembers.slice(3, 5);
@@ -71,6 +96,8 @@ function Team() {
                 src={member.image}
                 alt={member.name}
                 className="team-member-image"
+                onMouseOver={e => (e.currentTarget.src = member.spexImage)}
+                onMouseLeave={e => (e.currentTarget.src = member.image)}
               />
               <h3 className="team-member-name">{member.name}</h3>
               <h4 className="team-member-role">{member.role}</h4>
@@ -93,6 +120,8 @@ function Team() {
                 src={member.image}
                 alt={member.name}
                 className="team-member-image"
+                onMouseOver={e => (e.currentTarget.src = member.spexImage)}
+                onMouseLeave={e => (e.currentTarget.src = member.image)}
               />
               <h3 className="team-member-name">{member.name}</h3>
               <h4 className="team-member-role">{member.role}</h4>
