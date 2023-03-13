@@ -12,11 +12,11 @@ const RadioButton = ({selectedOption, onChange}) => {
 
   return (
     <div className="radioButtonsContainer">
-    <label className="radioButtonContainer">Avoid Population Accumulation
+    <label className="radioButtonContainer">Smooth Distribution
         <input type="checkbox" value={'Avoid Population Accumulation'} onChange={(e) => handleOptionChange(e)} checked={option === 'Avoid Population Accumulation'} />
         <span className="checkmark"></span>
     </label>
-    <label className="radioButtonContainer">To Lowest Paid Only
+    <label className="radioButtonContainer">Strict Distribution
         <input type="checkbox" value={'To Lowest Paid Only'} onChange={(e) => handleOptionChange(e)} checked={option === 'To Lowest Paid Only'}/>
         <span className="checkmark"></span>
     </label>

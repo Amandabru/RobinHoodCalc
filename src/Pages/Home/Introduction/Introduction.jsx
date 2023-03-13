@@ -22,7 +22,7 @@ const Introduction = ({
       the right and the shart to see what happens!
       <br></br>
       <br></br>
-      <div>How do you want to redistribute?</div>
+      <b>How do you want to redistribute?</b>
       <RadioButton
         selectedOption={distributionOption}
         onChange={(option) => setDistributionOption(option)}

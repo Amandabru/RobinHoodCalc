@@ -587,7 +587,7 @@ const AreaChartD3 = ({
           .attr("x", pointer(e)[0] - 8)
           .text(() => {
             if (!wealthToggle) {
-              return text[2] + " ppl";
+              return text[2] + " people";
             } else {
               return text[2] + " $";
             }
@@ -598,7 +598,7 @@ const AreaChartD3 = ({
           .attr("x", pointer(e)[0] + 8)
           .text(() => {
             if (!wealthToggle) {
-              return text[3] + " ppl";
+              return text[3] + " people";
             } else {
               return text[3] + " $";
             }
