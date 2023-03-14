@@ -65,7 +65,7 @@ const AreaChartD3 = ({
 
   const svgRef = useRef();
   const w = 600;
-  const h = 400;
+  const h = 350;
   const imag = [
     ballmer,
     peauch,
@@ -110,7 +110,7 @@ const AreaChartD3 = ({
   useEffect(() => {
     const svg = select(svgRef.current)
       .attr("preserveAspectRatio", "xMinYMin meet")
-      .attr("viewBox", "0 0 600 400")
+      .attr("viewBox", "0 0 600 350")
       .attr("width", "100%")
       .attr("height", "100%")
       .style("overflow", "visible")
@@ -340,7 +340,7 @@ const AreaChartD3 = ({
             counter += 1;
           }
         }
-        return yScaleLeft(maxPop / 25 + counter * (maxPop / 20));
+        return yScaleLeft(maxPop / 25 + counter * (maxPop / 17));
       })
       .attr("fill", function (d) {
         return "url(#" + d.billionaire.toLowerCase().replace(/ /g, "-") + ")";
@@ -412,7 +412,7 @@ const AreaChartD3 = ({
 
     svg
       .append("text")
-      .attr("x", -380)
+      .attr("x", -340)
       .attr("y", xScale(1.5))
       .attr("font-size", 13)
       .attr("fill", "gray")
@@ -521,7 +521,7 @@ const AreaChartD3 = ({
       .style("pointer-events", "all")
       .attr("width", w)
       .attr("height", 35)
-      .attr("y", 395)
+      .attr("y", 350)
       .style("cursor", "none")
       .on("mouseover", (e) => {
         selectAll("#povertyText").style("opacity", 0);
@@ -600,6 +600,7 @@ const AreaChartD3 = ({
           .style("opacity", 1)
           .attr("text-anchor", "middle")
           .attr("x", pointer(e)[0])
+          .attr("y", 380)
           .text(formatNumbers(xScale.invert(pointer(e)[0])));
       })
       .on("mouseleave", mouseout);
