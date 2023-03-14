@@ -27,12 +27,11 @@ const HowToUse = () => {
           ></img>
           <h2>The Robin Hood Taxation System</h2>
           <p className='text' style={{ width: '50%', float: 'left' }}>
-            The Robin Hood Taxation System allows you to tax the world’s richest
-            and watch as the money moves directly to the people at the lowest
-            income levels. It is a progressive taxation system where you control
-            the <b>marginal rate of taxation</b> for five different income
-            brackets. The five income brackets are: 100-1k, 1k-10k, 10k-100k,
-            100k-1M & ≥ 1M $/day.
+            The Robin Hood Taxation System enables you to tax the world's
+            richest and directly redistribute to those with the lowest incomes.
+            It is a progressive tax system where you set the{' '}
+            <b>marginal tax rate</b> for five income brackets: $100-$1k,
+            $1k-$10k, $10k-$100k, $100k-$1M, and $1M or more per day.
           </p>
         </div>
       </Fade>
@@ -46,16 +45,16 @@ const HowToUse = () => {
           ></img>
           <h2 style={{ float: 'right' }}>What is Marginal Tax? </h2>
           <p className='text' style={{ width: '50%', float: 'right' }}>
-            Marginal tax is the amount of tax that applies to each additional
+            The marginal tax rate is the tax that applies to each additional
             level of income. In our progressive tax system, people pay more in
-            taxes the higher their income is, and the brackets decides how much
+            taxes the higher their income is, and the brackets decide how much
             each share of income should be taxed.
             <br></br>
             <br></br>
             <b>For example</b>, if the tax rate is set to 10% for incomes
-            between 100-1k $/day, and 15% for incomes between 1k-10k $/day, then
-            a person with an income of 8k $/day will pay 10% in taxes on income
-            up to 1k $/day and 15% on the remaining 7k $/day that falls into the
+            between 100-1k $/day, and 15% for incomes between 1k-10k $/day, a
+            person with an income of 8k $/day will pay 10% in taxes on income up
+            to 1k $/day and 15% on the remaining 7k $/day that falls into the
             15% bracket.
           </p>
         </div>
@@ -68,13 +67,12 @@ const HowToUse = () => {
             alt={'Dollar'}
             style={{ width: '17%', float: 'right' }}
           ></img>
-          <h2>Tax Billionaires</h2>
+          <h2>Tax The 10 Richest</h2>
           <p className='text' style={{ width: '50%', float: 'left' }}>
-            You can also tax the ten richest people in the world and see how a
-            specific percentage of all of their daily income would affect the
-            total income distribution. When taxing a billionaire, you can see
-            how they move down the x-axis and how it would affect their daily
-            income.
+            To further redistribute income, you can impose additional taxes on
+            the top 10 richest individuals in the world. This tax applies to the
+            remaining income after all other Robin Hood taxes have been
+            implemented.
           </p>
         </div>
       </Fade>
@@ -89,12 +87,14 @@ const HowToUse = () => {
           <h2 style={{ float: 'right' }}>Distribution</h2>
           <p className='text' style={{ width: '50%', float: 'right' }}>
             You have two options for distributing the money resulting from the
-            taxation of the rich. The <b>strict distribution </b>strictly gives
-            the collected money to the poorest, which results in an accumulated
-            peak as the people with the lowest income move up the income axis.
-            The alternative <b>smooth distribution</b> also gives money to the
-            poorest first and foremost, but in a way that controls the
-            appearence of the chart. For exact calculations, please visit our{' '}
+            taxation of the rich. The <b>strict distribution </b> strictly gives
+            the collected money to the people with the current lowest income,
+            which results in an accumulated peak as they level with the people
+            of higher incomes. The alternative <b>smooth distribution</b> also
+            solely gives money to people with the current lowest income, but to
+            avoid an accumulated peak at the current lowest income level, some
+            may receive more than others. For exact calculations, please visit
+            our{' '}
             <a
               href=' https://github.com/Amandabru/RobinHoodCalc'
               target='blank'
@@ -115,13 +115,13 @@ const HowToUse = () => {
           ></img>
           <h2 style={{ float: 'left' }}>Toggle Y-Axis</h2>
           <p className='text' style={{ width: '50%', float: 'left' }}>
-            Our chart offers two different types of vizualisations of the
-            world's income distribution. You can switch between the two
-            vizualisations by toggling the title on the y-axis. When{' '}
-            <b>Population</b> is toggled, the chart plots the percentage of
-            world population against income per day. When{' '}
-            <b>Income Accumulation</b> is toggled, the chart shows the amount of
-            money (in percentage) that lies within each income level.
+            Our chart offers ways of visualizing the world's income
+            distribution. You can switch between them by toggling the title on
+            the y-axis. When <b>Population</b> is toggled, the chart plots the
+            percentage of world population against income per day. When{' '}
+            <b>Income Accumulation</b> is toggled, the chart shows the
+            percentages of the world's total income that lie within different
+            ranges of income.
           </p>
         </div>
       </Fade>
@@ -135,9 +135,9 @@ const HowToUse = () => {
           ></img>
           <h2 style={{ float: 'right' }}>Income Levels</h2>
           <p className='text' style={{ width: '50%', float: 'right' }}>
-            Below the chart, there are markings which divide the world
-            population into 13 different income levels. These levels are based
-            on the income levels from Gapminder, and more information about this
+            Below the chart, there are markings that divide the world population
+            into 13 different income levels. These levels are based on the
+            income levels from Gapminder, and more information about this
             sectioning can be found{' '}
             <a
               href='https://www.gapminder.org/fw/income-levels/ '
