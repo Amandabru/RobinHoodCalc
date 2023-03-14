@@ -1,11 +1,10 @@
 .howToUseContainer {
   width: 60%;
   margin: auto;
-  padding:6rem;
+  padding: 6rem;
   border-radius: 25px;
   background-color: white;
   row-gap: 5%;
- 
 }
 
 .title {
@@ -27,46 +26,46 @@
   padding-bottom: 0px;
 }
 
-.leftSideInfo{
+.leftSideInfo {
   text-align: justify;
   float: left;
   padding-bottom: 5%;
 }
 
-.rightSideInfo{
+.rightSideInfo {
   text-align: justify;
   float: right;
   padding-bottom: 5%;
 }
 
-.ladderImage{
+.ladderImage {
   padding-right: 10%;
   padding-top: 2%;
 }
 
-.levelsImage{
-  padding-right: 10%;
-  padding-top: 7%;
+.levelsImage {
+  padding-left: 7%;
+  padding-top: 10%;
 }
 
-.marginalTaxImage{
+.marginalTaxImage {
   padding-left: 18%;
   padding-top: 6%;
 }
 
-.toggleImage{
-  padding-left: 6%;
-  padding-top: 10%;
+.toggleImage {
+  padding-right: 5%;
+  padding-top: 11%;
 }
 
-.dollarImage{
+.dollarImage {
   padding-right: 15%;
   padding-top: 4%;
 }
 
-.distributionImage{
-  padding-right: 5%;
-  padding-top: 9%;
+.distributionImage {
+  padding-left: 3%;
+  padding-top: 10%;
 }
 
 .clickLink:link {
@@ -74,6 +73,6 @@
   background-color: transparent;
 }
 
-.clickLink:hover{
+.clickLink:hover {
   color: #ffca34;
 }

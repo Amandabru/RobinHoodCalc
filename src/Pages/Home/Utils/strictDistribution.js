@@ -1,4 +1,4 @@
-const giveToThePoor = ([...data], collectedTax) => {
+const strictDistribution = ([...data], collectedTax) => {
   for (let i = 0; i < data.length; i++) {
     var incomeDiff = data[i + 1].income - data[i].income;
     if (collectedTax >= data[i].population * incomeDiff) {
@@ -17,4 +17,4 @@ const giveToThePoor = ([...data], collectedTax) => {
   }
 };
 
-export default giveToThePoor;
+export default strictDistribution;

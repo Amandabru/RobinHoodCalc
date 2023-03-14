@@ -1,6 +1,6 @@
 export { default as distributeEqually } from './distributeEqually';
 export { default as extremePovertyPercentage } from './extremePovertyPercentage';
-export { default as giveToThePoor } from './giveToThePoor';
+export { default as strictDistribution } from './strictDistribution';
 export { default as makePercentage } from './makePercentage';
 export { default as leftRightCounter } from './leftRightCounter';
 export { default as collectFromTheRich } from './collectFromTheRich';
@@ -14,4 +14,4 @@ export { default as extremePovertyCounter } from './extremePovertyCounter';
 export { default as useDataState } from './useDataState';
 export { default as getData } from './getData';
 export { default as getBillionaires } from './getBillionaires';
-export {default as giveToThePoor2} from "./giveToThePoor2";
+export { default as smoothDistribution } from './smoothDistribution';
