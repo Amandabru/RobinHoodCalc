@@ -22,8 +22,8 @@ const About = () => {
           understanding of the issue.
           <br></br>
           <br></br>
-          This project was proposed by an employee at Gapminder with the aim to
-          continue the development of their own visualization of income
+          This project was proposed by Angie Morozov at Gapminder with the aim
+          to continue the development of their own visualization of income
           distribution by adding the functionality of redistribution. This
           visualization has therefore taken a lot of inspiration from{' '}
           <a
