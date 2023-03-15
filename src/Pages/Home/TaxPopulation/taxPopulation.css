@@ -38,6 +38,7 @@
   height: 25px;
   width: 60px;
   margin: auto;
+  margin-right: 0;
   background: #fbfaf9;
   box-shadow: rgba(0, 0, 0, 0.329) 0.4px 0.8px 0.8px 0.8px;
   font-family: inherit;
@@ -71,7 +72,7 @@
   position: relative;
   border-radius: 3px;
   cursor: pointer;
-  font-family: "Cairo", sans-serif;
+  font-family: 'Cairo', sans-serif;
 }
 
 .boxSlider::-webkit-slider-thumb {
@@ -105,7 +106,7 @@
   border-bottom: 1.5px solid #f6c944;
   border-radius: 2px;
   background-color: rgba(128, 128, 128, 0.089);
-  font-family: "Cairo", sans-serif;
+  font-family: 'Cairo', sans-serif;
 }
 
 .percentageSymbol {

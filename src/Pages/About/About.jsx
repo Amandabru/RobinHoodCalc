@@ -100,6 +100,21 @@ const About = () => {
         </p>
       </Fade>
       <Fade top delay={600} distance={'15%'} force={true}>
+        <h2 className='headerPadding'>Credits</h2>
+        <p className='textAbout'>
+          We would like to acknowledge and thank <b>Angie Morozov</b> from
+          Gapminder for proposing this idea, sharing the data, and supporting us
+          throughout the work process. We also appreciate <b>Ola Rosling</b>{' '}
+          from Gapminder for taking the time to review our project and giving us
+          valuable feedback. Lastly, we would like to thank{' '}
+          <b>Mario Romero Vega</b>, our lecturer and course responsible for the
+          Information Visualization course, for his active engagement and
+          ongoing input, which helped us advance this project.
+          <br></br>
+          <p className='diamondStyle'>◆ ◆ ◆</p>
+        </p>
+      </Fade>
+      <Fade top delay={700} distance={'15%'} force={true}>
         <h2 className='headerPadding'>References</h2>
         <p style={{ textAlign: 'left' }}>
           [1] Chambers, J. R., Swan, L. K., & Heesacker, M. (2014). Better Off
