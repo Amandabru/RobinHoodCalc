@@ -117,13 +117,12 @@ const About = () => {
       <Fade top delay={700} distance={'15%'} force={true}>
         <h2 className='headerPadding'>References</h2>
         <p style={{ textAlign: 'left' }}>
-          [1] Chambers, J. R., Swan, L. K., & Heesacker, M. (2014). Better Off
-          Than We Know: Distorted Perceptions of Incomes and Income Inequality
-          in America. Psychological Science, 25(2), 613–618.
+          [1] J. R. Chambers, L. K. Swan, and M. Heesacker, “Better Off Than We know,” 
+          Psychological Science, vol. 25, no. 2, pp. 613–618, 2013.
           <br></br>
           <br></br>
-          [2] Zucman, Gabriel. "Global wealth inequality." Annual Review of
-          Economics 11 (2019): 109-138.
+          [2] G. Zucman, “Global wealth inequality,” Annual Review of Economics, 
+          vol. 11, pp. 109–138, 2019. 
         </p>
       </Fade>
     </div>
