@@ -22,8 +22,8 @@ const About = () => {
           understanding of the issue.
           <br></br>
           <br></br>
-          This project was proposed by Angie Morozov at Gapminder with the aim
-          to continue the development of their own visualization of income
+          This project was proposed by Angie Hjort at Gapminder with the aim to
+          continue the development of their own visualization of income
           distribution by adding the functionality of redistribution. This
           visualization has therefore taken a lot of inspiration from{' '}
           <a
@@ -102,7 +102,7 @@ const About = () => {
       <Fade top delay={600} distance={'15%'} force={true}>
         <h2 className='headerPadding'>Credits</h2>
         <p className='textAbout'>
-          We would like to acknowledge and thank <b>Angie Morozov</b> from
+          We would like to acknowledge and thank <b>Angie Hjort</b> from
           Gapminder for proposing this idea, sharing the data, and supporting us
           throughout the work process. We also appreciate <b>Ola Rosling</b>{' '}
           from Gapminder for taking the time to review our project and giving us
