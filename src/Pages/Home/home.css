@@ -1,13 +1,14 @@
 .taxTheRichContainer {
-  padding:5rem;
+  padding: 5rem;
   column-gap: 10%;
   display: grid;
   grid-template-columns: 1.1fr 0.9fr;
   align-items: start;
+  margin: 0 auto;
 }
 
 .leftSide {
-  top:7rem;
+  top: 7rem;
   position: sticky;
   align-self: start;
 }
@@ -15,4 +16,12 @@
 .rightSide {
   margin-top: 4vh;
   scroll-behavior: auto;
+}
+
+/* ===============  LARGE DEVICES ===============*/
+
+@media screen and (min-width: 1600px) {
+  .taxTheRichContainer {
+    width: 70%;
+  }
 }

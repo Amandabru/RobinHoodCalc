@@ -76,3 +76,11 @@
 .clickLink:hover {
   color: #ffca34;
 }
+
+/* ===============  LARGE DEVICES ===============*/
+
+@media screen and (min-width: 1600px) {
+  .howToUseContainer {
+    width: 50%;
+  }
+}
