@@ -111,7 +111,7 @@ const HowToUse = () => {
             src={toggle}
             className='toggleImage'
             alt={'Toggle'}
-            style={{ width: '35%', float: 'right' }}
+            style={{ width: '30%', float: 'right' }}
           ></img>
           <h2 style={{ float: 'left' }}>Toggle Y-Axis</h2>
           <p className='text' style={{ width: '50%', float: 'left' }}>
