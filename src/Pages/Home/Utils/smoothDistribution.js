@@ -33,8 +33,7 @@ const smoothDistribution = (data, collectedTax) => {
         data[i + j].population += popMoveMax;
         data[i].population -= popMoveMax;
       } else if (collectedTax < popMoveMax * incomeDiff) {
-
-      /*if we don't have enough money to align next bracket with the one after that*/
+        /*if we don't have enough money to align next bracket with the one after that*/
         /*check if we afford to move all people or more*/
         if (numberOfPeopleAffordMoveUp >= data[i].population) {
           /*if so, move all people and update collected tax*/
@@ -42,14 +41,14 @@ const smoothDistribution = (data, collectedTax) => {
           data[i + j].population += data[i].population;
           data[i].population = 0;
         } else {
-        /*if not, move all the people we can afford and return data*/
+          /*if not, move all the people we can afford and return data*/
           collectedTax -= numberOfPeopleAffordMoveUp * incomeDiff;
           data[i + j].population += numberOfPeopleAffordMoveUp;
           data[i].population -= numberOfPeopleAffordMoveUp;
           return data;
         }
       } else {
-      /*if we have enough money, but not enough people to align the upcoming bracket with the one after that*/
+        /*if we have enough money, but not enough people to align the upcoming bracket with the one after that*/
         /*then move all people and update collected tax*/
         collectedTax -= data[i].population * incomeDiff;
         data[i + j].population += data[i].population;
