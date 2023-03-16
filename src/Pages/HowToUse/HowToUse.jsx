@@ -4,7 +4,7 @@ import taxLadder from '../../Images/taxladder.png';
 import levels from '../../Images/levels.png';
 import marginalTax from '../../Images/marginalTax.png';
 import toggle from '../../Images/toggle.png';
-import dollarSign from '../../Images/dollarSign.png';
+import tenRichest from '../../Images/10richest.png';
 import distributionOptions from '../../Images/distributionOptions.png';
 import { Fade } from 'react-reveal';
 
@@ -62,10 +62,10 @@ const HowToUse = () => {
       <Fade left delay={600} distance={'30%'} force={true}>
         <div className='leftSideInfo'>
           <img
-            src={dollarSign}
-            className='dollarImage'
-            alt={'Dollar'}
-            style={{ width: '17%', float: 'right' }}
+            src={tenRichest}
+            className='tenRichestImage'
+            alt={'The ten richest'}
+            style={{ width: '25%', float: 'right' }}
           ></img>
           <h2>Tax the 10 Richest</h2>
           <p className='text' style={{ width: '50%', float: 'left' }}>
