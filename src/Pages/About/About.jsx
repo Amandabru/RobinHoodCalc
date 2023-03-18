@@ -32,7 +32,7 @@ const About = () => {
             className="gapminderlink"
           >
             Gapminder's visualization
-          </a>{" "}
+          </a>
           . To view the code of this project, feel free to visit our{" "}
           <a
             href=" https://github.com/Amandabru/RobinHoodCalc"
