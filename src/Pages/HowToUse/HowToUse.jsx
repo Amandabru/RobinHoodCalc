@@ -156,7 +156,7 @@ const HowToUse = () => {
         <h2 style={{ margin: "3%" }}>Video Demo</h2>
         <p>
           <iframe
-            width="620"
+            width="80%"
             height="465"
             src="https://www.youtube.com/embed/h1up51TlT1c"
           ></iframe>
