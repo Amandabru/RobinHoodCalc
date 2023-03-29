@@ -1,18 +1,18 @@
-import React, { useEffect } from "react";
-import "./about.css";
-import { Fade } from "react-reveal";
+import React, { useEffect } from 'react';
+import './about.css';
+import { Fade } from 'react-reveal';
 
 const About = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
   return (
-    <div className="AboutContainer">
-      <Fade top delay={200} distance={"15%"} force={true}>
-        <h1 className="titleAbout"> About</h1>
+    <div className='AboutContainer'>
+      <Fade top delay={200} distance={'15%'} force={true}>
+        <h1 className='titleAbout'> About</h1>
       </Fade>
-      <Fade top delay={300} distance={"15%"} force={true}>
-        <p className="textAbout">
+      <Fade top delay={300} distance={'15%'} force={true}>
+        <p className='textAbout'>
           The Robin Hood Calculator is an interactive tool for visualizing
           global income distribution. In this visualization, you have the
           ability to apply taxes to various income brackets or the ten richest
@@ -25,105 +25,134 @@ const About = () => {
           This project was proposed by Angie Hjort at Gapminder with the aim to
           continue the development of their own visualization of income
           distribution by adding the functionality of redistribution. This
-          visualization has therefore taken a lot of inspiration from{" "}
+          visualization has therefore taken a lot of inspiration from{' '}
           <a
-            href="https://www.gapminder.org/tools/#$ui$chart$showBilly:true;;&model$markers$mountain$data$filter$dimensions$geo$is--global:true;;;;&encoding$mu$scale$domain@:0.11&:100000000;;;&facet_row$data$constant=none;;;;&billy$encoding$x$data$concept=daily_income;;&name$data$concept=name;;&slices$data$concept=countries;;&selected$data$;;;;;;&chart-type=mountain&url=v1"
-            target="blank"
-            className="gapminderlink"
+            href='https://www.gapminder.org/tools/#$ui$chart$showBilly:true;;&model$markers$mountain$data$filter$dimensions$geo$is--global:true;;;;&encoding$mu$scale$domain@:0.11&:100000000;;;&facet_row$data$constant=none;;;;&billy$encoding$x$data$concept=daily_income;;&name$data$concept=name;;&slices$data$concept=countries;;&selected$data$;;;;;;&chart-type=mountain&url=v1'
+            target='blank'
+            className='gapminderlink'
           >
             Gapminder's visualization
           </a>
-          . To view the code of this project, feel free to visit our{" "}
+          . To view the code of this project, feel free to visit our{' '}
           <a
-            href=" https://github.com/Amandabru/RobinHoodCalc"
-            target="blank"
-            className="gapminderlink"
+            href=' https://github.com/Amandabru/RobinHoodCalc'
+            target='blank'
+            className='gapminderlink'
           >
             Github
           </a>
           .<br></br>
-          <p className="diamondStyle">◆ ◆ ◆</p>
+          <p className='diamondStyle'>◆ ◆ ◆</p>
         </p>
       </Fade>
-      <Fade top delay={400} distance={"15%"} force={true}>
-        <h2 className="headerPadding">Data</h2>
-        <p className="textAbout">
-          The data in the visualization is from datasets assembled by{" "}
+      <Fade top delay={400} distance={'15%'} force={true}>
+        <h2 className='headerPadding'>Data</h2>
+        <p className='textAbout'>
+          The data in the visualization is from datasets assembled by{' '}
           <a
-            href="https://www.gapminder.org/"
-            target="blank"
-            className="gapminderlink"
+            href='https://www.gapminder.org/'
+            target='blank'
+            className='gapminderlink'
           >
             Gapminder
           </a>
           . The data contains information about the income distribution of the
           world and information about the ten richest people. The dataset
           containing data about the population in different income brackets can
-          be found{" "}
+          be found{' '}
           <a
-            href="https://github.com/open-numbers/ddf--worldbank--povcalnet/blob/develop/income_mountain/ddf--datapoints--income_mountain_800bracket_shape_for_log--by--global--time.csv"
-            target="blank"
-            className="gapminderlink"
+            href='https://github.com/open-numbers/ddf--worldbank--povcalnet/blob/develop/income_mountain/ddf--datapoints--income_mountain_800bracket_shape_for_log--by--global--time.csv'
+            target='blank'
+            className='gapminderlink'
           >
             here
           </a>
           , and the correspoding income brackets (representing a specific income
-          per day) can be found{" "}
+          per day) can be found{' '}
           <a
-            href="https://github.com/open-numbers/ddf--worldbank--povcalnet/blob/develop/ddf--entities--income_bracket_800.csv"
-            target="blank"
-            className="gapminderlink"
+            href='https://github.com/open-numbers/ddf--worldbank--povcalnet/blob/develop/ddf--entities--income_bracket_800.csv'
+            target='blank'
+            className='gapminderlink'
           >
             here
           </a>
           . There is a total of 800 income brackets and the used value for each
           bracket is the arithmetic average between the start and end of the
-          bracket. The billionaire data can be found{" "}
+          bracket. The billionaire data can be found{' '}
           <a
-            href="https://github.com/open-numbers/ddf--gapminder--billionaires/blob/master/ddf--datapoints--daily_income--by--person--time.csv"
-            target="blank"
-            className="gapminderlink"
+            href='https://github.com/open-numbers/ddf--gapminder--billionaires/blob/master/ddf--datapoints--daily_income--by--person--time.csv'
+            target='blank'
+            className='gapminderlink'
           >
             here
           </a>
           .<br></br>
-          <p className="diamondStyle">◆ ◆ ◆</p>
+          <p className='diamondStyle'>◆ ◆ ◆</p>
         </p>
       </Fade>
-      <Fade top delay={500} distance={"15%"} force={true}>
-        <h2 className="headerPadding">Tools</h2>
-        <p className="textAbout">
+      <Fade top delay={500} distance={'15%'} force={true}>
+        <h2 className='headerPadding'>Tools</h2>
+        <p className='textAbout'>
           This project is built using React and D3.js. Prototyping was done
           using Figma.
           <br></br>
-          <p className="diamondStyle">◆ ◆ ◆</p>
+          <p className='diamondStyle'>◆ ◆ ◆</p>
         </p>
       </Fade>
-      <Fade top delay={600} distance={"15%"} force={true}>
-        <h2 className="headerPadding">Credits</h2>
-        <p className="textAbout">
+      <Fade top delay={600} distance={'15%'} force={true}>
+        <h2 className='headerPadding'>Credits</h2>
+        <p className='textAbout'>
           We would like to acknowledge and thank <b>Angie Hjort</b> from
           Gapminder for proposing this idea, sharing the data, and supporting us
-          throughout the work process. We also appreciate <b>Ola Rosling</b>{" "}
+          throughout the work process. We also appreciate <b>Ola Rosling</b>{' '}
           from Gapminder for taking the time to review our project and giving us
-          valuable feedback. Lastly, we would like to thank{" "}
-          <b>Mario Romero Vega</b>, our lecturer and course responsible for the{" "}
+          valuable feedback. Lastly, we would like to thank{' '}
+          <b>Mario Romero Vega</b>, our lecturer and course responsible for the{' '}
           <a
-            href="https://www.kth.se/student/kurser/kurs/DH2321?l=en"
-            target="blank"
-            className="gapminderlink"
+            href='https://www.kth.se/student/kurser/kurs/DH2321?l=en'
+            target='blank'
+            className='gapminderlink'
           >
             Information Visualization course
           </a>
           , for his active engagement and ongoing input, which helped us advance
           this project.
           <br></br>
-          <p className="diamondStyle">◆ ◆ ◆</p>
+          <p className='diamondStyle'>◆ ◆ ◆</p>
         </p>
       </Fade>
-      <Fade top delay={700} distance={"15%"} force={true}>
-        <h2 className="headerPadding">References</h2>
-        <p style={{ textAlign: "left" }}>
+      <Fade top delay={700} distance={'15%'} force={true}>
+        <h2 className='headerPadding'>Learning Goals</h2>
+        <p className='textAbout'>
+          <p className='learningTitle'>
+            Throughout this project we have achieved the following learning
+            goals:
+          </p>
+          <ul>
+            <li>
+              Applying principles of visual perception and techniques for
+              visualizing data.
+            </li>
+            <li>
+              Gained a better understanding of how to make visualizations
+              valuable by making the interpretation intuitive.
+            </li>
+            <li>
+              Learned D3.js, improved our React skills and learned how to
+              combine React with D3 in web development.
+            </li>
+            <li>Setting up a server for the web application.</li>
+            <li>
+              Practiced evaluating and discussing design choices within a team.
+            </li>
+          </ul>
+          <p className='diamondStyle'>◆ ◆ ◆</p>
+        </p>
+      </Fade>
+
+      <Fade top delay={800} distance={'15%'} force={true}>
+        <h2 className='headerPadding'>References</h2>
+        <p style={{ textAlign: 'left' }}>
           [1] J. R. Chambers, L. K. Swan, and M. Heesacker, “Better Off Than We
           know,” Psychological Science, vol. 25, no. 2, pp. 613–618, 2013.
           <br></br>

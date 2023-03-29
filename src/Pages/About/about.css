@@ -31,7 +31,7 @@
   text-decoration-thickness: 2.5px;
 }
 
-.gapminderlink:visited{
+.gapminderlink:visited {
   color: black;
 }
 
@@ -48,10 +48,14 @@
   padding-bottom: 2%;
 }
 
-.diamondStyle{
+.diamondStyle {
   color: #ffca34;
   font-size: 110%;
   text-align: center;
   padding-top: 2%;
-  letter-spacing: 5px
+  letter-spacing: 5px;
+}
+
+.learningTitle {
+  margin-bottom: 8px;
 }
