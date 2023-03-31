@@ -102,10 +102,26 @@ const About = () => {
       <Fade top delay={600} distance={'15%'} force={true}>
         <h2 className='headerPadding'>Credits</h2>
         <p className='textAbout'>
-          We would like to acknowledge and thank <b>Angie Hjort</b> from
+          We would like to acknowledge and thank <b>
+          <a
+            href='https://github.com/angiehjort'
+            target='blank'
+            className='gapminderlink'
+          >
+            Angie Hjort
+          </a>
+          </b> from
           Gapminder for proposing this idea, sharing the data, and supporting us
-          throughout the work process. We also appreciate <b>Ola Rosling</b>{' '}
-          from Gapminder for taking the time to review our project and giving us
+          throughout the work process. We also appreciate <b>
+          <a
+            href='https://github.com/semio'
+            target='blank'
+            className='gapminderlink'
+          >
+            Semio Zheng
+          </a>
+          </b> for putting together the high-resolution world income dataset and <b>Ola Rosling</b>{' '}
+          for taking the time to review our project and giving us
           valuable feedback. Lastly, we would like to thank{' '}
           <b>Mario Romero Vega</b>, our lecturer and course responsible for the{' '}
           <a
