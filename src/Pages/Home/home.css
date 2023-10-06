@@ -1,5 +1,5 @@
 .taxTheRichContainer {
-  padding: 5rem;
+  padding: 4rem;
   column-gap: 10%;
   display: grid;
   grid-template-columns: 1.1fr 0.9fr;
@@ -8,14 +8,19 @@
 }
 
 .leftSide {
-  top: 7rem;
+  top: 6rem;
   position: sticky;
   align-self: start;
 }
 
 .rightSide {
-  margin-top: 4vh;
+  margin-top: 4.2vh;
   scroll-behavior: auto;
+}
+
+.areaChart {
+  padding-top: 0.2rem;
+  width: 95%;
 }
 
 /* ===============  LARGE DEVICES ===============*/
@@ -23,5 +28,47 @@
 @media screen and (min-width: 1600px) {
   .taxTheRichContainer {
     width: 70%;
+  }
+}
+
+/* =============== MEDIUM DEVICES ===============*/
+
+@media screen and (max-width: 1024px) {
+  .taxTheRichContainer {
+    grid-template-columns: 1fr;
+    padding: 7rem 4rem;
+    gap: 6rem;
+    align-items: stretch;
+  }
+
+  .leftSide {
+    position: static;
+    align-self: auto;
+    width: 90%;
+    top: 0rem;
+  }
+
+  .rightSide {
+    padding-left: 1rem;
+    padding-right: 1rem;
+    margin-top: 0rem;
+  }
+}
+
+/* =============== SMALL DEVICES ===============*/
+
+@media screen and (max-width: 600px) {
+  .taxTheRichContainer {
+    grid-template-columns: 1fr;
+    padding: 6rem 0rem;
+    gap: 3rem;
+    align-items: stretch;
+  }
+
+  .areaChart {
+    padding-right: 1.9rem;
+    padding-left: 0.3rem;
+    padding-top: 0.5rem;
+    width: 90%;
   }
 }

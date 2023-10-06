@@ -109,32 +109,37 @@ const Home = () => {
           <Switch toggled={toggleState} onClick={setToggleState} />
         </Fade>
         <Fade top delay={100} distance={'5%'}>
-          <AreaChartD3
-            data={[
-              movingAverage(4, makePercentage(data)),
-              movingAverage(4, makePercentage(defaultData)),
-            ]}
-            wealthData={[
-              movingAverage(4, makePercentage(populationToWealth(data))),
-              movingAverage(4, makePercentage(populationToWealth(defaultData))),
-            ]}
-            ExtremePovertyCount={extremePovertyPercentage(data)}
-            billionaries={billionaires}
-            selectedBillionaires={selectedBillionaires}
-            leftRightCounter={(xValue) =>
-              leftRightCounter(
-                xValue,
-                data,
-                populationToWealth(data),
-                toggleState
-              )
-            }
-            levelCounter={(x1Value, x2Value) =>
-              levelCounter(x1Value, x2Value, data)
-            }
-            taxValue={taxes}
-            wealthToggle={toggleState}
-          />
+          <div className='areaChart'>
+            <AreaChartD3
+              data={[
+                movingAverage(4, makePercentage(data)),
+                movingAverage(4, makePercentage(defaultData)),
+              ]}
+              wealthData={[
+                movingAverage(4, makePercentage(populationToWealth(data))),
+                movingAverage(
+                  4,
+                  makePercentage(populationToWealth(defaultData))
+                ),
+              ]}
+              ExtremePovertyCount={extremePovertyPercentage(data)}
+              billionaries={billionaires}
+              selectedBillionaires={selectedBillionaires}
+              leftRightCounter={(xValue) =>
+                leftRightCounter(
+                  xValue,
+                  data,
+                  populationToWealth(data),
+                  toggleState
+                )
+              }
+              levelCounter={(x1Value, x2Value) =>
+                levelCounter(x1Value, x2Value, data)
+              }
+              taxValue={taxes}
+              wealthToggle={toggleState}
+            />
+          </div>
         </Fade>
       </div>
       <div className='rightSide'>

@@ -1,9 +1,22 @@
 /*Containers*/
 .titleContainer {
   display: grid;
-  grid-template-columns: 1fr 0.4fr;
+  grid-template-columns: 1fr 0.7fr;
   margin-left: 2em;
   margin-right: 2em;
+}
+
+.taxHeader {
+  padding: 1.8em;
+  padding-bottom: 1em;
+}
+
+.titleText {
+  font-size: 22px;
+}
+
+.smallerTitleText {
+  font-size: 14px;
 }
 
 /*Titles*/
@@ -23,10 +36,10 @@
 
 /*Description*/
 .taxationDescription {
-  font-size: 13px;
+  font-size: 11px;
   text-align: justify;
   margin-bottom: 0;
-  margin-top: 0;
+  margin-top: 0.5rem;
 }
 
 /*Buttons*/
@@ -59,7 +72,7 @@
   padding-bottom: 2.5%;
   font-weight: bold;
   display: grid;
-  grid-template-columns: 1fr 0.5fr;
+  grid-template-columns: 1fr 0.6fr;
 }
 
 .boxSlider {
@@ -111,6 +124,7 @@
 
 .percentageSymbol {
   padding-left: 2px;
+  font-weight: 300;
 }
 
 /*PopUp*/
@@ -140,4 +154,45 @@
 
 .info:hover .infoText {
   visibility: visible;
+}
+
+/* =============== MEDIUM DEVICES ===============*/
+
+/* =============== SMALL DEVICES ===============*/
+
+@media screen and (max-width: 600px) {
+  .titleText {
+    font-size: 16px;
+  }
+
+  .taxHeader {
+    padding: 2em;
+    padding-bottom: 1em;
+  }
+
+  .boxSliderContainer {
+    padding-bottom: 1.1%;
+  }
+
+  .smallerTitleText {
+    font-size: 12px;
+  }
+  /*Description*/
+  .taxationDescription {
+    font-size: 10px;
+  }
+
+  /*Buttons*/
+  .btn {
+    font-size: 10px;
+  }
+
+  /*PopUp*/
+  .info {
+    font-size: 10px;
+  }
+
+  .info .infoText {
+    font-size: 10px;
+  }
 }

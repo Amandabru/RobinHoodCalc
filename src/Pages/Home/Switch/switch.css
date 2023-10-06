@@ -17,7 +17,7 @@
   overflow: visible;
   padding: 0;
   cursor: pointer;
-  width: 150px;
+  width: 125px;
   background-color: #f6c944;
   border-radius: 20px;
   user-select: none;
@@ -154,10 +154,24 @@
   text-align: center;
   box-shadow: rgba(0, 0, 0, 0.429) 0px 1px 4px;
   z-index: 1000;
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 500;
 }
 
 .distribution:hover .distributionText {
   visibility: visible;
+}
+
+/* =============== SMALL DEVICES ===============*/
+
+@media screen and (max-width: 600px) {
+  .toggleSwitch > span span {
+    font-size: 0.5em;
+  }
+  .toggleSwitch {
+    margin-left: 1.4rem;
+    height: 23px;
+    width: 95px;
+    margin-right: 0.4rem;
+  }
 }

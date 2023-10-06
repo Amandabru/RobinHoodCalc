@@ -1,7 +1,6 @@
 .introduction {
   padding-bottom: 20px;
-  font-size: 15px;
-  font-size: 13px;
+  font-size: 12px;
 }
 
 .displayInfo {
@@ -10,4 +9,33 @@
   width: fit-content;
   padding-left: 8px;
   padding-right: 8px;
+}
+
+/* =============== MEDIUM DEVICES ===============*/
+
+@media screen and (max-width: 1024px) {
+  .introduction {
+    font-size: 15px;
+    width: 40rem;
+  }
+}
+
+/* =============== SMALL DEVICES ===============*/
+
+@media screen and (max-width: 600px) {
+  .introduction {
+    font-size: 10px;
+    margin: 0 auto;
+    width: 20.5rem;
+    padding-left: 1.4rem;
+    padding-right: 1rem;
+  }
+
+  .displayInfo {
+    background-color: #f5d3755b;
+    border-radius: 10px;
+    padding: 0.1rem;
+    padding-left: 0.5rem;
+    width: 20rem;
+  }
 }
