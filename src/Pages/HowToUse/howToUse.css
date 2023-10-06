@@ -8,12 +8,10 @@
 }
 
 .title {
-  color: #ffca34;
+  color: #000000;
   width: fit-content;
   padding: 3rem;
   margin: auto;
-  background-image: url(/src/Images/titleBackground.png);
-  background-size: 100% 100%;
   padding-top: 20px;
   padding-bottom: 25px;
   font-size: 40px;
