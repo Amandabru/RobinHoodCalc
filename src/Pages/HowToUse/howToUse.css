@@ -1,10 +1,12 @@
 .howToUseContainer {
-  width: 60%;
+  width: 70%;
   margin: auto;
-  padding: 6rem;
+  padding-top: 6rem;
   border-radius: 25px;
   background-color: white;
-  row-gap: 5%;
+}
+.textAndTitle {
+  width: 500px;
 }
 
 .title {
@@ -12,7 +14,7 @@
   width: fit-content;
   margin: auto;
   padding-top: 1rem;
-  padding-bottom: 25px;
+  padding-bottom: 0px;
   font-size: 40px;
   margin-bottom: 40px;
 }
@@ -21,48 +23,31 @@
   font-size: 18px;
   padding-top: 12px;
   padding-bottom: 0px;
-}
-
-.leftSideInfo {
   text-align: justify;
-  float: left;
-  padding-bottom: 5%;
 }
 
-.rightSideInfo {
-  text-align: justify;
-  float: right;
-  padding-bottom: 5%;
+.howToUseContent {
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 20px;
+  align-items: center;
+  justify-content: center;
 }
 
-.ladderImage {
-  padding-right: 10%;
-  padding-top: 2%;
+.reverse {
+  flex-direction: row-reverse;
 }
 
-.levelsImage {
-  padding-left: 7%;
-  padding-top: 10%;
+.howToUseImageContainer {
+  width: 300px;
+  height: 200px;
+  place-self: center;
 }
 
-.marginalTaxImage {
-  padding-left: 18%;
-  padding-top: 8%;
-}
-
-.toggleImage {
-  padding-right: 7%;
-  padding-top: 8%;
-}
-
-.tenRichestImage {
-  padding-right: 10%;
-  padding-top: 4%;
-}
-
-.distributionImage {
-  padding-left: 3%;
-  padding-top: 11%;
+.howToUseImage {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 }
 
 .clickLink:link {
@@ -74,10 +59,60 @@
   color: #ffca34;
 }
 
+iframe {
+  width: 90%;
+  height: 400px;
+}
+
+.videoContainer {
+  padding: 40px;
+  text-align: center;
+}
+
+.videoTitle {
+  padding-bottom: 20px;
+}
+
 /* ===============  LARGE DEVICES ===============*/
 
 @media screen and (min-width: 1600px) {
   .howToUseContainer {
     width: 50%;
+  }
+}
+
+/* =============== MEDIUM DEVICES ===============*/
+
+@media screen and (max-width: 1024px) {
+  .howToUseContainer {
+    width: 80%;
+  }
+
+  iframe {
+    height: 350px;
+  }
+
+  h2 {
+    text-align: center;
+  }
+}
+
+/* =============== SMALL DEVICES ===============*/
+
+@media screen and (max-width: 600px) {
+  .text {
+    font-size: 12px;
+  }
+
+  iframe {
+    height: 200px;
+  }
+
+  h2 {
+    font-size: 20px;
+  }
+
+  .title {
+    font-size: 30px;
   }
 }

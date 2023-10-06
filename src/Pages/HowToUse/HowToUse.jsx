@@ -14,19 +14,11 @@ const HowToUse = () => {
   }, []);
   return (
     <div className='howToUseContainer'>
-      <Fade top delay={100} distance={'30%'} force={true}>
-        <h1 className='title'> How to Use</h1>
-      </Fade>
-      <Fade left delay={200} distance={'30%'} force={true}>
-        <div className='leftSideInfo'>
-          <img
-            src={taxLadder}
-            className='ladderImage'
-            alt={'Tax Ladder'}
-            style={{ width: '25%', height: '15%', float: 'right' }}
-          ></img>
+      <h1 className='title'> How to Use</h1>
+      <div className='howToUseContent'>
+        <div className='textAndTitle'>
           <h2>The Robin Hood Taxation System</h2>
-          <p className='text' style={{ width: '50%', float: 'left' }}>
+          <p className='text'>
             The Robin Hood Taxation System enables you to tax the world's
             richest and directly redistribute to those with the lowest incomes.
             It is a progressive tax system where you set the{' '}
@@ -34,17 +26,18 @@ const HowToUse = () => {
             $1k-$10k, $10k-$100k, $100k-$1M, and $1M or more per day.
           </p>
         </div>
-      </Fade>
-      <Fade right delay={400} distance={'30%'} force={true}>
-        <div className='rightSideInfo'>
+        <div className='howToUseImageContainer'>
           <img
-            src={marginalTax}
-            alt={'Marginal Tax'}
-            className='marginalTaxImage'
-            style={{ width: '12%', float: 'left' }}
+            src={taxLadder}
+            className='howToUseImage'
+            alt={'Tax Ladder'}
           ></img>
-          <h2 style={{ float: 'right' }}>What is Marginal Tax? </h2>
-          <p className='text' style={{ width: '50%', float: 'right' }}>
+        </div>
+      </div>
+      <div className='howToUseContent reverse'>
+        <div className='textAndTitle'>
+          <h2>What is Marginal Tax? </h2>
+          <p className='text'>
             The marginal tax rate is the tax that applies to each additional
             level of income. In our progressive tax system, people pay more in
             taxes the higher their income is, and the brackets decide how much
@@ -58,34 +51,36 @@ const HowToUse = () => {
             15% bracket.
           </p>
         </div>
-      </Fade>
-      <Fade left delay={600} distance={'30%'} force={true}>
-        <div className='leftSideInfo'>
+        <div className='howToUseImageContainer'>
           <img
-            src={tenRichest}
-            className='tenRichestImage'
-            alt={'The ten richest'}
-            style={{ width: '25%', float: 'right' }}
+            src={marginalTax}
+            alt={'Marginal Tax'}
+            className='howToUseImage'
           ></img>
+        </div>
+      </div>
+      <div className='howToUseContent'>
+        <div className='textAndTitle'>
           <h2>Tax the 10 Richest</h2>
-          <p className='text' style={{ width: '50%', float: 'left' }}>
+          <p className='text'>
             To further redistribute income, you can impose additional taxes on
             the top 10 richest individuals in the world. This tax applies to the
             remaining income after all other Robin Hood taxes have been
             implemented.
           </p>
         </div>
-      </Fade>
-      <Fade right delay={800} distance={'30%'} force={true}>
-        <div className='rightSideInfo'>
+        <div className='howToUseImageContainer'>
           <img
-            src={distributionOptions}
-            className='distributionImage'
-            alt={'Distribution Options'}
-            style={{ width: '40%', float: 'left' }}
+            src={tenRichest}
+            className='howToUseImage'
+            alt={'The ten richest'}
           ></img>
-          <h2 style={{ float: 'right' }}>Distribution</h2>
-          <p className='text' style={{ width: '50%', float: 'right' }}>
+        </div>
+      </div>
+      <div className='howToUseContent reverse'>
+        <div className='textAndTitle'>
+          <h2>Distribution</h2>
+          <p className='text'>
             You have two options for distributing the money resulting from the
             taxation of the rich. The <b>strict distribution </b> strictly gives
             the collected money to the people with the current lowest income,
@@ -104,17 +99,18 @@ const HowToUse = () => {
             </a>{' '}
           </p>
         </div>
-      </Fade>
-      <Fade left delay={1000} distance={'30%'} force={true}>
-        <div className='leftSideInfo'>
+        <div className='howToUseImageContainer'>
           <img
-            src={toggle}
-            className='toggleImage'
-            alt={'Toggle'}
-            style={{ width: '30%', float: 'right' }}
+            src={distributionOptions}
+            className='howToUseImage'
+            alt={'Distribution Options'}
           ></img>
-          <h2 style={{ float: 'left' }}>Toggle Y-Axis</h2>
-          <p className='text' style={{ width: '50%', float: 'left' }}>
+        </div>
+      </div>
+      <div className='howToUseContent'>
+        <div className='textAndTitle'>
+          <h2>Toggle Y-Axis</h2>
+          <p className='text'>
             Our chart offers ways of visualizing the world's income
             distribution. You can switch between them by toggling the title on
             the y-axis. When <b>Population</b> is toggled, the chart plots the
@@ -123,17 +119,14 @@ const HowToUse = () => {
             world's total income that lie within different ranges of income.
           </p>
         </div>
-      </Fade>
-      <Fade right delay={1200} distance={'30%'} force={true}>
-        <div className='rightSideInfo'>
-          <img
-            src={levels}
-            className='levelsImage'
-            alt={'Income Levels'}
-            style={{ width: '30%', float: 'left' }}
-          ></img>
-          <h2 style={{ float: 'right' }}>Income Levels</h2>
-          <p className='text' style={{ width: '50%', float: 'right' }}>
+        <div className='howToUseImageContainer'>
+          <img src={toggle} className='howToUseImage' alt={'Toggle'}></img>
+        </div>
+      </div>
+      <div className='howToUseContent reverse'>
+        <div className='textAndTitle'>
+          <h2>Income Levels</h2>
+          <p className='text'>
             Below the chart, there are markings that divide the world population
             into 13 different income levels. These levels are based on the
             income levels from Gapminder, and more information about this
@@ -150,20 +143,19 @@ const HowToUse = () => {
             are in that level.
           </p>
         </div>
-      </Fade>
-      <Fade right delay={1400} distance={'30%'} force={true}>
-        <hr></hr>
-        <div style={{ margin: '0 auto', textAlign: 'center' }}>
-          <h2 style={{ margin: '3%' }}>Video Demo</h2>
-          <p>
-            <iframe
-              width='730'
-              height='465'
-              src='https://www.youtube.com/embed/h1up51TlT1c'
-            ></iframe>
-          </p>
+        <div className='howToUseImageContainer'>
+          <img
+            src={levels}
+            className='howToUseImage'
+            alt={'Income Levels'}
+          ></img>
         </div>
-      </Fade>
+      </div>
+      <hr></hr>
+      <div className='videoContainer'>
+        <h2 className='videoTitle'>Video Demo</h2>
+        <iframe src='https://www.youtube.com/embed/h1up51TlT1c'></iframe>
+      </div>
     </div>
   );
 };
