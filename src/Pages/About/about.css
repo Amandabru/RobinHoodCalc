@@ -56,6 +56,10 @@
   margin-bottom: 8px;
 }
 
+.references {
+  margin-bottom: 40px;
+}
+
 /* =============== MEDIUM DEVICES ===============*/
 
 @media screen and (max-width: 1024px) {

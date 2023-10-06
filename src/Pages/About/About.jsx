@@ -8,10 +8,10 @@ const About = () => {
   }, []);
   return (
     <div className='AboutContainer'>
-      <Fade top delay={200} distance={'10%'} force={true}>
+      <Fade delay={200} distance={'5%'} force={true}>
         <h1 className='titleAbout'> About</h1>
       </Fade>
-      <Fade top delay={300} distance={'10%'} force={true}>
+      <Fade left delay={300} distance={'5%'} force={true}>
         <p className='textAbout'>
           The Robin Hood Calculator is an interactive tool for visualizing
           global income distribution. In this visualization, you have the
@@ -45,7 +45,7 @@ const About = () => {
           <p className='diamondStyle'>◆ ◆ ◆</p>
         </p>
       </Fade>
-      <Fade top delay={400} distance={'10%'} force={true}>
+      <Fade right delay={400} distance={'5%'} force={true}>
         <h2 className='headerPadding'>Data</h2>
         <p className='textAbout'>
           The data in the visualization is from datasets assembled by{' '}
@@ -90,7 +90,7 @@ const About = () => {
           <p className='diamondStyle'>◆ ◆ ◆</p>
         </p>
       </Fade>
-      <Fade top delay={500} distance={'10%'} force={true}>
+      <Fade left delay={500} distance={'5%'} force={true}>
         <h2 className='headerPadding'>Tools</h2>
         <p className='textAbout'>
           This project is built using React and D3.js. Prototyping was done
@@ -99,7 +99,7 @@ const About = () => {
           <p className='diamondStyle'>◆ ◆ ◆</p>
         </p>
       </Fade>
-      <Fade top delay={600} distance={'10%'} force={true}>
+      <Fade right delay={600} distance={'5%'} force={true}>
         <h2 className='headerPadding'>Credits</h2>
         <p className='textAbout'>
           We would like to acknowledge and thank{' '}
@@ -140,7 +140,7 @@ const About = () => {
           <p className='diamondStyle'>◆ ◆ ◆</p>
         </p>
       </Fade>
-      <Fade top delay={700} distance={'10%'} force={true}>
+      <Fade left delay={700} distance={'5%'} force={true}>
         <h2 className='headerPadding'>Learning Goals</h2>
         <p className='textAbout'>
           <p className='learningTitle'>
@@ -169,16 +169,18 @@ const About = () => {
         </p>
       </Fade>
 
-      <Fade top delay={800} distance={'10%'} force={true}>
-        <h2 className='headerPadding'>References</h2>
-        <p className='textAbout'>
-          [1] J. R. Chambers, L. K. Swan, and M. Heesacker, “Better Off Than We
-          know,” Psychological Science, vol. 25, no. 2, pp. 613–618, 2013.
-          <br></br>
-          <br></br>
-          [2] G. Zucman, “Global wealth inequality,” Annual Review of Economics,
-          vol. 11, pp. 109–138, 2019.
-        </p>
+      <Fade right delay={800} distance={'5%'} force={true}>
+        <div className='references'>
+          <h2 className='headerPadding'>References</h2>
+          <p className='textAbout'>
+            [1] J. R. Chambers, L. K. Swan, and M. Heesacker, “Better Off Than
+            We know,” Psychological Science, vol. 25, no. 2, pp. 613–618, 2013.
+            <br></br>
+            <br></br>
+            [2] G. Zucman, “Global wealth inequality,” Annual Review of
+            Economics, vol. 11, pp. 109–138, 2019.
+          </p>
+        </div>
       </Fade>
     </div>
   );

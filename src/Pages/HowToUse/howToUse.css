@@ -67,6 +67,7 @@ iframe {
 .videoContainer {
   padding: 40px;
   text-align: center;
+  margin-bottom: 30px;
 }
 
 .videoTitle {
@@ -88,12 +89,29 @@ iframe {
     width: 80%;
   }
 
-  iframe {
-    height: 350px;
+  .howToUseImageContainer {
+    width: 200px;
+    height: 150px;
+    place-self: center;
   }
 
-  h2 {
+  iframe {
+    height: 350px;
+    width: 100%;
+  }
+
+  .videoContainer {
+    padding: 5px;
+    padding-top: 30px;
+    padding-bottom: 20px;
+  }
+
+  .smallerTitle {
     text-align: center;
+  }
+
+  .videoTitle {
+    padding-top: 20px;
   }
 }
 
@@ -108,7 +126,7 @@ iframe {
     height: 200px;
   }
 
-  h2 {
+  .smallerTitle {
     font-size: 20px;
   }
 
