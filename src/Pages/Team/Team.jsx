@@ -21,8 +21,7 @@ function Team() {
       name: 'Gustav Axelsson',
       mail: 'mailto:gustavax@kth.se',
       linkedin: 'https://www.linkedin.com/in/gustav-axelsson-985970176/',
-      role: 'Front-End Development | Data Processing',
-      description: '',
+      roles: ['Front-End Development', 'Data Processing'],
       image: gustav,
       spexImage: GSpexHatt,
     },
@@ -30,8 +29,7 @@ function Team() {
       name: 'Hanna Snarberg',
       mail: 'mailto:hannasn@kth.se',
       linkedin: 'https://www.linkedin.com/in/hanna-snarberg/',
-      role: 'Front-End Development | Data Processing',
-      description: '',
+      roles: ['Front-End Development', 'Data Processing'],
       image: snaran,
       spexImage: SSpexHatt,
     },
@@ -39,8 +37,7 @@ function Team() {
       name: 'Frida Jansson',
       mail: 'mailto:frija@kth.se',
       linkedin: 'https://www.linkedin.com/in/frida-jansson-8221671a2/',
-      role: 'UX | Front-End Development | User Testing',
-      description: '',
+      roles: ['UX', 'Front-End Development', 'User Testing'],
       image: frida,
       spexImage: FSpexHatt,
     },
@@ -48,8 +45,7 @@ function Team() {
       name: 'Hanna Almqvist',
       mail: 'mailto:hannaal@kth.se',
       linkedin: 'https://www.linkedin.com/in/hanna-almqvist-9244921a3/',
-      role: 'UX | Front-End Development | User Testing',
-      description: '',
+      roles: ['UX', 'Front-End Development', 'User Testing'],
       image: qvisten,
       spexImage: QSpexHatt,
     },
@@ -57,8 +53,7 @@ function Team() {
       name: 'Amanda Brundin',
       mail: 'mailto:abrundin@kth.se',
       linkedin: 'https://www.linkedin.com/in/amanda-brundin-bb5479177/',
-      role: 'Front-End Development',
-      description: '',
+      roles: ['Front-End Development'],
       image: manda,
       spexImage: MSpexHatt,
     },
@@ -84,8 +79,15 @@ function Team() {
                 onMouseLeave={(e) => (e.currentTarget.src = member.image)}
               />
               <h3 className='teamMemberName'>{member.name}</h3>
-              <h4 className='teamMemberRole'>{member.role}</h4>
-              <p className='teamMemberDescription'>{member.description}</p>
+              <h4 className='teamMemberRole'>
+                {member.roles.map((role, i) => {
+                  if (i + 1 === member.roles.length) {
+                    return <span>{role}</span>;
+                  } else {
+                    return <span>{role + ', '}</span>;
+                  }
+                })}
+              </h4>
               <span>
                 <a href={member.mail} target='_blank' rel='noreferrer'>
                   <IoIosMail className='iconMail'> </IoIosMail>

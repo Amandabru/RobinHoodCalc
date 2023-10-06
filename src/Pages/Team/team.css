@@ -27,6 +27,7 @@
   background-color: #ffffff;
   padding: 5px 30px;
 }
+
 .teamMemberImage {
   margin-bottom: 20px;
   width: 180px;
@@ -46,11 +47,6 @@
   margin-top: 5px;
   font-size: 14px;
   font-weight: 400;
-}
-
-.teamMemberDescription {
-  font-size: 14px;
-  padding-bottom: 0.2rem;
 }
 
 .iconMail {
@@ -106,13 +102,22 @@
 
 @media screen and (max-width: 1024px) {
   .teamMember {
-    padding: 5px 10px;
+    padding: 5px 20px;
   }
 }
 
 /* =============== SMALL DEVICES ===============*/
 
 @media screen and (max-width: 600px) {
+  .teamContainer {
+    padding: 6rem 0;
+  }
+
+  .teamMemberRole {
+    display: grid;
+    grid-template-columns: 1fr;
+    margin-top: 0px;
+  }
   .titleTeam {
     font-size: 30px;
   }
@@ -120,5 +125,32 @@
   .teamMemberImage {
     width: 120px;
     height: 120px;
+  }
+
+  .teamMemberName {
+    font-size: 15px;
+  }
+
+  .teamMemberRole {
+    font-size: 11px;
+  }
+
+  .iconMail {
+    font-size: 25px;
+    color: black;
+    padding-left: 10px;
+    padding-right: 10px;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .iconLinkedin {
+    font-size: 14px;
+    color: black;
+    padding-left: 10px;
+    padding-right: 10px;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 5.2px;
   }
 }
