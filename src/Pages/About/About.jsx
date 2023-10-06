@@ -142,7 +142,7 @@ const About = () => {
       </Fade>
       <Fade left delay={700} distance={'5%'} force={true}>
         <h2 className='headerPadding'>Learning Goals</h2>
-        <p className='textAbout'>
+        <div className='textAbout'>
           <p className='learningTitle'>
             Throughout this project we have achieved the following learning
             goals:
@@ -166,7 +166,7 @@ const About = () => {
             </li>
           </ul>
           <p className='diamondStyle'>◆ ◆ ◆</p>
-        </p>
+        </div>
       </Fade>
 
       <Fade right delay={800} distance={'5%'} force={true}>

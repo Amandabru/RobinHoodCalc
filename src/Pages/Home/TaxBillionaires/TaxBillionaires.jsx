@@ -1,8 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import Toggle from '../Toggle/Toggle';
 import './taxbillionaires.css';
 import { formatNumbers } from '../Utils/index';
-import { isElementOfType } from 'react-dom/test-utils';
 
 function TaxBillionaires({
   billionaires,
@@ -154,7 +153,7 @@ function TaxBillionaires({
                   <p className='taxTitle'> Tax Rate</p>
                   <div className='percetageBoxWrapper1'>
                     <input
-                      className={'percentage'}
+                      className='percentage'
                       type='number'
                       min='0'
                       max='100'

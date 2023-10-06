@@ -169,7 +169,10 @@ const HowToUse = () => {
         <hr></hr>
         <div className='videoContainer'>
           <h2 className='videoTitle'>Video Demo</h2>
-          <iframe src='https://www.youtube.com/embed/h1up51TlT1c'></iframe>
+          <iframe
+            src='https://www.youtube.com/embed/h1up51TlT1c'
+            title='Video Demo'
+          ></iframe>
         </div>
       </Fade>
     </div>

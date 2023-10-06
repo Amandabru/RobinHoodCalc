@@ -28,7 +28,8 @@
   cursor: pointer;
   font-size: large;
   position: absolute;
-  margin-left: 93%;
+  top: 5px;
+  right: 5px;
 }
 
 .billionaireContent {
@@ -64,6 +65,7 @@
   padding-left: 0rem;
   margin: auto;
   margin-right: 0;
+  font-size: 12px;
 }
 
 .containerRight {
@@ -147,15 +149,13 @@
 
 .percentage {
   width: 6ch;
-  height: 15px;
+  height: 20px;
   text-align: right;
   border: none;
   border-radius: 2px;
   border-bottom: 1.5px solid #f6c944;
   background-color: rgba(128, 128, 128, 0.089);
   margin-bottom: 0.3rem;
-
-  height: 2ch;
   font-family: 'Cairo', sans-serif;
 }
 

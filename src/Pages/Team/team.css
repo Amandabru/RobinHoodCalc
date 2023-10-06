@@ -113,11 +113,6 @@
 /* =============== SMALL DEVICES ===============*/
 
 @media screen and (max-width: 600px) {
-  .teamContainer {
-    padding: 1rem;
-    padding-top: 7rem;
-  }
-
   .titleTeam {
     font-size: 30px;
   }
@@ -125,9 +120,5 @@
   .teamMemberImage {
     width: 120px;
     height: 120px;
-  }
-
-  .team {
-    padding-top: 2%;
   }
 }

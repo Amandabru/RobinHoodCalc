@@ -11,14 +11,9 @@ import {
   axisLeft,
   axisRight,
   curveMonotoneX,
-  brushX,
   selectAll,
   pointer,
-  text,
-  invert,
   selection,
-  index,
-  drag,
 } from 'd3';
 import './circleStyle.css';
 import arnault from '../../../Images/bernard_arnault.png';
@@ -176,18 +171,6 @@ const AreaChartD3 = ({
     selectAll('.billionaires').remove();
     selectAll('#defs').remove();
     selectAll('#taxLadder').remove();
-
-    // brush
-    /*
-    const brush = brushX().extent([
-      [0, 0],
-      [w, h],
-    ]);
-
-    svg.select(".brush").call(brush).call(brush.move, [0, 0]);
-    */
-
-    // x axis label (income)
     svg
       .style('font', '12px cairo')
       .append('text')
@@ -199,7 +182,6 @@ const AreaChartD3 = ({
       .attr('id', 'axis');
 
     // left y axis label
-    var axisLabelXLeft = -35;
     var axisLabelY = -25;
 
     // right yaxis lable
@@ -724,7 +706,7 @@ const AreaChartD3 = ({
               .attr('dy', 20)
               .text(() => {
                 if (levels[i - 1] === undefined) {
-                  return 'Income: ', '<' + formatNumbers(levels[i]) + ' $/day';
+                  return 'Income: ' + '<' + formatNumbers(levels[i]) + ' $/day';
                 } else {
                   return (
                     'Income: ' +

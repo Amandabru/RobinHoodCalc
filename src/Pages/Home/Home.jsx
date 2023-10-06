@@ -51,6 +51,8 @@ const Home = () => {
     'distributionOption'
   );
 
+  const smallScreen = window.matchMedia('(max-width: 600px)').matches;
+
   const updateData = () => {
     var [collectedTax, updatedData, newBillionaires] = collectFromTheRich(
       defaultData,
@@ -96,7 +98,7 @@ const Home = () => {
   return (
     <div className='taxTheRichContainer'>
       <div className='leftSide'>
-        <Fade left delay={600} distance={'20%'}>
+        <Fade left delay={100} distance={'20%'}>
           <Introduction
             data={data}
             defaultData={defaultData}
@@ -105,7 +107,7 @@ const Home = () => {
             setDistributionOption={(option) => setDistributionOption(option)}
           />
         </Fade>
-        <Fade top delay={100} distance={'70%'}>
+        <Fade top delay={100} distance={'5%'}>
           <Switch toggled={toggleState} onClick={setToggleState} />
         </Fade>
         <Fade top delay={100} distance={'5%'}>
@@ -143,7 +145,7 @@ const Home = () => {
         </Fade>
       </div>
       <div className='rightSide'>
-        <Fade right delay={600} distance={'20%'}>
+        {smallScreen ? (
           <Taxes
             onTaxChange={(taxBracketNr, newTax) =>
               setTaxes(updateTaxes(taxBracketNr, taxes, newTax))
@@ -156,7 +158,22 @@ const Home = () => {
               setSelectedBillionaires(billionaires);
             }}
           />
-        </Fade>
+        ) : (
+          <Fade right delay={100} distance={'20%'}>
+            <Taxes
+              onTaxChange={(taxBracketNr, newTax) =>
+                setTaxes(updateTaxes(taxBracketNr, taxes, newTax))
+              }
+              clearAllTaxes={() => setTaxes(setDefaultTax())}
+              taxes={taxes}
+              billionaires={billionaires}
+              selectedBillionaires={selectedBillionaires}
+              setSelectedBillionaires={(billionaires) => {
+                setSelectedBillionaires(billionaires);
+              }}
+            />
+          </Fade>
+        )}
       </div>
     </div>
   );
