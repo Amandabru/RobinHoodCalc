@@ -8,10 +8,10 @@ const About = () => {
   }, []);
   return (
     <div className='AboutContainer'>
-      <Fade top delay={200} distance={'15%'} force={true}>
+      <Fade top delay={200} distance={'10%'} force={true}>
         <h1 className='titleAbout'> About</h1>
       </Fade>
-      <Fade top delay={300} distance={'15%'} force={true}>
+      <Fade top delay={300} distance={'10%'} force={true}>
         <p className='textAbout'>
           The Robin Hood Calculator is an interactive tool for visualizing
           global income distribution. In this visualization, you have the
@@ -45,7 +45,7 @@ const About = () => {
           <p className='diamondStyle'>◆ ◆ ◆</p>
         </p>
       </Fade>
-      <Fade top delay={400} distance={'15%'} force={true}>
+      <Fade top delay={400} distance={'10%'} force={true}>
         <h2 className='headerPadding'>Data</h2>
         <p className='textAbout'>
           The data in the visualization is from datasets assembled by{' '}
@@ -90,7 +90,7 @@ const About = () => {
           <p className='diamondStyle'>◆ ◆ ◆</p>
         </p>
       </Fade>
-      <Fade top delay={500} distance={'15%'} force={true}>
+      <Fade top delay={500} distance={'10%'} force={true}>
         <h2 className='headerPadding'>Tools</h2>
         <p className='textAbout'>
           This project is built using React and D3.js. Prototyping was done
@@ -99,30 +99,33 @@ const About = () => {
           <p className='diamondStyle'>◆ ◆ ◆</p>
         </p>
       </Fade>
-      <Fade top delay={600} distance={'15%'} force={true}>
+      <Fade top delay={600} distance={'10%'} force={true}>
         <h2 className='headerPadding'>Credits</h2>
         <p className='textAbout'>
-          We would like to acknowledge and thank <b>
-          <a
-            href='https://github.com/angiehjort'
-            target='blank'
-            className='gapminderlink'
-          >
-            Angie Hjort
-          </a>
-          </b> from
-          Gapminder for proposing this idea, sharing the data, and supporting us
-          throughout the work process. We also appreciate <b>
-          <a
-            href='https://github.com/semio'
-            target='blank'
-            className='gapminderlink'
-          >
-            Semio Zheng
-          </a>
-          </b> for putting together the high-resolution world income dataset and <b>Ola Rosling</b>{' '}
-          for taking the time to review our project and giving us
-          valuable feedback. Lastly, we would like to thank{' '}
+          We would like to acknowledge and thank{' '}
+          <b>
+            <a
+              href='https://github.com/angiehjort'
+              target='blank'
+              className='gapminderlink'
+            >
+              Angie Hjort
+            </a>
+          </b>{' '}
+          from Gapminder for proposing this idea, sharing the data, and
+          supporting us throughout the work process. We also appreciate{' '}
+          <b>
+            <a
+              href='https://github.com/semio'
+              target='blank'
+              className='gapminderlink'
+            >
+              Semio Zheng
+            </a>
+          </b>{' '}
+          for putting together the high-resolution world income dataset and{' '}
+          <b>Ola Rosling</b> for taking the time to review our project and
+          giving us valuable feedback. Lastly, we would like to thank{' '}
           <b>Mario Romero Vega</b>, our lecturer and course responsible for the{' '}
           <a
             href='https://www.kth.se/student/kurser/kurs/DH2321?l=en'
@@ -137,7 +140,7 @@ const About = () => {
           <p className='diamondStyle'>◆ ◆ ◆</p>
         </p>
       </Fade>
-      <Fade top delay={700} distance={'15%'} force={true}>
+      <Fade top delay={700} distance={'10%'} force={true}>
         <h2 className='headerPadding'>Learning Goals</h2>
         <p className='textAbout'>
           <p className='learningTitle'>
@@ -166,9 +169,9 @@ const About = () => {
         </p>
       </Fade>
 
-      <Fade top delay={800} distance={'15%'} force={true}>
+      <Fade top delay={800} distance={'10%'} force={true}>
         <h2 className='headerPadding'>References</h2>
-        <p style={{ textAlign: 'left' }}>
+        <p className='textAbout'>
           [1] J. R. Chambers, L. K. Swan, and M. Heesacker, “Better Off Than We
           know,” Psychological Science, vol. 25, no. 2, pp. 613–618, 2013.
           <br></br>

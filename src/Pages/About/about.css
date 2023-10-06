@@ -1,20 +1,19 @@
 .AboutContainer {
-  width: 55%;
-  margin: auto;
-  padding: 6rem;
+  width: 60%;
+  margin: 0 auto;
   text-align: center;
-  border-radius: 25px;
   background-color: white;
 }
 .titleAbout {
   color: #000000;
-  width: fit-content;
   padding: 1rem;
   margin: auto;
+  padding-top: 7rem;
   padding-bottom: 20px;
   font-size: 40px;
   margin-bottom: 20px;
 }
+
 .textAbout {
   font-size: 18px;
   padding-bottom: 15px;
@@ -55,4 +54,36 @@
 
 .learningTitle {
   margin-bottom: 8px;
+}
+
+/* =============== MEDIUM DEVICES ===============*/
+
+@media screen and (max-width: 1024px) {
+  .AboutContainer {
+    width: 70%;
+  }
+
+  .titleAbout {
+    padding-top: 7rem;
+    font-size: 30px;
+  }
+
+  .diamondStyle {
+    font-size: 130%;
+  }
+}
+
+/* =============== SMALL DEVICES ===============*/
+
+@media screen and (max-width: 600px) {
+  .AboutContainer {
+    width: 80%;
+  }
+  .textAbout {
+    font-size: 12px;
+  }
+
+  .diamondStyle {
+    font-size: 130%;
+  }
 }
