@@ -198,4 +198,8 @@
   .dropdown {
     font-size: 10px;
   }
+  .cancelButton {
+    top: 2px;
+    right: 2px;
+  }
 }

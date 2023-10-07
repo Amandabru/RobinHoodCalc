@@ -156,8 +156,6 @@
   visibility: visible;
 }
 
-/* =============== MEDIUM DEVICES ===============*/
-
 /* =============== SMALL DEVICES ===============*/
 
 @media screen and (max-width: 600px) {

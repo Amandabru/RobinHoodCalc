@@ -14,12 +14,19 @@ const Introduction = ({
   distributionOption,
   setDistributionOption,
 }) => {
+  const smallOrMediumScreen = window.matchMedia('(max-width: 1024px)').matches;
   return (
     <div className='introduction'>
       Welcome to the <b>Robin Hood Calculator!</b> Here you can explore how the
       daily income distribution in the world would look like when you take from
       the rich and give to the poor. Interact with the Robin Hood Taxation
-      System to the right to see what happens!
+      System{' '}
+      {smallOrMediumScreen ? (
+        <span>down below</span>
+      ) : (
+        <span>to the right</span>
+      )}{' '}
+      to see what happens!
       <br></br>
       <br></br>
       <b>How do you want to redistribute?</b>
