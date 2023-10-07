@@ -60,6 +60,14 @@
   margin-bottom: 40px;
 }
 
+/* ===============  LARGE DEVICES ===============*/
+
+@media screen and (min-width: 1600px) {
+  .AboutContainer {
+    width: 50%;
+  }
+}
+
 /* =============== MEDIUM DEVICES ===============*/
 
 @media screen and (max-width: 1024px) {
